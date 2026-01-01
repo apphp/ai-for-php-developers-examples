@@ -337,7 +337,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const selected = this.value === 'ru' ? 'ru' : 'en';
             const currentUrl = window.location.pathname + window.location.search;
             const redirectParam = encodeURIComponent(currentUrl || '/');
-            window.location.href = `/set-lang/${selected}?redirect=${redirectParam}`;
+
+            const baseUrl = (window.APP_URL || '/').replace(/\/+$/, '/')  // ensure one trailing slash
+            window.location.href = `${baseUrl}set-lang/${selected}?redirect=${redirectParam}`;
         });
     }
 });
