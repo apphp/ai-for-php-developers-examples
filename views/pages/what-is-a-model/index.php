@@ -2,7 +2,7 @@
     <h1 class="h2">What is a model in the mathematical sense</h1>
 </div>
 
-<?= create_run_code_button('Function as the basis of the model', '/part-1/what-is-a-model/code-run'); ?>
+<?= create_run_code_button('Function as the basis of the model', 'part-1/what-is-a-model/code-run'); ?>
 
 <div>
     <p>

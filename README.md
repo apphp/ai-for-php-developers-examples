@@ -1,5 +1,5 @@
 ## Examples for AI with PHP Learning Book
-<a href="https://apphp.gitbook.io/ai-dlya-php-razrabotchikov-intuitivno-i-na-praktike/" target="_blank" rel="noopener noreferrer">https://apphp.gitbook.io/ai-dlya-php-razrabotchikov-intuitivno-i-na-praktike/</a>
+<a href="https://apphp.gitbook.io/ai-dlya-php-razrabotchikov/" target="_blank" rel="noopener noreferrer">https://apphp.gitbook.io/ai-dlya-php-razrabotchikov-intuitivno-i-na-praktike/</a>
 
 ## Interact With The Community
 - [Join Our Telegram Channel](https://t.me/aimlphp)

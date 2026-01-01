@@ -5,7 +5,7 @@
 <div>
     Thsis is an examples for AI with PHP book.
     <br><br>
-    Official site: <a href="https://apphp.gitbook.io/ai-dlya-php-razrabotchikov-intuitivno-i-na-praktike" target="_blank" rel="nofollow noopener">Artificial Intelligence with PHP</a>
+    Official site: <a href="https://apphp.gitbook.io/ai-dlya-php-razrabotchikov" target="_blank" rel="nofollow noopener">Artificial Intelligence with PHP</a>
     <br>
     Official repository: <a href="https://github.com/apphp/ai-for-php-developers-examples" target="_blank" rel="nofollow noopener">GitHub Repository</a>
     <br><br>

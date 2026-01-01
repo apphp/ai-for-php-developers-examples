@@ -93,7 +93,7 @@ function create_show_code_button(string $title, string $page): string {
     <h2 class="h4">' . $title . '</h2>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
-            <a href="' . $page . '" class="btn btn-sm btn-outline-primary">Show Code</a>
+            <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">Show Code</a>
         </div>
     </div>
 </div>';
@@ -111,7 +111,7 @@ function create_run_code_button(
         <div class="btn-toolbar mb-2 mb-md-0">';
 
         $output .= '<div class="btn-group">
-                <a href="' . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText.'</a>
+                <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText.'</a>
             </div>';
 
         $output .= '</div>

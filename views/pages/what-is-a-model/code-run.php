@@ -16,7 +16,7 @@
     <h1 class="h2">What is a model in the mathematical sense</h1>
 </div>
 
-<?= create_show_code_button('Function as the basis of the model', '/part-1/what-is-a-model'); ?>
+<?= create_show_code_button('Function as the basis of the model', 'part-1/what-is-a-model'); ?>
 
 <div>
     <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse" title="Click to expand">
@@ -38,3 +38,7 @@
 </div>
 
 <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
+
+<p>
+    Explanation: $2 * 3 + 0 = 6$
+</p>
