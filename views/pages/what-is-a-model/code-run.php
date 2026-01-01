@@ -13,19 +13,25 @@
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">What is a model in the mathematical sense</h1>
+    <h1 class="h2"><?= __t('what_is_model.heading'); ?></h1>
 </div>
 
-<?= create_show_code_button('Function as the basis of the model', 'part-1/what-is-a-model'); ?>
+<?= create_show_code_button(__t('what_is_model.button_title'), 'part-1/what-is-a-model'); ?>
+
+<div>
+    <p>
+        <?= __t('what_is_model.description2'); ?>
+    </p>
+</div>
 
 <div>
     <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse" title="Click to expand">
-        Example of use <i id="toggleIcon" class="fa-regular fa-square-plus"></i>
+        <?= __t('common.example_of_use'); ?> <i id="toggleIcon" class="fa-regular fa-square-plus"></i>
     </p>
     <div class="collapse pb-4" id="collapseExampleOfUse">
         <div class="bd-clipboard">
-            <button id="copyButton" type="button" class="btn-clipboard" onclick="copyToClipboard()">
-                Copy
+            <button id="copyButton" type="button" class="btn-clipboard" data-text-copied="<?= __t('common.copied'); ?>" onclick="copyToClipboard()">
+                <?= __t('common.copy'); ?>
             </button>
             &nbsp;
         </div>
@@ -40,5 +46,5 @@
 <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
 
 <p>
-    Explanation: $2 * 3 + 0 = 6$
+    <?= __t('what_is_model.explanation_simple'); ?>
 </p>

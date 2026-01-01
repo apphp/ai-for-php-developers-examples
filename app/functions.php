@@ -130,11 +130,16 @@ function create_run_code_button(
  */
 function create_example_of_use_links(string $datasetFile = '', string $title = 'Example of use', bool $opened = false, string $language = 'php', string $copyButtonId = 'copyButton'): string {
 
+    // Use translated default title when caller did not override it
+    if ($title === 'Example of use') {
+        $title = __t('common.example_of_use');
+    }
+
     if ($opened) {
         $output = ($title ? '<p>' . $title . ':</p>' : '') . '
         <div class="bd-clipboard">
-            <button id="'  .$copyButtonId . '" type="button" class="btn-clipboard" onclick="copyToClipboard(\''  .$copyButtonId . '\')">
-            Copy
+            <button id="'  .$copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="'.__t('common.copied').'" onclick="copyToClipboard(\''  .$copyButtonId . '\')">
+            '.__t('common.copy').'
             </button>&nbsp;
         </div>';
 
@@ -266,5 +271,55 @@ function create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtime
     }
 
     return $output;
+}
+
+function get_current_language(): string {
+    $supported = ['en', 'ru'];
+    $default = 'en';
+
+    $cookieLang = $_COOKIE['lang'] ?? '';
+    if (in_array($cookieLang, $supported, true)) {
+        return $cookieLang;
+    }
+
+    return $default;
+}
+
+function load_translations(string $lang): array {
+    static $cache = [];
+
+    if (isset($cache[$lang])) {
+        return $cache[$lang];
+    }
+
+    $file = __DIR__ . '/lang/' . $lang . '.php';
+    if (is_file($file)) {
+        $cache[$lang] = include $file;
+    } else {
+        $cache[$lang] = [];
+    }
+
+    return $cache[$lang];
+}
+
+function __t(string $key, array $replacements = []): string {
+    static $translationsByLang = [];
+
+    $lang = get_current_language();
+
+    if (!isset($translationsByLang[$lang])) {
+        $translationsByLang[$lang] = load_translations($lang);
+    }
+
+    $translations = $translationsByLang[$lang];
+    $text = $translations[$key] ?? $key;
+
+    if ($replacements) {
+        foreach ($replacements as $search => $value) {
+            $text = str_replace('{' . $search . '}', (string)$value, $text);
+        }
+    }
+
+    return $text;
 }
 

@@ -21,25 +21,25 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
         <div id="navbar" class="<?= $sideBar === 'collapsed' ? 'nonvisible' : ''; ?>">
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span><i class="fas fa-home me-1"></i> Introduction</span>
+                <span><i class="fas fa-home me-1"></i> <?= __t('nav.introduction'); ?></span>
             </h6>
 
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                     <a class="nav-link<?= in_array($currentPath, ['/', '/home'], true) ? ' active' : '' ?>" href="<?=APP_URL?>home">
-                        <span data-feather="file-text">• </span><small>Getting Started</small>
+                        <span data-feather="file-text">• </span><small><?= __t('nav.getting_started'); ?></small>
                     </a>
                 </li>
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span><i class="fas fa-book me-1"></i> Part I. The Mathematical Language of AI</span>
+                <span><i class="fas fa-book me-1"></i> <?= __t('nav.part1_title'); ?></span>
             </h6>
 
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                     <a class="nav-link<?= in_array($currentPath, ['/part-1/what-is-a-model', '/part-1/what-is-a-model/code-run'], true) ? ' active' : '' ?>" href="<?=APP_URL?>part-1/what-is-a-model">
-                        <span data-feather="file-text">• </span><small>What is a model</small>
+                        <span data-feather="file-text">• </span><small><?= __t('nav.what_is_model'); ?></small>
                     </a>
                 </li>
             </ul>

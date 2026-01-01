@@ -2,14 +2,15 @@
     $sideBar = $_COOKIE['sidebar'] ?? '';
     $darkSwitch = $_COOKIE['darkSwitch'] ?? '';
     $dataTheme = $darkSwitch === 'dark' ? ' data-theme="dark"' : '';
+    $currentLang = function_exists('get_current_language') ? get_current_language() : (in_array($_COOKIE['lang'], ['en', 'ru'], true) ? $_COOKIE['lang'] : 'en');
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="<?= htmlspecialchars($currentLang, ENT_QUOTES, 'UTF-8') ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title><?= htmlspecialchars($title ?? 'AI for PHP Developers', ENT_QUOTES, 'UTF-8') ?></title>
+    <title><?= htmlspecialchars($title ?? __t('app.name'), ENT_QUOTES, 'UTF-8') ?></title>
     <link rel="icon" type="image/webp" href="/favicon.webp">
 
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,13 +31,20 @@
 </head>
 <body<?=$dataTheme;?>>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="<?=APP_URL?>">AI for PHP Developers (examples)</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="<?=APP_URL?>"><?= __t('app.name'); ?></a>
 
     <button id="btn-toggler" class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="ms-auto"></div>
+
+    <div class="ms-2 me-3 text-nowrap">
+        <select id="lang-select" class="form-select form-select-sm bg-dark text-light border-secondary">
+            <option value="en" <?= $currentLang === 'en' ? 'selected' : '' ?>>EN</option>
+            <option value="ru" <?= $currentLang === 'ru' ? 'selected' : '' ?>>RU</option>
+        </select>
+    </div>
 
 <!--    <div class="search-container col-12 col-sm-4 col-md-3 col-lg-2 mt-1 mt-sm-0 mb-sm-0 me-5">-->
 <!--        <form action="--><?php //= create_href('search', 'index')?><!--" method="get">-->

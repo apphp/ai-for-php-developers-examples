@@ -25,7 +25,7 @@ function copyToClipboard(copyButtonId = 'copyButton') {
     // Change the button text to "Copied!" temporarily
     const copyButton = document.getElementById(copyButtonId);
     const originalText = copyButton.innerText;
-    copyButton.innerText = "Copied!";
+    copyButton.innerText = copyButton.getAttribute('data-text-copied');
 
     // Disable the button to prevent multiple clicks
     copyButton.disabled = true;
@@ -330,6 +330,16 @@ document.addEventListener('DOMContentLoaded', function () {
     listenerToggleDataset();
     listenerToggleSideBar();
     initFullscreen();
+
+    const langSelect = document.getElementById('lang-select');
+    if (langSelect) {
+        langSelect.addEventListener('change', function () {
+            const selected = this.value === 'ru' ? 'ru' : 'en';
+            const currentUrl = window.location.pathname + window.location.search;
+            const redirectParam = encodeURIComponent(currentUrl || '/');
+            window.location.href = `/set-lang/${selected}?redirect=${redirectParam}`;
+        });
+    }
 });
 
 

@@ -252,6 +252,10 @@ code.hljs .hljs-property {
     color:#ab5656 !important;
 }
 
+pre {
+    margin-bottom: 0.5rem;
+}
+
 code pre {
     background-color: #f8f9fa;
     padding: 10px;
