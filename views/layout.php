@@ -12,11 +12,11 @@
     <title><?= htmlspecialchars($title ?? 'AI for PHP Developers', ENT_QUOTES, 'UTF-8') ?></title>
     <link rel="icon" type="image/webp" href="/favicon.webp">
 
-    <link href="<?=APP_URL?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?=APP_URL?>assets/dist/css/dark-mode.css" rel="stylesheet">
-    <link href="<?=APP_URL?>assets/dist/css/highlight/default.min.css" rel="stylesheet">
-    <link href="<?=APP_URL?>assets/dashboard.css" rel="stylesheet">
-    <link href="<?=APP_URL?>assets/dist/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="<?=APP_ASSETS_URL?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=APP_ASSETS_URL?>assets/dist/css/dark-mode.css" rel="stylesheet">
+    <link href="<?=APP_ASSETS_URL?>assets/dist/css/highlight/default.min.css" rel="stylesheet">
+    <link href="<?=APP_ASSETS_URL?>assets/dashboard.css" rel="stylesheet">
+    <link href="<?=APP_ASSETS_URL?>assets/dist/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body<?=$dataTheme;?>>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -64,9 +64,9 @@
     </div>
 </div>
 
-<script src="<?=APP_URL?>assets/dist/js/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="<?=APP_URL?>assets/dashboard.js"></script>
-<script src="<?=APP_URL?>assets/dist/js/dark-mode-switch.js"></script>
+<script src="<?=APP_ASSETS_URL?>assets/dist/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="<?=APP_ASSETS_URL?>assets/dashboard.js"></script>
+<script src="<?=APP_ASSETS_URL?>assets/dist/js/dark-mode-switch.js"></script>
 
 </body>
 </html>

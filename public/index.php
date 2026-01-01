@@ -10,6 +10,9 @@ use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
 
 $app = AppFactory::create();
+if (APP_URL_DIR) {
+    $app->setBasePath(APP_URL_DIR);
+}
 
 $renderer = new PhpRenderer(__DIR__ . '/../views');
 

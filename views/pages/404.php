@@ -9,7 +9,7 @@ header("HTTP/1.0 404 Not Found");
     <title>404 - Page Not Found</title>
     <link rel="icon" type="image/webp" href="/favicon.webp">
     <!-- Bootstrap 5 CSS -->
-    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=APP_ASSETS_URL?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <style>
@@ -62,14 +62,14 @@ header("HTTP/1.0 404 Not Found");
         <div class="col-md-8 error-page">
 
             <div class="error-code">404</div>
-            <h1 class="error-message">Oops! Page Not Found</h1>
+            <h1 class="error-message">Oops! Page Not Found </h1>
             <p class="error-description">
                 The page you're looking for might have been removed, had its name changed,<br>
                 or is temporarily unavailable.
             </p>
 
             <div class="d-flex justify-content-center gap-3">
-                <a href="/" class="btn btn-primary btn-lg back-home">
+                <a href="<?= APP_URL ?>" class="btn btn-primary btn-lg back-home">
                     <i class="bi bi-house-door"></i> Back to Home
                 </a>
                 <button onclick="history.back()" class="btn btn-outline-secondary btn-lg back-home">
