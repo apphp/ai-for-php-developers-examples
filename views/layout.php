@@ -17,6 +17,16 @@
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/highlight/default.min.css" rel="stylesheet">
     <link href="<?=APP_ASSETS_URL?>assets/dashboard.css" rel="stylesheet">
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']], // Настройка для инлайн-формул
+                displayMath: [['$$', '$$'], ['\\[', '\\]']] // Настройка для блочных формул
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="<?=APP_ASSETS_URL?>assets/dist/js/mathjax/tex-mml-chtml.js"></script>
 </head>
 <body<?=$dataTheme;?>>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -52,13 +62,13 @@
         <?php include __DIR__ . '/../app/navbar.php'; ?>
 
         <main id="main" class="<?= $sideBar === 'collapsed' ? 'col-md-12 col-lg-12 expanded' : 'col-md-9 col-lg-10'; ?> ms-sm-auto px-md-4 pt-3 pb-4">
-            <?php //include('include/breadcrumbs.php'); ?>
+            <?php include __DIR__ . '/../app/breadcrumbs.php'; ?>
 
             <?php
-            if (!empty($contentTemplate)):
-                // Content templates live in the same directory as this layout
-                include __DIR__ . '/pages/' . $contentTemplate;
-            endif;
+                if (!empty($contentTemplate)):
+                    // Content templates live in the same directory as this layout
+                    include __DIR__ . '/pages/' . $contentTemplate;
+                endif;
             ?>
         </main>
     </div>

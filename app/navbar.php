@@ -6,6 +6,9 @@ $page ??= 'index';
 $sideBar ??= '';
 //$menu = include('menu.php');
 
+// Determine current request path for active nav state
+$currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+
 ?>
 
 <nav id="sidebarMenu" class="<?= $sideBar === 'collapsed' ? 'col-md-1 col-lg-1 collapsed' : 'col-md-3 col-lg-2 collapse'; ?> d-md-block bg-light sidebar overflow-auto pb-4">
@@ -23,7 +26,22 @@ $sideBar ??= '';
 
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?=APP_URL?>home"><span data-feather="file-text">• </span><small>Getting Started</small></a>                                            </li>
+                    <a class="nav-link<?= in_array($currentPath, ['/', '/home'], true) ? ' active' : '' ?>" href="<?=APP_URL?>home">
+                        <span data-feather="file-text">• </span><small>Getting Started</small>
+                    </a>
+                </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span><i class="fas fa-book me-1"></i> Part I. The Mathematical Language of AI</span>
+            </h6>
+
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link<?= in_array($currentPath, ['/part-1/what-is-a-model', '/part-1/what-is-a-model/code-run'], true) ? ' active' : '' ?>" href="<?=APP_URL?>part-1/what-is-a-model">
+                        <span data-feather="file-text">• </span><small>What is a model</small>
+                    </a>
+                </li>
             </ul>
 
         </div>

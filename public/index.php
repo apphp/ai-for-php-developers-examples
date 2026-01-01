@@ -33,21 +33,33 @@ $homeHandler = function (Request $request, Response $response) use ($renderer): 
 $app->get('/', $homeHandler);
 $app->get('/home', $homeHandler);
 
-// Intro: Setting up environment route
-$app->get('/intro/setting-up-environment', function (Request $request, Response $response) use ($renderer): Response {
+// Part 1: What is a model in the mathematical sense
+$app->get('/part-1/what-is-a-model', function (Request $request, Response $response) use ($renderer): Response {
     $breadcrumbs = [
-        ['label' => 'Home', 'url' => '/'],
-        ['label' => 'Intro', 'url' => null],
-        ['label' => 'Setting up environment', 'url' => null],
+        ['label' => 'Home', 'url' => APP_URL],
+        ['label' => 'Part I. The Mathematical Language of AI', 'url' => APP_URL . 'part-1/what-is-a-model'],
+        ['label' => 'What is a model', 'url' => null],
     ];
 
     return $renderer->render($response, 'layout.php', [
-        'title' => 'Intro: Setting up environment',
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'intro-setting-up-environment.php',
-        'message' => 'This is the Intro / Setting up environment page.',
+        'contentTemplate' => 'what-is-a-model/index.php',
     ]);
 });
+$app->get('/part-1/what-is-a-model/code-run', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => 'Home', 'url' => APP_URL],
+        ['label' => 'Part I. The Mathematical Language of AI', 'url' => APP_URL . 'part-1/what-is-a-model'],
+        ['label' => 'What is a model', 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'what-is-a-model/code-run.php',
+    ]);
+});
+
+
 
 // 404 handler: render standalone public/404.php (no layout)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);

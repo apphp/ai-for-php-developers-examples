@@ -88,12 +88,12 @@ function verify_fields(array|string &$features, array $verificationData, array|s
     }
 }
 
-function create_show_code_button(string $title, string $section, string $subsection, string $page): string {
+function create_show_code_button(string $title, string $page): string {
     $output = '<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
     <h2 class="h4">' . $title . '</h2>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
-            <a href="' . create_href($section, $subsection, $page) . '" class="btn btn-sm btn-outline-primary">Show Code</a>
+            <a href="' . $page . '" class="btn btn-sm btn-outline-primary">Show Code</a>
         </div>
     </div>
 </div>';
@@ -103,37 +103,15 @@ function create_show_code_button(string $title, string $section, string $subsect
 
 function create_run_code_button(
     string $title,
-    string $section1,
-    string $subsection1,
-    string $page1,
-    string $buttonText1 = 'Run Code',
-    string $section2 = '',
-    string $subsection2 = '',
-    string $page2 = '',
-    string $buttonText2 = 'Run Code',
-    string $section3 = '',
-    string $subsection3 = '',
-    string $page3 = '',
-    string $buttonText3 = 'Run Code'
+    string $page,
+    string $buttonText = 'Run Code',
 ): string {
     $output = '<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h2 class="h4">' . $title . '</h2>
         <div class="btn-toolbar mb-2 mb-md-0">';
 
-        if ($section3 && $subsection3 && $page3) {
-            $output .= '<div class="btn-group me-3">
-                    <a href="' . create_href($section3, $subsection3, $page3) . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText3.'</a>
-                </div>';
-        }
-
-        if ($section2 && $subsection2 && $page2) {
-            $output .= '<div class="btn-group me-3">
-                <a href="' . create_href($section2, $subsection2, $page2) . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText2.'</a>
-            </div>';
-        }
-
         $output .= '<div class="btn-group">
-                <a href="' . create_href($section1, $subsection1, $page1) . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText1.'</a>
+                <a href="' . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText.'</a>
             </div>';
 
         $output .= '</div>
@@ -249,11 +227,8 @@ function create_link(string $section, string $subsection, string $page, string $
         $active = ' active';
     }
 
-    if (APP_SEO_LINKS) {
-        $output = '<a class="nav-link' . $active . '" href="' . create_href($section, $subsection, $page) . '">';
-    } else {
-        $output = '<a class="nav-link' . $active . '" href="index.php?section=' . $section . '&subsection=' . $subsection . '&page=' . $page . '">';
-    }
+    $output = '<a class="nav-link' . $active . '" href="' . create_href($section, $subsection, $page) . '">';
+
     $output .= '<span data-feather="file-text">&bull; </span>';
     $output .= '<small>' . $link . '</small>';
     $output .= '</a>';
