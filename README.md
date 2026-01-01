@@ -39,6 +39,6 @@ You may find live demo for these examples on official website:
 <a href="https://aiwithphp.org/examples/" target="_blank" rel="noopener noreferrer">https://aiwithphp.org/examples/</a>
 
 ## Libraries for Backend
-   - Rubix ML [https://rubixml.com](https://rubixml.com)
+   - Rubix ML [https://rubixml.org](https://rubixml.org)
    - RubixML/Tensor [https://github.com/RubixML/Tensor](https://github.com/RubixML/Tensor)
 
