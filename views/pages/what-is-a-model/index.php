@@ -2,14 +2,20 @@
     <h1 class="h2"><?= __t('what_is_model.heading'); ?></h1>
 </div>
 
-<?= create_run_code_button(__t('what_is_model.button_title'), 'part-1/what-is-a-model/code-run'); ?>
-
 <div>
     <p>
-        <?= __t('what_is_model.description1'); ?>
+        <?= __t('what_is_model.intro'); ?>
     </p>
-</div>
 
-<div>
-    <?= create_example_of_use_links(__DIR__ . '/code.php', opened: true); ?>
+    <ul>
+        <li>
+            <?= create_link('part-1/what-is-a-model/function-as-the-model', __t('what_is_model.link_function_as_model')) ?>
+        </li>
+        <li>
+            <?= create_link('part-1/what-is-a-model/function-as-the-model', __t('what_is_model.link_error_as_quality'), true) ?>
+        </li>
+        <li>
+            <?= create_link('part-1/what-is-a-model/function-as-the-model', __t('what_is_model.link_learning_as_min_error'), true) ?>
+        </li>
+    </ul>
 </div>

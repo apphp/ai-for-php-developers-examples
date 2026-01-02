@@ -93,7 +93,7 @@ function create_show_code_button(string $title, string $page): string {
     <h2 class="h4">' . $title . '</h2>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
-            <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">Show Code</a>
+            <a href="' . APP_URL . ltrim($page, '/') . '" class="btn btn-sm btn-outline-primary">' . __t('common.show_code') . '</a>
         </div>
     </div>
 </div>';
@@ -104,14 +104,14 @@ function create_show_code_button(string $title, string $page): string {
 function create_run_code_button(
     string $title,
     string $page,
-    string $buttonText = 'Run Code',
+    string $buttonText = '',
 ): string {
     $output = '<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h2 class="h4">' . $title . '</h2>
         <div class="btn-toolbar mb-2 mb-md-0">';
 
         $output .= '<div class="btn-group">
-                <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.$buttonText.'</a>
+                <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.($buttonText ?: __t('common.run_code')).'</a>
             </div>';
 
         $output .= '</div>
@@ -226,27 +226,12 @@ function create_dataset_and_test_data_links(array|string $datasetData = '', arra
     return $output;
 }
 
-function create_link(string $section, string $subsection, string $page, string $link, array $pages, string $urlSection, string $urlSubSection, string $urlPage): string {
-    $active = '';
-    if ($urlSection === $section && $urlSubSection === $subsection && in_array($urlPage, $pages)) {
-        $active = ' active';
-    }
-
-    $output = '<a class="nav-link' . $active . '" href="' . create_href($section, $subsection, $page) . '">';
-
-    $output .= '<span data-feather="file-text">&bull; </span>';
-    $output .= '<small>' . $link . '</small>';
-    $output .= '</a>';
-
-    return $output;
+function create_link(string $page, string $link, bool $disabled = false): string {
+    return $disabled ? '<span class="btn-link disabled">' . $link . '</span>' : '<a class="btn-link" href="' . create_href($page) . '">' . $link . '</a>';
 }
 
-function create_href(string $section = '', string $subsection = '', string $page = ''): string {
-    if (APP_SEO_LINKS) {
-        return APP_URL . ($section ? $section . '/' : '') . ($subsection ? $subsection . '/' : '') . $page;
-    }
-
-    return 'index.php?section=' . $section . '&subsection=' . $subsection . '&page=' . $page;
+function create_href(string $page = ''): string {
+    return APP_URL . $page;
 }
 
 function create_form_fields(string $section, string $subsection, string $page): string {

@@ -109,13 +109,13 @@ function listenerToggleExampleOfUse() {
         collapseElement.addEventListener('shown.bs.collapse', function () {
             toggleIcon.classList.remove('fa-square-plus');
             toggleIcon.classList.add('fa-square-minus');
-            toggleText.title = 'Click to collapse';
+            toggleText.title = VOCAB.click_to_collapse;
         });
 
         collapseElement.addEventListener('hidden.bs.collapse', function () {
             toggleIcon.classList.remove('fa-square-minus');
             toggleIcon.classList.add('fa-square-plus');
-            toggleText.title = 'Click to expand';
+            toggleText.title = VOCAB.click_to_expand;
         });
     }
 }
@@ -130,13 +130,13 @@ function listenerToggleDataset() {
         collapseElementDataset.addEventListener('shown.bs.collapse', function () {
             toggleIconDataset.classList.remove('fa-square-plus');
             toggleIconDataset.classList.add('fa-square-minus');
-            toggleTextDataset.title = 'Click to collapse';
+            toggleTextDataset.title = VOCAB.click_to_collapse;
         });
 
         collapseElementDataset.addEventListener('hidden.bs.collapse', function () {
             toggleIconDataset.classList.remove('fa-square-minus');
             toggleIconDataset.classList.add('fa-square-plus');
-            toggleTextDataset.title = 'Click to expand';
+            toggleTextDataset.title = VOCAB.click_to_expand;
         });
     }
 
@@ -149,13 +149,13 @@ function listenerToggleDataset() {
         collapseElementTestData.addEventListener('shown.bs.collapse', function () {
             toggleIconTestData.classList.remove('fa-square-plus');
             toggleIconTestData.classList.add('fa-square-minus');
-            toggleTextTestData.title = 'Click to collapse';
+            toggleTextTestData.title = VOCAB.click_to_collapse;
         });
 
         collapseElementTestData.addEventListener('hidden.bs.collapse', function () {
             toggleIconTestData.classList.remove('fa-square-minus');
             toggleIconTestData.classList.add('fa-square-plus');
-            toggleText.title = 'Click to expand';
+            toggleText.title = VOCAB.click_to_expand;
         });
     }
 }
@@ -165,12 +165,12 @@ function listenerToggleSideBar() {
     const btnPanelClose = document.getElementById('btn-panel-close') || null;
     if (btnPanelClose) {
         btnPanelClose.addEventListener('click', function () {
-            if (this.title === "Collapse") {
-                this.title = "Expand";
+            if (this.dataset.status === "collapse") {
+                this.title = VOCAB.expand;
                 setCookie("sidebar", "collapsed", 7);
                 toggleSidebar(true)
             } else {
-                this.title = "Collapse";
+                this.title = VOCAB.collapse;
                 setCookie("sidebar", "expanded", 7);
                 toggleSidebar(false)
             }
@@ -181,8 +181,8 @@ function listenerToggleSideBar() {
     const btnToggler = document.getElementById('btn-toggler') || null;
     if (btnToggler) {
         btnToggler.addEventListener('click', function () {
-            if (btnPanelClose.title !== "Collapse") {
-                this.title = "Collapse";
+            if (btnPanelClose.dataset.status !== "collapse") {
+                this.title = VOCAB.collapse;
                 setCookie("sidebar", "expanded", 7);
                 toggleSidebar(false)
             }
@@ -264,7 +264,7 @@ function initFullscreen() {
                 icon.classList.remove('fa-expand');
                 icon.classList.add('fa-compress');
                 icon.classList.add('expanded');
-                icon.title = 'Collapse';
+                icon.title = VOCAB.collapse;
 
             } else {
                 document.body.style.overflow = 'auto';

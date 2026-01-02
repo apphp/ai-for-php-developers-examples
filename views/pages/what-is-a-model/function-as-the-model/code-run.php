@@ -16,7 +16,7 @@
     <h1 class="h2"><?= __t('what_is_model.heading'); ?></h1>
 </div>
 
-<?= create_show_code_button(__t('what_is_model.button_title'), 'part-1/what-is-a-model'); ?>
+<?= create_show_code_button(__t('what_is_model.button_title'), '/part-1/what-is-a-model/function-as-the-model'); ?>
 
 <div>
     <p>

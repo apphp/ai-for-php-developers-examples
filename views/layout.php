@@ -15,6 +15,12 @@
 
     <script>
         window.APP_URL = '<?= rtrim(APP_URL, '/') ?>/';
+        window.VOCAB = {
+            'click_to_collapse': '<?= __t('common.click_to_collapse') ?>',
+            'click_to_expand': '<?= __t('common.click_to_expand') ?>',
+            'collapse': '<?= __t('common.collapse') ?>',
+            'expand': '<?= __t('common.expand') ?>',
+        };
     </script>
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/dark-mode.css" rel="stylesheet">
