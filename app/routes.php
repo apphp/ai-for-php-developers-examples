@@ -79,12 +79,39 @@ $app->get('/part-1/what-is-a-model/function-as-the-model/code-run', function (Re
         ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
         ['label' => __t('nav.part1_what_is_model'), 'url' => APP_URL . 'part-1/what-is-a-model'],
         ['label' => __t('nav.part1_function_as_the_model'), 'url' => APP_URL . 'part-1/what-is-a-model/function-as-the-model'],
-        ['label' => __t('nav.code_example'), null],
+        ['label' => __t('nav.code_run'), null],
     ];
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
         'contentTemplate' => 'what-is-a-model/function-as-the-model/code-run.php',
+    ]);
+});
+$app->get('/part-1/what-is-a-model/error-as-measure-of-quality', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+        ['label' => __t('nav.part1_what_is_model'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+        ['label' => __t('nav.part1_error_as_measure_of_quality'), 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'what-is-a-model/error-as-measure-of-quality/index.php',
+    ]);
+});
+$app->get('/part-1/what-is-a-model/error-as-measure-of-quality/code-run', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+        ['label' => __t('nav.part1_what_is_model'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+        ['label' => __t('nav.part1_error_as_measure_of_quality'), 'url' => APP_URL . 'part-1/what-is-a-model/error-as-measure-of-quality'],
+        ['label' => __t('nav.code_run'), null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'what-is-a-model/error-as-measure-of-quality/code-run.php',
     ]);
 });
 

@@ -7,9 +7,11 @@ return [
     'nav.introduction' => 'Introduction',
     'nav.getting_started' => 'Getting Started',
     'nav.code_example' => 'Code example',
+    'nav.code_run' => 'Run Code',
     'nav.part1_title' => 'Part I. The Mathematical Language of AI',
     'nav.part1_what_is_model' => 'What is a model',
     'nav.part1_function_as_the_model' => 'Function as the basis of the model',
+    'nav.part1_error_as_measure_of_quality' => 'Error as a measure of quality',
 
     'home.title' => 'Home',
     'home.heading' => 'Getting Started',
@@ -34,7 +36,8 @@ return [
     'common.collapse' => 'Collapse',
 
     'what_is_model.heading' => 'What is a model in the mathematical sense',
-    'what_is_model.button_title' => 'Function as the basis of the model',
+    'what_is_model.function_as_basis_of_model' => 'Function as the basis of the model',
+    'what_is_model.error_as_measure_of_quality' => 'Error as a measure of quality',
     'what_is_model.description1' => 'Let\'s say we want to predict the price of an apartment based on its square footage. In the simplest case, we can use a linear model:  $ŷ = w x + b$ <br><br>This is a fully-fledged model. It says, "Price ($ŷ$) is approximately equal to area ($x$) multiplied by some coefficient ($w$), plus some shift ($b$)." <br><br>If you rewrite this in PHP, you get almost trivial code:',
     'what_is_model.description2' => 'Predicting the price of an apartment based on its area using a linear function: $ŷ = w x + b$',
     'what_is_model.explanation_simple' => 'Explanation: $2 * 3 + 0 = 6$<br>By formula: $ŷ = 2 x + b$',
@@ -42,4 +45,7 @@ return [
     'what_is_model.link_function_as_model' => 'Function as the basis of the model',
     'what_is_model.link_error_as_quality' => 'Error as a measure of quality',
     'what_is_model.link_learning_as_min_error' => 'Learning as minimizing error',
+    'what_is_model.error_measure.intro1' => 'Error is a function (commonly called a loss function) that compares the model’s prediction with the true value and returns a number that shows how wrong we were. The smaller this number, the better the model. For example, the simplest error is the difference between prediction and reality: $ŷ - y$.',
+    'what_is_model.error_measure.intro2' => 'In practice, we often use the squared error (Squared Error or SE), because it is always non‑negative and penalizes large mistakes more strongly: $(ŷ - y)^2$.',
+    'what_is_model.error_measure.explanation' => 'Explanation: −3 ⇒ 7 − 10 = −3<br>Explanation: 4 ⇒ (6 − 4)² = 2² = 4',
 ];

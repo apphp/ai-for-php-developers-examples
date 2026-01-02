@@ -2,11 +2,15 @@
     <h1 class="h2"><?= __t('what_is_model.heading'); ?></h1>
 </div>
 
-<?= create_run_code_button(__t('what_is_model.function_as_basis_of_model'), 'part-1/what-is-a-model/function-as-the-model/code-run'); ?>
+<?= create_run_code_button(__t('what_is_model.error_as_measure_of_quality'), 'part-1/what-is-a-model/error-as-measure-of-quality/code-run'); ?>
 
 <div>
     <p>
-        <?= __t('what_is_model.description1'); ?>
+        <?= __t('what_is_model.error_measure.intro1'); ?>
+    </p>
+
+    <p>
+        <?= __t('what_is_model.error_measure.intro2'); ?>
     </p>
 </div>
 

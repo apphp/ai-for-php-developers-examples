@@ -166,6 +166,29 @@ function create_example_of_use_links(string $datasetFile = '', string $title = '
     return $output;
 }
 
+function create_example_of_use_block(string $codeFile, string $copyButtonId = 'copyButton'): string {
+    $html = '<div>
+    <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse" title="Click to expand">
+        ' . __t('common.example_of_use') . ' <i id="toggleIcon" class="fa-regular fa-square-plus"></i>
+    </p>
+    <div class="collapse pb-4" id="collapseExampleOfUse">
+        <div class="bd-clipboard">
+            <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard()">
+                ' . __t('common.copy') . '
+            </button>
+            &nbsp;
+        </div>
+        <div id="' . $copyButtonId . '-code" class="code-wrapper">
+            <code id="code">
+                ' . highlight_file($codeFile, true) . '
+            </code>
+        </div>
+    </div>
+</div>';
+
+    return $html;
+}
+
 function create_dataset_and_test_data_links(array|string $datasetData = '', array $testData = [], bool $fullWidth = false): string {
     $output = '<p class="btn btn-link px-0 py-0 me-4" id="toggleDataset" data-bs-toggle="collapse" href="#collapseDataset" role="button" aria-expanded="false" aria-controls="collapseDataset" title="Click to expand">
         Dataset <i id="toggleIconDataset" class="fa-regular fa-square-plus"></i>
