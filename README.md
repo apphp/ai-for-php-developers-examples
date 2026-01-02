@@ -36,7 +36,7 @@ To install these examples, follow these steps:
 ## Live DEMO
 
 You may find live demo for these examples on official website:
-<a href="https://aiwithphp.org/examples/" target="_blank" rel="noopener noreferrer">https://aiwithphp.org/examples/</a>
+<a href="https://aiwithphp.org/books/ai-for-php-developers/examples/" target="_blank" rel="noopener noreferrer">https://aiwithphp.org/books/ai-for-php-developers/examples/</a>
 
 ## Libraries for Backend
    - Rubix ML [https://rubixml.org](https://rubixml.org)
