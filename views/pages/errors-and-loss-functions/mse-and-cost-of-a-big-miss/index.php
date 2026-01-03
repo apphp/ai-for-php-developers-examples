@@ -12,6 +12,10 @@
     <p>
         <?= __t('errors_loss.case1.intro2'); ?>
     </p>
+
+    <p>
+        <?= __t('errors_loss.case1.mse_description'); ?>
+    </p>
 </div>
 
 <div>

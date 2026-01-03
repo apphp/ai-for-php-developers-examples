@@ -58,6 +58,7 @@ return [
     'errors_loss.case1_title' => 'Case 1: MSE and the cost of a big miss',
     'errors_loss.case1.intro1' => 'Imagine a service that estimates apartment prices. Nothing too fancy: we input the square footage and get a predicted price. This is a classic regression task, and MSE is almost the default choice of loss function. But this is exactly where we can clearly see the price we pay for that choice.',
     'errors_loss.case1.intro2' => 'We can implement MSE in just a few lines of code, without any libraries, and then ruin the whole picture with a single data point. Suppose our dataset now contains a strange apartment: it could be a data error, a unique property, or simply a very bad prediction.',
+    'errors_loss.case1.mse_description' => 'MSE (Mean Squared Error) is one of the most common loss functions for regression tasks. It measures the average squared difference between the model prediction and the true value:<br><br>$\\text{MSE} = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2$',
     'errors_loss.case1.explanation' => 'Normal MSE: $4$<br>After adding the outlier, the MSE jumps to 4820.<br>This happens because of a single term in the sum (for the outlier): $(300 - 130)^2 = 170^2 = 28900$.',
     'errors_loss.case2_title' => 'Case 2: Choosing a model via the loss function',
     'errors_loss.case3_title' => 'Case 3: Log loss and classifier confidence',
