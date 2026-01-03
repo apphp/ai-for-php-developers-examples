@@ -8,6 +8,7 @@ $sideBar ??= '';
 
 // Determine current request path for active nav state
 $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
 
 ?>
 
@@ -32,6 +33,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
                 </li>
             </ul>
 
+            <!-- PART I -->
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span><i class="fas fa-book me-1"></i> <?= __t('nav.part1_title'); ?></span>
             </h6>
@@ -42,7 +44,28 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
                         <span data-feather="file-text">• </span><small><?= __t('nav.part1_what_is_model'); ?></small>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, '/part-1/vectors-dimensions-and-feature-spaces') ? ' active' : '' ?>" href="<?=APP_URL?>part-1/vectors-dimensions-and-feature-spaces">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part1_vectors'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, '/part-1/distances-and-similarity') ? ' active' : '' ?>" href="<?=APP_URL?>part-1/distances-and-similarity">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part1_distances'); ?></small>
+                    </a>
+                </li>
             </ul>
+
+            <!-- PART II -->
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span><i class="fas fa-book me-1"></i> <?= __t('nav.part2_title'); ?></span>
+            </h6>
+
+            <li class="nav-item">
+                <a class="nav-link<?= str_starts_with($currentPath, '/part-2/errors-and-loss-functions') ? ' active' : '' ?>" href="<?=APP_URL?>part-2/errors-and-loss-functions">
+                    <span data-feather="file-text">• </span><small><?= __t('nav.part2_error_loss_functions'); ?></small>
+                </a>
+            </li>
 
         </div>
     </div>

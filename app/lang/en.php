@@ -12,6 +12,10 @@ return [
     'nav.part1_what_is_model' => 'What is a model',
     'nav.part1_function_as_the_model' => 'Function as the basis of the model',
     'nav.part1_error_as_measure_of_quality' => 'Error as a measure of quality',
+    'nav.part1_vectors' => 'Vectors, dimensions and feature spaces',
+    'nav.part1_distances' => 'Distances and similarity',
+    'nav.part2_title' => 'Part II. Learning as Optimization',
+    'nav.part2_error_loss_functions' => 'Error, loss functions, and why they are needed',
 
     'home.title' => 'Home',
     'home.heading' => 'Getting Started',
@@ -48,4 +52,15 @@ return [
     'what_is_model.error_measure.intro1' => 'Error is a function (commonly called a loss function) that compares the model’s prediction with the true value and returns a number that shows how wrong we were. The smaller this number, the better the model. For example, the simplest error is the difference between prediction and reality: $ŷ - y$.',
     'what_is_model.error_measure.intro2' => 'In practice, we often use the squared error (Squared Error or SE), because it is always non‑negative and penalizes large mistakes more strongly: $(ŷ - y)^2$.',
     'what_is_model.error_measure.explanation' => 'Explanation: −3 ⇒ 7 − 10 = −3<br>Explanation: 4 ⇒ (6 − 4)² = 2² = 4',
+
+    'errors_loss.heading' => 'Error, loss functions, and why they are needed',
+    'errors_loss.intro' => 'Any machine learning model boils down to a simple idea: it tries to approximate reality with a function. This means there will always be a gap between what is really happening and what the model says. We call this gap the error. It is important to understand one thing right away: the model does not know what “good” or “bad” means. It does not understand the meaning of the task. All it can do is reduce the number we give it – this number is the loss. Formally, the error is the deviation between $y$ and $\\hat{y}$, and the loss is a function that turns this deviation into a scalar that is convenient to optimize.',
+    'errors_loss.case1_title' => 'Case 1: MSE and the cost of a big miss',
+    'errors_loss.case1.intro1' => 'Imagine a service that estimates apartment prices. Nothing too fancy: we input the square footage and get a predicted price. This is a classic regression task, and MSE is almost the default choice of loss function. But this is exactly where we can clearly see the price we pay for that choice.',
+    'errors_loss.case1.intro2' => 'We can implement MSE in just a few lines of code, without any libraries, and then ruin the whole picture with a single data point. Suppose our dataset now contains a strange apartment: it could be a data error, a unique property, or simply a very bad prediction.',
+    'errors_loss.case1.explanation' => 'Normal MSE: $4$<br>After adding the outlier, the MSE jumps to 4820.<br>This happens because of a single term in the sum (for the outlier): $(300 - 130)^2 = 170^2 = 28900$.',
+    'errors_loss.case2_title' => 'Case 2: Choosing a model via the loss function',
+    'errors_loss.case3_title' => 'Case 3: Log loss and classifier confidence',
+    'errors_loss.case4_title' => 'Case 4: Same accuracy – different log loss',
+    'errors_loss.case5_title' => 'Case 5: Training a model as minimizing error',
 ];

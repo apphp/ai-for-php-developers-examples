@@ -40,6 +40,10 @@ code#code code {
     padding: 4px 30px 4px 8px;
 }
 
+.form-select:focus {
+    box-shadow: none !important;
+}
+
 .form-select.w-60 {
     width: 60% !important;
 }
