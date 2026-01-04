@@ -15,7 +15,7 @@ return [
     'nav.part1_vectors' => 'Векторы, размерности и пространства признаков',
     'nav.part1_distances' => 'Расстояния и сходство',
     'nav.part2_title' => 'Часть II. Обучение как оптимизация',
-    'nav.part2_error_loss_functions' => 'Ошибка, функции потерь и почему они нужны',
+    'nav.part2_error_loss_functions' => 'Ошибка, loss-функции и почему они нужны',
 
     'home.title' => 'Главная',
     'home.heading' => 'С чего начать',
@@ -64,4 +64,6 @@ return [
     'errors_loss.case3_title' => 'Кейс 3. Log loss и уверенность классификатора',
     'errors_loss.case4_title' => 'Кейс 4. Одинаковая точность — разный log loss',
     'errors_loss.case5_title' => 'Кейс 5. Обучение модели как минимизация ошибки',
+
+    'linear_regression.heading' => 'Линейная регрессия как базовая модель',
 ];

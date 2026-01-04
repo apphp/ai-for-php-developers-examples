@@ -106,6 +106,10 @@ code#code code {
     color: #666;
 }
 
+.sidebar .nav-link.disabled {
+    color: #bbb;
+}
+
 .sidebar .nav-link .feather {
     margin-right: 4px;
     color: #727272;

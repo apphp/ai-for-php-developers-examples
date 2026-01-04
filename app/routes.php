@@ -157,6 +157,18 @@ $app->get('/part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss/c
         'contentTemplate' => 'errors-and-loss-functions/mse-and-cost-of-a-big-miss/code-run.php',
     ]);
 });
+$app->get('/part-2/linear-regression-as-basic-model', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/linear-regression-as-basic-model'],
+        ['label' => __t('linear_regression.heading'), 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'linear-regression-as-basic-model/index.php',
+    ]);
+});
 
 // 404 handler: render standalone 404 page (no layout)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);

@@ -64,4 +64,6 @@ return [
     'errors_loss.case3_title' => 'Case 3: Log loss and classifier confidence',
     'errors_loss.case4_title' => 'Case 4: Same accuracy – different log loss',
     'errors_loss.case5_title' => 'Case 5: Training a model as minimizing error',
+
+    'linear_regression.heading' => 'Linear regression as a basic model',
 ];

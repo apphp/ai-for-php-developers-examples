@@ -40,17 +40,17 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
 
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                    <a class="nav-link<?= str_starts_with($currentPath, '/part-1/what-is-a-model') ? ' active' : '' ?>" href="<?=APP_URL?>part-1/what-is-a-model">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-1/what-is-a-model') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
                         <span data-feather="file-text">• </span><small><?= __t('nav.part1_what_is_model'); ?></small>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="disabled nav-link<?= str_starts_with($currentPath, '/part-1/vectors-dimensions-and-feature-spaces') ? ' active' : '' ?>" href="<?=APP_URL?>part-1/vectors-dimensions-and-feature-spaces">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-1/vectors-dimensions-and-feature-spaces') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
                         <span data-feather="file-text">• </span><small><?= __t('nav.part1_vectors'); ?></small>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="disabled nav-link<?= str_starts_with($currentPath, '/part-1/distances-and-similarity') ? ' active' : '' ?>" href="<?=APP_URL?>part-1/distances-and-similarity">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-1/distances-and-similarity') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
                         <span data-feather="file-text">• </span><small><?= __t('nav.part1_distances'); ?></small>
                     </a>
                 </li>
@@ -62,8 +62,14 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
             </h6>
 
             <li class="nav-item">
-                <a class="nav-link<?= str_starts_with($currentPath, '/part-2/errors-and-loss-functions') ? ' active' : '' ?>" href="<?=APP_URL?>part-2/errors-and-loss-functions">
+                <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-2/errors-and-loss-functions') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
                     <span data-feather="file-text">• </span><small><?= __t('nav.part2_error_loss_functions'); ?></small>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-2/linear-regression-as-basic-model') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                    <span data-feather="file-text">• </span><small><?= __t('linear_regression.heading')?></small>
                 </a>
             </li>
 
