@@ -19,16 +19,16 @@ RUN docker-php-ext-install zip pdo_mysql bcmath xml mbstring curl gd pcntl
 
 # Install PEAR/PECL using the default PHP binary in the official image
 # =====================================================================
-WORKDIR /tmp
-RUN curl -O https://pear.php.net/go-pear.phar \
-    && php go-pear.phar \
-    && rm go-pear.phar
-
-# Install svm extension via PECL and enable it
-RUN pecl channel-update pecl.php.net \
-    && pecl install channel://pecl.php.net/svm-0.2.3 \
-    && mkdir -p /usr/local/etc/php/conf.d \
-    && echo "extension=svm.so" > /usr/local/etc/php/conf.d/svm.ini
+#WORKDIR /tmp
+#RUN curl -O https://pear.php.net/go-pear.phar \
+#    && php go-pear.phar \
+#    && rm go-pear.phar
+#
+## Install svm extension via PECL and enable it
+#RUN pecl channel-update pecl.php.net \
+#    && pecl install channel://pecl.php.net/svm-0.2.3 \
+#    && mkdir -p /usr/local/etc/php/conf.d \
+#    && echo "extension=svm.so" > /usr/local/etc/php/conf.d/svm.ini
 
 ## ------------------------------
 ## Install dependencies for Tensor
