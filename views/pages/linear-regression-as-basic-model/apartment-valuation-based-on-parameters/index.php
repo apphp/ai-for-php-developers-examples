@@ -2,19 +2,31 @@
     <h1 class="h2"><?= __t('linear_regression.heading'); ?></h1>
 </div>
 
-<?= create_run_code_button(__t('linear_regression.case1_title') . ' (PHP)', 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/code-run'); ?>
+<h4><?= __t('linear_regression.case1_title') ?></h4>
+<br>
+
+<?= create_run_code_button(__t('linear_regression.case1.php_impl_title'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/code-run'); ?>
 
 <div>
-    <h5>Реализация на чистом PHP</h5>
-
     <p>
-        Начнём с варианта без библиотек. Это полезно не для продакшена, а для понимания.
-        Мы будем использовать градиентный спуск, матрицу признаков $X$ размером $N$ x $4$ и вектор весов $w$ длины $4$.
-        Bias добавим как дополнительный признак со значением 1.
+        <?= __t('linear_regression.case1.php_impl_intro'); ?>
     </p>
-
 </div>
 
 <div>
-    <?= create_example_of_use_links(__DIR__ . '/code.php', opened: !true); ?>
+    <?= create_example_of_use_links(__DIR__ . '/code.php', opened: false, copyButtonId: 1, expandButtonId: 1); ?>
+</div>
+
+<hr>
+
+<?= create_run_code_button(__t('linear_regression.case1.rubix_impl_title'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/rubix-code-run'); ?>
+
+<div>
+    <p>
+        <?= __t('linear_regression.case1.rubix_impl_intro'); ?>
+    </p>
+</div>
+
+<div>
+    <?= create_example_of_use_links(__DIR__ . '/rubix-code.php', opened: false, copyButtonId: 2, expandButtonId: 2); ?>
 </div>

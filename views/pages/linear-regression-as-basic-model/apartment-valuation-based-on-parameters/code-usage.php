@@ -55,3 +55,11 @@ for ($epoch = 0; $epoch < $epochs; $epoch++) {
         $weights[$j] -= $learningRate * ($gradients[$j] / $n);
     }
 }
+
+// Describe a new apartment with the same set of features as in X
+// [square footage, number of bedrooms, number of bathrooms, number of floors, bias]
+$newApartment = [60, 5, 4, 12, 1];
+// Use the trained model to predict its price
+$predictedPrice = dotProduct($weights, $newApartment);
+
+echo "Apartment valuation: $" . number_format($predictedPrice) . "\n";

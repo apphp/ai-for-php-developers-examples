@@ -100,12 +100,30 @@ function getCookie(name) {
 // Listeners
 //////////////////////////////////////////
 function listenerToggleExampleOfUse() {
-    // Toggle Example of use
-    const toggleText = document.getElementById('toggleExampleOfUse') || null;
-    const toggleIcon = document.getElementById('toggleIcon') || null;
-    const collapseElement = document.getElementById('collapseExampleOfUse') || null;
+    // Support multiple Example-of-use blocks per page:
+    // collapseExampleOfUse, collapseExampleOfUse1, collapseExampleOfUse3, etc.
+    const toggles = document.querySelectorAll(
+        '[data-bs-toggle="collapse"][href^="#collapseExampleOfUse"]'
+    );
 
-    if (toggleText !== null) {
+    if (!toggles.length) {
+        return;
+    }
+
+    toggles.forEach((toggleText) => {
+        const targetSelector = toggleText.getAttribute('href');
+        if (!targetSelector) {
+            return;
+        }
+
+        const collapseElement = document.querySelector(targetSelector);
+        const toggleIcon = toggleText.querySelector('i');
+
+        // Guard against missing elements
+        if (!collapseElement || !toggleIcon) {
+            return;
+        }
+
         collapseElement.addEventListener('shown.bs.collapse', function () {
             toggleIcon.classList.remove('fa-square-plus');
             toggleIcon.classList.add('fa-square-minus');
@@ -117,7 +135,7 @@ function listenerToggleExampleOfUse() {
             toggleIcon.classList.add('fa-square-plus');
             toggleText.title = VOCAB.click_to_expand;
         });
-    }
+    });
 }
 
 function listenerToggleDataset() {
@@ -168,11 +186,13 @@ function listenerToggleSideBar() {
             if (this.dataset.status === "collapse") {
                 this.title = VOCAB.expand;
                 setCookie("sidebar", "collapsed", 7);
-                toggleSidebar(true)
+                toggleSidebar(true);
+                this.dataset.status = "expand";
             } else {
                 this.title = VOCAB.collapse;
                 setCookie("sidebar", "expanded", 7);
-                toggleSidebar(false)
+                toggleSidebar(false);
+                this.dataset.status = "collapse";
             }
         });
     }
@@ -184,7 +204,7 @@ function listenerToggleSideBar() {
             if (btnPanelClose.dataset.status !== "collapse") {
                 this.title = VOCAB.collapse;
                 setCookie("sidebar", "expanded", 7);
-                toggleSidebar(false)
+                toggleSidebar(false);
             }
         });
     }

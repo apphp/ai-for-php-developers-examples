@@ -124,11 +124,12 @@ function create_run_code_button(
  * @param string $datasetFile
  * @param string $title
  * @param bool $opened
- * @param string $language      php|js
+ * @param string $language php|js
  * @param string $copyButtonId
+ * @param string $expandButtonId  Should be unique for each example of use or empty to use default
  * @return string
  */
-function create_example_of_use_links(string $datasetFile = '', string $title = 'Example of use', bool $opened = false, string $language = 'php', string $copyButtonId = 'copyButton'): string {
+function create_example_of_use_links(string $datasetFile = '', string $title = 'Example of use', bool $opened = false, string $language = 'php', string $copyButtonId = 'copyButton', string $expandButtonId = ''): string {
 
     // Use translated default title when caller did not override it
     if ($title === 'Example of use') {
@@ -150,14 +151,14 @@ function create_example_of_use_links(string $datasetFile = '', string $title = '
         }
     } else {
         $output = '
-        <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse" title="Click to expand">
+        <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse' . $expandButtonId . '" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse'.$expandButtonId.'" title="'.__t('common.click_to_expand').'">
             ' . $title . ' <i id="toggleIcon" class="fa-regular fa-square-plus"></i>
         </p>
-        <div class="collapse pb-4" id="collapseExampleOfUse">
+        <div class="collapse pb-4" id="collapseExampleOfUse' . $expandButtonId . '">
             <div class="bd-clipboard">
-                <button id="'  .$copyButtonId . '" type="button" class="btn-clipboard" onclick="copyToClipboard(\''  .$copyButtonId . '\')">Copy</button>&nbsp;
+                <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard(\''  .$copyButtonId . '\')">Copy</button>&nbsp;
             </div>
-            <div id="'  .$copyButtonId . '-code" class="code-wrapper">
+            <div id="' . $copyButtonId . '-code" class="code-wrapper">
                 <code id="code">' . highlight_file($datasetFile, true) . '</code>
             </div>
         </div>';
@@ -267,9 +268,9 @@ function create_form_fields(string $section, string $subsection, string $page): 
 
 function create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result = '', $showResult = true) {
     $output = '<div class="mb-1">
-                <b>Result:</b>
-                <span class="float-end">Memory: '.memory_usage($memoryEnd, $memoryStart).' Mb</span>
-                <span class="float-end me-2">Time <span class="d-xs-hide">running:</span> '.running_time($microtimeEnd, $microtimeStart).' sec.</span>
+                <b>'.__t('common.result').':</b>
+                <span class="float-end">'.__t('common.memory').': '.memory_usage($memoryEnd, $memoryStart).' Mb</span>
+                <span class="float-end me-2">'.__t('common.time').' <span class="d-xs-hide">'.__t('common.time_running').':</span> '.running_time($microtimeEnd, $microtimeStart).' '.__t('common.seconds_short').'</span>
             </div>';
 
     if ($showResult) {
