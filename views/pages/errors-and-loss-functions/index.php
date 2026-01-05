@@ -7,6 +7,10 @@
         <?= __t('errors_loss.intro'); ?>
     </p>
 
+    <p>
+        <?= __t('errors_loss.intro2'); ?>
+    </p>
+
     <ul>
         <li>
             <?= create_link('part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss', __t('errors_loss.case1_title')) ?>
