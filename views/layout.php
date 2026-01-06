@@ -36,7 +36,9 @@
             }
         };
     </script>
+
     <script type="text/javascript" id="MathJax-script" src="<?=APP_ASSETS_URL?>assets/dist/js/mathjax/tex-mml-chtml.js"></script>
+    <script src="<?=APP_ASSETS_URL?>assets/dist/js/chartjs/chart.js"></script>
 </head>
 <body<?=$dataTheme;?>>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">

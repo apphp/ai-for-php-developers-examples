@@ -20,10 +20,10 @@ return [
 
     'home.title' => 'Home',
     'home.heading' => 'Getting Started',
-    'home.intro' => 'This is an examples for AI with PHP book.',
+    'home.intro' => 'This is an examples for "AI for PHP Developers" book.',
     'home.official_site' => 'Official site',
     'home.official_repo' => 'Official repository',
-    'home.all_examples' => 'All code examples are written in PHP8.4',
+    'home.all_examples' => 'All code examples are written in PHP v8.2',
 
     'home.disclaimer_title' => 'Disclaimer',
     'home.disclaimer_p1' => 'The code examples provided for the book "AI for PHP Developers" are intended for educational purposes only. These examples are designed to illustrate concepts and techniques in artificial intelligence and machine learning using PHP. They are not suitable for production use and should not be deployed on live servers or systems that handle sensitive data.',

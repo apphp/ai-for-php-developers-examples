@@ -1,15 +1,17 @@
 <?php
-    $memoryStart = memory_get_usage();
-    $microtimeStart = microtime(true);
-    ob_start();
-    //////////////////////////////
 
-    include('code-usage.php');
+$memoryStart = memory_get_usage();
+$microtimeStart = microtime(true);
+ob_start();
+//////////////////////////////
 
-    //////////////////////////////
-    $result = ob_get_clean();
-    $microtimeEnd = microtime(true);
-    $memoryEnd = memory_get_usage();
+include('code-usage.php');
+
+//////////////////////////////
+$result = ob_get_clean();
+$microtimeEnd = microtime(true);
+$memoryEnd = memory_get_usage();
+
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
