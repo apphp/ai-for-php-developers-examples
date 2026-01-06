@@ -5,7 +5,7 @@
 <h4><?= __t('linear_regression.case1_title') ?></h4>
 <br>
 
-<?= create_run_code_button(__t('linear_regression.case1.php_impl_title'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/code-run'); ?>
+<?= create_run_code_button(__t('common.implementation_in_pure_php'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/code-run'); ?>
 
 <div>
     <p>

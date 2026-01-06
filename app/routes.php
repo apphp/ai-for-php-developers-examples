@@ -57,7 +57,7 @@ $app->get('/part-1/what-is-a-model', function (Request $request, Response $respo
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'what-is-a-model/index.php',
+        'contentTemplate' => 'part-1/what-is-a-model/index.php',
     ]);
 });
 $app->get('/part-1/what-is-a-model/function-as-the-model', function (Request $request, Response $response) use ($renderer): Response {
@@ -70,7 +70,7 @@ $app->get('/part-1/what-is-a-model/function-as-the-model', function (Request $re
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'what-is-a-model/function-as-the-model/index.php',
+        'contentTemplate' => 'part-1/what-is-a-model/function-as-the-model/index.php',
     ]);
 });
 $app->get('/part-1/what-is-a-model/function-as-the-model/code-run', function (Request $request, Response $response) use ($renderer): Response {
@@ -84,7 +84,7 @@ $app->get('/part-1/what-is-a-model/function-as-the-model/code-run', function (Re
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'what-is-a-model/function-as-the-model/code-run.php',
+        'contentTemplate' => 'part-1/what-is-a-model/function-as-the-model/code-run.php',
     ]);
 });
 $app->get('/part-1/what-is-a-model/error-as-measure-of-quality', function (Request $request, Response $response) use ($renderer): Response {
@@ -97,7 +97,7 @@ $app->get('/part-1/what-is-a-model/error-as-measure-of-quality', function (Reque
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'what-is-a-model/error-as-measure-of-quality/index.php',
+        'contentTemplate' => 'part-1/what-is-a-model/error-as-measure-of-quality/index.php',
     ]);
 });
 $app->get('/part-1/what-is-a-model/error-as-measure-of-quality/code-run', function (Request $request, Response $response) use ($renderer): Response {
@@ -111,7 +111,7 @@ $app->get('/part-1/what-is-a-model/error-as-measure-of-quality/code-run', functi
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'what-is-a-model/error-as-measure-of-quality/code-run.php',
+        'contentTemplate' => 'part-1/what-is-a-model/error-as-measure-of-quality/code-run.php',
     ]);
 });
 
@@ -127,7 +127,7 @@ $app->get('/part-2/errors-and-loss-functions', function (Request $request, Respo
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'errors-and-loss-functions/index.php',
+        'contentTemplate' => 'part-2/errors-and-loss-functions/index.php',
     ]);
 });
 $app->get('/part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss', function (Request $request, Response $response) use ($renderer): Response {
@@ -140,7 +140,7 @@ $app->get('/part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss',
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'errors-and-loss-functions/mse-and-cost-of-a-big-miss/index.php',
+        'contentTemplate' => 'part-2/errors-and-loss-functions/mse-and-cost-of-a-big-miss/index.php',
     ]);
 });
 $app->get('/part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss/code-run', function (Request $request, Response $response) use ($renderer): Response {
@@ -154,7 +154,7 @@ $app->get('/part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss/c
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'errors-and-loss-functions/mse-and-cost-of-a-big-miss/code-run.php',
+        'contentTemplate' => 'part-2/errors-and-loss-functions/mse-and-cost-of-a-big-miss/code-run.php',
     ]);
 });
 
@@ -167,7 +167,7 @@ $app->get('/part-2/linear-regression-as-basic-model', function (Request $request
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'linear-regression-as-basic-model/index.php',
+        'contentTemplate' => 'part-2/linear-regression-as-basic-model/index.php',
     ]);
 });
 $app->get('/part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters', function (Request $request, Response $response) use ($renderer): Response {
@@ -180,7 +180,7 @@ $app->get('/part-2/linear-regression-as-basic-model/case-1/apartment-valuation-b
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'linear-regression-as-basic-model/apartment-valuation-based-on-parameters/index.php',
+        'contentTemplate' => 'part-2/linear-regression-as-basic-model/apartment-valuation-based-on-parameters/index.php',
     ]);
 });
 $app->get('/part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/code-run', function (Request $request, Response $response) use ($renderer): Response {
@@ -194,7 +194,7 @@ $app->get('/part-2/linear-regression-as-basic-model/case-1/apartment-valuation-b
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'linear-regression-as-basic-model/apartment-valuation-based-on-parameters/code-run.php',
+        'contentTemplate' => 'part-2/linear-regression-as-basic-model/apartment-valuation-based-on-parameters/code-run.php',
     ]);
 });
 $app->get('/part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
@@ -208,7 +208,47 @@ $app->get('/part-2/linear-regression-as-basic-model/case-1/apartment-valuation-b
 
     return $renderer->render($response, 'layout.php', [
         'breadcrumbs' => $breadcrumbs,
-        'contentTemplate' => 'linear-regression-as-basic-model/apartment-valuation-based-on-parameters/rubix-code-run.php',
+        'contentTemplate' => 'part-2/linear-regression-as-basic-model/apartment-valuation-based-on-parameters/rubix-code-run.php',
+    ]);
+});
+
+$app->get('/part-2/gradient-descent-on-fingers', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+        ['label' => __t('gradient_descent.heading'), 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'part-2/gradient-descent-on-fingers/index.php',
+    ]);
+});
+$app->get('/part-2/gradient-descent-on-fingers/implementation', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+        ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+        ['label' => __t('gradient_descent.implementation'), 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'part-2/gradient-descent-on-fingers/implementation/index.php',
+    ]);
+});
+$app->get('/part-2/gradient-descent-on-fingers/implementation/code-run', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+        ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+        ['label' => __t('gradient_descent.implementation'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+        ['label' => __t('nav.code_run'), null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'part-2/gradient-descent-on-fingers/implementation/code-run.php',
     ]);
 });
 
