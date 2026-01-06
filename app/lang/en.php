@@ -44,6 +44,8 @@ return [
     'common.time' => 'Time',
     'common.time_running' => 'running',
     'common.seconds_short' => 'sec.',
+    'common.charts' => 'Charts',
+    'common.regenerate' => 'Re-generate',
 
     'what_is_model.heading' => 'What is a model in the mathematical sense',
     'what_is_model.function_as_basis_of_model' => 'Function as the basis of the model',
@@ -90,4 +92,17 @@ return [
     'linear_regression.case1.feature_bathrooms' => 'Number of bathrooms: 4',
     'linear_regression.case1.feature_floors' => 'Number of floors: 12',
     'linear_regression.case1.feature_bias' => 'Deviation: 1',
+
+    // Case 1 charts UI (code-run.php)
+    'linear_regression.case1.chart_price_vs_area' => 'Price vs Area',
+    'linear_regression.case1.chart_price_vs_floor' => 'Price vs Floor',
+    'linear_regression.case1.chart_price_vs_distance' => 'Price vs Distance',
+    'linear_regression.case1.chart_price_vs_age' => 'Price vs Age',
+    'linear_regression.case1.chart_xlabel_area' => 'Area (sq.m)',
+    'linear_regression.case1.chart_xlabel_floor' => 'Floor',
+    'linear_regression.case1.chart_xlabel_distance' => 'Distance to City Center (km)',
+    'linear_regression.case1.chart_xlabel_age' => 'Building Age (years)',
+    'linear_regression.case1.chart_ylabel_price' => 'Price ($)',
+    'linear_regression.case1.chart_regression_label' => 'Regression Line',
+    'linear_regression.case1.controls_chart_type' => 'Chart Type',
 ];

@@ -233,7 +233,7 @@ input[type="number"] {
  ***********************/
 .code-wrapper {
     background-color: #f8f9fa;
-    padding: 4px 5px 0 5px;
+    padding: 4px 10px 10px 10px;
     border-radius: .2rem;
     border: 1px solid #f2f3f4;
     line-height: 1.15;

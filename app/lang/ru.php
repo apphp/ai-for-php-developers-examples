@@ -44,6 +44,8 @@ return [
     'common.time' => 'Время',
     'common.time_running' => 'работы',
     'common.seconds_short' => 'сек.',
+    'common.charts' => 'Графики',
+    'common.regenerate' => 'Перегенерировать',
 
     'what_is_model.heading' => 'Что такое модель в математическом смысле',
     'what_is_model.function_as_basis_of_model' => 'Функция как основа модели',
@@ -90,4 +92,17 @@ return [
     'linear_regression.case1.feature_bathrooms' => 'Количество ванных комнат: 4',
     'linear_regression.case1.feature_floors' => 'Количество этажей: 12',
     'linear_regression.case1.feature_bias' => 'Отклонение: 1',
+
+    // Кейс 1: UI графиков (code-run.php)
+    'linear_regression.case1.chart_price_vs_area' => 'Цена vs Площадь',
+    'linear_regression.case1.chart_price_vs_floor' => 'Цена vs Этаж',
+    'linear_regression.case1.chart_price_vs_distance' => 'Цена vs Расстояние до центра',
+    'linear_regression.case1.chart_price_vs_age' => 'Цена vs Возраст дома',
+    'linear_regression.case1.chart_xlabel_area' => 'Площадь (м²)',
+    'linear_regression.case1.chart_xlabel_floor' => 'Этаж',
+    'linear_regression.case1.chart_xlabel_distance' => 'Расстояние до центра (км)',
+    'linear_regression.case1.chart_xlabel_age' => 'Возраст здания (лет)',
+    'linear_regression.case1.chart_ylabel_price' => 'Цена ($)',
+    'linear_regression.case1.chart_regression_label' => 'Линия регрессии',
+    'linear_regression.case1.controls_chart_type' => 'Тип графика',
 ];

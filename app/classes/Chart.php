@@ -195,6 +195,7 @@ class Chart {
         string $darkSwitch = '',
         string $chartId = 'myLinearChart',
         bool   $showLabelBoxes = true,
+        bool   $showLegend = true,
     ): string {
 
         $predictionX = '';
@@ -307,6 +308,7 @@ class Chart {
                         responsive: true,
                         plugins: {
                             legend: {
+                                display: ".($showLegend ? 'true' : 'false').",
                                 position: 'bottom',
                                 labels: {
                                     font: {
