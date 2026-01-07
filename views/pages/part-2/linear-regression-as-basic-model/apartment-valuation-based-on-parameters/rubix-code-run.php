@@ -6,6 +6,7 @@ $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
 
 // Handle parameters
+// ----------------------------------
 $chartTypeOptions = [
     __t('linear_regression.case1.chart_price_vs_area') => 0,
     __t('linear_regression.case1.chart_price_vs_floor') => 1,
@@ -24,6 +25,7 @@ function makeFeatureSamples(array $X, int $featureIndex): array {
     }
     return $samples;
 }
+// ----------------------------------
 
 
 ob_start();

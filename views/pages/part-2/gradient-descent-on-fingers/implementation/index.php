@@ -1,15 +1,15 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><?php echo __t('gradient_descent.heading'); ?></h1>
+    <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
-<h4><?php echo __t('gradient_descent.implementation'); ?></h4>
+<h4><?= __t('gradient_descent.implementation'); ?></h4>
 <br>
 
 <?= create_run_code_button(__t('common.implementation_in_pure_php'), 'part-2/gradient-descent-on-fingers/implementation/code-run'); ?>
 
 <div>
     <p>
-        <?php echo __t('gradient_descent.minimal_example_intro'); ?>
+        <?= __t('gradient_descent.minimal_example_intro'); ?>
     </p>
 </div>
 

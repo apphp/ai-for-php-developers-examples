@@ -1,15 +1,15 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><?php echo __t('gradient_descent.heading'); ?></h1>
+    <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
 <div>
     <p>
-        <?php echo __t('gradient_descent.intro1'); ?>
+        <?= __t('gradient_descent.intro1'); ?>
 
     </p>
 
     <p>
-        <?php echo __t('gradient_descent.intro2'); ?>
+        <?= __t('gradient_descent.intro2'); ?>
     </p>
 
     <ul>

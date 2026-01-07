@@ -120,6 +120,8 @@ return [
     'gradient_descent.sample2_title' => 'Example 2. Effect of learning rate',
     'gradient_descent.sample3_title' => 'Example 3. Plateau and near-zero gradient',
     'gradient_descent.sample4_title' => 'Example 4. Batch and stochastic descent',
-    'gradient_descent.result_hint' => 'For this data, the result will be close to: $y = 0.1x + 0$',
+    'gradient_descent.result_hint' => 'For this data, the result will be close to:',
     'gradient_descent.debug_title' => 'Gradient descent debug',
+    'gradient_descent.learning_rate' => 'Learning rate',
+    'gradient_descent.epochs' => 'Epochs',
 ];

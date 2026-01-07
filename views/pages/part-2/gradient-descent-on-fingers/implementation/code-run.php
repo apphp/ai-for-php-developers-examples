@@ -6,10 +6,23 @@ $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
 
 // Handle parameters
+// ----------------------------------
 $gradientDebugOptions = [__t('common.show_debug') => '1'];
 $gradientDebug = isset($_GET['gradientDebug']) && is_string($_GET['gradientDebug']) ? $_GET['gradientDebug'] : '';
 verify_fields($gradientDebug, array_values($gradientDebugOptions), '');
 
+$learningRateOptions = ['0.01' => '0.01', '0.001' => '0.001', '0.0001' => '0.0001', '0.00001' => '0.00001', '0.000001' => '0.000001'];
+$learningRateValue = isset($_GET['learningRate']) && is_string($_GET['learningRate']) ? $_GET['learningRate'] : '0.0001';
+verify_fields($learningRateValue, array_values($learningRateOptions), reset($learningRateOptions));
+
+$epochsOptions = [100 => 100, 1000 => 1000, 5000 => 5000, 10000 => 10000, 20000 => 20000];
+$epochsValue = isset($_GET['epochs']) && is_string($_GET['epochs']) ? $_GET['epochs'] : 5000;
+verify_fields($epochsValue, array_values($epochsOptions), reset($epochsOptions));
+
+$debugResult = '--';
+$w = 0;
+$b = 0;
+// ----------------------------------
 
 ob_start();
 //////////////////////////////
@@ -24,17 +37,17 @@ $memoryEnd = memory_get_usage();
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><?php echo __t('gradient_descent.heading'); ?></h1>
+    <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
-<h4><?php echo __t('gradient_descent.implementation'); ?></h4>
+<h4><?= __t('gradient_descent.implementation'); ?></h4>
 <br>
 
 <?= create_show_code_button(__t('common.implementation_in_pure_php'), 'part-2/gradient-descent-on-fingers/implementation'); ?>
 
 <div>
     <p>
-        <?php echo __t('gradient_descent.minimal_example_intro'); ?>
+        <?= __t('gradient_descent.minimal_example_intro'); ?>
     </p>
 </div>
 
@@ -46,16 +59,29 @@ $memoryEnd = memory_get_usage();
             <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
 
             <p>
-                <?php echo __t('gradient_descent.result_hint'); ?>
+                <?= __t('gradient_descent.result_hint'); ?>
+                $y = <?= (stripos((string)$w, 'e') !== false) ? $w : number_format((float)$w, 3, '', '') ?>x
+                + <?= (stripos((string)$b, 'e') !== false) ? $b : number_format((float)$b, 3, '', '') ?>$
             </p>
         </div>
         <div class="col-md-12 col-lg-5 p-0 m-0">
             <div>
                 <div>
-                    <b><?php echo __t('gradient_descent.debug_title'); ?>:</b>
+                    <b><?= __t('gradient_descent.debug_title'); ?>:</b>
                 </div>
                 <form class="mt-2" action="<?= APP_URL ?>part-2/gradient-descent-on-fingers/implementation/code-run" type="GET">
-                    <?= create_form_features($gradientDebugOptions, [$gradientDebug], fieldName: 'gradientDebug', type: 'single-checkbox', class: 'ms-3'); ?>
+                    <?= create_form_features($gradientDebugOptions, [$gradientDebug], fieldName: 'gradientDebug', type: 'single-checkbox', class: 'mb-2'); ?>
+                    <br>
+                    <div>
+                        <b><?= __t('gradient_descent.learning_rate') ?>:</b>
+                    </div>
+                    <?= create_form_features($learningRateOptions, [$learningRateValue], fieldName: 'learningRate', type: 'select', class: 'w-50 me-4'); ?>
+                    <br><br>
+                    <div>
+                        <b><?= __t('gradient_descent.epochs') ?>:</b>
+                    </div>
+                    <?= create_form_features($epochsOptions, [$epochsValue], fieldName: 'epochs', type: 'select', class: 'w-50 me-4'); ?>
+
                     <div class="form-check form-check-inline float-end p-0 m-0 me-1">
                         <button type="submit" class="btn btn-sm btn-outline-primary"><?= __t('common.regenerate'); ?></button>
                     </div>
