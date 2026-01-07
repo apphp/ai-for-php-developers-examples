@@ -2,4 +2,6 @@
 .run/*
 composer.lock
 vendor/
+tmp/
+!tmp/.keep
 TODO

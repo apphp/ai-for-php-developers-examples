@@ -2,17 +2,38 @@
     "name": "apphp/ai-for-php-developers-examples",
     "description": "Examples for AI for PHP Developers book",
     "type": "project",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "packageGroups": {
+        "system": [
+            "php",
+            "slim/slim",
+            "slim/psr7",
+            "slim/php-view"
+        ],
+        "ml": [
+            "rubix/ml"
+        ],
+        "linters": [
+            "overtrue/phplint"
+        ]
+    },
     "require": {
         "slim/slim": "^4.12",
         "slim/psr7": "^1.6",
         "slim/php-view": "^3.3",
         "rubix/ml": "~2.5.3"
     },
+    "require-dev": {
+        "overtrue/phplint": "^6.1.0"
+    },
     "autoload": {
         "psr-4": {
             "app\\": "app/"
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "scripts": {
+        "php-lint": "phplint",
+        "php-lint-with-log": "phplint > tmp/.phplint.result.log"
+    }
 }
