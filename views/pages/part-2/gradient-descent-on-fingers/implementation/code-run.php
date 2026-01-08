@@ -60,8 +60,8 @@ $memoryEnd = memory_get_usage();
 
             <p>
                 <?= __t('gradient_descent.result_hint'); ?>
-                $y = <?= (stripos((string)$w, 'e') !== false) ? $w : number_format((float)$w, 3, '', '') ?>x
-                + <?= (stripos((string)$b, 'e') !== false) ? $b : number_format((float)$b, 3, '', '') ?>$
+                $y = <?= (stripos((string)$w, 'e') !== false) ? $w : number_format((float)$w, 3, '.', '') ?>x
+                + <?= (stripos((string)$b, 'e') !== false) ? $b : number_format((float)$b, 3, '.', '') ?>$
             </p>
         </div>
         <div class="col-md-12 col-lg-5 p-0 m-0">
