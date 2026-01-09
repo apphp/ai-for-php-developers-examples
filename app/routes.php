@@ -45,7 +45,7 @@ $app->get('/', $homeHandler);
 $app->get('/home', $homeHandler);
 
 // ---------------------------------------------------
-// Part 1:
+// Part I:
 // ---------------------------------------------------
 // What is a model in the mathematical sense
 $app->get('/part-1/what-is-a-model', function (Request $request, Response $response) use ($renderer): Response {
@@ -116,7 +116,7 @@ $app->get('/part-1/what-is-a-model/error-as-measure-of-quality/code-run', functi
 });
 
 // ---------------------------------------------------
-// Part 2:
+// Part II:
 // ---------------------------------------------------
 $app->get('/part-2/errors-and-loss-functions', function (Request $request, Response $response) use ($renderer): Response {
     $breadcrumbs = [
@@ -251,6 +251,37 @@ $app->get('/part-2/gradient-descent-on-fingers/implementation/code-run', functio
         'contentTemplate' => 'part-2/gradient-descent-on-fingers/implementation/code-run.php',
     ]);
 });
+
+// ---------------------------------------------------
+// Part III:
+// ---------------------------------------------------
+$app->get('/part-3/probability-as-degree-of-confidence', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+        ['label' => __t('nav.part3_probability_confidence'), 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'part-3/probability-as-degree-of-confidence/index.php',
+    ]);
+});
+$app->get('/part-3/probability-as-degree-of-confidence/implementation', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+        ['label' => __t('nav.part3_probability_confidence'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence/implementation'],
+        ['label' => __t('nav.part3_softmax_example'), 'url' => null],
+    ];
+
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'part-3/probability-as-degree-of-confidence/implementation/index.php',
+    ]);
+});
+
+
 
 
 // 404 handler: render standalone 404 page (no layout)

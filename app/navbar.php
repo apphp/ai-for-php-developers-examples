@@ -79,6 +79,18 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                 </li>
             </ul>
 
+            <!-- PART III -->
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span><i class="fas fa-book me-1"></i> <?= __t('nav.part3_title'); ?></span>
+            </h6>
+
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-3/probability-as-degree-of-confidence') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part3_probability_confidence'); ?></small>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

@@ -18,6 +18,11 @@ return [
     'nav.part2_error_loss_functions' => 'Error, loss functions, and why they are needed',
     'nav.part2_apartment_valuation_based_on_parameters' => 'Apartment valuation based on parameters',
 
+    // Part III navigation
+    'nav.part3_title' => 'Part III. Classification and probabilities',
+    'nav.part3_probability_confidence' => 'Probability as degree of confidence',
+    'nav.part3_softmax_example' => 'Probability example with softmax',
+
     'home.title' => 'Home',
     'home.heading' => 'Getting Started',
     'home.intro' => 'This is an examples for "AI for PHP Developers" book.',
@@ -124,4 +129,15 @@ return [
     'gradient_descent.debug_title' => 'Gradient descent debug',
     'gradient_descent.learning_rate' => 'Learning rate',
     'gradient_descent.epochs' => 'Epochs',
+
+    // Part III: Probability as degree of confidence
+    'probability_confidence.intro' => 'When developers hear the word "probability", they often imagine dice, coin flips, and the school formula "favorable outcomes divided by all possible outcomes". This is useful, but a very narrow picture. In machine learning and applied analytics, probability almost always means something else – the degree of our confidence in a statement given the available data.',
+    'probability_confidence.link_softmax_example' => 'Probability example with softmax',
+    'probability_confidence.case1_title' => 'Case 1. Spam filter: probability ≠ decision',
+    'probability_confidence.case2_title' => 'Case 2. Medical test: updating confidence',
+    'probability_confidence.case3_title' => 'Case 3. Multiclass classification and softmax',
+    'probability_confidence.case4_title' => 'Case 4. Overconfident model as a problem signal',
+    'probability_confidence.case5_title' => 'Case 5. Updating confidence with new data',
+
+    'probability_confidence.logits_paragraph' => 'In many machine learning models, the outputs are not probabilities, but so‑called scores (logits). These are just numbers that reflect the model\'s relative confidence in each option. They can be anything — positive, negative, large or small — and by themselves they are not interpreted as probabilities. To turn such scores into proper probabilities, we use the softmax function.',
 ];
