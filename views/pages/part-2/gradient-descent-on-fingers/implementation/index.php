@@ -19,14 +19,14 @@
 
 <hr>
 
-<?//= create_run_code_button(__t('linear_regression.case1.rubix_impl_title'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/rubix-code-run'); ?>
+<?//= create_run_code_button(__t('linear_regression.case1.rubix_impl_title'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/rubix-code-run');?>
 
 <div>
     <p>
-        <?//= __t('linear_regression.case1.rubix_impl_intro'); ?>
+        <?//= __t('linear_regression.case1.rubix_impl_intro');?>
     </p>
 </div>
 
 <div>
-    <?//= create_example_of_use_links(__DIR__ . '/rubix-code.php', opened: false, copyButtonId: 2, expandButtonId: 2); ?>
+    <?//= create_example_of_use_links(__DIR__ . '/rubix-code.php', opened: false, copyButtonId: 2, expandButtonId: 2);?>
 </div>

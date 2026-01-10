@@ -1,6 +1,5 @@
 <?php
 
-use app\classes\Chart;
 
 $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
@@ -90,7 +89,7 @@ $memoryEnd = memory_get_usage();
             </div>
             <hr>
 
-            <?php if($gradientDebug): ?>
+            <?php if ($gradientDebug): ?>
                 <div class="mb-1">
                     <b><?=__t('common.debug_traceback')?>:</b>
                 </div>

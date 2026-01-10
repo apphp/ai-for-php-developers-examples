@@ -24,6 +24,7 @@ class Chart {
 
         // Passed data
         $return .= 'const passData = [';
+
         for ($i = 0; $i < $totalSamples; $i++) {
             if ($labels[$i] === $classOneValue) {
                 $return .= '{ x: ' . $samples[$i][0] . ', y: ' . $samples[$i][1] . ' },';
@@ -33,6 +34,7 @@ class Chart {
 
         // Failed data
         $return .= 'const failData = [';
+
         for ($i = 0; $i < $totalSamples; $i++) {
             if ($labels[$i] === $classTwoValue) {
                 $return .= '{ x: ' . $samples[$i][0] . ', y: ' . $samples[$i][1] . ' },';
@@ -43,6 +45,7 @@ class Chart {
         // Prediction data
         if ($predictionSamples) {
             $return .= 'const predictData = [';
+
             foreach ($predictionSamples as $sample) {
                 $return .= '{ x: ' . $sample[0] . ', y: ' . $sample[1] . ' },';
             }
@@ -209,9 +212,9 @@ class Chart {
         }
 
         $return = "
-            <canvas id='".$chartId."'></canvas>
+            <canvas id='" . $chartId . "'></canvas>
             <script>
-                var ctx = document.getElementById('".$chartId."');
+                var ctx = document.getElementById('" . $chartId . "');
 
                 // Data points
                 var data = [";
@@ -265,7 +268,7 @@ class Chart {
                 }
 
                 var regression = calculateRegression(data);
-                var regressionLine = '.($regressionLine ? 'generateRegressionLine(data, regression)' : 'null').";
+                var regressionLine = ' . ($regressionLine ? 'generateRegressionLine(data, regression)' : 'null') . ";
 
                 var chart = new Chart(ctx, {
                     type: 'scatter',
@@ -308,13 +311,13 @@ class Chart {
                         responsive: true,
                         plugins: {
                             legend: {
-                                display: ".($showLegend ? 'true' : 'false').",
+                                display: " . ($showLegend ? 'true' : 'false') . ",
                                 position: 'bottom',
                                 labels: {
                                     font: {
                                         size: 14
                                     },
-                                    boxWidth: ".($showLabelBoxes ? '40' : '0').",
+                                    boxWidth: " . ($showLabelBoxes ? '40' : '0') . ",
                                 },
                             },
                             __title: {
@@ -421,6 +424,7 @@ class Chart {
         if ($useThirdArgument) {
             $maxSize = max(array_column($samples, 2));
             $ind = 0;
+
             foreach ($samples as $sample) {
                 $return .= '{';
                 $return .= 'x: [';
@@ -444,6 +448,7 @@ class Chart {
 
             // Render x axis
             $return .= 'x: [';
+
             foreach ($samples as $sample) {
                 $return .= $sample[$features[0]] . ',';
             }
@@ -451,6 +456,7 @@ class Chart {
 
             // Render y axis
             $return .= 'y: [';
+
             foreach ($samples as $sample) {
                 $return .= (isset($features[1]) ? $sample[$features[1]] : '0') . ',';
             }
@@ -458,6 +464,7 @@ class Chart {
 
             // Render z axis
             $return .= 'z: [';
+
             foreach ($labels as $label) {
                 $return .= $label . ',';
             }
@@ -481,21 +488,25 @@ class Chart {
         if (!empty($predictionSamples)) {
             $return .= '{';
             $return .= 'x: [';
+
             foreach ($predictionSamples as $point) {
                 $return .= $point[$features[0]] . ',';
             }
             $return .= '],' . "\n";
             $return .= 'y: [';
+
             foreach ($predictionSamples as $point) {
                 $return .= (isset($features[1]) ? $point[$features[1]] : '0') . ',';
             }
             $return .= '],' . "\n";
             $return .= 'z: [';
+
             foreach ($predictionResults as $point) {
                 $return .= $point . ',';
             }
             $return .= '],' . "\n";
             $return .= "mode: 'markers',\n";
+
             // Red color with high opacity
             if ($useThirdArgument) {
                 $return .= 'marker: {size: ' . (int)(6 * $sample[2] / $maxSize) . ", color: 'rgba(0,0,0,0.8)'},\n";
@@ -566,6 +577,7 @@ class Chart {
             <script>
                 // Data points
                 const rawData = [";
+
         for ($i = 0; $i < count($samples); $i++) {
             $return .= '{x: ' . ($samples[$i][0] ?? 0) . ', y: ' . ($labels[$i] ?? 0) . '},';
         }
@@ -573,6 +585,7 @@ class Chart {
 
                 // Test data points
                 const testData = [';
+
         for ($i = 0; $i < count($testSamples); $i++) {
             $return .= '{x: ' . ($testSamples[$i][0] ?? 0) . ', y: ' . ($testLabels[$i] ?? 0) . '},';
         }

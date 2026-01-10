@@ -16,11 +16,13 @@ function render_page(PhpRenderer $renderer, Response $response, array $breadcrum
 // Render functions
 function running_time(float $microtimeEnd, float $microtimeStart): string {
     $timeDif = ($microtimeEnd - $microtimeStart);
+
     return (string)($timeDif > 0.001 ? round($timeDif, 3) : '< 0.001');
 }
 
 function memory_usage(float $endMemory, float $startMemory): string {
     $memoryUsed = $endMemory - $startMemory;
+
     return round($memoryUsed / 1024 / 1024, 3);
 }
 
@@ -50,6 +52,7 @@ function humanize($data) {
     $data = str_replace(['-', '_'], ' ', $data);
     $data = ucwords($data);
     $data = str_ireplace(['Php', 'Llm', 'PHPml'], ['PHP', 'LLM', 'PHP-ML'], $data);
+
     return $data;
 }
 
@@ -58,6 +61,7 @@ function array_flatten(array $array = []): array {
     array_walk_recursive($array, function ($a) use (&$return) {
         $return[] = $a;
     });
+
     return $return;
 }
 
@@ -124,11 +128,11 @@ function create_run_code_button(
         <h2 class="h4">' . $title . '</h2>
         <div class="btn-toolbar mb-2 mb-md-0">';
 
-        $output .= '<div class="btn-group">
-                <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; '.($buttonText ?: __t('common.run_code')).'</a>
+    $output .= '<div class="btn-group">
+                <a href="' . APP_URL . $page . '" class="btn btn-sm btn-outline-primary">&#9654;&nbsp; ' . ($buttonText ?: __t('common.run_code')) . '</a>
             </div>';
 
-        $output .= '</div>
+    $output .= '</div>
     </div>';
 
     return $output;
@@ -153,24 +157,24 @@ function create_example_of_use_links(string $datasetFile = '', string $title = '
     if ($opened) {
         $output = ($title ? '<p>' . $title . ':</p>' : '') . '
         <div class="bd-clipboard">
-            <button id="'  .$copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="'.__t('common.copied').'" onclick="copyToClipboard(\''  .$copyButtonId . '\')">
-            '.__t('common.copy').'
+            <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard(\'' . $copyButtonId . '\')">
+            ' . __t('common.copy') . '
             </button>&nbsp;
         </div>';
 
         if ($language === 'js') {
-            $output .= '<div id="'  .$copyButtonId . '-code" class="code-wrapper p-0"><pre><code id="code" class="language-javascript">' . htmlentities(file_get_contents($datasetFile)) . '</code></pre></div>';
+            $output .= '<div id="' . $copyButtonId . '-code" class="code-wrapper p-0"><pre><code id="code" class="language-javascript">' . htmlentities(file_get_contents($datasetFile)) . '</code></pre></div>';
         } else {
-            $output .= '<div id="'  .$copyButtonId . '-code" class="code-wrapper"><code id="code"><span>' . highlight_file($datasetFile, true) . '</code></div>';
+            $output .= '<div id="' . $copyButtonId . '-code" class="code-wrapper"><code id="code"><span>' . highlight_file($datasetFile, true) . '</code></div>';
         }
     } else {
         $output = '
-        <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse' . $expandButtonId . '" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse'.$expandButtonId.'" title="'.__t('common.click_to_expand').'">
+        <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse' . $expandButtonId . '" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse' . $expandButtonId . '" title="' . __t('common.click_to_expand') . '">
             ' . $title . ' <i id="toggleIcon" class="fa-regular fa-square-plus"></i>
         </p>
         <div class="collapse pb-4" id="collapseExampleOfUse' . $expandButtonId . '">
             <div class="bd-clipboard">
-                <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard(\''  .$copyButtonId . '\')">Copy</button>&nbsp;
+                <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard(\'' . $copyButtonId . '\')">Copy</button>&nbsp;
             </div>
             <div id="' . $copyButtonId . '-code" class="code-wrapper">
                 <code id="code">' . highlight_file($datasetFile, true) . '</code>
@@ -282,14 +286,14 @@ function create_form_fields(string $section, string $subsection, string $page): 
 
 function create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result = '', $showResult = true) {
     $output = '<div class="mb-1">
-                <b>'.__t('common.result').':</b>
-                <span class="float-end">'.__t('common.memory').': '.memory_usage($memoryEnd, $memoryStart).' Mb</span>
-                <span class="float-end me-2">'.__t('common.time').' <span class="d-xs-hide">'.__t('common.time_running').':</span> '.running_time($microtimeEnd, $microtimeStart).' '.__t('common.seconds_short').'</span>
+                <b>' . __t('common.result') . ':</b>
+                <span class="float-end">' . __t('common.memory') . ': ' . memory_usage($memoryEnd, $memoryStart) . ' Mb</span>
+                <span class="float-end me-2">' . __t('common.time') . ' <span class="d-xs-hide">' . __t('common.time_running') . ':</span> ' . running_time($microtimeEnd, $microtimeStart) . ' ' . __t('common.seconds_short') . '</span>
             </div>';
 
     if ($showResult) {
         $output .= '<code class="code-result">
-                <pre>'.$result.'</pre>
+                <pre>' . $result . '</pre>
             </code>';
     }
 
@@ -301,6 +305,7 @@ function get_current_language(): string {
     $default = 'en';
 
     $cookieLang = $_COOKIE['lang'] ?? '';
+
     if (in_array($cookieLang, $supported, true)) {
         return $cookieLang;
     }
@@ -316,6 +321,7 @@ function load_translations(string $lang): array {
     }
 
     $file = __DIR__ . '/lang/' . $lang . '.php';
+
     if (is_file($file)) {
         $cache[$lang] = include $file;
     } else {
@@ -353,11 +359,13 @@ function create_form_features(array $features = [], array $data = [], string $fi
 
     if ($type === 'select') {
         $output = '<select class="form-select float-start ' . $class . '" id="select_' . $fieldName . '" name="' . $fieldName . '" ' . $event . '>';
+
         foreach ($features as $name => $feature) {
             if (str_starts_with($name, 'group')) {
                 $label = $feature['label'] ?? '';
                 $options = $feature['options'] ?? [];
-                $output .= '<optgroup label="[ '.$label.' ]">';
+                $output .= '<optgroup label="[ ' . $label . ' ]">';
+
                 foreach ($options as $optionName => $optionValue) {
                     $output .= '<option value="' . $optionValue . '"' . (in_array($optionValue, $data) ? ' selected' : '') . '>' . $optionName . '</option>';
                 }
@@ -369,6 +377,7 @@ function create_form_features(array $features = [], array $data = [], string $fi
         $output .= '</select>';
     } else {
         $totalFeatures = count($features);
+
         foreach ($features as $name => $feature) {
             $ind++;
 
@@ -379,6 +388,7 @@ function create_form_features(array $features = [], array $data = [], string $fi
 
                 // Loop through the array and compare the values - to prevent floating-point precision issues
                 $found = false;
+
                 if ($precisionCompare) {
                     foreach ($feature as $item) {
                         if (round($item, 2) === round($data[0], 2)) {

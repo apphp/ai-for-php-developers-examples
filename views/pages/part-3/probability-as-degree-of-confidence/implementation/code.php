@@ -19,6 +19,7 @@ function softmax(array $scores): array {
 
     // Normalize each exponential by the total sum to get a probability for each label
     $probabilities = [];
+
     foreach ($expValues as $key => $value) {
         // Guard with max($sum, 1) so we never divide by zero
         $probabilities[$key] = $value / max($sum, 1);

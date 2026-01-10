@@ -1,7 +1,7 @@
 <?php
 
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 
 // Determine current language once per request
@@ -14,6 +14,7 @@ $app->get('/set-lang/{lang}', function (Request $request, Response $response, ar
     $default = 'en';
 
     $lang = $args['lang'] ?? $default;
+
     if (!in_array($lang, $supported, true)) {
         $lang = $default;
     }
@@ -189,6 +190,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
                 ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
                 ['label' => __t('gradient_descent.heading'), 'url' => null],
             ];
+
             return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/index.php');
         });
         $app->get('/implementation', function (Request $request, Response $response) use ($renderer): Response {
@@ -266,6 +268,7 @@ $errorMiddleware->setErrorHandler(
         $html = ob_get_clean();
 
         $response->getBody()->write($html);
+
         return $response->withStatus(404);
     }
 );

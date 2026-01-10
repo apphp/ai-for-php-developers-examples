@@ -1,7 +1,6 @@
 <?php
 
 use Rubix\ML\Datasets\Labeled;
-use Rubix\ML\Datasets\Unlabeled;
 use Rubix\ML\Regressors\Ridge;
 
 // Данные: [площадь, этаж, расстояние до центра, возраст дома]

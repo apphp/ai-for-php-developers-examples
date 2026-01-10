@@ -35,4 +35,4 @@ $dataset = new Unlabeled([$newApartment]);
 $predictions = $regression->predict($dataset);
 $predictedPrice = $predictions[0];
 
-echo "Apartment valuation: $" . number_format($predictedPrice) . "\n";
+echo 'Apartment valuation: $' . number_format($predictedPrice) . "\n";

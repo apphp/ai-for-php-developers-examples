@@ -3,9 +3,11 @@
 // Compute the dot product of two vectors: sum(a_i * b_i)
 function dotProduct(array $a, array $b): float {
     $sum = 0.0;
+
     foreach ($a as $i => $v) {
         $sum += $v * $b[$i];
     }
+
     return $sum;
 }
 
