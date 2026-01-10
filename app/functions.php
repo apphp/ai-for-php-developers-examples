@@ -1,9 +1,10 @@
 <?php
 
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Views\PhpRenderer;
 
 // Small helper to render a page with the common layout
-function render_page(\Slim\Views\PhpRenderer $renderer, Response $response, array $breadcrumbs, string $contentTemplate, array $extraData = []): Response {
+function render_page(PhpRenderer $renderer, Response $response, array $breadcrumbs, string $contentTemplate, array $extraData = []): Response {
     $data = array_merge([
         'breadcrumbs' => $breadcrumbs,
         'contentTemplate' => $contentTemplate,
