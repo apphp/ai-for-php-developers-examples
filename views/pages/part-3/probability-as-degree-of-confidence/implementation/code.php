@@ -1,12 +1,5 @@
 <?php
 
-// Example raw scores ("logits") for each email category before converting to probabilities
-$scores = [
-    'spam'   => 2.1,
-    'promo'  => 1.3,
-    'normal' => 0.2,
-];
-
 function softmax(array $scores): array {
     // For numerical stability we subtract the maximum score from all scores
     $max = max($scores);

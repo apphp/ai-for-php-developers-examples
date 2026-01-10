@@ -148,7 +148,7 @@ $app->get('/part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss/c
         ['label' => __t('nav.home'), 'url' => APP_URL],
         ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
         ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
-        ['label' => __t('errors_loss.case1_title'), 'url' => null],
+        ['label' => __t('errors_loss.case1_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss'],
         ['label' => __t('nav.code_run'), null],
     ];
 
@@ -280,8 +280,20 @@ $app->get('/part-3/probability-as-degree-of-confidence/implementation', function
         'contentTemplate' => 'part-3/probability-as-degree-of-confidence/implementation/index.php',
     ]);
 });
+$app->get('/part-3/probability-as-degree-of-confidence/implementation/code-run', function (Request $request, Response $response) use ($renderer): Response {
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => APP_URL],
+        ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+        ['label' => __t('nav.part3_probability_confidence'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence/implementation'],
+        ['label' => __t('nav.part3_softmax_example'), 'url' => APP_URL . '/part-3/probability-as-degree-of-confidence/implementation'],
+        ['label' => __t('nav.code_run'), null],
+    ];
 
-
+    return $renderer->render($response, 'layout.php', [
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => 'part-3/probability-as-degree-of-confidence/implementation/code-run.php',
+    ]);
+});
 
 
 // 404 handler: render standalone 404 page (no layout)
