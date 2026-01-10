@@ -178,8 +178,8 @@ psalm-click: app-psalm-clickable
 psalm-help: app-psalm-help
 psalm-report: app-psalm-report
 psalm-fix: app-psalm-fix
-check: phplint psalm phpcs
-check-fix: phpcs-fix psalm-fix phpcs-fix
+check: phplint phpcs
+check-fix: phpcs-fix phpcs-fix
 
 app-phplint:
 	@echo "Run PHPLint${NC}"

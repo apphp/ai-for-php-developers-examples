@@ -37,7 +37,7 @@ $config
     ->setRules(
         [
             '@PSR12' => true,
-            '@PHP84Migration' => true,
+            '@PHP8x2Migration' => true,
             // Curly braces position,
 
             // Array syntax
@@ -125,7 +125,7 @@ $config
 
             // Visibility MUST be declared on all properties and methods;
             // abstract and final MUST be declared before the visibility; static MUST be declared after the visibility.
-            'visibility_required' => true,
+            'modifier_keywords' => true,
 
             // In array declaration, there MUST be a whitespace after each comma.
             'whitespace_after_comma_in_array' => true,
