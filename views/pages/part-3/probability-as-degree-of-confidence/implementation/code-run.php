@@ -32,10 +32,6 @@ $memoryEnd = memory_get_usage();
 <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
 
 <p>
-    <?//= __t('errors_loss.case1.explanation');?>
-    Теперь мы получили корректное распределение вероятностей:
-    каждое значение находится в диапазоне от 0 до 1;
-    сумма всех значений равна 1;
-    числа можно интерпретировать как степень уверенности модели.
+    <?= __t('probability_confidence.softmax_result_explanation'); ?>
 </p>
 

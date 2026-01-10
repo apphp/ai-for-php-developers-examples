@@ -140,4 +140,5 @@ return [
     'probability_confidence.case5_title' => 'Case 5. Updating confidence with new data',
 
     'probability_confidence.logits_paragraph' => 'In many machine learning models, the outputs are not probabilities, but so‑called scores (logits). These are just numbers that reflect the model\'s relative confidence in each option. They can be anything — positive, negative, large or small — and by themselves they are not interpreted as probabilities. To turn such scores into proper probabilities, we use the softmax function.',
+    'probability_confidence.softmax_result_explanation' => 'Now we have a correct probability distribution: each value lies in the range from 0 to 1; the sum of all values equals 1; and the numbers can be interpreted as the model\'s degree of confidence.',
 ];
