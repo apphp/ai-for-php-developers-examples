@@ -1,5 +1,18 @@
 <?php
 
+use Psr\Http\Message\ResponseInterface as Response;
+
+// Small helper to render a page with the common layout
+function render_page(\Slim\Views\PhpRenderer $renderer, Response $response, array $breadcrumbs, string $contentTemplate, array $extraData = []): Response {
+    $data = array_merge([
+        'breadcrumbs' => $breadcrumbs,
+        'contentTemplate' => $contentTemplate,
+    ], $extraData);
+
+    return $renderer->render($response, 'layout.php', $data);
+}
+
+// Render functions
 function running_time(float $microtimeEnd, float $microtimeStart): string {
     $timeDif = ($microtimeEnd - $microtimeStart);
     return (string)($timeDif > 0.001 ? round($timeDif, 3) : '< 0.001');
