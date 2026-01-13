@@ -38,7 +38,7 @@ $homeHandler = function (Request $request, Response $response) use ($renderer): 
     ];
 
     return render_page($renderer, $response, $breadcrumbs, 'intro/home.php', [
-        'title' => __t('home.s'),
+        'title' => __t('home.heading'),
     ]);
 };
 $app->get('/', $homeHandler);
