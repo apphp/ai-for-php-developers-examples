@@ -2,6 +2,7 @@
 
 return [
     'app.name' => 'AI for PHP Developers (examples)',
+    'app.name_short' => 'AI for PHP Developers',
 
     'nav.home' => 'Home',
     'nav.introduction' => 'Introduction',
@@ -56,6 +57,7 @@ return [
     'common.debug_traceback' => 'Debug traceback',
     'common.show_debug' => 'Show debug',
     'common.open_in_full_screen' => 'Open in full screen',
+    'common.git_repository' => 'GitHub Repository',
 
     'what_is_model.heading' => 'What is a model in the mathematical sense',
     'what_is_model.function_as_basis_of_model' => 'Function as the basis of the model',

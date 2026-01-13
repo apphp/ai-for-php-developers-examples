@@ -5,9 +5,9 @@
 <div>
     <?= __t('home.intro'); ?>
     <br><br>
-    <?= __t('home.official_site'); ?>: <a href="https://apphp.gitbook.io/ai-dlya-php-razrabotchikov" target="_blank" rel="nofollow noopener">Artificial Intelligence with PHP</a>
+    <?= __t('home.official_site'); ?>: <a href="https://apphp.gitbook.io/ai-for-php-developers" target="_blank" rel="nofollow noopener"><?=__t('app.name_short') ?></a>
     <br>
-    <?= __t('home.official_repo'); ?>: <a href="https://github.com/apphp/ai-for-php-developers-examples" target="_blank" rel="nofollow noopener">GitHub Repository</a>
+    <?= __t('home.official_repo'); ?>: <a href="https://github.com/apphp/ai-for-php-developers-examples" target="_blank" rel="nofollow noopener"><?=__t('common.git_repository') ?></a>
     <br><br>
     <p><?= __t('home.all_examples'); ?></p>
 </div>
