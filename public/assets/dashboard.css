@@ -1,5 +1,6 @@
 body {
     font-size: .875rem;
+    min-width: 540px;
 }
 
 .feather {
@@ -557,15 +558,18 @@ ul.search-result li {
         right: 15px;
     }
 
-    .search-container {
-        width: 93%;
-        margin-left: 15px;
-    }
+    /*.search-container {*/
+    /*    width: 93%;*/
+    /*    margin-left: 15px;*/
+    /*}*/
 
     .form-switch-mode {
-        width: 100% !important;
-        margin-right: 29px;
+        margin-right:101px;
         margin-top: 1px !important;
+    }
+
+    .navbar .navbar-toggler {
+        right: 1.5rem !important;
     }
 }
 
