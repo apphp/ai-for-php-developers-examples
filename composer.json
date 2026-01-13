@@ -12,6 +12,7 @@
             "slim/php-view"
         ],
         "ml": [
+            "php-ai/php-ml",
             "rubix/ml"
         ],
         "code-quality": [
@@ -23,6 +24,7 @@
         "slim/slim": "~4.12",
         "slim/psr7": "~1.6",
         "slim/php-view": "~3.3",
+        "php-ai/php-ml": "0.10.0",
         "rubix/ml": "~2.5.3"
     },
     "require-dev": {

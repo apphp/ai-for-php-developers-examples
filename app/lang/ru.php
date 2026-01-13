@@ -58,6 +58,17 @@ return [
     'common.show_debug' => 'Показать дебаг',
     'common.open_in_full_screen' => 'Открыть в полноэкранном режиме',
     'common.git_repository' => 'GitHub Репозиторий',
+    'common.back' => 'Назад',
+
+    // Экосистема ML в PHP (intro)
+    'ml_ecosystem.title' => 'Экосистема ML в PHP',
+    'ml_ecosystem.breadcrumb' => 'Экосистема ML в PHP',
+    'ml_ecosystem.sample_phpml_title' => 'Пример на PHP-ML',
+    'ml_ecosystem.sample_rubix_title' => 'Пример на RubixML',
+    'ml_ecosystem.examples_heading' => 'Учебные примеры',
+    'ml_ecosystem.examples_intro' => 'Эти примеры помогут вам понять, как можно использовать ML в PHP. Они не являются полноценными приложениями, но помогут вам понять основы работы с ML в PHP.',
+    'ml_ecosystem.rubix_intro' => 'Rubix поддерживает классификацию, регрессию, кластеризацию и работу с датасетами как с first-class объектами. Посмотрим, как это выглядит на практике. Допустим, у нас есть данные для бинарной классификации:',
+    'ml_ecosystem.phpml_intro' => 'Типичный сценарий: у вас есть признаки из базы данных, вы хотите быстро обучить модель для классификации или регрессии, сохранить ее и использовать в runtime без внешних сервисов. Пример выглядит почти учебно:',
 
     'what_is_model.heading' => 'Что такое модель в математическом смысле',
     'what_is_model.function_as_basis_of_model' => 'Функция как основа модели',

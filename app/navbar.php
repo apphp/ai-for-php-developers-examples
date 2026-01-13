@@ -25,10 +25,14 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                 <span><i class="fas fa-home me-1"></i> <?= __t('nav.introduction'); ?></span>
             </h6>
 
+            <!-- INTRO -->
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                     <a class="nav-link<?= in_array($currentPath, ['/', '/home'], true) ? ' active' : '' ?>" href="<?=APP_URL?>home">
                         <span data-feather="file-text">• </span><small><?= __t('nav.getting_started'); ?></small>
+                    </a>
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/ml-ecosystem-in-php') ? ' active' : '' ?>" href="<?=APP_URL?>ml-ecosystem-in-php">
+                        <span data-feather="file-text">• </span><small>Экосистема ML в PHP</small>
                     </a>
                 </li>
             </ul>

@@ -58,6 +58,17 @@ return [
     'common.show_debug' => 'Show debug',
     'common.open_in_full_screen' => 'Open in full screen',
     'common.git_repository' => 'GitHub Repository',
+    'common.back' => 'Back',
+
+    // ML ecosystem in PHP (intro section)
+    'ml_ecosystem.title' => 'ML Ecosystem in PHP',
+    'ml_ecosystem.breadcrumb' => 'ML Ecosystem in PHP',
+    'ml_ecosystem.sample_phpml_title' => 'Example with PHP-ML',
+    'ml_ecosystem.sample_rubix_title' => 'Example with RubixML',
+    'ml_ecosystem.examples_heading' => 'Learning examples',
+    'ml_ecosystem.examples_intro' => 'These examples will help you understand how you can use ML in PHP. They are not full-fledged applications, but they will help you understand the basics of working with ML in PHP.',
+    'ml_ecosystem.rubix_intro' => 'Rubix supports classification, regression, clustering, and working with datasets as first-class objects. Let\'s see how this looks in practice. Suppose we have data for a binary classification task:',
+    'ml_ecosystem.phpml_intro' => 'A typical scenario: you have features from a database, you want to quickly train a model for classification or regression, save it, and use it in runtime without external services. The example looks almost educational:',
 
     'what_is_model.heading' => 'What is a model in the mathematical sense',
     'what_is_model.function_as_basis_of_model' => 'Function as the basis of the model',

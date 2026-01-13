@@ -37,12 +37,49 @@ $homeHandler = function (Request $request, Response $response) use ($renderer): 
         ['label' => __t('nav.home'), 'url' => '/'],
     ];
 
-    return render_page($renderer, $response, $breadcrumbs, 'home.php', [
-        'title' => __t('home.title'),
+    return render_page($renderer, $response, $breadcrumbs, 'intro/home.php', [
+        'title' => __t('home.s'),
     ]);
 };
 $app->get('/', $homeHandler);
 $app->get('/home', $homeHandler);
+
+// ML Ecosystem in PHP page
+$app->group('/ml-ecosystem-in-php', function ($app) use ($renderer): void {
+    $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+        $breadcrumbs = [
+            ['label' => __t('nav.home'), 'url' => APP_URL],
+            ['label' => __t('ml_ecosystem.breadcrumb'), 'url' => null],
+        ];
+
+        return render_page($renderer, $response, $breadcrumbs, 'intro/ml-ecosystem-in-php/index.php', [
+            'title' => __t('ml_ecosystem.title'),
+        ]);
+    });
+    $app->get('/sample-in-php-ml', function (Request $request, Response $response) use ($renderer): Response {
+        $breadcrumbs = [
+            ['label' => __t('nav.home'), 'url' => APP_URL],
+            ['label' => __t('ml_ecosystem.breadcrumb'), 'url' => APP_URL . 'ml-ecosystem-in-php'],
+            ['label' => __t('ml_ecosystem.sample_phpml_title'), 'url' => null],
+        ];
+
+        return render_page($renderer, $response, $breadcrumbs, 'intro/ml-ecosystem-in-php/phpml-code-run.php', [
+            'title' => __t('ml_ecosystem.sample_phpml_title'),
+        ]);
+    });
+    $app->get('/sample-in-rubix-ml', function (Request $request, Response $response) use ($renderer): Response {
+        $breadcrumbs = [
+            ['label' => __t('nav.home'), 'url' => APP_URL],
+            ['label' => __t('ml_ecosystem.breadcrumb'), 'url' => APP_URL . 'ml-ecosystem-in-php'],
+            ['label' => __t('ml_ecosystem.sample_rubix_title'), 'url' => null],
+        ];
+
+        return render_page($renderer, $response, $breadcrumbs, 'intro/ml-ecosystem-in-php/rubix-code-run.php', [
+            'title' => __t('ml_ecosystem.sample_rubix_title'),
+        ]);
+    });
+});
+
 
 // ---------------------------------------------------
 // Part I:
