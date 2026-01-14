@@ -1,8 +1,8 @@
 <?php
 
+use Rubix\ML\Classifiers\KNearestNeighbors;
 use Rubix\ML\Datasets\Labeled;
 use Rubix\ML\Datasets\Unlabeled;
-use Rubix\ML\Classifiers\KNearestNeighbors;
 
 $samples = [
     [170, 65],
