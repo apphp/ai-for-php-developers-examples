@@ -104,6 +104,7 @@ info-composer:
 	@echo "# COMPOSER"
 	@echo "# -------------------------------------------------${NC}"
 	@echo "${GREEN} composer-install${NC} \t - install the defined dependencies"
+	@echo "${GREEN} composer-install-prod${NC} \t - install dependencies for PRODUCTION only (no dev, optimized autoloader)"
 	@echo "${GREEN} composer-update${NC} \t - initially install the defined dependencies. Ex.: 'make composer-update args=-vvv'"
 	@echo "${GREEN} composer-dump${NC} \t\t - re-generate the vendor/autoload.php file"
 	@echo "${GREEN} composer-du${NC} \t\t - alias for composer-dump command"
@@ -111,6 +112,10 @@ info-composer:
 composer-install: message-composer-install check-you-sure composer-install-command composer-dump
 composer-install-command:
 	$(docker) exec app /bin/bash -c "$(remove_vendor) composer install $(args)"
+
+composer-install-prod: composer-install-prod-command composer-dump
+composer-install-prod-command:
+	$(docker) exec app /bin/bash -c "composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader $(args)"
 
 composer-update: composer-update-command composer-dump
 composer-update-command:
