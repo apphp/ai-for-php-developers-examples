@@ -22,28 +22,47 @@ $app->get('/set-lang/{lang}', function (Request $request, Response $response, ar
     $params = $request->getQueryParams();
     $redirect = $params['redirect'] ?? APP_URL;
 
-    // Validate redirect to prevent open redirects.
-    // Allow only:
-    //  - relative URLs on this site (starting with '/')
-    //  - absolute URLs whose host matches APP_URL's host
+    // Validate redirect to prevent open redirects while still working
+    // correctly when APP_URL is empty or does not contain a host
+    // (e.g., when app is deployed under a subdirectory).
     if (!is_string($redirect) || $redirect === '') {
-        $redirect = APP_URL;
+        $redirect = APP_URL ?: '/';
     } else {
-        // Normalize APP_URL for comparison
-        $appUrlParts = parse_url(APP_URL);
-        $redirectParts = parse_url($redirect);
-
+        // Relative URL: always allow and keep it relative so that
+        // frontends / reverse proxies can handle subdirectories.
         if (str_starts_with($redirect, '/')) {
-            // Treat as relative URL, always anchor it to APP_URL
-            $redirect = rtrim(APP_URL, '/') . $redirect;
-        } elseif (
-            !$redirectParts ||
-            empty($redirectParts['host']) ||
-            empty($appUrlParts['host']) ||
-            strcasecmp($redirectParts['host'], $appUrlParts['host']) !== 0
-        ) {
-            // Unsafe or external host: fall back to home
-            $redirect = APP_URL;
+            // leave $redirect as-is (relative to current host/base path)
+        } else {
+            $appUrlParts = parse_url(APP_URL);
+            $redirectParts = parse_url($redirect);
+
+            // If we cannot parse a host/scheme, or the scheme is not http/https,
+            // treat as unsafe and fall back.
+            $scheme = isset($redirectParts['scheme']) ? strtolower((string)$redirectParts['scheme']) : '';
+
+            if (!$redirectParts || empty($redirectParts['host']) || !in_array($scheme, ['http', 'https'], true)) {
+                $redirect = APP_URL ?: '/';
+            } else {
+                $redirectHost = strtolower($redirectParts['host']);
+
+                // Build allow-list of hosts: APP_URL host (if present) and
+                // current request host, so that prod behind a subdirectory
+                // still works correctly.
+                $allowedHosts = [];
+
+                if (!empty($appUrlParts['host'])) {
+                    $allowedHosts[] = strtolower((string)$appUrlParts['host']);
+                }
+
+                if (!empty($_SERVER['HTTP_HOST'])) {
+                    $allowedHosts[] = strtolower((string)$_SERVER['HTTP_HOST']);
+                }
+
+                if ($allowedHosts && !in_array($redirectHost, $allowedHosts, true)) {
+                    // Unsafe or external host: fall back
+                    $redirect = APP_URL ?: '/';
+                }
+            }
         }
     }
 
