@@ -66,7 +66,22 @@ $app->get('/set-lang/{lang}', function (Request $request, Response $response, ar
         }
     }
 
-    $cookie = sprintf('lang=%s; Path=/; Max-Age=%d; HttpOnly=false', $lang, 365 * 24 * 60 * 60);
+    $maxAge = 31_536_000; // 365 * 24 * 60 * 60; - 1 year
+
+    // Build cookie attributes: keep readable for JS, but add SameSite and Secure (when HTTPS)
+    $cookieParts = [
+        sprintf('lang=%s', $lang),
+        'Path=/',
+        sprintf('Max-Age=%d', $maxAge),
+        'SameSite=Lax',
+    ];
+
+    // Add Secure flag when running over HTTPS
+    if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+        $cookieParts[] = 'Secure';
+    }
+
+    $cookie = implode('; ', $cookieParts);
     $response = $response->withHeader('Set-Cookie', $cookie);
 
     return $response
