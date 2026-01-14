@@ -36,7 +36,7 @@ return [
     'home.disclaimer_p2' => 'The demo code has not been subjected to rigorous security testing and may contain inaccuracies, vulnerabilities, inefficiencies, or other issues that could pose security risks if used in production environments. As such, it may not be 100% accurate or reflect best practices. We strongly advise readers to thoroughly review, test, and secure any implementation of the techniques demonstrated in this book before using them in real-world applications.',
     'home.disclaimer_p3' => 'The author and publisher are not responsible for any security breaches, data losses, or other damages that may result from using these examples on production servers.',
 
-    'common.copy' => 'copy',
+    'common.copy' => 'Copy',
     'common.copied' => 'Copied!',
     'common.example_of_use' => 'Example of use',
     'common.run_code' => 'Run Code',
