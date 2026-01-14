@@ -22,6 +22,31 @@ $app->get('/set-lang/{lang}', function (Request $request, Response $response, ar
     $params = $request->getQueryParams();
     $redirect = $params['redirect'] ?? APP_URL;
 
+    // Validate redirect to prevent open redirects.
+    // Allow only:
+    //  - relative URLs on this site (starting with '/')
+    //  - absolute URLs whose host matches APP_URL's host
+    if (!is_string($redirect) || $redirect === '') {
+        $redirect = APP_URL;
+    } else {
+        // Normalize APP_URL for comparison
+        $appUrlParts = parse_url(APP_URL);
+        $redirectParts = parse_url($redirect);
+
+        if (str_starts_with($redirect, '/')) {
+            // Treat as relative URL, always anchor it to APP_URL
+            $redirect = rtrim(APP_URL, '/') . $redirect;
+        } elseif (
+            !$redirectParts ||
+            empty($redirectParts['host']) ||
+            empty($appUrlParts['host']) ||
+            strcasecmp($redirectParts['host'], $appUrlParts['host']) !== 0
+        ) {
+            // Unsafe or external host: fall back to home
+            $redirect = APP_URL;
+        }
+    }
+
     $cookie = sprintf('lang=%s; Path=/; Max-Age=%d; HttpOnly=false', $lang, 365 * 24 * 60 * 60);
     $response = $response->withHeader('Set-Cookie', $cookie);
 
