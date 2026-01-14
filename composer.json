@@ -18,6 +18,10 @@
         "code-quality": [
             "friendsofphp/php-cs-fixer",
             "overtrue/phplint"
+        ],
+        "testing": [
+            "phpunit/phpunit",
+            "guzzlehttp/guzzle"
         ]
     },
     "require": {
@@ -29,7 +33,9 @@
     },
     "require-dev": {
         "overtrue/phplint": "^6.1.0",
-        "friendsofphp/php-cs-fixer": "^3.82.2"
+        "friendsofphp/php-cs-fixer": "^3.82.2",
+        "phpunit/phpunit": "^10.5",
+        "guzzlehttp/guzzle": "^7.8"
     },
     "autoload": {
         "psr-4": {
@@ -41,6 +47,7 @@
         "php-lint-with-log": "phplint > tmp/.phplint.result.log",
         "php-cs-check": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots --dry-run fix",
         "php-cs-check-diff": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots --diff --dry-run fix",
-        "php-cs-fix": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots fix"
+        "php-cs-fix": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots fix",
+        "test": "phpunit"
     }
 }
