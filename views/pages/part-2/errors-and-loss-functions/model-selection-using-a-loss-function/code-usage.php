@@ -13,5 +13,5 @@ $modelB = [10, 13, 15, 15, 14];
 
 // Compute and print the Mean Squared Error (MSE) for each model.
 // The model with the lower MSE is considered to fit the data better.
-echo "MSE A: " . mse($y, $modelA) . PHP_EOL;
-echo "MSE B: " . mse($y, $modelB) . PHP_EOL;
+echo 'MSE A: ' . mse($y, $modelA) . PHP_EOL;
+echo 'MSE B: ' . mse($y, $modelB) . PHP_EOL;
