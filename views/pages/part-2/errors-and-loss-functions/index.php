@@ -16,7 +16,7 @@
             <?= create_link('part-2/errors-and-loss-functions/case-1/mse-and-cost-of-a-big-miss', __t('errors_loss.case1_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-2/...', __t('errors_loss.case2_title'), true) ?>
+            <?= create_link('part-2/errors-and-loss-functions/case-2/model-selection-using-a-loss-function', __t('errors_loss.case2_title')) ?>
         </li>
         <li>
             <?= create_link('part-2/errors-and-loss-functions/case-3/...', __t('errors_loss.case3_title'), true) ?>

@@ -141,9 +141,8 @@ $app->group('/ml-ecosystem-in-php', function ($app) use ($renderer): void {
 
 
 // ---------------------------------------------------
-// Part I:
+// Part I:  What is a model in the mathematical sense
 // ---------------------------------------------------
-// What is a model in the mathematical sense
 $app->group('/part-1', function ($app) use ($renderer): void {
     $app->group('/what-is-a-model', function ($app) use ($renderer): void {
         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
@@ -201,7 +200,7 @@ $app->group('/part-1', function ($app) use ($renderer): void {
 });
 
 // ---------------------------------------------------
-// Part II:
+// Part II. Learning as Optimization
 // ---------------------------------------------------
 $app->group('/part-2', function ($app) use ($renderer): void {
     $app->group('/errors-and-loss-functions', function ($app) use ($renderer): void {
@@ -235,6 +234,28 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/mse-and-cost-of-a-big-miss/code-run.php');
         });
+        $app->get('/case-2/model-selection-using-a-loss-function', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case2_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/model-selection-using-a-loss-function/index.php');
+        });
+        $app->get('/case-2/model-selection-using-a-loss-function/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions/case-2/model-selection-using-a-loss-function'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/model-selection-using-a-loss-function/code-run.php');
+        });
+
     });
     $app->group('/linear-regression-as-basic-model', function ($app) use ($renderer): void {
         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
@@ -314,7 +335,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 });
 
 // ---------------------------------------------------
-// Part III:
+// Part III. Classification and Probabilities
 // ---------------------------------------------------
 $app->group('/part-3', function ($app) use ($renderer): void {
     $app->group('/probability-as-degree-of-confidence', function ($app) use ($renderer): void {

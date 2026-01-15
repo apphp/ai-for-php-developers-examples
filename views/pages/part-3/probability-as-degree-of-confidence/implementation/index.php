@@ -13,4 +13,4 @@
 <div>
     <?= create_example_of_use_links(__DIR__ . '/code.php', opened: true, copyButtonId: 1, expandButtonId: 1); ?>
 </div>
-
+<br><br>

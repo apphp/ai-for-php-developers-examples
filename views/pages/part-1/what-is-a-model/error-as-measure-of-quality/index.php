@@ -17,3 +17,4 @@
 <div>
     <?= create_example_of_use_links(__DIR__ . '/code.php', opened: true); ?>
 </div>
+<br><br>

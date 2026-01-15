@@ -30,3 +30,4 @@
 <div>
     <?= create_example_of_use_links(__DIR__ . '/rubix-code.php', opened: false, copyButtonId: 2, expandButtonId: 2); ?>
 </div>
+<br><br>
