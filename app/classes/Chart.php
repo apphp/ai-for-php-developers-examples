@@ -184,6 +184,171 @@ class Chart {
         return $return;
     }
 
+    public static function drawLogLossCurve(
+        int $trueLabel = 1,
+        string $canvasId = 'logLossCurveChart'
+    ): string {
+        // Clamp true label to binary {0, 1}
+        $trueLabel = $trueLabel === 0 ? 0 : 1;
+
+        $return = "
+            <div style='min-height:300px;'>
+                <canvas id='" . htmlspecialchars($canvasId, ENT_QUOTES, 'UTF-8') . "'></canvas>
+            </div>
+
+            <script>
+                (function () {
+                    const ctx = document.getElementById('" . addslashes($canvasId) . "');
+
+                    if (!ctx || typeof Chart === 'undefined') {
+                        return;
+                    }
+
+                    const eps = 1e-15;
+                    const curveLabels = [];
+                    const curveLoss = [];
+                    const yTrue = " . $trueLabel . ";
+
+                    for (let p = 0.01; p <= 0.99; p += 0.01) {
+                        const pp = Math.min(1 - eps, Math.max(eps, p));
+                        // Binary log loss: -(y log p + (1 - y) log (1 - p))
+                        const loss = -(yTrue * Math.log(pp) + (1 - yTrue) * Math.log(1 - pp));
+                        curveLabels.push(p.toFixed(2));
+                        curveLoss.push(loss);
+                    }
+
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: curveLabels,
+                            datasets: [{
+                                label: 'Log loss for y = ' + yTrue,
+                                data: curveLoss,
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                tension: 0,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function (context) {
+                                            const p = parseFloat(context.label).toFixed(2);
+                                            const loss = context.parsed.y.toFixed(4);
+                                            return 'y = ' + yTrue + ', p = ' + p + ', loss = ' + loss;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Loss'
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Predicted probability p (for y = ' + yTrue + ')'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })();
+            </script>
+        ";
+
+        return $return;
+    }
+
+    public static function drawBarsChars(
+        array $values,
+        array $auxData,
+        string $canvasId = 'logLossPerSampleChart'
+    ): string {
+        $valuesJson = json_encode(array_values($values), JSON_THROW_ON_ERROR);
+        $auxJson    = json_encode(array_values($auxData), JSON_THROW_ON_ERROR);
+
+        $return = "
+        <div style='min-height:300px;'>
+            <canvas id='" . htmlspecialchars($canvasId, ENT_QUOTES, 'UTF-8') . "'></canvas>
+        </div>
+
+        <script>
+            (function () {
+                const ctx = document.getElementById('" . addslashes($canvasId) . "');
+
+                if (!ctx || typeof Chart === 'undefined') {
+                    return;
+                }
+
+                const values = " . $valuesJson . ";
+                const aux    = " . $auxJson . ";
+                const labels = values.map((_, i) => 'Sample ' + (i + 1));
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Per-sample Log loss',
+                            data: values,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        const i = context.dataIndex;
+                                        const p = (aux[i] * 100).toFixed(1);
+                                        const loss = context.parsed.y.toFixed(4);
+                                        return 'p = ' + p + '%, loss = ' + loss;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Loss'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Sample index'
+                                }
+                            }
+                        }
+                    }
+                });
+            })();
+        </script>
+    ";
+
+        return $return;
+    }
+
     public static function drawLinearRegression(
         array  $samples,
         array  $labels,
