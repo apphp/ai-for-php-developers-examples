@@ -6,7 +6,7 @@
 // $yHat — values predicted by the model.
 // The function returns a single number: the average squared error over all observations.
 function mse(array $y, array $yHat): float {
-    $n = max(count($y), 1);
+    $n = count($y);
 
     $sum = 0.0;
 
@@ -16,5 +16,5 @@ function mse(array $y, array $yHat): float {
         $sum += $diff * $diff;
     }
 
-    return $sum / $n;
+    return $sum / max($n, 1);
 }
