@@ -113,11 +113,20 @@
 [data-theme="dark"] code pre span[style="color: #0000BB"]{
   color: #E7AB79 !important;
 }
+[data-theme="dark"] code pre span[style="color: #0000CC"]{
+  color: #E7AB79 !important;
+}
+[data-theme="dark"] code span[style="color: #0000CC"]{
+  color: #E7AB79 !important;
+}
 [data-theme="dark"] code pre span[style="color: #DD0000"]{
   color: #00a061 !important;
 }
 /* methods, functions, var names */
 [data-theme="dark"] code pre span[style="color: #007700"]{
+  color: #a2a0C3 !important;
+}
+[data-theme="dark"] code span[style="color: #006600"]{
   color: #a2a0C3 !important;
 }
 [data-theme="dark"] code pre span[style="color: #FF8000"]{
