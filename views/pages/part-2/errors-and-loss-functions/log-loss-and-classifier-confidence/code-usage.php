@@ -6,7 +6,13 @@ require_once __DIR__ . '/code.php';
 $yTrue = [1, 0, 1, 0, 1];
 
 // Scenario A: classifier is fairly confident and mostly correct.
-$probsA = [0.95, 0.10, 0.90, 0.20, 0.85];
+$probsA = [
+    $probsAValues[0] ?? 0.95,
+    $probsAValues[1] ?? 0.10,
+    $probsAValues[2] ?? 0.90,
+    $probsAValues[3] ?? 0.20,
+    $probsAValues[4] ?? 0.85
+];
 
 // Scenario B: classifier gives similar class predictions by threshold 0.5,
 // but with much less calibrated probabilities (overconfident on mistakes).

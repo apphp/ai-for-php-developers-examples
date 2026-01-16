@@ -274,7 +274,10 @@ class Chart {
     public static function drawBarsChars(
         array $values,
         array $auxData,
-        string $canvasId = 'logLossPerSampleChart'
+        string $canvasId = 'logLossPerSampleChart',
+        string $datasetLabel = 'Dataset Label',
+        string $functionLabel = 'Loss',
+        string $xAxisLabel = 'Axis Label',
     ): string {
         $valuesJson = json_encode(array_values($values), JSON_THROW_ON_ERROR);
         $auxJson    = json_encode(array_values($auxData), JSON_THROW_ON_ERROR);
@@ -301,7 +304,7 @@ class Chart {
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Per-sample Log loss',
+                            label: '".htmlspecialchars($datasetLabel, ENT_QUOTES, 'UTF-8')."',
                             data: values,
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             borderColor: 'rgba(255, 99, 132, 1)',
@@ -330,13 +333,13 @@ class Chart {
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: 'Loss'
+                                    text: '".htmlspecialchars($functionLabel, ENT_QUOTES, 'UTF-8')."'
                                 }
                             },
                             x: {
                                 title: {
                                     display: true,
-                                    text: 'Sample index'
+                                    text: '".htmlspecialchars($xAxisLabel, ENT_QUOTES, 'UTF-8')."'
                                 }
                             }
                         }

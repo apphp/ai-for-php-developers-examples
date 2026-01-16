@@ -59,6 +59,7 @@ return [
     'common.open_in_full_screen' => 'Открыть в полноэкранном режиме',
     'common.git_repository' => 'GitHub Репозиторий',
     'common.back' => 'Назад',
+    'common.example' => 'Пример',
 
     // Экосистема ML в PHP (intro)
     'ml_ecosystem.title' => 'Экосистема ML в PHP',
@@ -105,6 +106,10 @@ return [
     'errors_loss.case3.intro2' => 'Две модели могут давать одинаковые итоговые метки классов при пороге 0.5, но при этом одна из них будет сильно лучше с точки зрения вероятностей. Log loss делает эту разницу видимой в виде одного числа.',
     'errors_loss.case3.logloss_description' => 'Для бинарной классификации log loss определяется так:<br><br>$\text{LogLoss} = -\frac{1}{n} \sum_{i=1}^{n} [y_i \log(p_i) + (1 - y_i) \log(1 - p_i)]$, где $y_i$ — истинная метка (0 или 1), а $p_i$ — предсказанная вероятность класса 1.',
     'errors_loss.case3.explanation' => 'Даже если предсказанные классы совпадают, модель, дающая вероятности ближе к реальности, будет иметь меньший log loss. Особо сильно наказываются уверенные, но ошибочные прогнозы.',
+    'errors_loss.case3.per_sample_heading' => 'Вклад отдельных примеров в Log loss (модель A)',
+    'errors_loss.case3.curve_heading' => 'Log loss как функция вероятности (y = 1)',
+    'errors_loss.case3.per_sample_dataset_label' => 'Per-sample Log loss',
+    'errors_loss.case3.sample_index_label' => 'Sample index',
     'errors_loss.case4_title' => 'Кейс 4. Одинаковая точность — разный log loss',
     'errors_loss.case5_title' => 'Кейс 5. Обучение модели как минимизация ошибки',
 

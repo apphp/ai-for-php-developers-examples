@@ -15,12 +15,23 @@ function logLoss(array $yTrue, array $yProb): float {
     $sum = 0.0;
 
     for ($i = 0; $i < $n; $i++) {
-        $y = (int) $yTrue[$i];
-        $p = max($eps, min(1.0 - $eps, (float) $yProb[$i]));
-
-        // For binary classification: -[y * log(p) + (1 - y) * log(1 - p)]
-        $sum += -($y * log($p) + (1 - $y) * log(1 - $p));
+        $sum += logLossTerm($yTrue[$i], $eps, $yProb[$i]);
     }
 
     return $sum / $n;
+}
+
+/**
+ * Get log loss term for a single sample.
+ * @param $yTrue
+ * @param float $eps
+ * @param $yProb
+ * @return float|int
+ */
+function logLossTerm($yTrue, float $eps, $yProb): int|float {
+    $y = (int)$yTrue;
+    $p = max($eps, min(1.0 - $eps, (float)$yProb));
+
+    // For binary classification: -[y * log(p) + (1 - y) * log(1 - p)]
+    return -($y * log($p) + (1 - $y) * log(1 - $p));
 }
