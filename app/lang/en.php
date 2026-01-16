@@ -101,6 +101,10 @@ return [
     'errors_loss.case2.result_paragraph2' => 'Even if the difference between the MSE values is small, it still reflects a systematic advantage of one model over the other within the chosen philosophy of error.',
     'errors_loss.case2.result_paragraph3' => 'Even if the curves look almost identical visually, the loss gives a numerical basis for making a choice.',
     'errors_loss.case3_title' => 'Case 3. Log loss and classifier confidence',
+    'errors_loss.case3.intro1' => 'In classification tasks, we often care not only about what class the model predicts, but also about how confident it is in that prediction. Log loss (cross-entropy loss) is a natural way to penalize overconfident mistakes and reward well-calibrated probabilities.',
+    'errors_loss.case3.intro2' => 'Two models may give the same final class labels after thresholding at 0.5, but one of them can still be much better calibrated. Log loss makes this difference visible in a single number.',
+    'errors_loss.case3.logloss_description' => 'For binary classification, log loss is defined as:<br><br>$\text{LogLoss} = -\frac{1}{n} \sum_{i=1}^{n} [y_i \log(p_i) + (1 - y_i) \log(1 - p_i)]$, where $y_i$ is the true label (0 or 1) and $p_i$ is the predicted probability of class 1.',
+    'errors_loss.case3.explanation' => 'Even when the predicted class labels coincide, a model that assigns probabilities closer to the true outcomes will achieve a lower log loss. Overconfident wrong predictions are punished especially strongly.',
     'errors_loss.case4_title' => 'Case 4. Same accuracy – different log loss',
     'errors_loss.case5_title' => 'Case 5. Training a model as minimizing error',
 

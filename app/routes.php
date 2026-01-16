@@ -255,6 +255,27 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/model-selection-using-a-loss-function/code-run.php');
         });
+        $app->get('/case-3/log-loss-and-classifier-confidence', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case3_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/log-loss-and-classifier-confidence/index.php');
+        });
+        $app->get('/case-3/log-loss-and-classifier-confidence/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case3_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions/case-3/log-loss-and-classifier-confidence'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/log-loss-and-classifier-confidence/code-run.php');
+        });
 
     });
     $app->group('/linear-regression-as-basic-model', function ($app) use ($renderer): void {

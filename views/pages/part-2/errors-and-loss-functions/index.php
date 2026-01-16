@@ -19,7 +19,7 @@
             <?= create_link('part-2/errors-and-loss-functions/case-2/model-selection-using-a-loss-function', __t('errors_loss.case2_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-3/...', __t('errors_loss.case3_title'), true) ?>
+            <?= create_link('part-2/errors-and-loss-functions/case-3/log-loss-and-classifier-confidence', __t('errors_loss.case3_title')) ?>
         </li>
         <li>
             <?= create_link('part-2/errors-and-loss-functions/case-4/...', __t('errors_loss.case4_title'), true) ?>
