@@ -280,7 +280,7 @@ class Chart {
         string $xAxisLabel = 'Axis Label',
     ): string {
         $valuesJson = json_encode(array_values($values), JSON_THROW_ON_ERROR);
-        $auxJson    = json_encode(array_values($auxData), JSON_THROW_ON_ERROR);
+        $auxJson = json_encode(array_values($auxData), JSON_THROW_ON_ERROR);
 
         $return = "
         <div style='min-height:300px;'>
@@ -295,8 +295,8 @@ class Chart {
                     return;
                 }
 
-                const values = " . $valuesJson . ";
-                const aux    = " . $auxJson . ";
+                const values = " . $valuesJson . ';
+                const aux    = ' . $auxJson . ";
                 const labels = values.map((_, i) => 'Sample ' + (i + 1));
 
                 new Chart(ctx, {
@@ -304,7 +304,7 @@ class Chart {
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: '".htmlspecialchars($datasetLabel, ENT_QUOTES, 'UTF-8')."',
+                            label: '" . htmlspecialchars($datasetLabel, ENT_QUOTES, 'UTF-8') . "',
                             data: values,
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             borderColor: 'rgba(255, 99, 132, 1)',
@@ -333,13 +333,13 @@ class Chart {
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: '".htmlspecialchars($functionLabel, ENT_QUOTES, 'UTF-8')."'
+                                    text: '" . htmlspecialchars($functionLabel, ENT_QUOTES, 'UTF-8') . "'
                                 }
                             },
                             x: {
                                 title: {
                                     display: true,
-                                    text: '".htmlspecialchars($xAxisLabel, ENT_QUOTES, 'UTF-8')."'
+                                    text: '" . htmlspecialchars($xAxisLabel, ENT_QUOTES, 'UTF-8') . "'
                                 }
                             }
                         }

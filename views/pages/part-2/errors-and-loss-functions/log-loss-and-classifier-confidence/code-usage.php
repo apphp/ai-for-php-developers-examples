@@ -11,7 +11,7 @@ $probsA = [
     $probsAValues[1] ?? 0.10,
     $probsAValues[2] ?? 0.90,
     $probsAValues[3] ?? 0.20,
-    $probsAValues[4] ?? 0.85
+    $probsAValues[4] ?? 0.85,
 ];
 
 // Scenario B: classifier gives similar class predictions by threshold 0.5,
