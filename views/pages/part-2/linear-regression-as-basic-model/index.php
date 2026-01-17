@@ -16,16 +16,16 @@
             <?= create_link('part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters', __t('linear_regression.case1_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-2/...', __t('linear_regression.case2_title'), true) ?>
+            <?= create_link('part-2/linear-regression-as-basic-model/case-2/developer-task-completion-time', __t('linear_regression.case2_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-3/...', __t('linear_regression.case3_title'), true) ?>
+            <?= create_link('part-2/linear-regression-as-basic-model/case-3/...', __t('linear_regression.case3_title'), true) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-4/...', __t('linear_regression.case4_title'), true) ?>
+            <?= create_link('part-2/linear-regression-as-basic-model/case-4/...', __t('linear_regression.case4_title'), true) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-5/...', __t('linear_regression.case5_title'), true) ?>
+            <?= create_link('part-2/linear-regression-as-basic-model/case-5/...', __t('linear_regression.case5_title'), true) ?>
         </li>
     </ul>
 </div>

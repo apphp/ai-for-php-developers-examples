@@ -131,6 +131,23 @@ return [
     'linear_regression.case1.feature_floors' => 'Number of floors: 12',
     'linear_regression.case1.feature_bias' => 'Deviation: 1',
 
+    // Linear regression: Case 2 (developer task completion time)
+    'linear_regression.case2.intro1' => 'In real teams, the question “how long will this task take?” comes up almost every day. Release dates, developer workload, and business expectations all depend on it. Estimates are usually given by gut feeling — based on the team lead’s or the developer’s own experience. Linear regression lets us formalize this process and build a baseline model that predicts time based on task features.',
+    'linear_regression.case2.intro2' => 'Suppose we have historical task data: for each task we know how many hours it actually took and a feature vector $\\mathbf{x} = (x_1, x_2, x_3, x_4)$, where:',
+    'linear_regression.case2.feature_x1' => '$x_1$ — story points (a measure of task complexity);',
+    'linear_regression.case2.feature_x2' => '$x_2$ — number of files touched by the change;',
+    'linear_regression.case2.feature_x3' => '$x_3$ — number of changed lines (code diff);',
+    'linear_regression.case2.feature_x4' => '$x_4$ — developer experience (for example, in years or as an encoded level junior/middle/senior);',
+    'linear_regression.case2.formula' => 'We want to predict the target quantity – the actual task completion time in hours. Linear regression in this case defines a simple, interpretable model $ŷ = w_0 + w_1 x_1 + w_2 x_2 + w_3 x_3 + w_4 x_4$, where the components of $\\mathbf{x}$ describe the task and the coefficients $w_1, \\dots, w_4$ and intercept $w_0$ are fitted on historical data.',
+
+    'linear_regression.case2.rubix_intro' => 'In this example we use Ridge linear regression from RubixML to predict a developer’s task completion time based on several numeric features and at the same time inspect the model weights and bias.',
+    'linear_regression.case2.explain_intro' => 'Now the model is explainable (a weight is a coefficient):',
+    'linear_regression.case2.explain_item1' => 'the weight at story points shows how many hours on average one additional SP adds;',
+    'linear_regression.case2.explain_item2' => 'the weight at the number of files reflects context-switching overhead;',
+    'linear_regression.case2.explain_item3' => 'the weight at the number of lines often correlates with the amount of manual work;',
+    'linear_regression.case2.explain_item4' => 'a negative weight at developer experience is expected and logical (the more experience, the less time is usually needed for the same task, so the relationship is inverse and the weight becomes negative);',
+    'linear_regression.case2.explain_outro' => 'This kind of model can already be discussed with the team, and the feature set can be adjusted consciously.',
+
     // Case 1 charts UI (code-run.php)
     'linear_regression.case1.chart_price_vs_area' => 'Price vs Area',
     'linear_regression.case1.chart_price_vs_floor' => 'Price vs Floor',
