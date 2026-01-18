@@ -19,7 +19,7 @@
             <?= create_link('part-2/linear-regression-as-basic-model/case-2/developer-task-completion-time', __t('linear_regression.case2_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/linear-regression-as-basic-model/case-3/...', __t('linear_regression.case3_title'), true) ?>
+            <?= create_link('part-2/linear-regression-as-basic-model/case-3/server-resource-consumption', __t('linear_regression.case3_title')) ?>
         </li>
         <li>
             <?= create_link('part-2/linear-regression-as-basic-model/case-4/...', __t('linear_regression.case4_title'), true) ?>

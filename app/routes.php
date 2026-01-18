@@ -341,6 +341,27 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/linear-regression-as-basic-model/developer-task-completion-time/code-run.php');
         });
+        $app->get('/case-3/server-resource-consumption', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('linear_regression.heading'), 'url' => APP_URL . 'part-2/linear-regression-as-basic-model'],
+                ['label' => __t('linear_regression.case3_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/linear-regression-as-basic-model/server-resource-consumption/index.php');
+        });
+        $app->get('/case-3/server-resource-consumption/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('linear_regression.heading'), 'url' => APP_URL . 'part-2/linear-regression-as-basic-model'],
+                ['label' => __t('linear_regression.case3_title'), 'url' => APP_URL . 'part-2/linear-regression-as-basic-model/case-3/server-resource-consumption'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/linear-regression-as-basic-model/server-resource-consumption/code-run.php');
+        });
     });
     $app->group('/gradient-descent-on-fingers', function ($app) use ($renderer): void {
         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
