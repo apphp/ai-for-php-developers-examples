@@ -32,7 +32,7 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                         <span data-feather="file-text">• </span><small><?= __t('nav.getting_started'); ?></small>
                     </a>
                     <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/ml-ecosystem-in-php') ? ' active' : '' ?>" href="<?=APP_URL?>ml-ecosystem-in-php">
-                        <span data-feather="file-text">• </span><small>Экосистема ML в PHP</small>
+                        <span data-feather="file-text">• </span><small><?= __t('ml_ecosystem.title'); ?></small>
                     </a>
                 </li>
             </ul>
