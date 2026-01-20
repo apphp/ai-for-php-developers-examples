@@ -394,6 +394,17 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/implementation/code-run.php');
         });
+        $app->get('/implementation/vectors-code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.implementation'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/implementation/vectors-code-run.php');
+        });
     });
 });
 

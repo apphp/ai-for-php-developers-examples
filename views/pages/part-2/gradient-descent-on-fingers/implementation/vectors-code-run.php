@@ -25,7 +25,7 @@ $b = 0;
 ob_start();
 //////////////////////////////
 
-include('code-usage.php');
+include('vectors-code-usage.php');
 
 //////////////////////////////
 $result = ob_get_clean();
@@ -41,15 +41,15 @@ $memoryEnd = memory_get_usage();
 <h4><?= __t('gradient_descent.implementation'); ?></h4>
 <br>
 
-<?= create_show_code_button(__t('gradient_descent.impl_php_from_scratch'), 'part-2/gradient-descent-on-fingers/implementation'); ?>
+<?= create_show_code_button(__t('gradient_descent.impl_php_vector_version'), 'part-2/gradient-descent-on-fingers/implementation'); ?>
 
 <div>
     <p>
-        <?= __t('gradient_descent.minimal_example_intro'); ?>
+        <?= __t('gradient_descent.more_features_vectors_hint'); ?>
     </p>
 </div>
 
-<?= create_example_of_use_block(dirname(__FILE__) . '/code.php'); ?>
+<?= create_example_of_use_block(dirname(__FILE__) . '/vectors-code-usage.php'); ?>
 
 <div class="container-fluid px-2">
     <div class="row justify-content-start p-0">
@@ -58,8 +58,8 @@ $memoryEnd = memory_get_usage();
 
             <p>
                 <?= __t('gradient_descent.result_hint'); ?>
-                $y = <?= (stripos((string)$w, 'e') !== false) ? $w : number_format((float)$w, 3, '.', '') ?>x
-                + <?= (stripos((string)$b, 'e') !== false) ? $b : number_format((float)$b, 3, '.', '') ?>$
+                $y = <?= (stripos((string)$w[0], 'e') !== false) ? $w[0] : number_format((float)$w[0], 3, '.', '') ?>x
+                + <?= (stripos((string)$w[1], 'e') !== false) ? $w[1] : number_format((float)$w[1], 3, '.', '') ?>$
             </p>
         </div>
         <div class="col-md-12 col-lg-5 p-0 m-0">
@@ -67,7 +67,7 @@ $memoryEnd = memory_get_usage();
                 <div>
                     <b><?= __t('gradient_descent.debug_title'); ?>:</b>
                 </div>
-                <form class="mt-2" action="<?= APP_URL ?>part-2/gradient-descent-on-fingers/implementation/code-run" type="GET">
+                <form class="mt-2" action="<?= APP_URL ?>part-2/gradient-descent-on-fingers/implementation/vectors-code-run" type="GET">
                     <?= create_form_features($gradientDebugOptions, [$gradientDebug], fieldName: 'gradientDebug', type: 'single-checkbox', class: 'mb-2'); ?>
                     <br>
                     <div>

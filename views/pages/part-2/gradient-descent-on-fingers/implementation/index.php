@@ -5,7 +5,7 @@
 <h4><?= __t('gradient_descent.implementation'); ?></h4>
 <br>
 
-<?= create_run_code_button(__t('common.implementation_in_pure_php'), 'part-2/gradient-descent-on-fingers/implementation/code-run'); ?>
+<?= create_run_code_button(__t('gradient_descent.impl_php_from_scratch'), 'part-2/gradient-descent-on-fingers/implementation/code-run'); ?>
 
 <div>
     <p>
@@ -19,15 +19,15 @@
 
 <hr>
 
-<?//= create_run_code_button(__t('linear_regression.case1.rubix_impl_title'), 'part-2/linear-regression-as-basic-model/case-1/apartment-valuation-based-on-parameters/rubix-code-run');?>
+<?= create_run_code_button(__t('gradient_descent.impl_php_vector_version'), 'part-2/gradient-descent-on-fingers/implementation/vectors-code-run'); ?>
 
 <div>
     <p>
-        <?//= __t('linear_regression.case1.rubix_impl_intro');?>
+        <?= __t('gradient_descent.more_features_vectors_hint'); ?>
     </p>
 </div>
 
 <div>
-    <?//= create_example_of_use_links(__DIR__ . '/rubix-code.php', opened: false, copyButtonId: 2, expandButtonId: 2);?>
+    <?= create_example_of_use_links(__DIR__ . '/vectors-code.php', opened: false, copyButtonId: 2, expandButtonId: 2);?>
 </div>
 <br><br>

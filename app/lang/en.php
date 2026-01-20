@@ -194,6 +194,9 @@ return [
     'gradient_descent.debug_title' => 'Gradient descent debug',
     'gradient_descent.learning_rate' => 'Learning rate',
     'gradient_descent.epochs' => 'Epochs',
+    'gradient_descent.impl_php_from_scratch' => 'Implementation in PHP from scratch',
+    'gradient_descent.impl_php_vector_version' => 'Implementation in PHP – vector version',
+    'gradient_descent.more_features_vectors_hint' => 'When there are more features, it is more convenient to think in vectors.',
 
     // Part III: Probability as degree of confidence
     'probability_confidence.intro' => 'When developers hear the word "probability", they often imagine dice, coin flips, and the school formula "favorable outcomes divided by all possible outcomes". This is useful, but a very narrow picture. In machine learning and applied analytics, probability almost always means something else – the degree of our confidence in a statement given the available data.',
