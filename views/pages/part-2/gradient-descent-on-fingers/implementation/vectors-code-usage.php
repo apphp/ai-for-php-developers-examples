@@ -64,7 +64,18 @@ for ($epoch = 0; $epoch < $epochs; $epoch++) {
 
     // Update weights by moving against the gradient
     foreach ($w as $j => $_) {
+        $oldW = $w[0];
+        $oldB = $w[1];
+
         $w[$j] -= $learningRate * ($dw[$j] / $n);
+
+        if (is_nan($w[0]) || is_infinite($w[0]) || is_nan($w[1]) || is_infinite($w[1])) {
+            $w[0] = $oldW;
+            $w[1] = $oldB;
+            $debugResult .= "w = {$oldW}, b = {$oldB}\n";
+            $debugResult .= "Stopped at epoch {$epoch} because of overflow\n";
+            break;
+        }
 
         if ($gradientDebug) {
             $debugResult .= "w = {$w[0]}, b = {$w[1]}\n";
