@@ -36,8 +36,8 @@ $y = [3, 4, 5, 6];
 $w = [0.0, 0.0];
 
 // Training hyperparameters
-$learningRate = 0.0001;
-$epochs = 1000;
+$learningRate = $learningRateValue;
+$epochs = $epochsValue;
 $n = count($X);
 
 // Gradient descent
