@@ -12,7 +12,7 @@
             <?= create_link('part-3/probability-as-degree-of-confidence/implementation', __t('probability_confidence.link_softmax_example')) ?>
         </li>
         <li>
-            <?= create_link('part-3/errors-and-loss-functions/case-1/...', __t('probability_confidence.case1_title'), true) ?>
+            <?= create_link('part-3/probability-as-degree-of-confidence/case-1/spam-filter-probability-vs-decision', __t('probability_confidence.case1_title')) ?>
         </li>
         <li>
             <?= create_link('part-3/errors-and-loss-functions/case-2/...', __t('probability_confidence.case2_title'), true) ?>

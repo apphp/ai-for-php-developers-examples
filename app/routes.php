@@ -443,6 +443,27 @@ $app->group('/part-3', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/implementation/code-run.php');
         });
+        $app->get('/case-1/spam-filter-probability-vs-decision', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_probability_confidence'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('probability_confidence.case1_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/spam-filter-probability-vs-decision/index.php');
+        });
+        $app->get('/case-1/spam-filter-probability-vs-decision/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_probability_confidence'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('probability_confidence.case1_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence/case-1/spam-filter-probability-vs-decision'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/spam-filter-probability-vs-decision/code-run.php');
+        });
     });
 });
 
