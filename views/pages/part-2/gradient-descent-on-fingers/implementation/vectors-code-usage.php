@@ -10,9 +10,11 @@ $debugResult = '';
 // Used to compute the prediction: ŷ = w · x
 function dot(array $a, array $b): float {
     $sum = 0.0;
+
     foreach ($a as $i => $v) {
         $sum += $v * $b[$i];
     }
+
     return $sum;
 }
 

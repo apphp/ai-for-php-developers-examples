@@ -15,10 +15,10 @@ $predictions = $model->predict($unlabeled);
 $weights = $model->coefficients();
 $bias = $model->bias();
 
-echo "Expected CPU load: " . round($predictions[0], 1) . "%" . PHP_EOL . PHP_EOL;
+echo 'Expected CPU load: ' . round($predictions[0], 1) . '%' . PHP_EOL . PHP_EOL;
 
-echo "Coefficients (feature weights):" . PHP_EOL;
-echo "0 - requests_per_min, 1 - avg_response_size_kb, 2 - active_users, 3 - cron_jobs, 4 - hour" . PHP_EOL;
+echo 'Coefficients (feature weights):' . PHP_EOL;
+echo '0 - requests_per_min, 1 - avg_response_size_kb, 2 - active_users, 3 - cron_jobs, 4 - hour' . PHP_EOL;
 print_r($weights);
 
-echo PHP_EOL . "Bias (intercept): " . $bias . PHP_EOL;
+echo PHP_EOL . 'Bias (intercept): ' . $bias . PHP_EOL;
