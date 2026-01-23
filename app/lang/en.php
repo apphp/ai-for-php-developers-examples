@@ -213,6 +213,8 @@ return [
 
     // Part III: Logistic regression cases
     'logistic_regression.intro' => 'Up to this point, we have talked about logistic regression as a model: formula, sigmoid, probability, decision boundary. All of this is important, but by itself remains theory. Cases are needed to show how this model works on real tasks. There will be no "perfect" examples here. The data may be simple or noisy, the features obvious or strange, the decisions not always clear-cut. That is normal. This is exactly how logistic regression is used in practice.',
+    'logistic_regression.case1.php_intro' => 'Customer churn is one of the most typical binary classification tasks. A user either stays in the product or leaves. What we really care about is not just the final "yes or no", but the probability of churn: how high the risk is and whether we should react.',
+    'logistic_regression.case1.php_intro2' => 'This is exactly where logistic regression fits especially well. We will build a simple model in pure PHP that estimates the churn probability from user behavior and see how this probability is formed from features.',
     'logistic_regression.case1_title' => 'Case 1. Logistic regression for customer churn',
     'logistic_regression.case2_title' => 'Case 2. Newsletter subscription',
     'logistic_regression.case3_title' => 'Case 3. Spam or not spam',
@@ -221,5 +223,6 @@ return [
     'logistic_regression.case6_title' => 'Case 6. Fraud vs normal transaction',
     'logistic_regression.case7_title' => 'Case 7. Medical screening',
     'logistic_regression.case8_title' => 'Case 8. Equipment technical failure',
-
+    'logistic_regression.case1.rubix_intro' => 'In real projects, people rarely implement logistic regression from scratch. It is much more convenient to use existing libraries.',
+    'logistic_regression.case1.rubix_intro2' => 'The very same churn case implemented with RubixML becomes noticeably shorter and closer to how it is often done in production:',
 ];

@@ -475,6 +475,38 @@ $app->group('/part-3', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/index.php');
         });
+        $app->get('/case-1/client-churn', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_logistic_regression'), 'url' => APP_URL . 'part-3/logistic-regression'],
+                ['label' => __t('logistic_regression.case1_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/case-1/client-churn/index.php');
+        });
+        $app->get('/case-1/client-churn/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_logistic_regression'), 'url' => APP_URL . 'part-3/logistic-regression'],
+                ['label' => __t('logistic_regression.case1_title'), 'url' => APP_URL . 'part-3/logistic-regression/case-1/client-churn'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/case-1/client-churn/code-run.php');
+        });
+        $app->get('/case-1/client-churn/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_logistic_regression'), 'url' => APP_URL . 'part-3/logistic-regression'],
+                ['label' => __t('logistic_regression.case1_title'), 'url' => APP_URL . 'part-3/logistic-regression/case-1/client-churn'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/case-1/client-churn/rubix-code-run.php');
+        });
     });
 });
 
