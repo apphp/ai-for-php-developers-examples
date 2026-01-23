@@ -22,6 +22,7 @@ return [
     // Part III navigation
     'nav.part3_title' => 'Part III. Classification and probabilities',
     'nav.part3_probability_confidence' => 'Probability as degree of confidence',
+    'nav.part3_logistic_regression' => 'Logistic regression',
     'nav.part3_softmax_example' => 'Probability example with softmax',
 
     'home.title' => 'Home',
@@ -209,4 +210,16 @@ return [
 
     'probability_confidence.logits_paragraph' => 'In many machine learning models, the outputs are not probabilities, but so‑called scores (logits). These are just numbers that reflect the model\'s relative confidence in each option. They can be anything — positive, negative, large or small — and by themselves they are not interpreted as probabilities. To turn such scores into proper probabilities, we use the softmax function.',
     'probability_confidence.softmax_result_explanation' => 'Now we have a correct probability distribution: each value lies in the range from 0 to 1; the sum of all values equals 1; and the numbers can be interpreted as the model\'s degree of confidence.',
+
+    // Part III: Logistic regression cases
+    'logistic_regression.intro' => 'Up to this point, we have talked about logistic regression as a model: formula, sigmoid, probability, decision boundary. All of this is important, but by itself remains theory. Cases are needed to show how this model works on real tasks. There will be no "perfect" examples here. The data may be simple or noisy, the features obvious or strange, the decisions not always clear-cut. That is normal. This is exactly how logistic regression is used in practice.',
+    'logistic_regression.case1_title' => 'Case 1. Logistic regression for customer churn',
+    'logistic_regression.case2_title' => 'Case 2. Newsletter subscription',
+    'logistic_regression.case3_title' => 'Case 3. Spam or not spam',
+    'logistic_regression.case4_title' => 'Case 4. Ad click (CTR)',
+    'logistic_regression.case5_title' => 'Case 5. Loan approval',
+    'logistic_regression.case6_title' => 'Case 6. Fraud vs normal transaction',
+    'logistic_regression.case7_title' => 'Case 7. Medical screening',
+    'logistic_regression.case8_title' => 'Case 8. Equipment technical failure',
+
 ];

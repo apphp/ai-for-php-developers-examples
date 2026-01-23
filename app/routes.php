@@ -465,6 +465,17 @@ $app->group('/part-3', function ($app) use ($renderer): void {
             return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/spam-filter-probability-vs-decision/code-run.php');
         });
     });
+    $app->group('/logistic-regression', function ($app) use ($renderer): void {
+        $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_logistic_regression'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/index.php');
+        });
+    });
 });
 
 
