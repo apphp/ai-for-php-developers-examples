@@ -99,6 +99,11 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                         <span data-feather="file-text">• </span><small><?= __t('nav.part3_logistic_regression'); ?></small>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-3/why-naive-bayes-works') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small>Почему наивный Байес работает</small>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

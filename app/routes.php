@@ -483,7 +483,7 @@ $app->group('/part-3', function ($app) use ($renderer): void {
                 ['label' => __t('logistic_regression.case1_title'), 'url' => null],
             ];
 
-            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/case-1/client-churn/index.php');
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/client-churn/index.php');
         });
         $app->get('/case-1/client-churn/code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
@@ -494,7 +494,7 @@ $app->group('/part-3', function ($app) use ($renderer): void {
                 ['label' => __t('nav.code_run'), null],
             ];
 
-            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/case-1/client-churn/code-run.php');
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/client-churn/code-run.php');
         });
         $app->get('/case-1/client-churn/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
@@ -505,7 +505,50 @@ $app->group('/part-3', function ($app) use ($renderer): void {
                 ['label' => __t('nav.code_run'), null],
             ];
 
-            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/case-1/client-churn/rubix-code-run.php');
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/client-churn/rubix-code-run.php');
+        });
+    });
+    $app->group('/why-naive-bayes-works', function ($app) use ($renderer): void {
+        $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => 'Почему наивный Байес работает', 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/index.php');
+        });
+        $app->get('/case-1/categorical-features-and-frequencies', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => 'Почему наивный Байес работает', 'url' => APP_URL . 'part-3/why-naive-bayes-works'],
+                ['label' => 'Кейс 1. Категориальные признаки и частоты', 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies/index.php');
+        });
+        $app->get('/case-1/categorical-features-and-frequencies/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => 'Почему наивный Байес работает', 'url' => APP_URL . 'part-3/why-naive-bayes-works'],
+                ['label' => 'Кейс 1. Категориальные признаки и частоты', 'url' => APP_URL . 'part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies/code-run.php');
+        });
+        $app->get('/case-1/categorical-features-and-frequencies/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => 'Почему наивный Байес работает', 'url' => APP_URL . 'part-3/why-naive-bayes-works'],
+                ['label' => 'Кейс 1. Категориальные признаки и частоты', 'url' => APP_URL . 'part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies/rubix-code-run.php');
         });
     });
 });
