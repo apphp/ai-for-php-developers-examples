@@ -14,18 +14,17 @@ $memoryEnd = memory_get_usage();
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Почему наивный Байес работает</h1>
+    <h1 class="h2"><?= __t('why_naive_bayes_works.title'); ?></h1>
 </div>
 
-<h4>Кейс 1. Категориальные признаки и частоты</h4>
+<h4><?= __t('why_naive_bayes_works.case1.title'); ?></h4>
 <br>
 
 <?= create_show_code_button(__t('linear_regression.case1.rubix_impl_title'), 'part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies'); ?>
 
 <div>
     <p>
-        Здесь тот же кейс реализован через RubixML: мы обучаем наивный Байес на тех же данных и
-        смотрим, какой класс модель назначит новому объекту.
+        <?= __t('why_naive_bayes_works.case1.rubix_run_intro'); ?>
     </p>
 </div>
 
@@ -34,5 +33,10 @@ $memoryEnd = memory_get_usage();
 <hr>
 
 <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
+<div class="mt-3">
+    <p>
+        <?= __t('why_naive_bayes_works.case1.rubix_result_explanation'); ?>
+    </p>
+</div>
 <br><br>
 

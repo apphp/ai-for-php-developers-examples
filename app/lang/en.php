@@ -225,4 +225,12 @@ return [
     'logistic_regression.case8_title' => 'Case 8. Equipment technical failure',
     'logistic_regression.case1.rubix_intro' => 'In real projects, people rarely implement logistic regression from scratch. It is much more convenient to use existing libraries.',
     'logistic_regression.case1.rubix_intro2' => 'The very same churn case implemented with RubixML becomes noticeably shorter and closer to how it is often done in production:',
+    'why_naive_bayes_works.title' => 'Why Naive Bayes works',
+    'why_naive_bayes_works.case1.title' => 'Case 1. Categorical features and frequencies',
+    'why_naive_bayes_works.case1.php_intro' => 'In this case we look at the simplest Naive Bayes with categorical features. We will explicitly count per-class frequencies, convert them into probabilities, and classify a new user.',
+    'why_naive_bayes_works.case1.rubix_intro' => 'Then we implement the same example using RubixML and see how the same logic is expressed at the library level.',
+    'why_naive_bayes_works.case1.php_run_intro' => 'In this example we implement Naive Bayes by hand for a pair of simple categorical features and see what log-probability scores we get for each class.',
+    'why_naive_bayes_works.case1.php_result_explanation' => 'The output is shown as <strong>logarithms</strong> of the probability scores for each class. The larger the value (i.e. closer to 0), the more likely the class. We sum log-probabilities per feature and apply Laplace smoothing, so after sorting the first class is the predicted one.',
+    'why_naive_bayes_works.case1.rubix_run_intro' => 'Here the same case is implemented with RubixML: we train Naive Bayes on the same data and see which class the model assigns to a new sample.',
+    'why_naive_bayes_works.case1.rubix_result_explanation' => 'RubixML returns the predicted class label for the given sample. Under the hood it applies the same Naive Bayes idea (class prior × conditional likelihoods), so the result should match the pure PHP implementation for the same data.',
 ];
