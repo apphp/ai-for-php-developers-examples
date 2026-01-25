@@ -14,7 +14,7 @@ foreach ($classCounts as $class => $count) {
 
     foreach ($input as $feature => $value) {
         // Booleans become 0/1 keys in PHP arrays.
-        $valueKey = (int) $value;
+        $valueKey = (int)$value;
 
         // Count how often feature=value occurs in this class.
         $featureCount = $featureCounts[$class][$feature][$valueKey] ?? 0;
