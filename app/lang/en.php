@@ -25,6 +25,11 @@ return [
     'nav.part3_logistic_regression' => 'Logistic regression',
     'nav.part3_softmax_example' => 'Probability example with softmax',
 
+    // Part IV navigation
+    'nav.part4_title' => 'Part IV. Proximity and data structure',
+    'nav.part4_knn_local_solutions' => 'The k-nearest neighbors algorithm and local solutions',
+    'nav.part4_decision_trees_space_partitioning' => 'Decision Trees and space partitioning',
+
     'home.title' => 'Home',
     'home.heading' => 'Getting Started',
     'home.intro' => 'This is an examples for "AI for PHP Developers" book.',
@@ -233,4 +238,10 @@ return [
     'why_naive_bayes_works.case1.php_result_explanation' => 'The output is shown as <strong>logarithms</strong> of the probability scores for each class. The larger the value (i.e. closer to 0), the more likely the class. We sum log-probabilities per feature and apply Laplace smoothing, so after sorting the first class is the predicted one.',
     'why_naive_bayes_works.case1.rubix_run_intro' => 'Here the same case is implemented with RubixML: we train Naive Bayes on the same data and see which class the model assigns to a new sample.',
     'why_naive_bayes_works.case1.rubix_result_explanation' => 'RubixML returns the predicted class label for the given sample. Under the hood it applies the same Naive Bayes idea (class prior × conditional likelihoods), so the result should match the pure PHP implementation for the same data.',
+
+    // Part IV: k-NN and local solutions
+    'knn_local_solutions.index.intro' => 'The k-nearest neighbors (k-NN) algorithm is one of the most intuitive yet fundamental machine learning algorithms. It makes almost no assumptions about the data, does not train a parametric model, but instead stores the training examples and relies on a simple, almost geometric idea: similar objects should have similar answers.',
+    'knn_local_solutions.index.case1' => 'Case 1. Customer classification by behavior',
+    'knn_local_solutions.index.case2' => 'Case 2. Regression: apartment price estimation',
+    'knn_local_solutions.index.case3' => 'Case 3. Classification with RubixML',
 ];

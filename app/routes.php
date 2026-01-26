@@ -3,6 +3,7 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
+use Slim\Exception\HttpNotFoundException;
 
 // Determine current language once per request
 $currentLang = get_current_language();
@@ -553,11 +554,30 @@ $app->group('/part-3', function ($app) use ($renderer): void {
     });
 });
 
+// ---------------------------------------------------
+// Part IV. Proximity and data structure
+// ---------------------------------------------------
+$app->group('/part-4', function ($app) use ($renderer): void {
+    $app->group('/k-nearest-neighbors-algorithm-and-local-solutions', function ($app) use ($renderer): void {
+        $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions'],
+                ['label' => __t('nav.part4_knn_local_solutions'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/k-nearest-neighbors-algorithm-and-local-solutions/index.php');
+        });
+    });
+});
+
+
+/* ****** */
 
 // 404 handler: render standalone 404 page (no layout)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $errorMiddleware->setErrorHandler(
-    \Slim\Exception\HttpNotFoundException::class,
+    HttpNotFoundException::class,
     function (\Psr\Http\Message\ServerRequestInterface $request, \Throwable $exception, bool $displayErrorDetails): Response {
         $response = new \Slim\Psr7\Response(404);
 

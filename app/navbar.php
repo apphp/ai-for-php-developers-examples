@@ -101,10 +101,29 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                 </li>
                 <li class="nav-item">
                     <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-3/why-naive-bayes-works') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
-                        <span data-feather="file-text">• </span><small>Почему наивный Байес работает</small>
+                        <span data-feather="file-text">• </span><small><?= __t('why_naive_bayes_works.title'); ?></small>
                     </a>
                 </li>
             </ul>
+
+            <!-- PART IV -->
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span><i class="fas fa-book me-1"></i> <?= __t('nav.part4_title'); ?></span>
+            </h6>
+
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-4/k-nearest-neighbors-algorithm-and-local-solutions') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part4_knn_local_solutions'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-3/logistic-regression') ? ' active' : '' ?>" --href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part4_decision_trees_space_partitioning'); ?></small>
+                    </a>
+                </li>
+            </ul>
+
         </div>
     </div>
 </nav>
