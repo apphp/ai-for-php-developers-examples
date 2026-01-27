@@ -4,6 +4,7 @@
 function euclideanDistance(array $a, array $b): float {
     // Euclidean distance between two vectors (points).
     $sum = 0.0;
+
     foreach ($a as $i => $value) {
         $sum += ($value - $b[$i]) ** 2;
     }
@@ -39,11 +40,12 @@ foreach ($dataset as [$point, $label]) {
 }
 
 // Sort by distance (nearest first) and take k closest samples.
-usort($distances, fn($a, $b) => $a['distance'] <=> $b['distance']);
+usort($distances, fn ($a, $b) => $a['distance'] <=> $b['distance']);
 $neighbors = array_slice($distances, 0, $k);
 
 // Majority vote among the neighbors' labels.
 $votes = [];
+
 foreach ($neighbors as $neighbor) {
     $votes[$neighbor['label']] = ($votes[$neighbor['label']] ?? 0) + 1;
 }

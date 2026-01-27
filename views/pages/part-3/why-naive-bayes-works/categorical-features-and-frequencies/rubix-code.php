@@ -1,7 +1,7 @@
 <?php
 
-use Rubix\ML\Datasets\Labeled;
 use Rubix\ML\Classifiers\NaiveBayes;
+use Rubix\ML\Datasets\Labeled;
 
 // Training samples for RubixML NaiveBayes.
 // Important: Rubix\ML\Classifiers\NaiveBayes works with categorical (discrete) features.
