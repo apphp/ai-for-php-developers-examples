@@ -568,6 +568,27 @@ $app->group('/part-4', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-4/k-nearest-neighbors-algorithm-and-local-solutions/index.php');
         });
+        $app->get('/case-1/client-classification-by-behavior', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions'],
+                ['label' => __t('nav.part4_knn_local_solutions'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions'],
+                ['label' => __t('knn_local_solutions.index.case1'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/k-nearest-neighbors-algorithm-and-local-solutions/client-classification-by-behavior/index.php');
+        });
+        $app->get('/case-1/client-classification-by-behavior/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions'],
+                ['label' => __t('nav.part4_knn_local_solutions'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions'],
+                ['label' => __t('knn_local_solutions.index.case1'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions/case-1/client-classification-by-behavior'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/k-nearest-neighbors-algorithm-and-local-solutions/client-classification-by-behavior/code-run.php');
+        });
     });
 });
 
