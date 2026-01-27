@@ -244,4 +244,5 @@ return [
     'knn_local_solutions.index.case1' => 'Case 1. Customer classification by behavior',
     'knn_local_solutions.index.case2' => 'Case 2. Regression: apartment price estimation',
     'knn_local_solutions.index.case3' => 'Case 3. Classification with RubixML',
+    'knn_local_solutions.case1.intro' => 'In this case, we will walk through one of the simplest and most illustrative applications of k-nearest neighbors: classifying a user based on their on-site behavior. The example is intentionally simplified so you can focus on the decision logic rather than infrastructure.',
 ];
