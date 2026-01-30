@@ -590,6 +590,17 @@ $app->group('/part-4', function ($app) use ($renderer): void {
             return render_page($renderer, $response, $breadcrumbs, 'part-4/k-nearest-neighbors-algorithm-and-local-solutions/client-classification-by-behavior/code-run.php');
         });
     });
+    $app->group('/decision-trees-and-space-partitioning', function ($app) use ($renderer): void {
+        $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/k-nearest-neighbors-algorithm-and-local-solutions'],
+                ['label' => __t('nav.part4_decision_trees_space_partitioning'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/index.php');
+        });
+    });
 });
 
 

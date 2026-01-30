@@ -245,4 +245,9 @@ return [
     'knn_local_solutions.index.case2' => 'Case 2. Regression: apartment price estimation',
     'knn_local_solutions.index.case3' => 'Case 3. Classification with RubixML',
     'knn_local_solutions.case1.intro' => 'In this case, we will walk through one of the simplest and most illustrative applications of k-nearest neighbors: classifying a user based on their on-site behavior. The example is intentionally simplified so you can focus on the decision logic rather than infrastructure.',
+
+    'decision_trees_space_partitioning.index.intro' => 'Decision trees are one of the most intuitive and at the same time powerful machine learning algorithms. They are loved for their clarity, for being close to the human “if–then” logic, and for the fact that the result can be explained not only to an engineer, but also to the business, a manager, or a client. Unlike many other models, a decision tree does not look like a black box — it can literally be drawn on paper.',
+    'decision_trees_space_partitioning.index.case1' => 'Case 1. A tutorial decision tree in pure PHP',
+    'decision_trees_space_partitioning.index.case2' => 'Case 2. Classification using RubixML',
+    'decision_trees_space_partitioning.index.case3' => 'Case 3. When a tree is convenient in a real product',
 ];

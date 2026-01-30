@@ -118,7 +118,7 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-3/logistic-regression') ? ' active' : '' ?>" --href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-4/decision-trees-and-space-partitioning') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
                         <span data-feather="file-text">• </span><small><?= __t('nav.part4_decision_trees_space_partitioning'); ?></small>
                     </a>
                 </li>
