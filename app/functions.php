@@ -74,7 +74,7 @@ function array_to_matrix(array $matrix): string {
     }
 
     // Join rows with newlines
-    return implode("\n", $result);
+    return implode(PHP_EOL, $result);
 }
 
 function array_to_vector(array $vector): string {

@@ -59,14 +59,14 @@ for ($epoch = 0; $epoch < $epochs; $epoch++) {
     if (is_nan($w) || is_infinite($w) || is_nan($b) || is_infinite($b)) {
         $w = $oldW;
         $b = $oldB;
-        $debugResult .= "w = {$oldW}, b = {$oldB}\n";
-        $debugResult .= "Stopped at epoch {$epoch} because of overflow\n";
+        $debugResult .= "w = {$oldW}, b = {$oldB}" . PHP_EOL;
+        $debugResult .= "Stopped at epoch {$epoch} because of overflow" . PHP_EOL;
         break;
     }
 
     if ($gradientDebug) {
-        $debugResult .= "w = {$w}, b = {$b}\n";
+        $debugResult .= "w = {$w}, b = {$b}" . PHP_EOL;
     }
 }
 
-echo "w = {$w}, b = {$b}\n";
+echo "w = {$w}, b = {$b}" . PHP_EOL;

@@ -250,4 +250,13 @@ return [
     'decision_trees_space_partitioning.index.case1' => 'Case 1. A tutorial decision tree in pure PHP',
     'decision_trees_space_partitioning.index.case2' => 'Case 2. Classification using RubixML',
     'decision_trees_space_partitioning.index.case3' => 'Case 3. When a tree is convenient in a real product',
+    'decision_trees_space_partitioning.case1.intro' => 'In this case we build a minimal tutorial decision tree: we compute entropy and information gain for a simple split, pick the best threshold for a feature, and show how the dataset is split into left and right branches.',
+    'decision_trees_space_partitioning.case1.diagram_default' => 'Decision Tree',
+    'decision_trees_space_partitioning.case1.diagram_all_data' => 'All data',
+    'decision_trees_space_partitioning.case1.diagram_left_branch' => 'Left branch',
+    'decision_trees_space_partitioning.case1.diagram_right_branch' => 'Right branch',
+    'decision_trees_space_partitioning.case1.diagram_yes' => 'Yes',
+    'decision_trees_space_partitioning.case1.diagram_no' => 'No',
+    'decision_trees_space_partitioning.case1.diagram_graph_label' => 'Graph',
+    'decision_trees_space_partitioning.case1.diagram_class_label' => 'Class',
 ];

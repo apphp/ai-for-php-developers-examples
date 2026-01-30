@@ -250,5 +250,13 @@ return [
     'decision_trees_space_partitioning.index.case1' => 'Кейс 1. Учебное дерево решений на чистом PHP',
     'decision_trees_space_partitioning.index.case2' => 'Кейс 2. Классификация с помощью RubixML',
     'decision_trees_space_partitioning.index.case3' => 'Кейс 3. Когда дерево удобно в реальном продукте',
-
+    'decision_trees_space_partitioning.case1.intro' => 'В данном случае мы строим минимальное дерево решений для наглядного примера: вычисляем энтропию и прирост информации для простого разделения, выбираем оптимальный порог для признака и показываем, как набор данных разделяется на левую и правую ветви.',
+    'decision_trees_space_partitioning.case1.diagram_default' => 'Дерево решений',
+    'decision_trees_space_partitioning.case1.diagram_all_data' => 'Все данные',
+    'decision_trees_space_partitioning.case1.diagram_left_branch' => 'Левая ветка',
+    'decision_trees_space_partitioning.case1.diagram_right_branch' => 'Правая ветка',
+    'decision_trees_space_partitioning.case1.diagram_yes' => 'Да',
+    'decision_trees_space_partitioning.case1.diagram_no' => 'Нет',
+    'decision_trees_space_partitioning.case1.diagram_graph_label' => 'Граф',
+    'decision_trees_space_partitioning.case1.diagram_class_label' => 'Класс',
 ];

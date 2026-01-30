@@ -897,12 +897,13 @@ class Chart {
 
     public static function drawTreeDiagram(
         string $graph,
-        string $steps,
+        string $steps = '',
         string $defaultMessage = '',
         string $style = '',
         string $startNode = 'S',
         string $endNode = 'K',
         string $intersectionNode = '',
+        string $containerClass = '',
     ): string {
         if (!$style) {
             $style = '
@@ -928,27 +929,29 @@ class Chart {
             ';
         }
 
-        return '
-        <div class="row pt-0" style="margin-top: -27px">
-                <div class="col pt-1">
-                    <div id="step-info" class="step-info">
-                       ' . $defaultMessage . '
-                    </div>
-                </div>
-                <div class="col p-0">
+        $stepsOutput = $steps ? '<div class="col p-0">
                     <div class="controls">
                         <button id="prevBtn" class="btn-graph" onclick="prevStep()" disabled>Previous Step</button>
                         <button id="nextBtn" class="btn-graph" onclick="nextStep()">Next Step</button>
                         <button id="resetBtn" class="btn-graph" onclick="resetSearch()">Reset</button>
                     </div>
+                </div>' : '';
+
+        $output = '
+            <div class="row pt-0" style="margin-top: -27px">
+                <div class="col pt-1">
+                    <div id="step-info" class="step-info">
+                       ' . $defaultMessage . '
+                    </div>
                 </div>
+                '.$stepsOutput.'
             </div>
-            <div class="container mb-5" style="overflow: hidden; min-height: 600px; width: 100%; position: relative;">
+            <div class="container ' . $containerClass . ' mb-5" style="overflow: hidden; min-height: 600px; width: 100%; position: relative;">
                 <div id="diagram"></div>
             </div>
 
             <script>
-                let treeSteps = ' . $steps . ';
+                let treeSteps = ' . ($steps ? $steps : '""') . ';
                 let currentStep = -1;
                 let visitedNodes = [];
                 let visitedEdges = [];
@@ -958,16 +961,18 @@ class Chart {
                     visitedNodes = [];
                     visitedEdges = [];
 
-                    steps.forEach(step => {
-                        if (step.reset) {
-                            // Clear all visited nodes on reset
-                            visitedNodes = [];
-                            visitedEdges = [];
-                        } else {
-                            if (step.visit) visitedNodes.push(step.visit);
-                            if (step.edge) visitedEdges.push(step.edge);
-                        }
-                    });
+                    if (steps) {
+                        steps.forEach(step => {
+                            if (step.reset) {
+                                // Clear all visited nodes on reset
+                                visitedNodes = [];
+                                visitedEdges = [];
+                            } else {
+                                if (step.visit) visitedNodes.push(step.visit);
+                                if (step.edge) visitedEdges.push(step.edge);
+                            }
+                        });
+                    }
 
                     return `
                         ' . $graph . '
@@ -1085,32 +1090,37 @@ class Chart {
                     const currentSteps = treeSteps.slice(0, currentStep + 1);
                     container.innerHTML = `<div class="mermaid">${generateDiagram(currentSteps)}</div>`;
 
-                    document.getElementById("step-info").textContent = currentStep >= 0 ? treeSteps[currentStep].info : "' . $defaultMessage . '";
-                    document.getElementById("prevBtn").disabled = currentStep <= 0;
-                    document.getElementById("nextBtn").disabled = currentStep >= treeSteps.length - 1;
+                    if(document.getElementById("step-info") && document.getElementById("prevBtn") && document.getElementById("nextBtn") ) {
+                        document.getElementById("step-info").textContent = currentStep >= 0 ? treeSteps[currentStep].info : "' . $defaultMessage . '";
+                        document.getElementById("prevBtn").disabled = currentStep <= 0;
+                        document.getElementById("nextBtn").disabled = currentStep >= treeSteps.length - 1;
+                    }
 
                     mermaid.init(undefined, document.querySelector(".mermaid"));
-                }
+                }';
 
-                function nextStep() {
-                    if (currentStep < treeSteps.length - 1) {
-                        currentStep++;
+            if ($steps) {
+                $output .= '
+                    function nextStep() {
+                        if (currentStep < treeSteps.length - 1) {
+                            currentStep++;
+                            updateDiagram();
+                        }
+                    }
+                    function prevStep() {
+                        if (currentStep > 0) {
+                            currentStep--;
+                            updateDiagram();
+                        }
+                    }
+                    function resetSearch() {
+                        currentStep = -1;
                         updateDiagram();
                     }
-                }
+                ';
+            }
 
-                function prevStep() {
-                    if (currentStep > 0) {
-                        currentStep--;
-                        updateDiagram();
-                    }
-                }
-
-                function resetSearch() {
-                    currentStep = -1;
-                    updateDiagram();
-                }
-
+            $output .= '
                 // Initialize
                 mermaid.initialize({
                     startOnLoad: false,
@@ -1125,6 +1135,8 @@ class Chart {
                 updateDiagram();
             </script>
         ';
+
+        return $output;
     }
 
     public static function drawVectors(

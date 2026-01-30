@@ -74,16 +74,16 @@ for ($epoch = 0; $epoch < $epochs; $epoch++) {
         if (is_nan($w[0]) || is_infinite($w[0]) || is_nan($w[1]) || is_infinite($w[1])) {
             $w[0] = $oldW;
             $w[1] = $oldB;
-            $debugResult .= "w = {$oldW}, b = {$oldB}\n";
-            $debugResult .= "Stopped at epoch {$epoch} because of overflow\n";
+            $debugResult .= "w = {$oldW}, b = {$oldB}" . PHP_EOL;
+            $debugResult .= "Stopped at epoch {$epoch} because of overflow" . PHP_EOL;
             break;
         }
 
         if ($gradientDebug) {
-            $debugResult .= "w = {$w[0]}, b = {$w[1]}\n";
+            $debugResult .= "w = {$w[0]}, b = {$w[1]}" . PHP_EOL;
         }
     }
 }
 
 // Final model weights
-echo "w = {$w[0]}, b = {$w[1]}\n";
+echo "w = {$w[0]}, b = {$w[1]}" . PHP_EOL;

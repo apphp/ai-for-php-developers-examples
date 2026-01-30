@@ -48,4 +48,4 @@ for ($epoch = 0; $epoch < $epochs; $epoch++) {
     $b -= $learningRate * $db;
 }
 
-echo "w = {$w}, b = {$b}\n";
+echo "w = {$w}, b = {$b}" . PHP_EOL;

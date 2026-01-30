@@ -600,8 +600,30 @@ $app->group('/part-4', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/index.php');
         });
+        $app->get('/case-1/tutorial-decision-tree', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('nav.part4_decision_trees_space_partitioning'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('decision_trees_space_partitioning.index.case1'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/tutorial-decision-tree/index.php');
+        });
+        $app->get('/case-1/tutorial-decision-tree/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('nav.part4_decision_trees_space_partitioning'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('decision_trees_space_partitioning.index.case1'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning/case-1/tutorial-decision-tree'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/tutorial-decision-tree/code-run.php');
+        });
     });
 });
+
 
 
 /* ****** */

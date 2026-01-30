@@ -64,4 +64,4 @@ $newApartment = [60, 5, 4, 12, 1];
 // Use the trained model to predict its price
 $predictedPrice = dotProduct($weights, $newApartment);
 
-echo 'Apartment valuation: $' . number_format($predictedPrice) . "\n";
+echo 'Apartment valuation: $' . number_format($predictedPrice) . PHP_EOL;
