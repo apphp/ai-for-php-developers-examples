@@ -1,6 +1,5 @@
 body {
     font-size: .875rem;
-    min-width: 540px;
 }
 
 .feather {
@@ -547,6 +546,10 @@ ul.search-result li {
         width: auto !important;
         margin-right: 80px;
     }
+
+    .navbar-dark .navbar-brand {
+        background-color: #212529 !important;
+    }
 }
 
 @media (max-width: 580px) {
@@ -568,8 +571,13 @@ ul.search-result li {
         margin-top: 1px !important;
     }
 
+    .navbar-dark .navbar-brand {
+        width: 280px;
+        font-size: 14px;
+    }
+
     .navbar .navbar-toggler {
-        right: 1.5rem !important;
+        right: 1.3rem !important;
     }
 }
 
