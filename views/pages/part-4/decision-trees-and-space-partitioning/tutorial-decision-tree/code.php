@@ -45,8 +45,7 @@ function informationGain(array $parent, array $left, array $right): float {
 
     $total = count($parent);
 
-    $weighted = (count($left) / $total) * $hLeft
-        + (count($right) / $total) * $hRight;
+    $weighted = (count($left) / $total) * $hLeft + (count($right) / $total) * $hRight;
 
     return $hParent - $weighted;
 }
