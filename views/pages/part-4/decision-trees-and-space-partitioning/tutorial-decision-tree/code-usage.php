@@ -35,13 +35,13 @@ foreach ($values as $threshold) {
 }
 
 // Output the best split (threshold + information gain) and show the resulting branches.
-echo "Best split:" . PHP_EOL;
-echo "Feature: visits" . PHP_EOL;
+echo 'Best split:' . PHP_EOL;
+echo 'Feature: visits' . PHP_EOL;
 echo "Threshold: $bestThreshold" . PHP_EOL;
 echo "Information Gain: $bestGain" . PHP_EOL . PHP_EOL;
 
-echo "Left branch:" . PHP_EOL;
+echo 'Left branch:' . PHP_EOL;
 echo array_to_matrix($bestSplit[0]) . PHP_EOL;
 
-echo PHP_EOL . "Right branch:" . PHP_EOL;
+echo PHP_EOL . 'Right branch:' . PHP_EOL;
 echo array_to_matrix($bestSplit[1]);

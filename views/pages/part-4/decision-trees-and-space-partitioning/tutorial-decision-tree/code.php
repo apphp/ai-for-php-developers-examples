@@ -23,6 +23,7 @@ function entropy(array $labels): float {
     $total = count($labels);
 
     $entropy = 0.0;
+
     foreach ($counts as $count) {
         $p = $count / $total;
         $entropy -= $p * log($p, 2);
@@ -36,12 +37,12 @@ function entropy(array $labels): float {
 // A higher IG means the split separates the classes better.
 function informationGain(array $parent, array $left, array $right): float {
     $parentLabels = array_column($parent, 2);
-    $leftLabels   = array_column($left, 2);
-    $rightLabels  = array_column($right, 2);
+    $leftLabels = array_column($left, 2);
+    $rightLabels = array_column($right, 2);
 
     $hParent = entropy($parentLabels);
-    $hLeft   = entropy($leftLabels);
-    $hRight  = entropy($rightLabels);
+    $hLeft = entropy($leftLabels);
+    $hRight = entropy($rightLabels);
 
     $total = count($parent);
 

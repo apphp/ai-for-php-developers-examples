@@ -394,7 +394,7 @@ class Chart {
             }
             $highlight = ($samples[$i][0] == $predictionX) ? ', highlight: true' : '';
             $return .= sprintf(
-                '{ x: %.0f, y: %.0f ' . $highlight . "}," . PHP_EOL,
+                '{ x: %.0f, y: %.0f ' . $highlight . '},' . PHP_EOL,
                 $samples[$i][0],  // Square footage from samples
                 $labels[$i]       // Price from labels
             );
@@ -944,7 +944,7 @@ class Chart {
                        ' . $defaultMessage . '
                     </div>
                 </div>
-                '.$stepsOutput.'
+                ' . $stepsOutput . '
             </div>
             <div class="container ' . $containerClass . ' mb-5" style="overflow: hidden; min-height: 600px; width: 100%; position: relative;">
                 <div id="diagram"></div>
