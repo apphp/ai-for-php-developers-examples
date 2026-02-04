@@ -197,6 +197,27 @@ $app->group('/part-1', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-1/what-is-a-model/error-as-measure-of-quality/code-run.php');
         });
+        $app->get('/learning-as-minimization-of-error', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_what_is_model'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_learning_as_min_error'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-1/what-is-a-model/learning-as-minimization-of-error/index.php');
+        });
+        $app->get('/learning-as-minimization-of-error/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_what_is_model'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_learning_as_min_error'), 'url' => APP_URL . 'part-1/what-is-a-model/learning-as-minimization-of-error'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-1/what-is-a-model/learning-as-minimization-of-error/code-run.php');
+        });
     });
 });
 

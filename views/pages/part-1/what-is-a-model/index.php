@@ -15,7 +15,7 @@
             <?= create_link('part-1/what-is-a-model/error-as-measure-of-quality', __t('what_is_model.link_error_as_quality')) ?>
         </li>
         <li>
-            <?= create_link('part-1/what-is-a-model/function-as-the-model', __t('what_is_model.link_learning_as_min_error'), true) ?>
+            <?= create_link('part-1/what-is-a-model/learning-as-minimization-of-error', __t('what_is_model.link_learning_as_min_error')) ?>
         </li>
     </ul>
 </div>

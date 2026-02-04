@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2"><?= __t('what_is_model.heading'); ?></h1>
+</div>
+
+<?= create_run_code_button(__t('what_is_model.learning_as_min_error.title'), 'part-1/what-is-a-model/learning-as-minimization-of-error/code-run'); ?>
+
+<div>
+    <p>
+        <?= __t('what_is_model.learning_as_min_error.intro1'); ?>
+    </p>
+
+    <p>
+        <?= __t('what_is_model.learning_as_min_error.intro2'); ?>
+    </p>
+</div>
+
+<div>
+    <?= create_example_of_use_links(__DIR__ . '/code.php', opened: true); ?>
+</div>
+<br><br>
