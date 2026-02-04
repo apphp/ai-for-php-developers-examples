@@ -394,7 +394,7 @@ class Chart {
             }
             $highlight = ($samples[$i][0] == $predictionX) ? ', highlight: true' : '';
             $return .= sprintf(
-                '{ x: %.0f, y: %.0f ' . $highlight . "},\n",
+                '{ x: %.0f, y: %.0f ' . $highlight . "}," . PHP_EOL,
                 $samples[$i][0],  // Square footage from samples
                 $labels[$i]       // Price from labels
             );
@@ -597,16 +597,16 @@ class Chart {
                 $return .= '{';
                 $return .= 'x: [';
                 $return .= $sample[0] . ',';
-                $return .= '],' . "\n";
+                $return .= '],' . PHP_EOL;
                 $return .= 'y: [';
                 $return .= $sample[1] . ',';
-                $return .= '],' . "\n";
+                $return .= '],' . PHP_EOL;
                 $return .= 'z: [';
                 $return .= $labels[$ind++] . ',';
-                $return .= '],' . "\n";
-                $return .= "mode: 'markers',\n";
+                $return .= '],' . PHP_EOL;
+                $return .= "mode: 'markers'," . PHP_EOL;
                 // Red color with high opacity
-                $return .= 'marker: {size: ' . (int)(6 * $sample[2] / $maxSize) . ",color: 'rgba(99,190,255)'},\n";
+                $return .= 'marker: {size: ' . (int)(6 * $sample[2] / $maxSize) . ",color: 'rgba(99,190,255)'}," . PHP_EOL;
                 $return .= "type: 'scatter3d',";
                 $return .= "name: '" . htmlspecialchars($mainTraceLabel) . ' ' . $ind . "'";
                 $return .= '},';
@@ -620,7 +620,7 @@ class Chart {
             foreach ($samples as $sample) {
                 $return .= $sample[$features[0]] . ',';
             }
-            $return .= '],' . "\n";
+            $return .= '],' . PHP_EOL;
 
             // Render y axis
             $return .= 'y: [';
@@ -628,7 +628,7 @@ class Chart {
             foreach ($samples as $sample) {
                 $return .= (isset($features[1]) ? $sample[$features[1]] : '0') . ',';
             }
-            $return .= '],' . "\n";
+            $return .= '],' . PHP_EOL;
 
             // Render z axis
             $return .= 'z: [';
@@ -636,7 +636,7 @@ class Chart {
             foreach ($labels as $label) {
                 $return .= $label . ',';
             }
-            $return .= '],' . "\n";
+            $return .= '],' . PHP_EOL;
 
             $return .= "
                     mode: 'markers', // Show as points
@@ -660,26 +660,26 @@ class Chart {
             foreach ($predictionSamples as $point) {
                 $return .= $point[$features[0]] . ',';
             }
-            $return .= '],' . "\n";
+            $return .= '],' . PHP_EOL;
             $return .= 'y: [';
 
             foreach ($predictionSamples as $point) {
                 $return .= (isset($features[1]) ? $point[$features[1]] : '0') . ',';
             }
-            $return .= '],' . "\n";
+            $return .= '],' . PHP_EOL;
             $return .= 'z: [';
 
             foreach ($predictionResults as $point) {
                 $return .= $point . ',';
             }
-            $return .= '],' . "\n";
-            $return .= "mode: 'markers',\n";
+            $return .= '],' . PHP_EOL;
+            $return .= "mode: 'markers'," . PHP_EOL;
 
             // Red color with high opacity
             if ($useThirdArgument) {
-                $return .= 'marker: {size: ' . (int)(6 * $sample[2] / $maxSize) . ", color: 'rgba(0,0,0,0.8)'},\n";
+                $return .= 'marker: {size: ' . (int)(6 * $sample[2] / $maxSize) . ", color: 'rgba(0,0,0,0.8)'}," . PHP_EOL;
             } else {
-                $return .= "marker: {size: 7, color: 'rgba(255,0,0,0.8)'},\n";
+                $return .= "marker: {size: 7, color: 'rgba(255,0,0,0.8)'}," . PHP_EOL;
             }
             $return .= "type: 'scatter3d',";
             $return .= "name: '" . htmlspecialchars($customTraceLabel) . "'";
