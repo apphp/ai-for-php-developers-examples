@@ -2,7 +2,6 @@
 
 require __DIR__ . '/../app/global.php';
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../app/functions.php';
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Factory\AppFactory;

@@ -1,0 +1,6 @@
+<?php
+
+const APP_URL = '';
+const APP_URL_DIR = '';
+const APP_ASSETS_URL = '';
+const APP_MODE = '';

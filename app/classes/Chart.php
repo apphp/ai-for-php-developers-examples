@@ -677,7 +677,7 @@ class Chart {
 
             // Red color with high opacity
             if ($useThirdArgument) {
-                $return .= 'marker: {size: ' . (int)(6 * $sample[2] / $maxSize) . ", color: 'rgba(0,0,0,0.8)'}," . PHP_EOL;
+                $return .= "marker: {size: 7, color: 'rgba(0,0,0,0.8)'}," . PHP_EOL;
             } else {
                 $return .= "marker: {size: 7, color: 'rgba(255,0,0,0.8)'}," . PHP_EOL;
             }

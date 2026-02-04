@@ -1,5 +1,6 @@
 .idea/*
 .run/*
+.env
 composer.lock
 vendor/
 tmp/

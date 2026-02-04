@@ -17,7 +17,9 @@
         ],
         "code-quality": [
             "friendsofphp/php-cs-fixer",
-            "overtrue/phplint"
+            "overtrue/phplint",
+            "psalm/plugin-phpunit",
+            "vimeo/psalm"
         ],
         "testing": [
             "phpunit/phpunit",
@@ -36,12 +38,19 @@
         "friendsofphp/php-cs-fixer": "^3.82.2",
         "phpunit/phpunit": "^10.5",
         "guzzlehttp/guzzle": "^7.8",
-        "apphp/pretty-print": "^0.6.0"
+        "apphp/pretty-print": "^0.6.0",
+        "psalm/plugin-phpunit": "~0.19.0",
+        "vimeo/psalm": "~5.26.1"
     },
     "autoload": {
         "psr-4": {
             "app\\": "app/"
         }
+    },
+    "autoload-dev": {
+        "files": [
+            "app/functions.php"
+        ]
     },
     "scripts": {
         "php-lint": "phplint",
@@ -49,6 +58,11 @@
         "php-cs-check": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots --dry-run fix",
         "php-cs-check-diff": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots --diff --dry-run fix",
         "php-cs-fix": "php-cs-fixer --config=.php-cs --allow-risky=yes --verbose --show-progress=dots fix",
+        "php-psalm": "psalm --config=psalm.xml --show-info=true --threads=6",
+        "php-psalm-clickable": "./psalm-clickable.sh",
+        "php-psalm-help": "psalm --help",
+        "php-psalm-with-report": "psalm --config=psalm.xml --report=tmp/psalm-report.xml --show-info=true --threads=4",
+        "php-psalm-fix": "psalm --config=psalm.xml --threads=4",
         "test": "phpunit"
     }
 }

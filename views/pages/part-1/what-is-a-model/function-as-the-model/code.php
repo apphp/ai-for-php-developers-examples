@@ -1,7 +1,7 @@
 <?php
 
 // Simple linear model: ŷ = w * x + b
-class LinearModel {
+class SimpleLinearModel {
     // Slope (weight) of the linear function
     public float $w;
 

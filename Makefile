@@ -179,12 +179,12 @@ phpcs: app-phpcs-check
 phpcs-diff: app-phpcs-check-diff
 phpcs-fix: app-phpcs-fix
 psalm: app-psalm
-psalm-click: app-psalm-clickable
+psalm-clickable: app-psalm-clickable
 psalm-help: app-psalm-help
 psalm-report: app-psalm-report
 psalm-fix: app-psalm-fix
-check: phplint phpcs
-check-fix: phpcs-fix phpcs-fix
+check: phplint phpcs psalm
+check-fix: phpcs-fix phpcs-fix psalm-fix
 
 app-phplint:
 	@echo "Run PHPLint${NC}"

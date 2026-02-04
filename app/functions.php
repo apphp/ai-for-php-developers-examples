@@ -143,11 +143,11 @@ function create_run_code_button(
  * @param string $title
  * @param bool $opened
  * @param string $language php|js
- * @param string $copyButtonId
- * @param string $expandButtonId  Should be unique for each example of use or empty to use default
+ * @param string|int $copyButtonId
+ * @param string|int $expandButtonId Should be unique for each example of use or empty to use default
  * @return string
  */
-function create_example_of_use_links(string $datasetFile = '', string $title = '', bool $opened = false, string $language = 'php', string $copyButtonId = 'copyButton', string $expandButtonId = ''): string {
+function create_example_of_use_links(string $datasetFile = '', string $title = '', bool $opened = false, string $language = 'php', string|int $copyButtonId = 'copyButton', string|int $expandButtonId = ''): string {
 
     // Use translated default title when caller did not override it
     if (!$title) {

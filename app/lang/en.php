@@ -161,7 +161,6 @@ return [
     'linear_regression.case2.explain_outro' => 'This kind of model can already be discussed with the team, and the feature set can be adjusted consciously.',
 
     // Linear regression: Case 3 (server resource consumption forecast)
-    'linear_regression.case3_title' => 'Case 3. Forecasting server resource consumption',
     'linear_regression.case3.intro1' => 'In production, it is often not enough to know only the response time — we also care whether the infrastructure will handle the load: how much CPU usage will grow, whether we will hit memory limits, whether the database will start choking. Linear regression lets us build a quick, interpretable model that predicts server load from a few simple traffic metrics.',
     'linear_regression.case3.intro2' => 'Suppose we have historical monitoring data. For each time window we know a feature vector $\\mathbf{x} = (x_1, x_2, x_3, x_4, x_5)$, where:',
     'linear_regression.case3.feature_x1' => '$x_1$ — requests per minute;',
