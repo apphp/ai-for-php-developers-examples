@@ -123,6 +123,9 @@ return [
     'errors_loss.case3.per_sample_dataset_label' => 'Per-sample Log loss',
     'errors_loss.case3.sample_index_label' => 'Sample index',
     'errors_loss.case4_title' => 'Case 4. Same accuracy – different log loss',
+    'errors_loss.case4.intro1' => 'Accuracy answers only one question: how often the model predicts the correct class at a chosen threshold (for example, 0.5). But it does not capture how confident the model is in its predictions.',
+    'errors_loss.case4.intro2' => 'In this case we will use the same true labels and two models that yield the same class labels at the 0.5 threshold. However, one model outputs probabilities closer to 0 and 1 and achieves a lower log loss, while the other stays closer to 0.5 and gets penalized with a higher log loss.',
+    'errors_loss.case4.explanation' => 'Conclusion: two models can have the same accuracy but different log loss. Log loss evaluates the quality of the predicted probabilities (calibration) and penalizes confident mistakes much more strongly.',
     'errors_loss.case5_title' => 'Case 5. Training a model as minimizing error',
 
     'linear_regression.heading' => 'Linear regression as a basic model',

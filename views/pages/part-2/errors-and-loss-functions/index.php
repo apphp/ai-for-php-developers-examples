@@ -22,7 +22,7 @@
             <?= create_link('part-2/errors-and-loss-functions/case-3/log-loss-and-classifier-confidence', __t('errors_loss.case3_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/errors-and-loss-functions/case-4/...', __t('errors_loss.case4_title'), true) ?>
+            <?= create_link('part-2/errors-and-loss-functions/case-4/same-accuracy-different-log-loss', __t('errors_loss.case4_title')) ?>
         </li>
         <li>
             <?= create_link('part-2/errors-and-loss-functions/case-5/...', __t('errors_loss.case5_title'), true) ?>
