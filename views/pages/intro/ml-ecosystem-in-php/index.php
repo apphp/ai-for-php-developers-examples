@@ -22,3 +22,14 @@
 </p>
 <?= create_run_code_button(__t('ml_ecosystem.sample_rubix_title'), 'ml-ecosystem-in-php/sample-in-rubix-ml'); ?>
 
+<hr>
+
+<p>
+    <?= __t('ml_ecosystem.transformers_intro'); ?>
+</p>
+<?= create_run_code_button(__t('ml_ecosystem.sample_transformers_title'), 'ml-ecosystem-in-php/sample-in-transformers-php'); ?>
+
+<br>
+<br>
+<br>
+<br>

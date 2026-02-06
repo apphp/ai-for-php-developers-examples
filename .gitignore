@@ -2,6 +2,7 @@
 .run/*
 .env
 composer.lock
+public/.transformers-cache/
 vendor/
 tmp/
 !tmp/.keep
