@@ -2,10 +2,11 @@
 
 $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
+
 ob_start();
 //////////////////////////////
 
-include('transformers-code-usage.php');
+include((APP_MODE === 'local' ? 'transformers-code-usage.php' : 'transformers-code-usage-prod.php'));
 
 //////////////////////////////
 $result = ob_get_clean();
