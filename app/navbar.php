@@ -124,6 +124,45 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
                 </li>
             </ul>
 
+            <!-- PART V -->
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span><i class="fas fa-book me-1"></i> <?= __t('nav.part5_title'); ?></span>
+            </h6>
+
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/why-do-words-turn-into-numbers') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part5_why_do_words_turn_into_numbers'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/bag-of-words-and-tf-idf') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part5_bag_of_words_and_tf_idf'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/embeddings-as-continuous-spaces-of-meaning') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part5_embeddings_as_continuous_spaces_of_meaning'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/transformers-from-static-vectors-to-understanding-meaning') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part5_transformers_from_static_vectors_to_understanding_meaning'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/hands-on-embedding-in-php-with-transformers') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part5_hands_on_embedding_in_php_with_transformers'); ?></small>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/retrieval-augmented-generation-as-engineering-system') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                        <span data-feather="file-text">• </span><small><?= __t('nav.part5_retrieval_augmented_generation_as_engineering_system'); ?></small>
+                    </a>
+                </li>
+            </ul>
+
+            <br><br>
         </div>
     </div>
 </nav>

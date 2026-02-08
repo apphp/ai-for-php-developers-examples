@@ -31,6 +31,15 @@ return [
     'nav.part4_knn_local_solutions' => 'Алгоритм k-ближайших соседей и локальные решения',
     'nav.part4_decision_trees_space_partitioning' => 'Decision Trees и разбиение пространства',
 
+    // Часть V: навигация
+    'nav.part5_title' => 'Часть V. Текст как математика',
+    'nav.part5_why_do_words_turn_into_numbers' => 'Почему слова превращаются в числа',
+    'nav.part5_bag_of_words_and_tf_idf' => 'Bag of Words и TF–IDF',
+    'nav.part5_embeddings_as_continuous_spaces_of_meaning' => 'Embeddings как непрерывные пространства смысла',
+    'nav.part5_transformers_from_static_vectors_to_understanding_meaning' => 'Трансформеры и контекст: от статических векторов к пониманию смысла',
+    'nav.part5_hands_on_embedding_in_php_with_transformers' => 'Практика: эмбеддинги на PHP с помощью трансформеров',
+    'nav.part5_retrieval_augmented_generation_as_engineering_system' => 'RAG: Retrieval-Augmented Generation как инженерная система',
+
     'home.title' => 'Главная',
     'home.heading' => 'С чего начать',
     'home.intro' => 'Это примеры к книге по "AI для PHP-разработчиков".',

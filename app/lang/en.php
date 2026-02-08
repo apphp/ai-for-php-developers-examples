@@ -31,6 +31,15 @@ return [
     'nav.part4_knn_local_solutions' => 'The k-nearest neighbors algorithm and local solutions',
     'nav.part4_decision_trees_space_partitioning' => 'Decision Trees and space partitioning',
 
+    // Part V navigation
+    'nav.part5_title' => 'Part V. Text as mathematics',
+    'nav.part5_why_do_words_turn_into_numbers' => 'Why do words turn into numbers',
+    'nav.part5_bag_of_words_and_tf_idf' => 'Bag of Words and TF–IDF',
+    'nav.part5_embeddings_as_continuous_spaces_of_meaning' => 'Embeddings as continuous spaces of meaning',
+    'nav.part5_transformers_from_static_vectors_to_understanding_meaning' => 'Transformers and context: from static vectors to understanding meaning',
+    'nav.part5_hands_on_embedding_in_php_with_transformers' => 'Hands-on: embeddings in PHP with transformers',
+    'nav.part5_retrieval_augmented_generation_as_engineering_system' => 'RAG: Retrieval-Augmented Generation as an engineering system',
+
     'home.title' => 'Home',
     'home.heading' => 'Getting Started',
     'home.intro' => 'This is an examples for "AI for PHP Developers" book.',
