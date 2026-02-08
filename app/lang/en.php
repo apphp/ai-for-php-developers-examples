@@ -286,4 +286,7 @@ return [
     'hands_on_embedding_in_php_with_transformers.index.case4' => 'Case 4. Intelligent navigation over events / timelines',
     'hands_on_embedding_in_php_with_transformers.index.case5' => 'Case 5. Classification without training (zero-shot via similarity)',
     'hands_on_embedding_in_php_with_transformers.index.case6' => 'Case 6. Semantic recommendations “similar articles”',
+
+    'hands_on_embedding_in_php_with_transformers.case4.title' => 'Case 4. Intelligent navigation over events / timelines',
+    'hands_on_embedding_in_php_with_transformers.case4.intro' => 'Goal: quickly find the most relevant events in a timeline by meaning, not by exact keyword matches. We compute embeddings for event descriptions, cache them to disk, and rank events using cosine similarity against the query.',
 ];

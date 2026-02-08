@@ -3,6 +3,7 @@
 .env
 composer.lock
 public/.transformers-cache/
+embeddings.events.json
 vendor/
 tmp/
 !tmp/.keep

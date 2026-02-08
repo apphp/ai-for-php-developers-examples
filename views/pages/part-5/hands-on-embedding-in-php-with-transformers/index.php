@@ -18,7 +18,7 @@
             <?= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-3/semantic-faq', __t('hands_on_embedding_in_php_with_transformers.index.case3'), true); ?>
         </li>
         <li>
-            <?= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines', __t('hands_on_embedding_in_php_with_transformers.index.case4'), true); ?>
+            <?= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines', __t('hands_on_embedding_in_php_with_transformers.index.case4')); ?>
         </li>
         <li>
             <?= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-5/zero-shot-classification', __t('hands_on_embedding_in_php_with_transformers.index.case5'), true); ?>

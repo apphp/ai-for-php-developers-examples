@@ -287,4 +287,7 @@ return [
     'hands_on_embedding_in_php_with_transformers.index.case4' => 'Кейс 4. Интеллектуальная навигация по событиям / таймлайнам',
     'hands_on_embedding_in_php_with_transformers.index.case5' => 'Кейс 5. Классификация без обучения (zero-shot через similarity)',
     'hands_on_embedding_in_php_with_transformers.index.case6' => 'Кейс 6. Семантические рекомендации «похожие статьи»',
+
+    'hands_on_embedding_in_php_with_transformers.case4.title' => 'Кейс 4. Интеллектуальная навигация по событиям / таймлайнам',
+    'hands_on_embedding_in_php_with_transformers.case4.intro' => 'Задача: быстро находить наиболее релевантные события в таймлайне по смыслу, а не по точному совпадению слов. Мы построим эмбеддинги для описаний событий, закешируем их на диск и будем ранжировать события по cosine similarity к запросу.',
 ];

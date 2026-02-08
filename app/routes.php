@@ -690,6 +690,27 @@ $app->group('/part-4', function ($app) use ($renderer): void {
 
              return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/index.php');
          });
+         $app->get('/case-4/intelligent-timelines', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('nav.part5_hands_on_embedding_in_php_with_transformers'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('hands_on_embedding_in_php_with_transformers.index.case4'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines/index.php');
+         });
+         $app->get('/case-4/intelligent-timelines/code-run', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('nav.part5_hands_on_embedding_in_php_with_transformers'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('hands_on_embedding_in_php_with_transformers.index.case4'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines'],
+                 ['label' => __t('nav.code_run'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines/code-run.php');
+         });
      });
  });
 
