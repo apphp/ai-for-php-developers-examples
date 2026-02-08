@@ -278,4 +278,12 @@ return [
     'decision_trees_space_partitioning.case1.diagram_no' => 'No',
     'decision_trees_space_partitioning.case1.diagram_graph_label' => 'Graph',
     'decision_trees_space_partitioning.case1.diagram_class_label' => 'Class',
+
+    'hands_on_embedding_in_php_with_transformers.index.intro' => 'In this section we move from theory to practice: we take embeddings and apply them to several typical product tasks. Each case is a small engineering pattern you can reuse in PHP projects.',
+    'hands_on_embedding_in_php_with_transformers.index.case1' => 'Case 1. Semantic search over text documents (no DB)',
+    'hands_on_embedding_in_php_with_transformers.index.case2' => 'Case 2. Similar records search (deduplication / near-duplicates)',
+    'hands_on_embedding_in_php_with_transformers.index.case3' => 'Case 3. Semantic FAQ / knowledge base search',
+    'hands_on_embedding_in_php_with_transformers.index.case4' => 'Case 4. Intelligent navigation over events / timelines',
+    'hands_on_embedding_in_php_with_transformers.index.case5' => 'Case 5. Classification without training (zero-shot via similarity)',
+    'hands_on_embedding_in_php_with_transformers.index.case6' => 'Case 6. Semantic recommendations “similar articles”',
 ];

@@ -676,6 +676,23 @@ $app->group('/part-4', function ($app) use ($renderer): void {
     });
 });
 
+ // ---------------------------------------------------
+ // Part V. Text as mathematics
+ // ---------------------------------------------------
+ $app->group('/part-5', function ($app) use ($renderer): void {
+     $app->group('/hands-on-embedding-in-php-with-transformers', function ($app) use ($renderer): void {
+         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('nav.part5_hands_on_embedding_in_php_with_transformers'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/index.php');
+         });
+     });
+ });
+
 
 
 /* ****** */

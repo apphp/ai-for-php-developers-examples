@@ -279,4 +279,12 @@ return [
     'decision_trees_space_partitioning.case1.diagram_no' => 'Нет',
     'decision_trees_space_partitioning.case1.diagram_graph_label' => 'Граф',
     'decision_trees_space_partitioning.case1.diagram_class_label' => 'Класс',
+
+    'hands_on_embedding_in_php_with_transformers.index.intro' => 'В этом разделе мы переходим от теории к практике: берём эмбеддинги и применяем их к типовым продуктовым задачам. Каждый кейс — небольшой инженерный паттерн, который можно переиспользовать в PHP-проектах.',
+    'hands_on_embedding_in_php_with_transformers.index.case1' => 'Кейс 1. Семантический поиск по текстовым документам (без БД)',
+    'hands_on_embedding_in_php_with_transformers.index.case2' => 'Кейс 2. Поиск похожих записей (deduplication / near-duplicates)',
+    'hands_on_embedding_in_php_with_transformers.index.case3' => 'Кейс 3. Семантический FAQ / поиск по базе знаний',
+    'hands_on_embedding_in_php_with_transformers.index.case4' => 'Кейс 4. Интеллектуальная навигация по событиям / таймлайнам',
+    'hands_on_embedding_in_php_with_transformers.index.case5' => 'Кейс 5. Классификация без обучения (zero-shot через similarity)',
+    'hands_on_embedding_in_php_with_transformers.index.case6' => 'Кейс 6. Семантические рекомендации «похожие статьи»',
 ];
