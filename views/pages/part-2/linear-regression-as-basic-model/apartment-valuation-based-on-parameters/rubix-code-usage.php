@@ -21,7 +21,8 @@ $targets = [
 $dataset = new Labeled($samples, $targets);
 
 // Create linear regression model (Ridge)
-$regression = new Ridge(1.0);
+// With alpha = 1e-6, Ridge regression is equivalent to linear regression
+$regression = new Ridge(1e-6);
 
 // Train the model
 $regression->train($dataset);

@@ -3,7 +3,7 @@
 use Rubix\ML\Datasets\Labeled;
 use Rubix\ML\Regressors\Ridge;
 
-// Данные: [площадь, этаж, расстояние до центра, возраст дома]
+// Data: [area, floor, distance to city center, building age]
 $samples = [
     [50, 3, 5, 10],
     [70, 10, 3, 5],
@@ -19,8 +19,9 @@ $targets = [
 // Создаём датасет
 $dataset = new Labeled($samples, $targets);
 
-// Создаём модель линейной регрессии
-$regression = new Ridge(1.0);
+// Create linear regression model (Ridge)
+// With alpha = 1e-6, Ridge regression is equivalent to linear regression
+$regression = new Ridge(1e-6);
 
-// Обучаем модель
+// Train the model
 $regression->train($dataset);

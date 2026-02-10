@@ -24,5 +24,8 @@ $targets = [
 $dataset = Labeled::build($samples, $targets);
 
 // Simple linear regression (ordinary least squares)
-$model = new Ridge(1.0);
+// With alpha = 1e-6, Ridge regression is equivalent to linear regression
+$model = new Ridge(1e-6);
+
+// Train the model
 $model->train($dataset);
