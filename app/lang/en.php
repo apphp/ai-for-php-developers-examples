@@ -192,6 +192,22 @@ return [
     'linear_regression.case3.explain_item5' => 'the weight at hour of day allows the model to account for daily load patterns (peaks during the day, dips at night);',
     'linear_regression.case3.explain_outro' => 'Such a model is convenient as a quick estimate of "will the server survive another +X% traffic" and as a starting point for more complex models and alerts in the monitoring system.',
 
+    // Linear regression: Case 4 (estimating the likely customer check)
+    'linear_regression.case4.intro1' => 'In e-commerce, marketplaces, and subscription services it is often useful to estimate a customer’s likely purchase amount (“check”) in advance. This helps with personalization, discount strategy, and prioritizing user segments.',
+    'linear_regression.case4.intro2' => 'Below is a minimal baseline regression model that predicts the likely check from simple on-site behavior features. To keep predictions positive and to make the target distribution more stable, we predict the logarithm of the check and then convert it back to money with exp().',
+    'linear_regression.case4.feature_x1' => '$x_1$ — number of visits in the period;',
+    'linear_regression.case4.feature_x2' => '$x_2$ — time on site (seconds);',
+    'linear_regression.case4.feature_x3' => '$x_3$ — number of pageviews;',
+    'linear_regression.case4.feature_x4' => '$x_4$ — discount (percent);',
+    'linear_regression.case4.formula' => 'The target variable is the log-check: $y = \log(\text{check})$. The model predicts $\hat{y}$ and we restore the check as $\widehat{\text{check}} = \exp(\hat{y})$.',
+    'linear_regression.case4.rubix_intro' => 'In this example we use Ridge regression from RubixML. The model is trained on a small dataset, predicts log(check), and then we convert the result back to money with exp().',
+    'linear_regression.case4.explain_intro' => 'Why predicting log(check) is a useful trick:',
+    'linear_regression.case4.explain_item1' => 'checks often have a heavy tail; log() reduces the impact of rare large purchases;',
+    'linear_regression.case4.explain_item2' => 'in log-space, the model often better matches multiplicative effects (e.g. “twice as many pageviews”);',
+    'linear_regression.case4.explain_item3' => 'exp() guarantees a positive predicted check;',
+    'linear_regression.case4.explain_item4' => 'Ridge adds L2 regularization and helps reduce overfitting on small datasets.',
+    'linear_regression.case4.explain_outro' => 'In a real product you would expand the dataset and feature set (traffic source, category interest, purchase history), but even this baseline can be a good starting point.',
+
     // Case 1 charts UI (code-run.php)
     'linear_regression.case1.chart_price_vs_area' => 'Price vs Area',
     'linear_regression.case1.chart_price_vs_floor' => 'Price vs Floor',
