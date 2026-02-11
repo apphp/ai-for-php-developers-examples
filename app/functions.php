@@ -106,6 +106,40 @@ function verify_fields(array|string &$features, array $verificationData, array|s
     }
 }
 
+function num_format($num, int $precison = 3, int $max = PHP_INT_MAX) {
+    if (abs($num) > $max) {
+        return formatScientificTruncate($num, $precison);
+    } elseif (stripos((string)$num, 'e') !== false) {
+        return formatScientificTruncate($num, $precison);
+    } else {
+        return $num;
+    }
+}
+
+function formatScientificTruncate($value, $decimals = 2)
+{
+    // Convert to scientific notation string if not already
+    $s = (string)$value;
+
+    if (!preg_match('/^([+-]?\d*\.?\d+)[eE]([+-]?\d+)$/', $s, $m)) {
+        $s = sprintf('%.16E', (float)$value);
+        preg_match('/^([+-]?\d*\.?\d+)[eE]([+-]?\d+)$/', $s, $m);
+    }
+
+    $mantissa = (float)$m[1];
+    $exp      = (int)$m[2];
+
+    $factor = pow(10, $decimals);
+
+    // Truncate instead of round
+    $mantissa = ($mantissa >= 0)
+        ? floor($mantissa * $factor) / $factor
+        : ceil($mantissa * $factor) / $factor;
+
+    return sprintf('%.' . $decimals . 'fE%+03d', $mantissa, $exp);
+}
+
+
 function create_show_code_button(string $title, string $page, string $buttonText = ''): string {
     $output = '<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
     <h2 class="h4">' . $title . '</h2>

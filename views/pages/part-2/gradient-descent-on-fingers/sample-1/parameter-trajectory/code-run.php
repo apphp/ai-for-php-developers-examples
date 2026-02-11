@@ -3,6 +3,20 @@
 $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
 
+// Handle parameters
+// ----------------------------------
+$learningRateOptions = ['0.01' => '0.01', '0.05' => '0.05', '0.1' => '0.1', '0.12' => '0.12', '0.2' => '0.2'];
+$learningRateValue = isset($_GET['learningRate']) && is_string($_GET['learningRate']) ? $_GET['learningRate'] : '0.1';
+verify_fields($learningRateValue, array_values($learningRateOptions), '0.1');
+
+$epochsOptions = [10 => 10, 20 => 20, 50 => 50, 100 => 100];
+$epochsValue = isset($_GET['epochs']) && is_string($_GET['epochs']) ? $_GET['epochs'] : '20';
+verify_fields($epochsValue, array_map('strval', array_values($epochsOptions)), '20');
+
+$learningRate = (float)$learningRateValue;
+$epochs = (int)$epochsValue;
+// ----------------------------------
+
 ob_start();
 //////////////////////////////
 
@@ -55,7 +69,7 @@ $epochCount = count($trajectory);
     </p>
 </div>
 
-<?= create_example_of_use_block(dirname(__FILE__) . '/code-usage.php'); ?>
+<?= create_example_of_use_block(dirname(__FILE__) . '/code.php'); ?>
 
 <div class="container-fluid px-2">
     <div class="row justify-content-start p-0">
@@ -102,6 +116,32 @@ $epochCount = count($trajectory);
         </div>
 
         <div class="col-md-12 col-lg-5 p-0 m-0">
+            <form class="mt-2" action="<?= APP_URL ?>part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory/code-run" method="GET">
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <b><?= __t('gradient_descent.learning_rate') ?>:</b>
+                        </div>
+                        <?= create_form_features($learningRateOptions, [$learningRateValue], fieldName: 'learningRate', type: 'select', class: 'w-100'); ?>
+                    </div>
+
+                    <div class="col-6">
+                        <div>
+                            <b><?= __t('gradient_descent.epochs') ?>:</b>
+                        </div>
+                        <?= create_form_features($epochsOptions, [$epochsValue], fieldName: 'epochs', type: 'select', class: 'w-100'); ?>
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-check form-check-inline float-end p-0 m-0 me-1">
+                    <button type="submit" class="btn btn-sm btn-outline-primary"><?= __t('common.regenerate'); ?></button>
+                </div>
+                <div class="clearfix"></div>
+            </form>
+
+            <hr>
+
             <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
         </div>
     </div>

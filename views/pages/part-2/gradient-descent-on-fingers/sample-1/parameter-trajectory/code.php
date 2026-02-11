@@ -5,11 +5,12 @@ $y = [2, 4, 6, 8];
 
 $w = 0.0;
 $learningRate = 0.1;
+$epochs = 20;
 $n = count($x);
 
 echo "epoch\tw\tgradient\tloss\n";
 
-for ($epoch = 1; $epoch <= 20; $epoch++) {
+for ($epoch = 1; $epoch <= $epochs; $epoch++) {
     $gradient = 0.0;
     $loss = 0.0;
 
