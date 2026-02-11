@@ -85,10 +85,10 @@ $epochCount = count($trajectory);
                     <div class="d-flex align-items-center">
                         <span class="small text-muted me-2"><?= __t('gradient_descent.sample1.ui.speed'); ?></span>
                         <select id="gd-speed" class="form-select form-select-sm" style="width: 120px">
-                            <option value="120">0.12s</option>
-                            <option value="250" selected>0.25s</option>
-                            <option value="500">0.5s</option>
-                            <option value="1000">1s</option>
+                            <option value="120">0.12 <?=__t('sec')?></option>
+                            <option value="250" selected>0.25 <?=__t('sec')?></option>
+                            <option value="500">0.5 <?=__t('sec')?></option>
+                            <option value="1000">1 <?=__t('sec')?></option>
                         </select>
                     </div>
                 </div>
@@ -143,7 +143,7 @@ $epochCount = count($trajectory);
                         yAxisID: 'yW'
                     },
                     {
-                        label: 'loss',
+                        label: '<?= __t('gradient_descent.sample1.ui.loss') ?>',
                         data: lossData,
                         borderColor: '#dc3545',
                         backgroundColor: 'rgba(220,53,69,0.1)',
@@ -152,7 +152,7 @@ $epochCount = count($trajectory);
                         yAxisID: 'yLoss'
                     },
                     {
-                        label: 'current',
+                        label: '<?= __t('gradient_descent.sample1.ui.current') ?>',
                         data: [{ x: labels[0], y: wData[0] }],
                         borderColor: '#0d6efd',
                         backgroundColor: '#0d6efd',
@@ -161,7 +161,7 @@ $epochCount = count($trajectory);
                         yAxisID: 'yW'
                     },
                     {
-                        label: 'current-loss',
+                        label: '<?= __t('gradient_descent.sample1.ui.current-loss') ?>',
                         data: [{ x: labels[0], y: lossData[0] }],
                         borderColor: '#dc3545',
                         backgroundColor: '#dc3545',
@@ -180,7 +180,7 @@ $epochCount = count($trajectory);
                 scales: {
                     yW: { type: 'linear', position: 'left', title: { display: true, text: 'w' } },
                     yLoss: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'loss' } },
-                    x: { title: { display: true, text: 'epoch' } }
+                    x: { title: { display: true, text: '<?= __t('gradient_descent.sample1.ui.epoch') ?>' } }
                 }
             }
         });
