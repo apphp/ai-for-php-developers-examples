@@ -17,7 +17,7 @@
             <?= create_link('part-2/gradient-descent-on-fingers/implementation', __t('gradient_descent.implementation_link')) ?>
         </li>
         <li>
-            <?= create_link('part-2/gradient-descent-on-fingers/sample-1/...', __t('gradient_descent.sample1_title'), true) ?>
+            <?= create_link('part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory', __t('gradient_descent.sample1_title')) ?>
         </li>
         <li>
             <?= create_link('part-2/gradient-descent-on-fingers/sample-2/...', __t('gradient_descent.sample2_title'), true) ?>
