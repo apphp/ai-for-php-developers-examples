@@ -26,9 +26,9 @@ for ($epoch = 1; $epoch <= $epochs; $epoch++) {
     $gradient = (2 / $n) * $gradient;
 
     echo $epoch . "\t" .
-        round($w, 4) . "\t\t" .
-        round($gradient, 4) . "\t\t" .
-        round($loss, 4) . PHP_EOL;
+        round($w, 3) . "\t\t" .
+        round($gradient, 3) . "\t\t" .
+        round($loss, 3) . PHP_EOL;
 
     $w -= $learningRate * $gradient;
 }
