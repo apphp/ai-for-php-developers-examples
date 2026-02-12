@@ -326,4 +326,30 @@ return [
 
     'hands_on_embedding_in_php_with_transformers.case4.title' => 'Case 4. Intelligent navigation over events / timelines',
     'hands_on_embedding_in_php_with_transformers.case4.intro' => 'Goal: quickly find the most relevant events in a timeline by meaning, not by exact keyword matches. We compute embeddings for event descriptions, cache them to disk, and rank events using cosine similarity against the query.',
+
+    'rag_engineering_system.index.intro' => 'This section builds the engineering foundation for RAG: how text becomes numbers, how retrieval works, why embeddings and transformers matter, and how to think about RAG as a system you can build, measure, and improve.',
+    'rag_engineering_system.index.item1' => 'Why words turn into numbers: word spaces and features',
+    'rag_engineering_system.index.item2' => 'Bag of Words and TF–IDF',
+    'rag_engineering_system.index.item3' => 'Embeddings as continuous spaces of meaning',
+    'rag_engineering_system.index.item4' => 'Transformers and context: from static vectors to understanding meaning',
+    'rag_engineering_system.index.item5' => 'Hands-on: embeddings in PHP with transformers (inference, not training)',
+    'rag_engineering_system.index.item6' => 'RAG: Retrieval-Augmented Generation as an engineering system',
+
+    'rag_engineering_system.why_do_words_turn_into_numbers.title' => 'Why words turn into numbers: word spaces and features',
+    'rag_engineering_system.why_do_words_turn_into_numbers.intro' => 'We revisit the core idea: to work with text algorithmically we represent it as numbers. Here we focus on the notion of feature spaces, what a “word space” means, and why the choice of representation defines what the system can and cannot learn.',
+
+    'rag_engineering_system.bag_of_words_and_tf_idf.title' => 'Bag of Words and TF–IDF',
+    'rag_engineering_system.bag_of_words_and_tf_idf.intro' => 'We cover sparse representations: Bag of Words, term frequency, inverse document frequency, and how TF–IDF becomes a simple baseline for retrieval. This is where the “retrieval” part of RAG historically starts.',
+
+    'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.title' => 'Embeddings as continuous spaces of meaning',
+    'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.intro' => 'We move from sparse vectors to dense embeddings and discuss why continuous vector spaces capture semantics better: similarity search, clustering, deduplication, and the practical trade-offs (model choice, dimensionality, normalization, distance metrics).',
+
+    'rag_engineering_system.transformers_and_context.title' => 'Transformers and context: from static vectors to understanding meaning',
+    'rag_engineering_system.transformers_and_context.intro' => 'We connect embeddings to transformers: how contextual representations differ from static vectors, what “context window” really is, and why modern RAG systems rely on transformer inference pipelines.',
+
+    'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.title' => 'Hands-on: embeddings in PHP with transformers (inference, not training)',
+    'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.intro' => 'We discuss the engineering approach: do inference instead of training, treat embeddings as a reusable service, and think in terms of API contracts, caching, batching, and cost. In practice this is where TransformersPHP becomes a tool.',
+
+    'rag_engineering_system.rag_as_engineering_system.title' => 'RAG: Retrieval-Augmented Generation as an engineering system',
+    'rag_engineering_system.rag_as_engineering_system.intro' => 'We put everything together: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting, and evaluation. The focus is not on “one trick” but on building a reliable system: latency, quality, observability, and iteration loops.',
 ];

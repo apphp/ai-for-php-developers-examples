@@ -327,4 +327,30 @@ return [
 
     'hands_on_embedding_in_php_with_transformers.case4.title' => 'Кейс 4. Интеллектуальная навигация по событиям / таймлайнам',
     'hands_on_embedding_in_php_with_transformers.case4.intro' => 'Задача: быстро находить наиболее релевантные события в таймлайне по смыслу, а не по точному совпадению слов. Мы построим эмбеддинги для описаний событий, закешируем их на диск и будем ранжировать события по cosine similarity к запросу.',
+
+    'rag_engineering_system.index.intro' => 'В этом разделе мы соберём инженерную базу для RAG: как текст превращается в числа, как устроен retrieval, почему важны эмбеддинги и трансформеры, и как мыслить RAG как систему, которую можно строить, измерять и улучшать.',
+    'rag_engineering_system.index.item1' => 'Почему слова превращаются в числа: пространство слов и признаки',
+    'rag_engineering_system.index.item2' => 'Bag of Words и TF–IDF',
+    'rag_engineering_system.index.item3' => 'Embeddings как непрерывные пространства смысла',
+    'rag_engineering_system.index.item4' => 'Трансформеры и контекст: от статических векторов к пониманию смысла',
+    'rag_engineering_system.index.item5' => 'Практика: эмбеддинги на PHP с помощью трансформеров (inference вместо обучения)',
+    'rag_engineering_system.index.item6' => 'RAG: Retrieval-Augmented Generation как инженерная система',
+
+    'rag_engineering_system.why_do_words_turn_into_numbers.title' => 'Почему слова превращаются в числа: пространство слов и признаки',
+    'rag_engineering_system.why_do_words_turn_into_numbers.intro' => 'Разберём ключевую идею: чтобы работать с текстом алгоритмически, мы представляем его числами. Здесь фокус на пространствах признаков, что такое “пространство слов” и почему выбор представления определяет возможности системы.',
+
+    'rag_engineering_system.bag_of_words_and_tf_idf.title' => 'Bag of Words и TF–IDF',
+    'rag_engineering_system.bag_of_words_and_tf_idf.intro' => 'Переходим к разреженным представлениям: Bag of Words, term frequency, inverse document frequency и к тому, как TF–IDF становится простым базовым решением для поиска. Это историческая “точка входа” в retrieval.',
+
+    'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.title' => 'Embeddings как непрерывные пространства смысла',
+    'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.intro' => 'От разреженных векторов — к плотным эмбеддингам. Почему непрерывные пространства лучше ловят семантику: similarity search, кластеризация, дедупликация, и какие инженерные компромиссы важны (модель, размерность, нормализация, метрики расстояния).',
+
+    'rag_engineering_system.transformers_and_context.title' => 'Трансформеры и контекст: от статических векторов к пониманию смысла',
+    'rag_engineering_system.transformers_and_context.intro' => 'Свяжем эмбеддинги и трансформеры: чем контекстные представления отличаются от статических, что означает “context window” и почему современные RAG-системы опираются на inference-пайплайны трансформеров.',
+
+    'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.title' => 'Практика: эмбеддинги на PHP с помощью трансформеров (inference вместо обучения)',
+    'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.intro' => 'Инженерный подход: делаем inference, а не обучение, рассматриваем эмбеддинги как переиспользуемый сервис и думаем про API-контракты, кэширование, batching и стоимость. На практике тут и появляется TransformersPHP как инструмент.',
+
+    'rag_engineering_system.rag_as_engineering_system.title' => 'RAG: Retrieval-Augmented Generation как инженерная система',
+    'rag_engineering_system.rag_as_engineering_system.intro' => 'Соберём всё вместе: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting и оценка качества. Фокус не на “одном трюке”, а на надёжной системе: latency, качество, наблюдаемость и цикл улучшений.',
 ];

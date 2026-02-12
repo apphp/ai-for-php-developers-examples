@@ -775,6 +775,77 @@ $app->group('/part-4', function ($app) use ($renderer): void {
              return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines/code-run.php');
          });
      });
+     $app->group('/retrieval-augmented-generation-as-engineering-system', function ($app) use ($renderer): void {
+         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/index.php');
+         });
+         $app->get('/why-do-words-turn-into-numbers', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('rag_engineering_system.index.item1'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/why-do-words-turn-into-numbers/index.php');
+         });
+         $app->get('/bag-of-words-and-tf-idf', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('rag_engineering_system.index.item2'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/bag-of-words-and-tf-idf/index.php');
+         });
+         $app->get('/embeddings-as-continuous-spaces-of-meaning', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('rag_engineering_system.index.item3'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/embeddings-as-continuous-spaces-of-meaning/index.php');
+         });
+         $app->get('/transformers-and-context', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('rag_engineering_system.index.item4'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/transformers-and-context/index.php');
+         });
+         $app->get('/hands-on-embeddings-in-php-with-transformers', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('rag_engineering_system.index.item5'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/hands-on-embeddings-in-php-with-transformers/index.php');
+         });
+         $app->get('/rag-as-engineering-system', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('rag_engineering_system.index.item6'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/retrieval-augmented-generation-as-engineering-system/rag-as-engineering-system/index.php');
+         });
+     });
  });
 
 
