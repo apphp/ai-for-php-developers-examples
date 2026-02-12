@@ -15,7 +15,7 @@
             <?= create_link('part-3/probability-as-degree-of-confidence/case-1/spam-filter-probability-vs-decision', __t('probability_confidence.case1_title')) ?>
         </li>
         <li>
-            <?= create_link('part-3/errors-and-loss-functions/case-2/...', __t('probability_confidence.case2_title'), true) ?>
+            <?= create_link('part-3/probability-as-degree-of-confidence/case-2/medical-test-updating-confidence', __t('probability_confidence.case2_title')) ?>
         </li>
         <li>
             <?= create_link('part-3/errors-and-loss-functions/case-3/...', __t('probability_confidence.case3_title'), true) ?>

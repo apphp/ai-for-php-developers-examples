@@ -14,6 +14,6 @@ foreach ($probabilities as $class => $probability) {
     echo $class . ': ' . round($probability, 2) . PHP_EOL;
 }
 
-echo 'Порог: ' . $threshold . PHP_EOL;
+echo PHP_EOL . 'Threshold: ' . $threshold . PHP_EOL;
 
-echo $decision . PHP_EOL;
+echo 'Decision: ' . $decision . PHP_EOL;

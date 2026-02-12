@@ -261,6 +261,14 @@ return [
     'probability_confidence.case4_title' => 'Case 4. Overconfident model as a problem signal',
     'probability_confidence.case5_title' => 'Case 5. Updating confidence with new data',
 
+    'probability_confidence.case2.scenario_title' => 'Scenario',
+    'probability_confidence.case2.scenario_intro' => 'Suppose there is a rare disease. We know the following:',
+    'probability_confidence.case2.scenario_item1' => 'The disease occurs in 1 person out of 1,000.',
+    'probability_confidence.case2.scenario_item2' => 'Test sensitivity (probability of a positive result given the disease) is 99%.',
+    'probability_confidence.case2.scenario_item3' => 'Test specificity (probability of a negative result given a healthy person) is 95%.',
+    'probability_confidence.case2.scenario_question' => 'A patient takes the test and gets a positive result. Question: what is the probability that they truly have the disease?',
+    'probability_confidence.case2.scenario_note' => 'An intuitive answer often sounds like “about 99%”. But that is wrong. The reason is the rarity of the event.',
+
     'probability_confidence.logits_paragraph' => 'In many machine learning models, the outputs are not probabilities, but so‑called scores (logits). These are just numbers that reflect the model\'s relative confidence in each option. They can be anything — positive, negative, large or small — and by themselves they are not interpreted as probabilities. To turn such scores into proper probabilities, we use the softmax function.',
     'probability_confidence.softmax_result_explanation' => 'Now we have a correct probability distribution: each value lies in the range from 0 to 1; the sum of all values equals 1; and the numbers can be interpreted as the model\'s degree of confidence.',
 
