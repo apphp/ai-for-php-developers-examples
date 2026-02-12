@@ -47,3 +47,4 @@ $memoryEnd = memory_get_usage();
 <?= create_example_of_use_block(dirname(__FILE__) . '/code-usage.php'); ?>
 
 <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
+<br><br>
