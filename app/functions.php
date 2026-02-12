@@ -48,6 +48,10 @@ function ddd($data = []): void {
     dd($data, true);
 }
 
+function config($key = null, $default = null): ?string {
+    return getenv($key) ?: $default;
+}
+
 function humanize($data) {
     $data = str_replace(['-', '_'], ' ', $data);
     $data = ucwords($data);
