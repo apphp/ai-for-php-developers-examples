@@ -14,7 +14,8 @@
         "ml": [
             "php-ai/php-ml",
             "rubix/ml",
-            "codewithkyrian/transformers"
+            "codewithkyrian/transformers",
+            "theodo-group/llphant"
         ],
         "code-quality": [
             "friendsofphp/php-cs-fixer",
@@ -33,7 +34,8 @@
         "slim/php-view": "~3.3",
         "php-ai/php-ml": "0.10.0",
         "rubix/ml": "~2.5.3",
-        "codewithkyrian/transformers": "~0.6.2"
+        "codewithkyrian/transformers": "~0.6.2",
+        "theodo-group/llphant": "~0.11.12"
     },
     "require-dev": {
         "overtrue/phplint": "^6.1.0",
@@ -54,7 +56,8 @@
     },
     "config": {
         "allow-plugins": {
-            "codewithkyrian/platform-package-installer": true
+            "codewithkyrian/platform-package-installer": true,
+            "php-http/discovery": true
         }
     },
     "scripts": {
