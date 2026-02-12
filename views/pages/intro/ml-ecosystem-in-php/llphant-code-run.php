@@ -7,12 +7,14 @@ ob_start();
 
 $apiKey = config('OPENAI_API_KEY');
 
-if ($apiKey) {
+if (APP_MODE === 'local') {
     try {
-        include((APP_MODE === 'local' ? 'llphant-code-usage.php' : 'llphant-code-usage-prod.php'));
+        include('llphant-code-usage.php');
     } catch (\Throwable $e) {
         echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</div>';
     }
+} else {
+    include('llphant-code-usage-prod.php');
 }
 
 //////////////////////////////
@@ -44,9 +46,9 @@ $memoryEnd = memory_get_usage();
 <?= create_example_of_use_block(dirname(__FILE__) . '/llphant-code-usage.php'); ?>
 
 <?php
-    if ($apiKey) {
-        echo create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result);
-    } else {
+    if (APP_MODE === 'local' && !$apiKey) {
         echo '<div class="alert alert-warning" role="alert">OPENAI_API_KEY is not set. Add it to your <code>.env</code> file to run this example.</div>';
+    } else {
+        echo create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result);
     }
 ?>
