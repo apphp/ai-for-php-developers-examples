@@ -149,6 +149,17 @@ $app->group('/ml-ecosystem-in-php', function ($app) use ($renderer): void {
             'title' => __t('ml_ecosystem.sample_transformers_title'),
         ]);
     });
+    $app->get('/sample-in-llphant', function (Request $request, Response $response) use ($renderer): Response {
+        $breadcrumbs = [
+            ['label' => __t('nav.home'), 'url' => APP_URL],
+            ['label' => __t('ml_ecosystem.breadcrumb'), 'url' => APP_URL . 'ml-ecosystem-in-php'],
+            ['label' => __t('ml_ecosystem.sample_llphant_title'), 'url' => null],
+        ];
+
+        return render_page($renderer, $response, $breadcrumbs, 'intro/ml-ecosystem-in-php/llphant-code-run.php', [
+            'title' => __t('ml_ecosystem.sample_llphant_title'),
+        ]);
+    });
 });
 
 

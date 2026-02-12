@@ -84,11 +84,13 @@ return [
     'ml_ecosystem.sample_phpml_title' => 'Example with PHP-ML',
     'ml_ecosystem.sample_rubix_title' => 'Example with RubixML',
     'ml_ecosystem.sample_transformers_title' => 'Example with TransformersPHP',
+    'ml_ecosystem.sample_llphant_title' => 'Example with LLPhant',
     'ml_ecosystem.examples_heading' => 'Learning examples',
     'ml_ecosystem.examples_intro' => 'These examples will help you understand how you can use ML in PHP. They are not full-fledged applications, but they will help you understand the basics of working with ML in PHP.',
     'ml_ecosystem.rubix_intro' => 'Rubix supports classification, regression, clustering, and working with datasets as first-class objects. Let\'s see how this looks in practice. Let\'s say we have data for binary classification. <br>The code below also trains a k-nearest neighbors (k-NN) classifier, but this time on height and weight data with gender labels, and then predicts the label $M$ for a new person. The model returns $[172, 68]$ for the parameters, since most of the 3 nearest neighbors have this label.',
     'ml_ecosystem.phpml_intro' => 'A typical scenario: you have features from a database, you want to quickly train a model for classification or regression, save it, and use it in runtime without external services. <br>Let\'s consider a simple and illustrative example. In it, we train a k-nearest neighbors (k-NN) classifier on a small set of points, each of which belongs to one of two classes — $a$ or $b$. After training, the model must determine which class a new point belongs to. We specify the training set as coordinates on a plane and the corresponding class labels. For the point $[3, 2]$, the algorithm returns class b because its nearest neighbors in the training set belong to this class.',
     'ml_ecosystem.transformers_intro' => 'TransformersPHP gives you a simple pipeline API for tasks like sentiment analysis, text classification or semantic comparison. The snippet below runs a sentiment model on two short phrases and shows the resulting label and score.',
+    'ml_ecosystem.llphant_intro' => 'LLPhant is a lightweight framework to call LLMs from PHP. The snippet below sends a single prompt to OpenAI via LLPhant and prints the model response.',
 
     'what_is_model.heading' => 'What is a model in the mathematical sense',
     'what_is_model.function_as_basis_of_model' => 'Function as the basis of the model',

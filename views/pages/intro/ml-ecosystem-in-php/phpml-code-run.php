@@ -23,7 +23,6 @@ $memoryEnd = memory_get_usage();
 <p>
     <?= __t('ml_ecosystem.examples_intro'); ?>
 </p>
-<br>
 
 <?= create_show_code_button(__t('ml_ecosystem.sample_phpml_title'), 'ml-ecosystem-in-php', buttonText: __t('common.back')); ?>
 
