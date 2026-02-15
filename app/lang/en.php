@@ -288,6 +288,7 @@ return [
     'logistic_regression.case8_title' => 'Case 8. Equipment technical failure',
     'logistic_regression.case1.rubix_intro' => 'In real projects, people rarely implement logistic regression from scratch. It is much more convenient to use existing libraries.',
     'logistic_regression.case1.rubix_intro2' => 'The very same churn case implemented with RubixML becomes noticeably shorter and closer to how it is often done in production:',
+    'logistic_regression.case2.intro' => 'There is no multidimensional space, no complex features, and no intersecting factors. There is one feature and a binary decision. And this is already enough to see the entire logic of logistic regression.<br><br><b>Case Goal</b><br>Predict whether a user will subscribe to an email newsletter based only on the time spent on the site.<br><br>The model should answer two questions:<br>1) What is the probability of subscription?<br>2) Where is the boundary between "most likely to subscribe" and "most likely not to subscribe"?',
     'why_naive_bayes_works.title' => 'Why Naive Bayes works',
     'why_naive_bayes_works.case1.title' => 'Case 1. Categorical features and frequencies',
     'why_naive_bayes_works.case1.php_intro' => 'In this case we look at the simplest Naive Bayes with categorical features. We will explicitly count per-class frequencies, convert them into probabilities, and classify a new user.',

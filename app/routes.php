@@ -634,6 +634,27 @@ $app->group('/part-3', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/client-churn/rubix-code-run.php');
         });
+        $app->get('/case-2/newsletter-subscription', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_logistic_regression'), 'url' => APP_URL . 'part-3/logistic-regression'],
+                ['label' => __t('logistic_regression.case2_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/newsletter-subscription/index.php');
+        });
+        $app->get('/case-2/newsletter-subscription/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_logistic_regression'), 'url' => APP_URL . 'part-3/logistic-regression'],
+                ['label' => __t('logistic_regression.case2_title'), 'url' => APP_URL . 'part-3/logistic-regression/case-2/newsletter-subscription'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/logistic-regression/newsletter-subscription/code-run.php');
+        });
     });
     $app->group('/why-naive-bayes-works', function ($app) use ($renderer): void {
         $app->get('', function (Request $request, Response $response) use ($renderer): Response {

@@ -12,7 +12,7 @@
             <?= create_link('part-3/logistic-regression/case-1/client-churn', __t('logistic_regression.case1_title')) ?>
         </li>
         <li>
-            <?= create_link('part-3/logistic-regression/case-2/...', __t('logistic_regression.case2_title'), true) ?>
+            <?= create_link('part-3/logistic-regression/case-2/newsletter-subscription', __t('logistic_regression.case2_title')) ?>
         </li>
         <li>
             <?= create_link('part-3/logistic-regression/case-3/...', __t('logistic_regression.case3_title'), true) ?>
