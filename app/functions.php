@@ -182,7 +182,7 @@ function create_example_of_use_links(string $datasetFile = '', string $title = '
         </p>
         <div class="collapse pb-4" id="collapseExampleOfUse' . $expandButtonId . '">
             <div class="bd-clipboard">
-                <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard(\'' . $copyButtonId . '\')">Copy</button>&nbsp;
+                <button id="' . $copyButtonId . '" type="button" class="btn-clipboard" data-text-copied="' . __t('common.copied') . '" onclick="copyToClipboard(\'' . $copyButtonId . '\')">' . __t('common.copy') . '</button>&nbsp;
             </div>
             <div id="' . $copyButtonId . '-code" class="code-wrapper">
                 <code id="code">' . highlight_file($datasetFile, true) . '</code>
