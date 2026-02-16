@@ -298,6 +298,14 @@ return [
     'why_naive_bayes_works.case1.rubix_run_intro' => 'Here the same case is implemented with RubixML: we train Naive Bayes on the same data and see which class the model assigns to a new sample.',
     'why_naive_bayes_works.case1.rubix_result_explanation' => 'RubixML returns the predicted class label for the given sample. Under the hood it applies the same Naive Bayes idea (class prior × conditional likelihoods), so the result should match the pure PHP implementation for the same data.',
 
+    'why_naive_bayes_works.case2.title' => 'Case 2. Word-based spam filter (Bernoulli Naive Bayes)',
+    'why_naive_bayes_works.case2.php_intro' => 'In this case we build a <strong>Bernoulli Naive Bayes</strong> spam filter for text. Each word becomes a binary feature: present (1) or absent (0). Unlike the multinomial variant, the Bernoulli model also explicitly accounts for missing words, so absence contributes to the score too.',
+    'why_naive_bayes_works.case2.rubix_intro' => 'Then we implement the same idea using RubixML: create binary features (word present/absent), train Naive Bayes, and predict the class for a new email.',
+    'why_naive_bayes_works.case2.php_run_intro' => 'Below is the runnable code: we count class priors, build the vocabulary, apply Bernoulli Laplace smoothing, and compute log-scores for spam/ham.',
+    'why_naive_bayes_works.case2.php_result_explanation' => 'The output is the log score for each class. The higher the value (closer to 0), the more likely the class. After sorting, the predicted class will come first.<br><br><b>How to read the output</b><br>Comparison:<br><br>spam = {spam}<br>ham = {ham}<br><br>{spam} > {ham} → the model selects spam',
+    'why_naive_bayes_works.case2.rubix_run_intro' => 'Here we train RubixML NaiveBayes on binary bag-of-words features (0/1) and predict the class for a new word vector.',
+    'why_naive_bayes_works.case2.rubix_result_explanation' => 'RubixML returns the predicted label for the given vector. Conceptually it is the same scheme: prior × likelihoods (smoothing and log-space computations are handled by the library).',
+
     // Part IV: k-NN and local solutions
     'knn_local_solutions.index.intro' => 'The k-nearest neighbors (k-NN) algorithm is one of the most intuitive yet fundamental machine learning algorithms. It makes almost no assumptions about the data, does not train a parametric model, but instead stores the training examples and relies on a simple, almost geometric idea: similar objects should have similar answers.',
     'knn_local_solutions.index.case1' => 'Case 1. Customer classification by behavior',

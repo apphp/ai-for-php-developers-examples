@@ -12,7 +12,7 @@
             <?= create_link('part-3/why-naive-bayes-works/case-1/categorical-features-and-frequencies', 'Кейс 1. Категориальные признаки и частоты') ?>
         </li>
         <li>
-            <?= create_link('part-3/why-naive-bayes-works/case-2/...', 'Кейс 2. Спам-фильтр на словах (Bernoulli Naive Bayes)', true) ?>
+            <?= create_link('part-3/why-naive-bayes-works/case-2/spam-filter-on-words-bernoulli-naive-bayes', 'Кейс 2. Спам-фильтр на словах (Bernoulli Naive Bayes)') ?>
         </li>
         <li>
             <?= create_link('part-3/why-naive-bayes-works/case-3/...', 'Кейс 3. Числовые признаки (Gaussian Naive Bayes)', true) ?>

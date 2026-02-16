@@ -698,6 +698,38 @@ $app->group('/part-3', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/categorical-features-and-frequencies/rubix-code-run.php');
         });
+        $app->get('/case-2/spam-filter-on-words-bernoulli-naive-bayes', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('why_naive_bayes_works.title'), 'url' => APP_URL . 'part-3/why-naive-bayes-works'],
+                ['label' => __t('why_naive_bayes_works.case2.title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/spam-filter-on-words-bernoulli-naive-bayes/index.php');
+        });
+        $app->get('/case-2/spam-filter-on-words-bernoulli-naive-bayes/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('why_naive_bayes_works.title'), 'url' => APP_URL . 'part-3/why-naive-bayes-works'],
+                ['label' => __t('why_naive_bayes_works.case2.title'), 'url' => APP_URL . 'part-3/why-naive-bayes-works/case-2/spam-filter-on-words-bernoulli-naive-bayes'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/spam-filter-on-words-bernoulli-naive-bayes/code-run.php');
+        });
+        $app->get('/case-2/spam-filter-on-words-bernoulli-naive-bayes/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('why_naive_bayes_works.title'), 'url' => APP_URL . 'part-3/why-naive-bayes-works'],
+                ['label' => __t('why_naive_bayes_works.case2.title'), 'url' => APP_URL . 'part-3/why-naive-bayes-works/case-2/spam-filter-on-words-bernoulli-naive-bayes'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/why-naive-bayes-works/spam-filter-on-words-bernoulli-naive-bayes/rubix-code-run.php');
+        });
     });
 });
 
