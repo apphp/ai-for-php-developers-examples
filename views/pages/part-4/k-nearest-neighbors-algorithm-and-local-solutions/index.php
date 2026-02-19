@@ -12,7 +12,7 @@
             <?= create_link('part-4/k-nearest-neighbors-algorithm-and-local-solutions/case-1/client-classification-by-behavior', __t('knn_local_solutions.index.case1')); ?>
         </li>
         <li>
-            <?= create_link('part-4/k-nearest-neighbors-algorithm-and-local-solutions/case-2/...', __t('knn_local_solutions.index.case2'), true); ?>
+            <?= create_link('part-4/k-nearest-neighbors-algorithm-and-local-solutions/case-2/apartment-price-estimation', __t('knn_local_solutions.index.case2')); ?>
         </li>
         <li>
             <?= create_link('part-4/k-nearest-neighbors-algorithm-and-local-solutions/case-2/...', __t('knn_local_solutions.index.case3'), true); ?>
