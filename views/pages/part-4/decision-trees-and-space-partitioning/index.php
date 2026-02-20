@@ -12,7 +12,7 @@
             <?= create_link('part-4/decision-trees-and-space-partitioning/case-1/tutorial-decision-tree', __t('decision_trees_space_partitioning.index.case1')); ?>
         </li>
         <li>
-            <?= create_link('part-4/decision-trees-and-space-partitioning/case-2/...', __t('decision_trees_space_partitioning.index.case2'), true); ?>
+            <?= create_link('part-4/decision-trees-and-space-partitioning/case-2/classification-with-rubixml', __t('decision_trees_space_partitioning.index.case2')); ?>
         </li>
         <li>
             <?= create_link('part-4/decision-trees-and-space-partitioning/case-2/...', __t('decision_trees_space_partitioning.index.case3'), true); ?>

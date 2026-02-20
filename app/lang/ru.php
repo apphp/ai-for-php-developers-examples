@@ -320,6 +320,10 @@ return [
     'decision_trees_space_partitioning.index.case2' => 'Кейс 2. Классификация с помощью RubixML',
     'decision_trees_space_partitioning.index.case3' => 'Кейс 3. Когда дерево удобно в реальном продукте',
     'decision_trees_space_partitioning.case1.intro' => 'В данном случае мы строим минимальное дерево решений для наглядного примера: вычисляем энтропию и прирост информации для простого разделения, выбираем оптимальный порог для признака и показываем, как набор данных разделяется на левую и правую ветви.',
+
+    'decision_trees_space_partitioning.case2.intro' => 'В предыдущем кейсе мы разобрали учебную реализацию дерева решений на чистом PHP и увидели механику алгоритма изнутри. Теперь рассмотрим ту же задачу, но уже с использованием готовой библиотеки. Цель этого кейса – показать, как знакомая логика энтропии и information gain применяется в реальном инструменте и как decision tree интегрируется в обычный PHP-проект.',
+    'decision_trees_space_partitioning.case2.rubix_run_intro' => 'Ниже код запуска: мы собираем Labeled dataset, обучаем ClassificationTree и делаем предсказание для нового объекта.',
+    'decision_trees_space_partitioning.case2.rubix_result_explanation' => 'RubixML возвращает предсказанную метку класса для входного вектора. По смыслу это тот же подход с разбиениями по признакам и критерием качества (entropy / information gain), но реализация, выбор сплитов и построение дерева выполняются внутри библиотеки.',
     'decision_trees_space_partitioning.case1.diagram_default' => 'Дерево решений',
     'decision_trees_space_partitioning.case1.diagram_all_data' => 'Все данные',
     'decision_trees_space_partitioning.case1.diagram_left_branch' => 'Левая ветка',

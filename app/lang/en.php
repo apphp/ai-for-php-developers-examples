@@ -319,6 +319,10 @@ return [
     'decision_trees_space_partitioning.index.case2' => 'Case 2. Classification using RubixML',
     'decision_trees_space_partitioning.index.case3' => 'Case 3. When a tree is convenient in a real product',
     'decision_trees_space_partitioning.case1.intro' => 'In this case we build a minimal tutorial decision tree: we compute entropy and information gain for a simple split, pick the best threshold for a feature, and show how the dataset is split into left and right branches.',
+
+    'decision_trees_space_partitioning.case2.intro' => 'In the previous case we explored a tutorial decision tree implementation in pure PHP and saw how the algorithm works inside. Now we will solve the same task using a production-ready library. The goal of this case is to show how the familiar entropy and information gain logic is applied in a real tool and how a decision tree is integrated into a typical PHP project.',
+    'decision_trees_space_partitioning.case2.rubix_run_intro' => 'Below is the runnable code: we build a Labeled dataset, train a ClassificationTree, and predict the class for a new sample.',
+    'decision_trees_space_partitioning.case2.rubix_result_explanation' => 'RubixML returns the predicted class label for the input vector. Conceptually it is the same split-based approach with a quality criterion (entropy / information gain), but the tree building and split selection are handled internally by the library.',
     'decision_trees_space_partitioning.case1.diagram_default' => 'Decision Tree',
     'decision_trees_space_partitioning.case1.diagram_all_data' => 'All data',
     'decision_trees_space_partitioning.case1.diagram_left_branch' => 'Left branch',

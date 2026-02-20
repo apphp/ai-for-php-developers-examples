@@ -821,6 +821,27 @@ $app->group('/part-4', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/tutorial-decision-tree/code-run.php');
         });
+        $app->get('/case-2/classification-with-rubixml', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('nav.part4_decision_trees_space_partitioning'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('decision_trees_space_partitioning.index.case2'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/classification-with-rubixml/index.php');
+        });
+        $app->get('/case-2/classification-with-rubixml/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part4_title'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('nav.part4_decision_trees_space_partitioning'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning'],
+                ['label' => __t('decision_trees_space_partitioning.index.case2'), 'url' => APP_URL . 'part-4/decision-trees-and-space-partitioning/case-2/classification-with-rubixml'],
+                ['label' => __t('nav.code_run'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-4/decision-trees-and-space-partitioning/classification-with-rubixml/code-run.php');
+        });
     });
 });
 
