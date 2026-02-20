@@ -38,7 +38,7 @@ $estimator = new ClassificationTree(
 $estimator->train($dataset);
 
 // Build an Unlabeled dataset for inference
-$sample = [4, 1];
+$sample = [4, 6];
 
 $dataset = new Unlabeled([
     $sample,
