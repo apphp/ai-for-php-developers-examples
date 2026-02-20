@@ -267,7 +267,7 @@ $memoryEnd = memory_get_usage();
                     graph: $graph,
                     defaultMessage: __t('decision_trees_space_partitioning.case1.diagram_default'),
                     style: $style ?? '',
-                    containerClass: 'px-4'
+                    containerClass: 'px-4 mb-4'
                 );
             ?>
         </div>

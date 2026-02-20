@@ -946,7 +946,7 @@ class Chart {
                 </div>
                 ' . $stepsOutput . '
             </div>
-            <div class="container ' . $containerClass . ' mb-5" style="overflow: hidden; min-height: 600px; width: 100%; position: relative;">
+            <div class="container ' . ($containerClass ? $containerClass : 'mb-5') . '" style="overflow: hidden; min-height: 500px; width: 100%; position: relative;">
                 <div id="diagram"></div>
             </div>
 
