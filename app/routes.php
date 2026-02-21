@@ -849,11 +849,22 @@ $app->group('/part-4', function ($app) use ($renderer): void {
  // Part V. Text as mathematics
  // ---------------------------------------------------
  $app->group('/part-5', function ($app) use ($renderer): void {
+     $app->group('/bag-of-words-and-tf-idf', function ($app) use ($renderer): void {
+         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+             $breadcrumbs = [
+                 ['label' => __t('nav.home'), 'url' => APP_URL],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
+                 ['label' => __t('nav.part5_bag_of_words_and_tf_idf'), 'url' => null],
+             ];
+
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/bag-of-words-and-tf-idf/index.php');
+         });
+     });
      $app->group('/hands-on-embedding-in-php-with-transformers', function ($app) use ($renderer): void {
          $app->get('', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_hands_on_embedding_in_php_with_transformers'), 'url' => null],
              ];
 
@@ -862,7 +873,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/case-4/intelligent-timelines', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_hands_on_embedding_in_php_with_transformers'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
                  ['label' => __t('hands_on_embedding_in_php_with_transformers.index.case4'), 'url' => null],
              ];
@@ -872,7 +883,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/case-4/intelligent-timelines/code-run', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_hands_on_embedding_in_php_with_transformers'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers'],
                  ['label' => __t('hands_on_embedding_in_php_with_transformers.index.case4'), 'url' => APP_URL . 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines'],
                  ['label' => __t('nav.code_run'), 'url' => null],
@@ -885,7 +896,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => null],
              ];
 
@@ -894,7 +905,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/why-do-words-turn-into-numbers', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
                  ['label' => __t('rag_engineering_system.index.item1'), 'url' => null],
              ];
@@ -904,7 +915,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/bag-of-words-and-tf-idf', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
                  ['label' => __t('rag_engineering_system.index.item2'), 'url' => null],
              ];
@@ -914,7 +925,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/embeddings-as-continuous-spaces-of-meaning', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
                  ['label' => __t('rag_engineering_system.index.item3'), 'url' => null],
              ];
@@ -924,7 +935,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/transformers-and-context', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
                  ['label' => __t('rag_engineering_system.index.item4'), 'url' => null],
              ];
@@ -934,7 +945,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/hands-on-embeddings-in-php-with-transformers', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
                  ['label' => __t('rag_engineering_system.index.item5'), 'url' => null],
              ];
@@ -944,7 +955,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
          $app->get('/rag-as-engineering-system', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
                  ['label' => __t('nav.home'), 'url' => APP_URL],
-                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
+                 ['label' => __t('nav.part5_title'), 'url' => APP_URL . 'part-5/bag-of-words-and-tf-idf'],
                  ['label' => __t('nav.part5_retrieval_augmented_generation_as_engineering_system'), 'url' => APP_URL . 'part-5/retrieval-augmented-generation-as-engineering-system'],
                  ['label' => __t('rag_engineering_system.index.item6'), 'url' => null],
              ];
