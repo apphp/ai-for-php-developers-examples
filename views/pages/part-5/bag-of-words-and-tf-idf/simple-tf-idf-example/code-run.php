@@ -1,5 +1,19 @@
 <?php
 
+$currentLang ??= 'en';
+$documents = $currentLang === 'ru'
+    ? [
+        'кот ест рыбу',
+        'кот любит рыбу',
+        'собака ест мясо из консервов',
+    ]
+    : [
+        'The cat eats fish',
+        'The cat loves fish',
+        'The dog eats canned meat',
+    ];
+
+
 $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
 ob_start();
@@ -28,6 +42,12 @@ $memoryEnd = memory_get_usage();
 
 <?= create_example_of_use_block(dirname(__FILE__) . '/code-usage.php'); ?>
 
-<?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
-
+<div class="row">
+    <div class="col-12 col-md-4">
+        <?= create_dataset_and_test_data_links($documents, fullWidth: true, datasetOpened: true, datasetTitle: __t('common.documents')); ?>
+    </div>
+    <div class="col-12 col-md-8">
+        <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
+    </div>
+</div>
 <br><br>

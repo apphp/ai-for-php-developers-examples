@@ -77,6 +77,7 @@ return [
     'common.git_repository' => 'GitHub Repository',
     'common.back' => 'Back',
     'common.example' => 'Example',
+    'common.documents' => 'Documents',
 
     // ML ecosystem in PHP (intro section)
     'ml_ecosystem.title' => 'ML Ecosystem in PHP',

@@ -195,7 +195,7 @@ function create_example_of_use_links(string $datasetFile = '', string $title = '
 
 function create_example_of_use_block(string $codeFile, string $copyButtonId = 'copyButton'): string {
     $html = '<div>
-    <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse" title="Click to expand">
+    <p class="btn btn-link px-0 py-0" id="toggleExampleOfUse" data-bs-toggle="collapse" href="#collapseExampleOfUse" role="button" aria-expanded="false" aria-controls="collapseExampleOfUse" title="' . __t('common.click_to_expand') . '">
         ' . __t('common.example_of_use') . ' <i id="toggleIcon" class="fa-regular fa-square-plus"></i>
     </p>
     <div class="collapse pb-4" id="collapseExampleOfUse">
@@ -216,13 +216,17 @@ function create_example_of_use_block(string $codeFile, string $copyButtonId = 'c
     return $html;
 }
 
-function create_dataset_and_test_data_links(array|string $datasetData = '', array $testData = [], bool $fullWidth = false): string {
-    $output = '<p class="btn btn-link px-0 py-0 me-4" id="toggleDataset" data-bs-toggle="collapse" href="#collapseDataset" role="button" aria-expanded="false" aria-controls="collapseDataset" title="Click to expand">
-        Dataset <i id="toggleIconDataset" class="fa-regular fa-square-plus"></i>
+function create_dataset_and_test_data_links(array|string $datasetData = '', array $testData = [], bool $fullWidth = false, bool $datasetOpened = false, string $datasetTitle = 'Dataset'): string {
+    $datasetAriaExpanded = $datasetOpened ? 'true' : 'false';
+    $datasetCollapseClass = 'collapse' . ($datasetOpened ? ' show' : '');
+    $datasetIcon = $datasetOpened ? '' : ' <i id="toggleIconDataset" class="fa-regular fa-square-plus"></i>';
+
+    $output = '<p class="btn btn-link px-0 py-0 me-4" id="toggleDataset" data-bs-toggle="collapse" href="#collapseDataset" role="button" aria-expanded="' . $datasetAriaExpanded . '" aria-controls="collapseDataset" title="' . __t('common.click_to_expand') . '">
+        ' . $datasetTitle . $datasetIcon . '
     </p>';
 
     if ($testData) {
-        $output .= '<p class="btn btn-link px-0 py-0" id="toggleTestData" data-bs-toggle="collapse" href="#collapseTestData" role="button" aria-expanded="false" aria-controls="collapseTestData" title="Click to expand">
+        $output .= '<p class="btn btn-link px-0 py-0" id="toggleTestData" data-bs-toggle="collapse" href="#collapseTestData" role="button" aria-expanded="false" aria-controls="collapseTestData" title="' . __t('common.click_to_expand') . '">
         Test Data <i id="toggleIconTestData" class="fa-regular fa-square-plus"></i>
         </p>';
     }
@@ -230,7 +234,7 @@ function create_dataset_and_test_data_links(array|string $datasetData = '', arra
     $output .= '<div class="row">';
 
     if (is_array($datasetData) && empty($testData)) {
-        $output .= '<div class="collapse col-md-12 ' . ($fullWidth ? 'col-lg-12' : 'col-lg-7 pe-4') . ' mb-4 pe-4" id="collapseDataset">
+        $output .= '<div class="' . $datasetCollapseClass . ' col-md-12 ' . ($fullWidth ? 'col-lg-12' : 'col-lg-7 pe-4') . ' mb-4 pe-4" id="collapseDataset">
                 <div class="card card-body pb-0">
                     <code class="gray">
             <pre>';
@@ -245,7 +249,7 @@ function create_dataset_and_test_data_links(array|string $datasetData = '', arra
             </div>';
     } else {
         if ($datasetData) {
-            $output .= '<div class="collapse col-md-12 ' . ($fullWidth ? 'col-lg-12' : 'col-lg-7 pe-4') . ' mb-4" id="collapseDataset">
+            $output .= '<div class="' . $datasetCollapseClass . ' col-md-12 ' . ($fullWidth ? 'col-lg-12' : 'col-lg-7 pe-4') . ' mb-4" id="collapseDataset">
                     <div class="card card-body pb-0">
                     <code id="dataset">
                         ' . highlight_file($datasetData, true) . '
