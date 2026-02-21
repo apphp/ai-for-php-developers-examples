@@ -83,7 +83,7 @@ foreach ($tokenized as $doc) {
 echo 'Vocabulary: ' . implode(', ', $vocab) . PHP_EOL . PHP_EOL;
 
 foreach ($tfidfVectors as $i => $vector) {
-    echo "Документ " . ($i + 1) . ":" . PHP_EOL;
+    echo "Document " . ($i + 1) . ":" . PHP_EOL;
     foreach ($vector as $word => $value) {
         echo "  $word => " . round($value, 3) . PHP_EOL;
     }
