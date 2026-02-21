@@ -9,26 +9,26 @@
 
     <ul>
         <li>
-            <?= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-1/semantic-search-without-db', 'Простой пример TF–IDF на PHP', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/simple-tf-idf-example', 'Простой пример TF–IDF на PHP'); ?>
         </li>
 
-        <!--        <li>-->
-<!--            --><?php //= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-1/semantic-search-without-db', __t('hands_on_embedding_in_php_with_transformers.index.case1'), true); ?>
-<!--        </li>-->
-<!--        <li>-->
-<!--            --><?php //= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-2/near-duplicates', __t('hands_on_embedding_in_php_with_transformers.index.case2'), true); ?>
-<!--        </li>-->
-<!--        <li>-->
-<!--            --><?php //= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-3/semantic-faq', __t('hands_on_embedding_in_php_with_transformers.index.case3'), true); ?>
-<!--        </li>-->
-<!--        <li>-->
-<!--            --><?php //= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines', __t('hands_on_embedding_in_php_with_transformers.index.case4')); ?>
-<!--        </li>-->
-<!--        <li>-->
-<!--            --><?php //= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-5/zero-shot-classification', __t('hands_on_embedding_in_php_with_transformers.index.case5'), true); ?>
-<!--        </li>-->
-<!--        <li>-->
-<!--            --><?php //= create_link('part-5/hands-on-embedding-in-php-with-transformers/case-6/similar-articles-recommendations', __t('hands_on_embedding_in_php_with_transformers.index.case6'), true); ?>
-<!--        </li>-->
+        <li>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-1/...', 'Кейс 1. Поиск похожих документов', true); ?>
+        </li>
+        <li>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-2/...', 'Кейс 2. Классификация отзывов: "положительный / отрицательный"', true); ?>
+        </li>
+        <li>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-3/...', 'Кейс 3. Автоматическая категоризация статей', true); ?>
+        </li>
+        <li>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-4/...', 'Кейс 4. Детектор "спама" в формах обратной связи', true); ?>
+        </li>
+        <li>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-5/...', 'Кейс 5. Объяснимый поиск "почему этот документ?"', true); ?>
+        </li>
+        <li>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-6/...', 'Кейс 6. Сравнение: Bag of Words vs TF–IDF на одном примере', true); ?>
+        </li>
     </ul>
 </div>

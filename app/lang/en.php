@@ -368,4 +368,7 @@ return [
 
     'rag_engineering_system.rag_as_engineering_system.title' => 'RAG: Retrieval-Augmented Generation as an engineering system',
     'rag_engineering_system.rag_as_engineering_system.intro' => 'We put everything together: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting, and evaluation. The focus is not on “one trick” but on building a reliable system: latency, quality, observability, and iteration loops.',
+
+    'bag_of_words_and_tf_idf.simple_tfidf_example' => 'A simple TF–IDF example in PHP',
+    'bag_of_words_and_tf_idf.simple_tfidf_example_intro' => 'Below is a minimal TF–IDF implementation in pure PHP. We take three short documents (about a cat and a dog), build a vocabulary, compute TF and IDF, and then produce TF–IDF weights for each term in each document.',
 ];
