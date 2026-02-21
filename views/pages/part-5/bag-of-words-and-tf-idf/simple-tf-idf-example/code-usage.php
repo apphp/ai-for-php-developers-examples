@@ -87,5 +87,8 @@ foreach ($tfidfVectors as $i => $vector) {
     foreach ($vector as $word => $value) {
         echo "  $word => " . round($value, 3) . PHP_EOL;
     }
-    echo PHP_EOL;
+
+    if ($i < 2){
+        echo PHP_EOL;
+    }
 }

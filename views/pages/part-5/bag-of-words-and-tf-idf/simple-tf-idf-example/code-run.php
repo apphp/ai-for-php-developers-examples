@@ -44,7 +44,7 @@ $memoryEnd = memory_get_usage();
 
 <div class="row">
     <div class="col-12 col-md-4">
-        <?= create_dataset_and_test_data_links($documents, fullWidth: true, datasetOpened: true, datasetTitle: __t('common.documents')); ?>
+        <?= create_dataset_and_test_data_links($documents, fullWidth: true, datasetOpened: true, datasetTitle: __t('common.documents') . ':'); ?>
     </div>
     <div class="col-12 col-md-8">
         <?= create_result_block($memoryEnd, $memoryStart, $microtimeEnd, $microtimeStart, $result); ?>
