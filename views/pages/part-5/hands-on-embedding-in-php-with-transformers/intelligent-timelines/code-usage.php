@@ -92,7 +92,7 @@ $events = [
 
 $query = 'санкции против IT-компаний';
 
-$search = new SemanticEventSearch(topN: 3);
+$search = new SemanticEventSearch(topN: 3, cachePath: __DIR__ . '/../intelligent-timelines/embeddings.events.json');
 $search->setModel('Xenova/paraphrase-multilingual-MiniLM-L12-v2');
 $search->setEvents($events);
 $search->setQuery($query);

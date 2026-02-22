@@ -901,7 +901,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
                  ['label' => __t('hands_on_embedding_in_php_with_transformers.index.case4'), 'url' => null],
              ];
 
-             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines/index.php');
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/intelligent-timelines/index.php');
          });
          $app->get('/case-4/intelligent-timelines/code-run', function (Request $request, Response $response) use ($renderer): Response {
              $breadcrumbs = [
@@ -912,7 +912,7 @@ $app->group('/part-4', function ($app) use ($renderer): void {
                  ['label' => __t('nav.code_run'), 'url' => null],
              ];
 
-             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/case-4/intelligent-timelines/code-run.php');
+             return render_page($renderer, $response, $breadcrumbs, 'part-5/hands-on-embedding-in-php-with-transformers/intelligent-timelines/code-run.php');
          });
      });
      $app->group('/retrieval-augmented-generation-as-engineering-system', function ($app) use ($renderer): void {

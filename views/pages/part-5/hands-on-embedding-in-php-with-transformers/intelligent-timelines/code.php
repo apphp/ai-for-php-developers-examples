@@ -23,10 +23,11 @@ final class SemanticEventSearch
      * Create a new semantic search instance.
      *
      * @param int $topN Number of results to return.
+     * @param string $cachePath Path to the cache file.
      */
-    public function __construct(int $topN = 3)
+    public function __construct(int $topN = 3, string $cachePath = '')
     {
-        $this->cachePath = __DIR__ . '/../embeddings.events.json';
+        $this->cachePath = $cachePath;;
         $this->events = [];
         $this->embedder = null;
         $this->topN = $topN;
