@@ -372,4 +372,15 @@ return [
 
     'bag_of_words_and_tf_idf.simple_tfidf_example' => 'A simple TF–IDF example in PHP',
     'bag_of_words_and_tf_idf.simple_tfidf_example_intro' => 'Below is a minimal TF–IDF implementation in pure PHP. We take three short documents (about a cat and a dog), build a vocabulary, compute TF and IDF, and then produce TF–IDF weights for each term in each document.',
+
+    'bag_of_words_and_tf_idf.index.intro' => 'In the previous chapters we talked about text as data and about the fact that a computer cannot read words “like a human”. For it, text is a set of symbols, numbers, and statistics. In this section we will cover two basic, yet still extremely useful approaches to representing text as numbers: Bag of Words and TF–IDF.',
+    'bag_of_words_and_tf_idf.index.item_simple_tfidf' => 'A simple TF–IDF example in PHP',
+    'bag_of_words_and_tf_idf.index.case1' => 'Case 1. Similar document search',
+    'bag_of_words_and_tf_idf.index.case2' => 'Case 2. Review classification: “positive / negative”',
+    'bag_of_words_and_tf_idf.index.case3' => 'Case 3. Automatic article categorization',
+    'bag_of_words_and_tf_idf.index.case4' => 'Case 4. “Spam” detector for contact forms',
+    'bag_of_words_and_tf_idf.index.case5' => 'Case 5. Explainable search: “why this document?”',
+    'bag_of_words_and_tf_idf.index.case6' => 'Case 6. Comparison: Bag of Words vs TF–IDF on one example',
+
+    'why_do_words_turn_into_numbers.index.note_no_code' => 'There are no runnable examples or code in this chapter because it is a concept, not a hands-on implementation.',
 ];

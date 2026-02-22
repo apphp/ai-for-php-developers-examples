@@ -4,31 +4,31 @@
 
 <div>
     <p>
-        В предыдущих главах мы говорили о тексте как о данных и о том, что компьютер не умеет читать слова "как человек". Для него текст – это набор символов, чисел и статистик. В этой главе мы разберём два базовых, но до сих пор крайне полезных подхода к представлению текста в виде чисел: Bag of Words и TF–IDF.
+        <?= __t('bag_of_words_and_tf_idf.index.intro'); ?>
     </p>
 
     <ul>
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/simple-tf-idf-example', 'Простой пример TF–IDF на PHP'); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/simple-tf-idf-example', __t('bag_of_words_and_tf_idf.index.item_simple_tfidf')); ?>
         </li>
 
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/case-1/...', 'Кейс 1. Поиск похожих документов', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-1/...', __t('bag_of_words_and_tf_idf.index.case1'), true); ?>
         </li>
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/case-2/...', 'Кейс 2. Классификация отзывов: "положительный / отрицательный"', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-2/...', __t('bag_of_words_and_tf_idf.index.case2'), true); ?>
         </li>
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/case-3/...', 'Кейс 3. Автоматическая категоризация статей', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-3/...', __t('bag_of_words_and_tf_idf.index.case3'), true); ?>
         </li>
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/case-4/...', 'Кейс 4. Детектор "спама" в формах обратной связи', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-4/...', __t('bag_of_words_and_tf_idf.index.case4'), true); ?>
         </li>
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/case-5/...', 'Кейс 5. Объяснимый поиск "почему этот документ?"', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-5/...', __t('bag_of_words_and_tf_idf.index.case5'), true); ?>
         </li>
         <li>
-            <?= create_link('part-5/bag-of-words-and-tf-idf/case-6/...', 'Кейс 6. Сравнение: Bag of Words vs TF–IDF на одном примере', true); ?>
+            <?= create_link('part-5/bag-of-words-and-tf-idf/case-6/...', __t('bag_of_words_and_tf_idf.index.case6'), true); ?>
         </li>
     </ul>
 </div>

@@ -373,4 +373,15 @@ return [
 
     'bag_of_words_and_tf_idf.simple_tfidf_example' => 'Простой пример TF–IDF на PHP',
     'bag_of_words_and_tf_idf.simple_tfidf_example_intro' => 'Ниже – минимальная реализация TF–IDF на чистом PHP. Мы берём три коротких документа (про кота и собаку), строим словарь, считаем TF и IDF, а затем получаем TF–IDF веса для каждого терма в каждом документе.',
+
+    'bag_of_words_and_tf_idf.index.intro' => 'В предыдущих главах мы говорили о тексте как о данных и о том, что компьютер не умеет читать слова "как человек". Для него текст – это набор символов, чисел и статистик. В этой главе мы разберём два базовых, но до сих пор крайне полезных подхода к представлению текста в виде чисел: Bag of Words и TF–IDF.',
+    'bag_of_words_and_tf_idf.index.item_simple_tfidf' => 'Простой пример TF–IDF на PHP',
+    'bag_of_words_and_tf_idf.index.case1' => 'Кейс 1. Поиск похожих документов',
+    'bag_of_words_and_tf_idf.index.case2' => 'Кейс 2. Классификация отзывов: "положительный / отрицательный"',
+    'bag_of_words_and_tf_idf.index.case3' => 'Кейс 3. Автоматическая категоризация статей',
+    'bag_of_words_and_tf_idf.index.case4' => 'Кейс 4. Детектор "спама" в формах обратной связи',
+    'bag_of_words_and_tf_idf.index.case5' => 'Кейс 5. Объяснимый поиск "почему этот документ?"',
+    'bag_of_words_and_tf_idf.index.case6' => 'Кейс 6. Сравнение: Bag of Words vs TF–IDF на одном примере',
+
+    'why_do_words_turn_into_numbers.index.note_no_code' => 'В этой главе нет примеров или кода, так как это концепция, а не практическая реализация.',
 ];

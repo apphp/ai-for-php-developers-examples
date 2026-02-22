@@ -131,7 +131,7 @@ $currentPath = str_ireplace(APP_URL_DIR, '', $currentPath);
 
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                    <a class="disabled nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/why-do-words-turn-into-numbers') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
+                    <a class="nav-link<?= str_starts_with($currentPath, $linkPath = '/part-5/why-do-words-turn-into-numbers') ? ' active' : '' ?>" href="<?=APP_URL . ltrim($linkPath, '/')?>">
                         <span data-feather="file-text">• </span><small><?= __t('nav.part5_why_do_words_turn_into_numbers'); ?></small>
                     </a>
                 </li>
