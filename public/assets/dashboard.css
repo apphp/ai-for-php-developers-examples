@@ -572,8 +572,11 @@ ul.search-result li {
     }
 
     .navbar-dark .navbar-brand {
-        width: 280px;
         font-size: 14px;
+    }
+
+    .navbar-dark .navbar-brand .hidden-sm {
+        display: none;
     }
 
     .navbar .navbar-toggler {

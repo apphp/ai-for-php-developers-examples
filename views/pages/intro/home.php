@@ -5,7 +5,7 @@
 <div>
     <?= __t('home.intro'); ?>
     <br><br>
-    <?= __t('home.official_site'); ?>: <a href="https://apphp.gitbook.io/ai-for-php-developers" target="_blank" rel="nofollow noopener"><?=__t('app.name_short') ?></a>
+    <?= __t('home.official_site'); ?>: <a href="https://apphp.gitbook.io/ai-for-php-developers" target="_blank" rel="nofollow noopener"><?=__t('app.name') ?></a>
     <br>
     <?= __t('home.official_repo'); ?>: <a href="https://github.com/apphp/ai-for-php-developers-examples" target="_blank" rel="nofollow noopener"><?=__t('common.git_repository') ?></a>
     <br><br>

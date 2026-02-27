@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'app.name' => 'AI для PHP-разработчиков (примеры)',
-    'app.name_short' => 'AI для PHP-разработчиков',
+    'app.name' => 'AI для PHP-разработчиков',
+    'app.name_examples' => '(примеры)',
 
     'nav.home' => 'Главная',
     'nav.introduction' => 'Введение',
