@@ -25,7 +25,7 @@
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/dark-mode.css" rel="stylesheet">
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/highlight/default.min.css" rel="stylesheet">
-    <link href="<?=APP_ASSETS_URL?>assets/dashboard.css" rel="stylesheet">
+    <link href="<?=APP_ASSETS_URL?>assets/dashboard.css?v=20260226" rel="stylesheet">
     <link href="<?=APP_ASSETS_URL?>assets/dist/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
 
     <script>
