@@ -3,7 +3,7 @@
 return [
     'app.name' => 'AI для PHP-разработчиков',
     'app.name_long' => 'AI для PHP-разработчиков (examples)',
-    'app.name_short' => 'AI для PHP (примеры)',
+    'app.name_short' => 'AI для PHP',
 
     'nav.home' => 'Главная',
     'nav.introduction' => 'Введение',
