@@ -2,7 +2,8 @@
 
 return [
     'app.name' => 'AI for PHP Developers',
-    'app.name_examples' => '(examples)',
+    'app.name_long' => 'AI for PHP Developers (examples)',
+    'app.name_short' => 'AI for PHP (examples)',
 
     'nav.home' => 'Home',
     'nav.introduction' => 'Introduction',

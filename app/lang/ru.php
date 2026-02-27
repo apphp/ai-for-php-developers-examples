@@ -2,7 +2,8 @@
 
 return [
     'app.name' => 'AI для PHP-разработчиков',
-    'app.name_examples' => '(примеры)',
+    'app.name_long' => 'AI для PHP-разработчиков (examples)',
+    'app.name_short' => 'AI для PHP (примеры)',
 
     'nav.home' => 'Главная',
     'nav.introduction' => 'Введение',
