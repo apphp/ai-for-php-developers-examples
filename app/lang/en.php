@@ -9,6 +9,8 @@ return [
     'nav.getting_started' => 'Getting Started',
     'nav.code_example' => 'Code example',
     'nav.code_run' => 'Run Code',
+
+    // Part I navigation
     'nav.part1_title' => 'Part I. The Mathematical Language of AI',
     'nav.part1_what_is_model' => 'What is a model',
     'nav.part1_function_as_the_model' => 'Function as the basis of the model',
@@ -16,6 +18,8 @@ return [
     'nav.part1_learning_as_min_error' => 'Learning as minimizing error',
     'nav.part1_vectors' => 'Vectors, dimensions and feature spaces',
     'nav.part1_distances' => 'Distances and similarity',
+
+    // Part II navigation
     'nav.part2_title' => 'Part II. Learning as Optimization',
     'nav.part2_error_loss_functions' => 'Error, loss functions, and why they are needed',
     'nav.part2_apartment_valuation_based_on_parameters' => 'Apartment valuation based on parameters',
@@ -103,6 +107,21 @@ return [
     'what_is_model.link_function_as_model' => 'Function as the basis of the model',
     'what_is_model.link_error_as_quality' => 'Error as a measure of quality',
     'what_is_model.link_learning_as_min_error' => 'Learning as minimizing error',
+
+    'vectors_feature_spaces.heading' => 'Vectors, dimensions and feature spaces',
+    'vectors_feature_spaces.intro' => 'If you strip machine learning of all the fancy words and buzzwords, in the end you almost always end up with the same idea: we represent real-world objects with numbers and work with those numbers mathematically. This is where vectors, dimensions, and feature spaces come onto the stage. As PHP developers, it is especially important for you to understand this intuitively rather than formally, because in code you will constantly deal not with abstract linear algebra, but with arrays of numbers, matrices, and operations on them.',
+    'vectors_feature_spaces.links.vector_dimension' => 'Vector dimension',
+    'vectors_feature_spaces.links.normalization' => 'Normalization',
+    'vectors_feature_spaces.links.standardization' => 'Standardization',
+    'vectors_feature_spaces.links.categorical_features_dimension' => 'Categorical features and dimensionality',
+    'vectors_feature_spaces.links.connection_to_algorithms' => 'Connection to specific algorithms',
+
+    'vectors_feature_spaces.vector_dimension.heading' => 'Vector dimension',
+    'vectors_feature_spaces.vector_dimension.run_title' => 'Vector dimension validation (predict)',
+    'vectors_feature_spaces.vector_dimension.intro1' => 'In machine learning, vector dimension usually means the number of features in a single sample. In PHP this is most often just an array of numbers with a fixed length.',
+    'vectors_feature_spaces.vector_dimension.intro2' => 'If a model expects 10 features and you pass 9 or 11, this is a different input and the calculation is no longer meaningful. In practice, validating the expected vector size before computing is a simple and useful guardrail.',
+    'vectors_feature_spaces.vector_dimension.run_intro' => 'Below is a minimal example: the predict function expects an array of 10 numbers and throws an exception if the dimension does not match.',
+    'vectors_feature_spaces.vector_dimension.outro' => 'The idea is straightforward: dimension is a contract between the data pipeline and the model. In production, such checks help you detect feature-generation bugs early.',
 
     'what_is_model.learning_as_min_error.title' => 'Learning as minimizing error',
     'what_is_model.learning_as_min_error.intro1' => 'If we can measure error (loss), then model training becomes very simple: we change the model parameters so that this number goes down. The model itself does not “understand” the task — it just minimizes the loss function we chose.',

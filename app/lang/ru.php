@@ -9,6 +9,8 @@ return [
     'nav.getting_started' => 'С чего начать',
     'nav.code_example' => 'Пример кода',
     'nav.code_run' => 'Запускаем код',
+
+    // Часть I: навигация
     'nav.part1_title' => 'Часть I. Математический язык ИИ',
     'nav.part1_what_is_model' => 'Что такое модель',
     'nav.part1_function_as_the_model' => 'Функция как основа модели',
@@ -16,6 +18,8 @@ return [
     'nav.part1_learning_as_min_error' => 'Обучение как минимизация ошибки',
     'nav.part1_vectors' => 'Векторы, размерности и пространства признаков',
     'nav.part1_distances' => 'Расстояния и сходство',
+
+    // Часть II: навигация
     'nav.part2_title' => 'Часть II. Обучение как оптимизация',
     'nav.part2_error_loss_functions' => 'Ошибка, loss-функции и почему они нужны',
     'nav.part2_apartment_valuation_based_on_parameters' => 'Оценка стоимости квартиры по параметрам',
@@ -103,6 +107,21 @@ return [
     'what_is_model.link_function_as_model' => 'Функция как основа модели',
     'what_is_model.link_error_as_quality' => 'Ошибка как мера качества',
     'what_is_model.link_learning_as_min_error' => 'Обучение как минимизация ошибки',
+
+    'vectors_feature_spaces.heading' => 'Векторы, размерности и пространства признаков',
+    'vectors_feature_spaces.intro' => 'Если убрать из машинного обучения все сложные слова и модные термины, то в сухом остатке почти всегда останется одна и та же идея: мы представляем реальные объекты числами и работаем с этими числами математически. Именно здесь на сцену выходят векторы, размерности и пространства признаков. Как PHP-разработчикам вам особенно важно понять это интуитивно, а не формально, потому что в коде вы постоянно будете иметь дело не с абстрактной линейной алгеброй, а с массивами чисел, матрицами и операциями над ними.',
+    'vectors_feature_spaces.links.vector_dimension' => 'Размерность вектора',
+    'vectors_feature_spaces.links.normalization' => 'Нормализация',
+    'vectors_feature_spaces.links.standardization' => 'Стандартизация',
+    'vectors_feature_spaces.links.categorical_features_dimension' => 'Категориальные признаки и размерность',
+    'vectors_feature_spaces.links.connection_to_algorithms' => 'Связь с конкретными алгоритмами',
+
+    'vectors_feature_spaces.vector_dimension.heading' => 'Размерность вектора',
+    'vectors_feature_spaces.vector_dimension.run_title' => 'Проверка размерности вектора (predict)',
+    'vectors_feature_spaces.vector_dimension.intro1' => 'В машинном обучении под размерностью вектора обычно понимают количество признаков (feature) в одном объекте. В PHP это чаще всего обычный массив чисел фиксированной длины.',
+    'vectors_feature_spaces.vector_dimension.intro2' => 'Если модель ожидает 10 признаков, а вы передадите 9 или 11 — это уже другой вход, и корректный расчёт невозможен. Поэтому на практике полезно явно валидировать размерность вектора перед вычислениями.',
+    'vectors_feature_spaces.vector_dimension.run_intro' => 'Ниже – минимальный пример: функция predict ожидает массив из 10 чисел и выбрасывает исключение, если размерность не совпадает.',
+    'vectors_feature_spaces.vector_dimension.outro' => 'Идея простая: размерность — это контракт между данными и моделью. В продакшене такие проверки помогают быстрее находить ошибки в пайплайне подготовки признаков.',
 
     'what_is_model.learning_as_min_error.title' => 'Обучение как минимизация ошибки',
     'what_is_model.learning_as_min_error.intro1' => 'Если мы умеем измерять ошибку (loss), то обучение модели можно понимать очень просто: мы меняем параметры модели так, чтобы это число уменьшалось. Модель сама по себе не "понимает" задачу – она всего лишь минимизирует выбранную нами функцию ошибки.',

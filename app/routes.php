@@ -241,6 +241,38 @@ $app->group('/part-1', function ($app) use ($renderer): void {
             return render_page($renderer, $response, $breadcrumbs, 'part-1/what-is-a-model/learning-as-minimization-of-error/code-run.php');
         });
     });
+    $app->group('/vectors-dimensions-and-feature-spaces', function ($app) use ($renderer): void {
+        $app->get('', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_vectors'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-1/vectors-dimensions-and-feature-spaces/index.php');
+        });
+        $app->get('/vector-dimension', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_vectors'), 'url' => APP_URL . 'part-1/vectors-dimensions-and-feature-spaces'],
+                ['label' => __t('vectors_feature_spaces.links.vector_dimension'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-1/vectors-dimensions-and-feature-spaces/vector-dimension/index.php');
+        });
+        $app->get('/vector-dimension/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part1_title'), 'url' => APP_URL . 'part-1/what-is-a-model'],
+                ['label' => __t('nav.part1_vectors'), 'url' => APP_URL . 'part-1/vectors-dimensions-and-feature-spaces'],
+                ['label' => __t('vectors_feature_spaces.links.vector_dimension'), 'url' => APP_URL . 'part-1/vectors-dimensions-and-feature-spaces/vector-dimension'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-1/vectors-dimensions-and-feature-spaces/vector-dimension/code-run.php');
+        });
+    });
 });
 
 // ---------------------------------------------------
