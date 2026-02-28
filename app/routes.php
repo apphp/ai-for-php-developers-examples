@@ -104,6 +104,43 @@ $homeHandler = function (Request $request, Response $response) use ($renderer): 
 $app->get('/', $homeHandler);
 $app->get('/home', $homeHandler);
 
+// Search route
+$app->get('/search', function (Request $request, Response $response) use ($renderer): Response {
+    if (config('SEARCH_ENABLED') !== 'true') {
+        throw new HttpNotFoundException($request);
+    }
+
+    $params = $request->getQueryParams();
+    $query = isset($params['s']) && is_string($params['s']) ? (string)$params['s'] : '';
+
+    $query = trim($query);
+    if (strlen($query) > 100) {
+        $query = mb_substr($query, 0, 100);
+    }
+
+    $limit = isset($params['limit']) ? (int)$params['limit'] : 50;
+    if ($limit < 1) {
+        $limit = 1;
+    }
+    if ($limit > 100) {
+        $limit = 100;
+    }
+
+    $breadcrumbs = [
+        ['label' => __t('nav.home'), 'url' => '/'],
+        ['label' => 'Search', 'url' => null],
+    ];
+
+    $results = $query !== '' ? site_search($query, $limit) : [];
+
+    return render_page($renderer, $response, $breadcrumbs, 'search/index.php', [
+        'title' => 'Search',
+        'query' => $query,
+        'limit' => $limit,
+        'results' => $results,
+    ]);
+});
+
 // ML Ecosystem in PHP page
 $app->group('/ml-ecosystem-in-php', function ($app) use ($renderer): void {
     $app->get('', function (Request $request, Response $response) use ($renderer): Response {

@@ -84,6 +84,13 @@ return [
     'common.example' => 'Example',
     'common.documents' => 'Documents',
 
+    'search.title' => 'Search',
+    'search.placeholder' => 'Search...',
+    'search.aria_label' => 'Search',
+    'search.button' => 'Search',
+    'search.results_for' => 'result(s) for',
+    'search.nothing_found' => 'Nothing found.',
+
     // ML ecosystem in PHP (intro section)
     'ml_ecosystem.title' => 'ML Ecosystem in PHP',
     'ml_ecosystem.breadcrumb' => 'ML Ecosystem in PHP',

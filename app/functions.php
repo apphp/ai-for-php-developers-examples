@@ -288,6 +288,305 @@ function create_href(string $page = ''): string {
     return APP_URL . $page;
 }
 
+function site_search_template_to_url(string $contentTemplate): ?string {
+    $contentTemplate = str_replace('\\', '/', ltrim($contentTemplate, '/'));
+
+    if ($contentTemplate === '' || $contentTemplate === '404.php') {
+        return null;
+    }
+
+    if ($contentTemplate === 'intro/home.php') {
+        return '/';
+    }
+
+    if (str_starts_with($contentTemplate, 'intro/')) {
+        $contentTemplate = substr($contentTemplate, strlen('intro/'));
+    }
+
+    if (str_ends_with($contentTemplate, '/index.php')) {
+        $dir = dirname($contentTemplate);
+        $dir = $dir === '.' ? '' : $dir;
+        return '/' . ltrim($dir, '/');
+    }
+
+    if (str_ends_with($contentTemplate, '.php')) {
+        return '/' . ltrim(substr($contentTemplate, 0, -4), '/');
+    }
+
+    return '/' . ltrim($contentTemplate, '/');
+}
+
+function site_search_make_snippet(string $text, int $pos, int $radius = 90): string {
+    $length = mb_strlen($text);
+    $start = max(0, $pos - $radius);
+    $end = min($length, $pos + $radius);
+
+    $snippet = mb_substr($text, $start, $end - $start);
+
+    $snippetNormalized = preg_replace('/\s+/', ' ', $snippet);
+    if (is_string($snippetNormalized)) {
+        $snippet = $snippetNormalized;
+    }
+
+    $prefix = $start > 0 ? '…' : '';
+    $suffix = $end < $length ? '…' : '';
+
+    return $prefix . trim((string)$snippet) . $suffix;
+}
+
+function site_search_route_map(): array {
+    static $cache = null;
+
+    if (is_array($cache)) {
+        return $cache;
+    }
+
+    $cache = [];
+
+    $routesFile = __DIR__ . '/routes.php';
+    if (!is_file($routesFile) || !is_readable($routesFile)) {
+        return $cache;
+    }
+
+    $contents = file_get_contents($routesFile);
+    if (!is_string($contents) || $contents === '') {
+        return $cache;
+    }
+
+    $lines = preg_split('/\R/', $contents);
+    if (!is_array($lines)) {
+        return $cache;
+    }
+
+    $depth = 0;
+    $groupStack = [];
+    $currentPrefix = '';
+
+    $lastGet = null;
+
+    foreach ($lines as $line) {
+        $lineStr = (string)$line;
+
+        // Enter group: $app->group('/prefix', function (...) { ...
+        if (preg_match('/\$app->group\(\s*\'([^\']*)\'/', $lineStr, $m)) {
+            $groupPrefix = (string)($m[1] ?? '');
+            $full = $currentPrefix;
+            if ($groupPrefix !== '') {
+                $full .= '/' . ltrim($groupPrefix, '/');
+            }
+            $full = '/' . trim($full, '/');
+            if ($full === '/') {
+                $full = '';
+            }
+
+            $depthAfterLine = $depth + substr_count($lineStr, '{') - substr_count($lineStr, '}');
+            $groupStack[] = ['depth' => $depthAfterLine, 'prefix' => $full];
+            $currentPrefix = $full;
+        }
+
+        // Track last get path (relative to current group prefix)
+        if (preg_match('/\$app->get\(\s*\'([^\']*)\'/', $lineStr, $m)) {
+            $path = (string)($m[1] ?? '');
+
+            if ($path === '') {
+                $fullPath = $currentPrefix !== '' ? $currentPrefix : '/';
+            } else {
+                $fullPath = $currentPrefix . '/' . ltrim($path, '/');
+                $fullPath = '/' . trim($fullPath, '/');
+            }
+
+            $lastGet = [
+                'path' => $fullPath,
+                'depth' => $depth,
+            ];
+        }
+
+        // Map template -> route when render_page(...) is called
+        if ($lastGet && preg_match('/render_page\([^;]*,\s*\'([^\']+)\'/', $lineStr, $m)) {
+            $tpl = (string)($m[1] ?? '');
+            if ($tpl !== '') {
+                $cache[$tpl] = $lastGet['path'];
+            }
+        }
+
+        // Update brace depth and group stack
+        $depth += substr_count($lineStr, '{');
+        $depth -= substr_count($lineStr, '}');
+        if ($depth < 0) {
+            $depth = 0;
+        }
+
+        while ($groupStack) {
+            $top = $groupStack[count($groupStack) - 1];
+            if (!is_array($top) || ($top['depth'] ?? 0) <= $depth) {
+                break;
+            }
+            array_pop($groupStack);
+            $currentPrefix = $groupStack ? (string)($groupStack[count($groupStack) - 1]['prefix'] ?? '') : '';
+        }
+
+        if ($lastGet && $depth < (int)($lastGet['depth'] ?? 0)) {
+            $lastGet = null;
+        }
+    }
+
+    return $cache;
+}
+
+function site_search_sanitize_url(string $url): string {
+    $url = trim($url);
+    if ($url === '') {
+        return $url;
+    }
+
+    $url = str_replace('set-lang/{lang}', '', $url);
+
+    return $url;
+}
+
+function site_search(string $query, int $limit = 50): array {
+    $query = trim($query);
+
+    if ($query === '' || mb_strlen($query) < 2) {
+        return [];
+    }
+
+    $root = realpath(__DIR__ . '/../views/pages');
+    if ($root === false) {
+        return [];
+    }
+
+    $results = [];
+    $routeMap = site_search_route_map();
+
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS)
+    );
+
+    foreach ($iterator as $fileInfo) {
+        if (!$fileInfo instanceof SplFileInfo || !$fileInfo->isFile()) {
+            continue;
+        }
+
+        if (strtolower($fileInfo->getExtension()) !== 'php') {
+            continue;
+        }
+
+        $basename = $fileInfo->getBasename();
+        if (in_array($basename, ['code.php', 'code-usage.php', 'code-run.php', '404.php'])) {
+            continue;
+        }
+
+        $path = $fileInfo->getRealPath();
+        if ($path === false) {
+            continue;
+        }
+
+        $normalizedPath = str_replace('\\', '/', $path);
+        if (str_contains($normalizedPath, '/code/')) {
+            continue;
+        }
+
+        $content = @file_get_contents($path);
+        if (!is_string($content) || $content === '') {
+            continue;
+        }
+
+        $contentWithTranslations = preg_replace_callback(
+            '/<\?=\s*__t\(\s*([\'"\"])\s*([^\'"\"]+)\s*\1\s*(?:,\s*[^\)]*)?\)\s*;?\s*\?>/u',
+            static function (array $matches): string {
+                $key = $matches[2] ?? '';
+                if (!is_string($key) || $key === '') {
+                    return '';
+                }
+
+                return __t($key);
+            },
+            $content
+        );
+
+        if (!is_string($contentWithTranslations)) {
+            $contentWithTranslations = $content;
+        }
+
+        $contentWithTranslations = preg_replace_callback(
+            '/__t\(\s*([\'"\"])\s*([^\'"\"]+)\s*\1\s*(?:,\s*[^\)]*)?\)/u',
+            static function (array $matches): string {
+                $key = $matches[2] ?? '';
+                if (!is_string($key) || $key === '') {
+                    return '';
+                }
+
+                return __t($key);
+            },
+            $contentWithTranslations
+        );
+
+        if (!is_string($contentWithTranslations)) {
+            $contentWithTranslations = $content;
+        }
+
+        $contentNoPhp = (string)preg_replace('/<\?(?:php)?[\s\S]*?\?>/i', ' ', $contentWithTranslations);
+
+        $title = '';
+        if (preg_match('/<h1[^>]*>(.*?)<\/h1>/is', $contentNoPhp, $m)) {
+            $title = trim(strip_tags($m[1]));
+        }
+
+        $text = strip_tags($contentNoPhp);
+
+        $textNormalized = preg_replace('/\s+/', ' ', $text);
+        if (is_string($textNormalized)) {
+            $text = $textNormalized;
+        }
+        $text = trim($text);
+        if ($text === '') {
+            continue;
+        }
+
+        $pos = mb_stripos($text, $query);
+        if ($pos === false) {
+            continue;
+        }
+
+        $relative = ltrim(str_replace(str_replace('\\', '/', $root), '', $normalizedPath), '/');
+        $contentTemplate = str_replace('\\', '/', $relative);
+        $url = $routeMap[$contentTemplate] ?? site_search_template_to_url($contentTemplate);
+        if ($url === null) {
+            continue;
+        }
+
+        $url = site_search_sanitize_url((string)$url);
+
+        if ($title === '') {
+            $dir = basename(dirname($contentTemplate));
+            $title = $dir !== '' && $dir !== '.' ? humanize($dir) : humanize(basename($contentTemplate, '.php'));
+        }
+
+        $snippet = site_search_make_snippet($text, (int)$pos);
+        $score = 0;
+        $score += max(0, 1000 - (int)$pos);
+        $score += substr_count(mb_strtolower($text), mb_strtolower($query)) * 50;
+        if (str_contains(mb_strtolower($title), mb_strtolower($query))) {
+            $score += 250;
+        }
+
+        $results[] = [
+            'title' => $title,
+            'url' => $url,
+            'template' => $contentTemplate,
+            'snippet' => $snippet,
+            'score' => $score,
+        ];
+    }
+
+    usort($results, static function (array $a, array $b): int {
+        return ($b['score'] ?? 0) <=> ($a['score'] ?? 0);
+    });
+
+    return array_slice($results, 0, $limit);
+}
+
 function create_form_fields(string $section, string $subsection, string $page): string {
     $output = '<input type="hidden" name="section" value="' . $section . '" />';
     $output .= '<input type="hidden" name="subsection" value="' . $subsection . '" />';

@@ -84,6 +84,13 @@ return [
     'common.example' => 'Пример',
     'common.documents' => 'Документы',
 
+    'search.title' => 'Поиск',
+    'search.placeholder' => 'Поиск...',
+    'search.aria_label' => 'Поиск',
+    'search.button' => 'Найти',
+    'search.results_for' => 'результат(ов) по запросу',
+    'search.nothing_found' => 'Ничего не найдено.',
+
     // Экосистема ML в PHP (intro)
     'ml_ecosystem.title' => 'Экосистема ML в PHP',
     'ml_ecosystem.breadcrumb' => 'Экосистема ML в PHP',

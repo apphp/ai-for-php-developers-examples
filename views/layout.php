@@ -51,18 +51,20 @@
 
     <div class="ms-auto"></div>
 
+    <?php if (config('SEARCH_ENABLED') === 'true'): ?>
+        <div class="search-container col-12 col-sm-4 col-md-3 col-lg-2 mt-1 mt-sm-0 mb-sm-0 me-2">
+            <form action="<?= create_href('search') ?>" method="get">
+                <input type="text" name="s" maxlength="100" class="form-control" placeholder="<?= __t('search.placeholder') ?>" aria-label="<?= __t('search.placeholder') ?>" value="<?= htmlspecialchars((string)($_GET['s'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
+            </form>
+        </div>
+    <?php endif; ?>
+
     <div class="ms-2 me-3 text-nowrap">
         <select id="lang-select" class="form-select form-select-sm bg-dark text-light border-secondary">
             <option value="en" <?= $currentLang === 'en' ? 'selected' : '' ?>>EN</option>
             <option value="ru" <?= $currentLang === 'ru' ? 'selected' : '' ?>>RU</option>
         </select>
     </div>
-
-<!--    <div class="search-container col-12 col-sm-4 col-md-3 col-lg-2 mt-1 mt-sm-0 mb-sm-0 me-5">-->
-<!--        <form action="--><?php //= create_href('search', 'index')?><!--" method="get">-->
-<!--            <input type="text" name="s" maxlength="100" class="form-control" placeholder="Search..." aria-label="Search">-->
-<!--        </form>-->
-<!--    </div>-->
 
     <div class="form-check form-switch form-switch-mode mt-1" title="Swith Light/Dark Mode">
         <input type="checkbox" class="form-check-input cursor-pointer float-end float-sm-none" id="darkSwitch" <?= $darkSwitch ? 'checked' : ''?>>
