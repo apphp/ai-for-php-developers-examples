@@ -306,6 +306,7 @@ function site_search_template_to_url(string $contentTemplate): ?string {
     if (str_ends_with($contentTemplate, '/index.php')) {
         $dir = dirname($contentTemplate);
         $dir = $dir === '.' ? '' : $dir;
+
         return '/' . ltrim($dir, '/');
     }
 
@@ -324,6 +325,7 @@ function site_search_make_snippet(string $text, int $pos, int $radius = 90): str
     $snippet = mb_substr($text, $start, $end - $start);
 
     $snippetNormalized = preg_replace('/\s+/', ' ', $snippet);
+
     if (is_string($snippetNormalized)) {
         $snippet = $snippetNormalized;
     }
@@ -344,16 +346,19 @@ function site_search_route_map(): array {
     $cache = [];
 
     $routesFile = __DIR__ . '/routes.php';
+
     if (!is_file($routesFile) || !is_readable($routesFile)) {
         return $cache;
     }
 
     $contents = file_get_contents($routesFile);
+
     if (!is_string($contents) || $contents === '') {
         return $cache;
     }
 
     $lines = preg_split('/\R/', $contents);
+
     if (!is_array($lines)) {
         return $cache;
     }
@@ -371,10 +376,12 @@ function site_search_route_map(): array {
         if (preg_match('/\$app->group\(\s*\'([^\']*)\'/', $lineStr, $m)) {
             $groupPrefix = (string)($m[1] ?? '');
             $full = $currentPrefix;
+
             if ($groupPrefix !== '') {
                 $full .= '/' . ltrim($groupPrefix, '/');
             }
             $full = '/' . trim($full, '/');
+
             if ($full === '/') {
                 $full = '';
             }
@@ -404,6 +411,7 @@ function site_search_route_map(): array {
         // Map template -> route when render_page(...) is called
         if ($lastGet && preg_match('/render_page\([^;]*,\s*\'([^\']+)\'/', $lineStr, $m)) {
             $tpl = (string)($m[1] ?? '');
+
             if ($tpl !== '') {
                 $cache[$tpl] = $lastGet['path'];
             }
@@ -412,12 +420,14 @@ function site_search_route_map(): array {
         // Update brace depth and group stack
         $depth += substr_count($lineStr, '{');
         $depth -= substr_count($lineStr, '}');
+
         if ($depth < 0) {
             $depth = 0;
         }
 
         while ($groupStack) {
             $top = $groupStack[count($groupStack) - 1];
+
             if (!is_array($top) || ($top['depth'] ?? 0) <= $depth) {
                 break;
             }
@@ -435,6 +445,7 @@ function site_search_route_map(): array {
 
 function site_search_sanitize_url(string $url): string {
     $url = trim($url);
+
     if ($url === '') {
         return $url;
     }
@@ -452,6 +463,7 @@ function site_search(string $query, int $limit = 50): array {
     }
 
     $root = realpath(__DIR__ . '/../views/pages');
+
     if ($root === false) {
         return [];
     }
@@ -473,21 +485,25 @@ function site_search(string $query, int $limit = 50): array {
         }
 
         $basename = $fileInfo->getBasename();
+
         if (in_array($basename, ['code.php', 'code-usage.php', 'code-run.php', '404.php'])) {
             continue;
         }
 
         $path = $fileInfo->getRealPath();
+
         if ($path === false) {
             continue;
         }
 
         $normalizedPath = str_replace('\\', '/', $path);
+
         if (str_contains($normalizedPath, '/code/')) {
             continue;
         }
 
         $content = @file_get_contents($path);
+
         if (!is_string($content) || $content === '') {
             continue;
         }
@@ -496,6 +512,7 @@ function site_search(string $query, int $limit = 50): array {
             '/<\?=\s*__t\(\s*([\'"\"])\s*([^\'"\"]+)\s*\1\s*(?:,\s*[^\)]*)?\)\s*;?\s*\?>/u',
             static function (array $matches): string {
                 $key = $matches[2] ?? '';
+
                 if (!is_string($key) || $key === '') {
                     return '';
                 }
@@ -513,6 +530,7 @@ function site_search(string $query, int $limit = 50): array {
             '/__t\(\s*([\'"\"])\s*([^\'"\"]+)\s*\1\s*(?:,\s*[^\)]*)?\)/u',
             static function (array $matches): string {
                 $key = $matches[2] ?? '';
+
                 if (!is_string($key) || $key === '') {
                     return '';
                 }
@@ -529,6 +547,7 @@ function site_search(string $query, int $limit = 50): array {
         $contentNoPhp = (string)preg_replace('/<\?(?:php)?[\s\S]*?\?>/i', ' ', $contentWithTranslations);
 
         $title = '';
+
         if (preg_match('/<h1[^>]*>(.*?)<\/h1>/is', $contentNoPhp, $m)) {
             $title = trim(strip_tags($m[1]));
         }
@@ -536,15 +555,18 @@ function site_search(string $query, int $limit = 50): array {
         $text = strip_tags($contentNoPhp);
 
         $textNormalized = preg_replace('/\s+/', ' ', $text);
+
         if (is_string($textNormalized)) {
             $text = $textNormalized;
         }
         $text = trim($text);
+
         if ($text === '') {
             continue;
         }
 
         $pos = mb_stripos($text, $query);
+
         if ($pos === false) {
             continue;
         }
@@ -552,6 +574,7 @@ function site_search(string $query, int $limit = 50): array {
         $relative = ltrim(str_replace(str_replace('\\', '/', $root), '', $normalizedPath), '/');
         $contentTemplate = str_replace('\\', '/', $relative);
         $url = $routeMap[$contentTemplate] ?? site_search_template_to_url($contentTemplate);
+
         if ($url === null) {
             continue;
         }
@@ -567,6 +590,7 @@ function site_search(string $query, int $limit = 50): array {
         $score = 0;
         $score += max(0, 1000 - (int)$pos);
         $score += substr_count(mb_strtolower($text), mb_strtolower($query)) * 50;
+
         if (str_contains(mb_strtolower($title), mb_strtolower($query))) {
             $score += 250;
         }

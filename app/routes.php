@@ -114,14 +114,17 @@ $app->get('/search', function (Request $request, Response $response) use ($rende
     $query = isset($params['s']) && is_string($params['s']) ? (string)$params['s'] : '';
 
     $query = trim($query);
+
     if (strlen($query) > 100) {
         $query = mb_substr($query, 0, 100);
     }
 
     $limit = isset($params['limit']) ? (int)$params['limit'] : 50;
+
     if ($limit < 1) {
         $limit = 1;
     }
+
     if ($limit > 100) {
         $limit = 100;
     }

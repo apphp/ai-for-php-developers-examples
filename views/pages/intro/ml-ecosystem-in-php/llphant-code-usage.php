@@ -1,8 +1,8 @@
 <?php
 
-use LLPhant\Chat\OpenAIChat;
-use LLPhant\Chat\Message;
 use LLPhant\Chat\Enums\ChatRole;
+use LLPhant\Chat\Message;
+use LLPhant\Chat\OpenAIChat;
 
 $chat = new OpenAIChat();
 

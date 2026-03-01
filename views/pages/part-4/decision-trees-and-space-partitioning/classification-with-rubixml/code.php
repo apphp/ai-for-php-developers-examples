@@ -35,4 +35,3 @@ $estimator = new ClassificationTree(
 
 // Fit the model
 $estimator->train($dataset);
-

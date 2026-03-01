@@ -1,8 +1,8 @@
 <?php
 
-use Rubix\ML\Datasets\Unlabeled;
 use Rubix\ML\Classifiers\ClassificationTree;
 use Rubix\ML\Datasets\Labeled;
+use Rubix\ML\Datasets\Unlabeled;
 
 // Make the example deterministic between runs.
 // RubixML may use randomness (e.g. tie-breaking) during training.

@@ -5,16 +5,14 @@ namespace app\classes;
 use ReflectionObject;
 use Throwable;
 
-class RubixTreeDiagram
-{
+class RubixTreeDiagram {
     /**
      * @param object $estimator Trained RubixML ClassificationTree (or compatible object)
      * @param array<int, mixed> $sample
      * @param array<int, string> $featureNames
      * @return array{graph: ?string, style: ?string, decisionPathSteps: array}
      */
-    public static function build(object $estimator, array $sample, array $featureNames = []): array
-    {
+    public static function build(object $estimator, array $sample, array $featureNames = []): array {
         $graph = null;
         $style = null;
         $decisionPathSteps = [];
@@ -40,6 +38,7 @@ class RubixTreeDiagram
                 }
 
                 $lower = strtolower($trim);
+
                 if ($lower === 'time' || $lower === 'times') {
                     return 'time';
                 }
@@ -51,9 +50,9 @@ class RubixTreeDiagram
                 return $trim;
             }
 
-            if (is_object($feature) && method_exists($feature, '__toString')) {
-                return $normalizeFeatureName((string) $feature);
-            }
+            ///if (is_object($feature) && method_exists($feature, '__toString')) {
+            ///    return $normalizeFeatureName((string) $feature);
+            ///}
 
             return get_debug_type($feature);
         };
@@ -71,6 +70,7 @@ class RubixTreeDiagram
 
                 if ($ref->hasMethod($name)) {
                     $method = $ref->getMethod($name);
+
                     if ($method->getNumberOfRequiredParameters() === 0) {
                         $method->setAccessible(true);
 
@@ -79,8 +79,10 @@ class RubixTreeDiagram
                 }
 
                 $getter = 'get' . ucfirst($name);
+
                 if ($ref->hasMethod($getter)) {
                     $method = $ref->getMethod($getter);
+
                     if ($method->getNumberOfRequiredParameters() === 0) {
                         $method->setAccessible(true);
 
@@ -158,6 +160,7 @@ class RubixTreeDiagram
                 $right = $getValue($node, ['right', 'r', 'false', 'f']);
 
                 $isSplit = is_object($left) && is_object($right);
+
                 if (!$isSplit) {
                     $prediction = $getValue($node, ['prediction', 'class', 'label', 'value', 'outcome']);
                     $steps[] = [
@@ -212,12 +215,14 @@ class RubixTreeDiagram
                 $decisionPathSteps = $walkDecisionPath($root, $sample);
 
                 $pathNodeIds = [];
+
                 foreach ($decisionPathSteps as $step) {
                     if (!isset($step['node']) || !is_object($step['node'])) {
                         continue;
                     }
 
                     $oid = spl_object_id($step['node']);
+
                     if (isset($nodeIdMap[$oid])) {
                         $pathNodeIds[] = $nodeIdMap[$oid];
                     }

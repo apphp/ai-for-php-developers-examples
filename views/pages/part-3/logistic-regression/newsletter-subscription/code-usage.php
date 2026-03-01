@@ -1,8 +1,8 @@
 <?php
 
 use Rubix\ML\Classifiers\LogisticRegression;
-use Rubix\ML\Datasets\Unlabeled;
 use Rubix\ML\Datasets\Labeled;
+use Rubix\ML\Datasets\Unlabeled;
 
 // One feature per user: time spent on the site.
 $samples = [
@@ -25,7 +25,7 @@ $model->train($dataset);
 $prediction = new Unlabeled([[3.0]]);
 $labels = $model->predict($prediction);
 
-echo "Predicted label: ";
+echo 'Predicted label: ';
 print_r($labels);
 
 // Show probabilities

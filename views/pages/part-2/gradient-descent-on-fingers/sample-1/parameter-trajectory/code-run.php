@@ -36,11 +36,13 @@ foreach ($lines as $lineIndex => $line) {
     }
 
     $line = trim($line);
+
     if ($line === '') {
         continue;
     }
 
     $parts = preg_split('/\t+/', $line);
+
     if (!$parts || count($parts) < 4) {
         continue;
     }

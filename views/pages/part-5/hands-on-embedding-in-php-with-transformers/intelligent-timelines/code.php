@@ -1,9 +1,11 @@
 <?php
 
+use Codewithkyrian\Transformers\Exceptions\UnsupportedTaskException;
+use Codewithkyrian\Transformers\Pipelines\Pipeline;
+
 use function Codewithkyrian\Transformers\Pipelines\pipeline;
 
-final class SemanticEventSearch
-{
+final class SemanticEventSearch {
     private string $model = 'Xenova/paraphrase-multilingual-MiniLM-L12-v2';
     private string $cachePath;
     private string $defaultQuery = 'санкции против IT-компаний';
@@ -17,7 +19,7 @@ final class SemanticEventSearch
     /** @var array<int, list<float|int>> */
     private array $eventEmbeddingsById = [];
 
-    private $embedder;
+    private ?Pipeline $embedder;
 
     /**
      * Create a new semantic search instance.
@@ -25,9 +27,8 @@ final class SemanticEventSearch
      * @param int $topN Number of results to return.
      * @param string $cachePath Path to the cache file.
      */
-    public function __construct(int $topN = 3, string $cachePath = '')
-    {
-        $this->cachePath = $cachePath;;
+    public function __construct(int $topN = 3, string $cachePath = '') {
+        $this->cachePath = $cachePath;
         $this->events = [];
         $this->embedder = null;
         $this->topN = $topN;
@@ -39,10 +40,10 @@ final class SemanticEventSearch
      * @param list<array{id:int,title:string,description:string}> $events
      * @return $this
      */
-    public function setEvents(array $events): self
-    {
+    public function setEvents(array $events): self {
         $this->events = $events;
         $this->eventEmbeddingsById = [];
+
         return $this;
     }
 
@@ -54,11 +55,11 @@ final class SemanticEventSearch
      * @param string $model
      * @return $this
      */
-    public function setModel(string $model): self
-    {
+    public function setModel(string $model): self {
         $this->model = $model;
         $this->embedder = null;
         $this->eventEmbeddingsById = [];
+
         return $this;
     }
 
@@ -68,10 +69,10 @@ final class SemanticEventSearch
      * @param string $query
      * @return $this
      */
-    public function setQuery(string $query): self
-    {
+    public function setQuery(string $query): self {
         $q = trim($query);
         $this->query = $q === '' ? null : $q;
+
         return $this;
     }
 
@@ -79,10 +80,9 @@ final class SemanticEventSearch
      * Run the end-to-end semantic search pipeline (cache -> embed query -> score -> top-N).
      *
      * @return array{query:string,results:list<array{score:float,event:array{id:int,title:string,description:string}}>}
-     * @throws RuntimeException If events are not set or embeddings output is unexpected.
+     * @throws RuntimeException|UnsupportedTaskException If events are not set or embeddings output is unexpected.
      */
-    public function run(): array
-    {
+    public function run(): array {
         if (count($this->events) === 0) {
             throw new RuntimeException('Events list is empty. Call setEvents() before run().');
         }
@@ -98,6 +98,7 @@ final class SemanticEventSearch
         $queryVec = $this->embedText($query);
 
         $results = $this->search($queryVec);
+
         return [
             'query' => $query,
             'results' => $results,
@@ -111,9 +112,9 @@ final class SemanticEventSearch
      * @return list<float|int>
      * @throws RuntimeException
      */
-    private function embedText(string $text): array
-    {
+    private function embedText(string $text): array {
         $emb = ($this->embedder)($text, normalize: true, pooling: 'mean');
+
         if (!is_array($emb) || !isset($emb[0]) || !is_array($emb[0])) {
             throw new RuntimeException('Unexpected embeddings output format');
         }
@@ -128,8 +129,7 @@ final class SemanticEventSearch
      * @param list<float|int> $b
      * @return float
      */
-    private function cosineSimilarity(array $a, array $b): float
-    {
+    private function cosineSimilarity(array $a, array $b): float {
         $n = min(count($a), count($b));
 
         $dot = 0.0;
@@ -158,18 +158,19 @@ final class SemanticEventSearch
      * @param string $path
      * @return array|null
      */
-    private function loadJsonFile(string $path): ?array
-    {
+    private function loadJsonFile(string $path): ?array {
         if (!is_file($path)) {
             return null;
         }
 
         $raw = file_get_contents($path);
+
         if ($raw === false) {
             return null;
         }
 
         $data = json_decode($raw, true);
+
         return is_array($data) ? $data : null;
     }
 
@@ -180,14 +181,15 @@ final class SemanticEventSearch
      * @param array $data
      * @throws RuntimeException
      */
-    private function saveJsonFile(string $path, array $data): void
-    {
+    private function saveJsonFile(string $path, array $data): void {
         $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
         if ($json === false) {
             throw new RuntimeException('Failed to encode JSON');
         }
 
         $ok = file_put_contents($path, $json);
+
         if ($ok === false) {
             throw new RuntimeException('Failed to write cache file: ' . $path);
         }
@@ -198,8 +200,7 @@ final class SemanticEventSearch
      *
      * @return void
      */
-    private function loadEmbeddingsFromCacheIfCompatible(): void
-    {
+    private function loadEmbeddingsFromCacheIfCompatible(): void {
         $cached = $this->loadJsonFile($this->cachePath);
 
         if (!is_array($cached) || !isset($cached['model'], $cached['events']) || !is_array($cached['events'])) {
@@ -223,11 +224,12 @@ final class SemanticEventSearch
      * @return void
      * @throws RuntimeException
      */
-    private function ensureAllEventEmbeddings(): void
-    {
+    private function ensureAllEventEmbeddings(): void {
         $missing = [];
+
         foreach ($this->events as $event) {
             $id = (int) $event['id'];
+
             if (!isset($this->eventEmbeddingsById[$id])) {
                 $missing[] = $event;
             }
@@ -246,13 +248,13 @@ final class SemanticEventSearch
 
         $toCache = [
             'model' => $this->model,
-            'events' => array_values(array_map(
-                fn(array $event): array => [
+            'events' => array_map(
+                fn (array $event): array => [
                     'id' => (int) $event['id'],
                     'embedding' => $this->eventEmbeddingsById[(int) $event['id']],
                 ],
                 $this->events
-            )),
+            ),
         ];
 
         $this->saveJsonFile($this->cachePath, $toCache);
@@ -264,8 +266,7 @@ final class SemanticEventSearch
      * @param list<float|int> $queryVec
      * @return list<array{score:float,event:array{id:int,title:string,description:string}}>
      */
-    private function search(array $queryVec): array
-    {
+    private function search(array $queryVec): array {
         $scored = [];
 
         foreach ($this->events as $event) {
@@ -278,7 +279,7 @@ final class SemanticEventSearch
             ];
         }
 
-        usort($scored, static fn(array $a, array $b): int => $b['score'] <=> $a['score']);
+        usort($scored, static fn (array $a, array $b): int => $b['score'] <=> $a['score']);
 
         return array_slice($scored, 0, $this->topN);
     }
@@ -290,14 +291,14 @@ final class SemanticEventSearch
      * @param list<array{score:float,event:array{id:int,title:string,description:string}}> $results
      * @return void
      */
-    public function render(string $query, array $results): void
-    {
+    public function render(string $query, array $results): void {
         echo "Query: {$query}\n\n";
+
         foreach ($results as $row) {
             $event = $row['event'];
             $score = (float) $row['score'];
 
-            echo "[" . number_format($score, 4) . "] #{$event['id']} {$event['title']}\n";
+            echo '[' . number_format($score, 4) . "] #{$event['id']} {$event['title']}\n";
             echo "  {$event['description']}\n\n";
         }
     }

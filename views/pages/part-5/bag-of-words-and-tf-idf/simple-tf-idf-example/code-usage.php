@@ -13,6 +13,7 @@ $tokenized = array_map('tokenize', $documents);
 // Build vocabulary
 // --------------------
 $vocab = [];
+
 foreach ($tokenized as $doc) {
     foreach ($doc as $word) {
         $vocab[$word] = true;
@@ -54,9 +55,10 @@ function documentFrequency(array $tokenized): array {
 }
 
 $df = documentFrequency($tokenized);
-$N  = count($tokenized);
+$N = count($tokenized);
 
 $idf = [];
+
 foreach ($df as $word => $count) {
     $idf[$word] = log($N / $count);
 }
@@ -75,6 +77,7 @@ function tfidf(array $tf, array $idf): array {
 }
 
 $tfidfVectors = [];
+
 foreach ($tokenized as $doc) {
     $tf = termFrequency($doc);
     $tfidfVectors[] = tfidf($tf, $idf);
@@ -83,12 +86,13 @@ foreach ($tokenized as $doc) {
 echo 'Vocabulary: ' . implode(', ', $vocab) . PHP_EOL . PHP_EOL;
 
 foreach ($tfidfVectors as $i => $vector) {
-    echo "Document " . ($i + 1) . ":" . PHP_EOL;
+    echo 'Document ' . ($i + 1) . ':' . PHP_EOL;
+
     foreach ($vector as $word => $value) {
         echo "  $word => " . round($value, 3) . PHP_EOL;
     }
 
-    if ($i < 2){
+    if ($i < 2) {
         echo PHP_EOL;
     }
 }

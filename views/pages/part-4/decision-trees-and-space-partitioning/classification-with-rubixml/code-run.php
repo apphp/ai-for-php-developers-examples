@@ -1,7 +1,7 @@
 <?php
 
-use app\classes\RubixTreeDiagram;
 use app\classes\Chart;
+use app\classes\RubixTreeDiagram;
 
 $memoryStart = memory_get_usage();
 $microtimeStart = microtime(true);
@@ -53,11 +53,11 @@ $memoryEnd = memory_get_usage();
             $decisionPathSteps = $diagram['decisionPathSteps'];
 
             echo Chart::drawTreeDiagram(
-                    graph: $graph,
-                    defaultMessage: __t('decision_trees_space_partitioning.case1.diagram_default'),
-                    style: $style ?? '',
-                    containerClass: 'px-4 mb-4'
-                );
+                graph: $graph,
+                defaultMessage: __t('decision_trees_space_partitioning.case1.diagram_default'),
+                style: $style ?? '',
+                containerClass: 'px-4 mb-4'
+            );
             ?>
         </div>
         <div class="col-md-12 col-lg-5 p-0 m-0">

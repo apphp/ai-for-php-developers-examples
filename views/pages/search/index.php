@@ -1,9 +1,10 @@
 <?php
-    /** @var string $query */
-    /** @var array $results */
-    $query = $query ?? '';
-    $queryLength = $query ? mb_strlen($query) : 0;
-    $results = $results ?? [];
+/** @var string|null $query */
+$query ??= '';
+/** @var int $queryLength */
+$queryLength = $query ? mb_strlen($query) : 0;
+/** @var array|null $results */
+$results ??= [];
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
