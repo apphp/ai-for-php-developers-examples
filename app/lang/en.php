@@ -90,6 +90,8 @@ return [
     'search.button' => 'Search',
     'search.results_for' => 'result(s) for',
     'search.nothing_found' => 'Nothing found.',
+    'search.warning_too_short' => 'Search query must be at least 2 characters.',
+    'search.warning_too_long' => 'Search query must be at most 100 characters.',
 
     // ML ecosystem in PHP (intro section)
     'ml_ecosystem.title' => 'ML Ecosystem in PHP',

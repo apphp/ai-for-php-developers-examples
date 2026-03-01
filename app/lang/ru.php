@@ -90,6 +90,8 @@ return [
     'search.button' => 'Найти',
     'search.results_for' => 'результат(ов) по запросу',
     'search.nothing_found' => 'Ничего не найдено.',
+    'search.warning_too_short' => 'Запрос должен быть не короче 2 символов.',
+    'search.warning_too_long' => 'Запрос должен быть не длиннее 100 символов.',
 
     // Экосистема ML в PHP (intro)
     'ml_ecosystem.title' => 'Экосистема ML в PHP',

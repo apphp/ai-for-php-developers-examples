@@ -2,6 +2,7 @@
     /** @var string $query */
     /** @var array $results */
     $query = $query ?? '';
+    $queryLength = $query ? mb_strlen($query) : 0;
     $results = $results ?? [];
 ?>
 
@@ -16,8 +17,18 @@
     </div>
 </form>
 
-<?php if ($query !== ''): ?>
-    <div class="mb-3">
+<?php if ($queryLength < 2): ?>
+    <div class="alert alert-warning" role="alert">
+        <?= __t('search.warning_too_short') ?>
+    </div>
+<?php elseif ($queryLength > 100): ?>
+    <div class="alert alert-warning" role="alert">
+        <?= __t('search.warning_too_long') ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($query): ?>
+    <div class="mb-3 ps-1">
         <strong><?= count($results) ?></strong> <?= __t('search.results_for') ?>
         <strong>"<?= htmlspecialchars((string)$query, ENT_QUOTES, 'UTF-8') ?>"</strong>
     </div>
