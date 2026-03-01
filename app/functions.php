@@ -608,6 +608,10 @@ function site_search(string $query, int $limit = 50): array {
 
         $url = site_search_sanitize_url((string)$url);
 
+        if ($url === '') {
+            continue;
+        }
+
         if ($title === '') {
             $dir = basename(dirname($contentTemplate));
             $title = $dir !== '' && $dir !== '.' ? humanize($dir) : humanize(basename($contentTemplate, '.php'));
