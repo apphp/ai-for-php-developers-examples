@@ -10,5 +10,5 @@ $message = new Message();
 $message->role = ChatRole::User;
 $message->content = 'What is the capital of France? ';
 
-$response = $chat->generateText($message);
+$response = $chat->generateText((string)$message);
 echo $response;

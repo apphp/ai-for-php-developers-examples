@@ -9,7 +9,7 @@ OS_APP_DIRECTORY=$(grep '^OS_APP_DIRECTORY=' "$ENV_FILE" | cut -d '=' -f2)
 BASE_PATH="file://$OS_APP_DIRECTORY/"
 
 # Don't handle routes, starting from app\...
-CLICKABLE_OUTPUT=$(echo "$PSALM_OUTPUT" | perl -pe "s#(?<!app\\\\)(views|app)#${BASE_PATH}\1#g")
+CLICKABLE_OUTPUT=$(echo "$PSALM_OUTPUT" | perl -pe "s#(?<!app\\\\)(app|tests|views)#${BASE_PATH}\1#g")
 
 # Output the result
 echo "$CLICKABLE_OUTPUT"

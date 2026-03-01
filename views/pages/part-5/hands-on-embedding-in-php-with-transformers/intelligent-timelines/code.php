@@ -113,12 +113,17 @@ final class SemanticEventSearch {
      * @throws RuntimeException
      */
     private function embedText(string $text): array {
+        if ($this->embedder === null) {
+            throw new RuntimeException('Embedder is not initialized. Call setModel() before run().');
+        }
+
         $emb = ($this->embedder)($text, normalize: true, pooling: 'mean');
 
         if (!is_array($emb) || !isset($emb[0]) || !is_array($emb[0])) {
             throw new RuntimeException('Unexpected embeddings output format');
         }
 
+        /** @psalm-suppress LessSpecificReturnStatement */
         return $emb[0];
     }
 
@@ -213,6 +218,7 @@ final class SemanticEventSearch {
 
         foreach ($cached['events'] as $row) {
             if (isset($row['id'], $row['embedding']) && is_array($row['embedding'])) {
+                /** @psalm-suppress PropertyTypeCoercion */
                 $this->eventEmbeddingsById[(int) $row['id']] = $row['embedding'];
             }
         }
