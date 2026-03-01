@@ -25,6 +25,7 @@
         ],
         "testing": [
             "phpunit/phpunit",
+            "phpstan/phpstan",
             "guzzlehttp/guzzle"
         ]
     },
@@ -38,11 +39,12 @@
         "theodo-group/llphant": "~0.11.12"
     },
     "require-dev": {
-        "overtrue/phplint": "^6.1.0",
-        "friendsofphp/php-cs-fixer": "^3.82.2",
-        "phpunit/phpunit": "^10.5",
-        "guzzlehttp/guzzle": "^7.8",
         "apphp/pretty-print": "^0.6.0",
+        "friendsofphp/php-cs-fixer": "^3.82.2",
+        "guzzlehttp/guzzle": "^7.8",
+        "overtrue/phplint": "^6.1.0",
+        "phpunit/phpunit": "^10.5",
+        "phpstan/phpstan": "~1.12.17",
         "psalm/plugin-phpunit": "~0.19.0",
         "vimeo/psalm": "~5.26.1"
     },
@@ -71,6 +73,8 @@
         "php-psalm-help": "psalm --help",
         "php-psalm-with-report": "psalm --config=psalm.xml --report=tmp/psalm-report.xml --show-info=true --threads=4",
         "php-psalm-fix": "psalm --config=psalm.xml --threads=4",
+        "php-stan": "phpstan analyse --configuration phpstan.neon",
+        "php-stan-clickable": "./phpstan-clickable.sh",
         "test": "phpunit"
     }
 }

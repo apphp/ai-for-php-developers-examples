@@ -143,7 +143,7 @@ tests-coverage: app-tests-coverage
 test: app-test
 
 app-tests:
-	$(docker) exec app /bin/bash -c "mkdir -p tmp && composer test -- --testdox"
+	$(docker) exec app /bin/bash -c "mkdir -p tmp && composer test -- --testdox --display-warnings --display-deprecations"
 
 app-tests-coverage:
 	$(docker) exec app /bin/bash -c "mkdir -p tmp && composer test -- --coverage-text"
@@ -170,6 +170,8 @@ info-linters:
 	@echo "${GREEN} psalm-help${NC} \t\t - run Psalm help info static code analyzer"
 	@echo "${GREEN} psalm-report${NC} \t\t - run Psalm help info static code analyzer with creating report"
 	@echo "${GREEN} psalm-fix${NC} \t\t - run Psalm static code analyze in fix mode"
+	@echo "${GREEN} pstan${NC} \t\t\t - run Stan static code analyzer"
+	@echo "${GREEN} pstan-click${NC} \t\t\t - run Stan-clickable static code analyzer"
 	@echo "${GREEN} check${NC} \t\t - run all linters and check"
 	@echo "${GREEN} check-fix${NC} \t\t - run all checks in fix mode"
 
@@ -183,8 +185,8 @@ psalm-clickable: app-psalm-clickable
 psalm-help: app-psalm-help
 psalm-report: app-psalm-report
 psalm-fix: app-psalm-fix
-check: phplint phpcs psalm
-check-fix: phpcs-fix phpcs-fix psalm-fix
+stan: app-stan
+stan-clickable: app-stan-clickable
 
 app-phplint:
 	@echo "Run PHPLint${NC}"
@@ -210,3 +212,10 @@ app-psalm-report:
 	$(docker) exec app /bin/bash -c "composer php-psalm-with-report"
 app-psalm-fix:
 	$(docker) exec app /bin/bash -c "composer php-psalm-fix"
+app-stan:
+	$(docker) exec app /bin/bash -c "composer php-stan --memory-limit 8G"
+	$(call operation_done)
+app-stan-clickable:
+	$(docker) exec app /bin/bash -c "composer php-stan-clickable"
+check: phplint phpcs psalm
+check-fix: phpcs-fix phpcs-fix psalm-fix

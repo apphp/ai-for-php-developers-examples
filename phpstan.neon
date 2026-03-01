@@ -1,0 +1,37 @@
+parameters:
+    level: 1 # Start with the lowest level and increase it as you clean up your code
+    treatPhpDocTypesAsCertain: false
+    parallel:
+        jobSize: 15
+        maximumNumberOfProcesses: 4
+        minimumNumberOfJobsPerProcess: 3
+    phpVersion: 80200 # PHP 8.2
+    fileExtensions:
+        - php
+    paths:
+        - ./app
+        - ./views
+        - ./pablic
+    tmpDir: ./tmp/.phpstan/
+#    bootstrapFiles:
+#        - ./phpstan-bootstrap.php                                               # Include the bootstrap file you created
+#    excludePaths:
+#        - ./commands/MigrateMultipleCommand.php                                 # for message: Class 'CEvent' not found
+
+    ignoreErrors:
+        # ------------------------------------
+        # LEVEL 0
+        # Basic Syntax Checking
+        # Detects syntax errors in the code.
+        # ------------------------------------
+
+        # ------------------------------------
+        # LEVEL 1
+        # Undefined Variables
+        # Detects undefined variables and basic errors.
+        # ------------------------------------
+#        - message: '#^Variable \$\w+ in empty\(\) always exists and is not falsy.#'
+#          paths:
+#            - ./views/*
+#            - ./components/*
+#            - ./extensions/widgets/*
