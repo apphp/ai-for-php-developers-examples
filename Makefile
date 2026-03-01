@@ -217,5 +217,5 @@ app-stan:
 	$(call operation_done)
 app-stan-clickable:
 	$(docker) exec app /bin/bash -c "composer php-stan-clickable"
-check: phplint phpcs psalm
+check: phplint phpcs psalm stan
 check-fix: phpcs-fix phpcs-fix psalm-fix

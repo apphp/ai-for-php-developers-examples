@@ -1,5 +1,5 @@
 parameters:
-    level: 1 # Start with the lowest level and increase it as you clean up your code
+    level: 0 # Start with the lowest level and increase it as you clean up your code
     treatPhpDocTypesAsCertain: false
     parallel:
         jobSize: 15
@@ -11,7 +11,7 @@ parameters:
     paths:
         - ./app
         - ./views
-        - ./pablic
+        - ./public
     tmpDir: ./tmp/.phpstan/
 #    bootstrapFiles:
 #        - ./phpstan-bootstrap.php                                               # Include the bootstrap file you created

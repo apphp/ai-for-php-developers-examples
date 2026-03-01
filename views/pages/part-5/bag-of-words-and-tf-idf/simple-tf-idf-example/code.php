@@ -7,7 +7,7 @@ function tokenize(string $text): array {
     return explode(' ', $text);
 }
 
-$tokenized = array_map('tokenize', $documents);
+$tokenized = array_map('tokenize', $documents ?? []);
 
 // --------------------
 // Build vocabulary
