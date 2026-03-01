@@ -450,6 +450,33 @@ function site_search_sanitize_url(string $url): string {
         return $url;
     }
 
+    // Strip ASCII control characters to avoid any weirdness in HTML attributes.
+    $url = (string)preg_replace('/[\x00-\x1F\x7F]/', '', $url);
+
+    // Only allow internal paths.
+    // Reject absolute URLs or potentially dangerous schemes.
+    $parts = @parse_url($url);
+
+    if (is_array($parts) && (isset($parts['scheme']) || isset($parts['host']))) {
+        return '';
+    }
+
+    if (preg_match('/^\s*(?:javascript|data):/i', $url)) {
+        return '';
+    }
+
+    // Normalize to a root-relative path.
+    if (!str_starts_with($url, '/')) {
+        $url = '/' . $url;
+    }
+
+    // Prevent path traversal and normalize duplicated slashes.
+    if (str_contains($url, '..')) {
+        return '';
+    }
+
+    $url = preg_replace('#/+#', '/', $url) ?: $url;
+
     $url = str_replace('set-lang/{lang}', '', $url);
 
     return $url;
@@ -736,18 +763,18 @@ function create_form_features(array $features = [], array $data = [], string $fi
                 }
 
                 $output .= '<div class="form-check-inline mt-2 ml-0 pl-0 ' . $class . '">
-                    <input class="form-inline-number" type="number" id="inlineNumber' . $ind . '" name="' . $fieldName . '" min="' . $min . '" max="' . $max . '" oninput="javascript:if (this.value.length > this.maxLength || this.value > ' . $max . ') this.value=' . $min . ';" maxlength="' . $maxLength . '" value="' . ($found ? $data[0] : '1') . '" step="' . $step . '" style="' . ($style ?: 'min-width:50px') . '">
+                    <input class="form-inline-number" type="number" autocomplete="off" id="inlineNumber' . $ind . '" name="' . $fieldName . '" min="' . $min . '" max="' . $max . '" oninput="javascript:if (this.value.length > this.maxLength || this.value > ' . $max . ') this.value=' . $min . ';" maxlength="' . $maxLength . '" value="' . ($found ? $data[0] : '1') . '" step="' . $step . '" style="' . ($style ?: 'min-width:50px') . '">
                     <label class="form-check-label" for="inlineNumber' . $ind . '">&nbsp;' . $name . '</label>
                     </div>';
             } elseif ($type === 'radio') {
                 $output .= '<div class="form-check form-check-inline mt-2 ' . $class . '">
-                    <input class="form-check-input" type="radio" id="inlineRadio' . $ind . '" name="' . $fieldName . '" value="' . $feature . '"' . (in_array($feature, $data) ? ' checked' : '') . '>
+                    <input class="form-check-input" type="radio" autocomplete="off" id="inlineRadio' . $ind . '" name="' . $fieldName . '" value="' . $feature . '"' . (in_array($feature, $data) ? ' checked' : '') . '>
                     <label class="form-check-label" for="inlineRadio' . $ind . '">' . $name . '</label>
                     </div>';
             } else {
                 // Checkbox
                 $output .= '<div class="form-check form-check-inline mt-1 ' . $class . '">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox' . $ind . '" name="' . $fieldName . ($totalFeatures > 1 ? '[]' : '') . '" value="' . $feature . '"' . (in_array($feature, $data) ? ' checked' : '') . '>
+                    <input class="form-check-input" type="checkbox" autocomplete="off" id="inlineCheckbox' . $ind . '" name="' . $fieldName . ($totalFeatures > 1 ? '[]' : '') . '" value="' . $feature . '"' . (in_array($feature, $data) ? ' checked' : '') . '>
                     <label class="form-check-label" for="inlineCheckbox' . $ind . '">' . $name . '</label>
                     </div>';
             }

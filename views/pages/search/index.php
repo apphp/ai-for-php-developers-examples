@@ -13,7 +13,7 @@ $results ??= [];
 
 <form action="<?= create_href('search') ?>" method="get" class="mb-4">
     <div class="input-group">
-        <input type="text" name="s" maxlength="100" class="form-control" placeholder="<?= __t('search.placeholder') ?>" aria-label="<?= __t('search.aria_label') ?>" value="<?= htmlspecialchars((string)$query, ENT_QUOTES, 'UTF-8') ?>">
+        <input type="text" name="s" maxlength="100" class="form-control" autocomplete="off" placeholder="<?= __t('search.placeholder') ?>" aria-label="<?= __t('search.aria_label') ?>" value="<?= htmlspecialchars((string)$query, ENT_QUOTES, 'UTF-8') ?>">
         <button class="btn btn-sm btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass me-1"></i> <?= __t('search.button') ?></button>
     </div>
 </form>

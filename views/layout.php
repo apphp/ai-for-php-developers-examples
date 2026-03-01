@@ -54,7 +54,7 @@
     <?php if (config('SEARCH_ENABLED') === 'true'): ?>
         <div class="search-container col-12 col-sm-4 col-md-3 col-lg-2 mt-1 mt-sm-0 mb-sm-0 me-2">
             <form action="<?= create_href('search') ?>" method="get">
-                <input type="text" name="s" maxlength="100" class="form-control" placeholder="<?= __t('search.placeholder') ?>" aria-label="<?= __t('search.placeholder') ?>" value="<?= htmlspecialchars((string)($query ?? ''), ENT_QUOTES, 'UTF-8') ?>">
+                <input type="text" name="s" maxlength="100" class="form-control" autocomplete="off" placeholder="<?= __t('search.placeholder') ?>" aria-label="<?= __t('search.placeholder') ?>" value="<?= htmlspecialchars((string)($query ?? ''), ENT_QUOTES, 'UTF-8') ?>">
             </form>
         </div>
     <?php endif; ?>
