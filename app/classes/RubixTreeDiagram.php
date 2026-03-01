@@ -57,7 +57,7 @@ class RubixTreeDiagram {
             return get_debug_type($feature);
         };
 
-        $getValue = static function (object $object, array $names) {
+        $getValue = static function (object $object, array $names): mixed {
             $ref = new ReflectionObject($object);
 
             foreach ($names as $name) {

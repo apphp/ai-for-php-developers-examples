@@ -513,7 +513,7 @@ function site_search(string $query, int $limit = 50): array {
             static function (array $matches): string {
                 $key = $matches[2] ?? '';
 
-                if (!is_string($key) || $key === '') {
+                if ($key === '') {
                     return '';
                 }
 
@@ -531,7 +531,7 @@ function site_search(string $query, int $limit = 50): array {
             static function (array $matches): string {
                 $key = $matches[2] ?? '';
 
-                if (!is_string($key) || $key === '') {
+                if ($key === '') {
                     return '';
                 }
 
