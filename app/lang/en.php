@@ -88,6 +88,7 @@ return [
     'search.placeholder' => 'Search...',
     'search.aria_label' => 'Search',
     'search.button' => 'Search',
+    'search.enter_query' => 'Enter a search query.',
     'search.results_for' => 'result(s) for',
     'search.nothing_found' => 'Nothing found.',
     'search.warning_too_short' => 'Search query must be at least 2 characters.',

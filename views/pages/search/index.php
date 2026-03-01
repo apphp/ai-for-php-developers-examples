@@ -17,13 +17,9 @@
     </div>
 </form>
 
-<?php if ($queryLength < 2): ?>
-    <div class="alert alert-warning" role="alert">
-        <?= __t('search.warning_too_short') ?>
-    </div>
-<?php elseif ($queryLength > 100): ?>
-    <div class="alert alert-warning" role="alert">
-        <?= __t('search.warning_too_long') ?>
+<?php if ($queryLength < 1): ?>
+    <div class="alert alert-secondary" role="alert">
+        <?= __t('search.enter_query') ?>
     </div>
 <?php endif; ?>
 
@@ -33,8 +29,16 @@
         <strong>"<?= htmlspecialchars((string)$query, ENT_QUOTES, 'UTF-8') ?>"</strong>
     </div>
 
-    <?php if (!$results): ?>
-        <div class="alert alert-secondary" role="alert">
+    <?php if ($queryLength < 2): ?>
+        <div class="alert alert-warning" role="alert">
+            <?= __t('search.warning_too_short') ?>
+        </div>
+    <?php elseif ($queryLength > 100): ?>
+        <div class="alert alert-warning" role="alert">
+            <?= __t('search.warning_too_long') ?>
+        </div>
+    <?php elseif (!$results): ?>
+        <div class="alert alert-warning" role="alert">
             <?= __t('search.nothing_found') ?>
         </div>
     <?php else: ?>

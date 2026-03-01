@@ -88,6 +88,7 @@ return [
     'search.placeholder' => 'Поиск...',
     'search.aria_label' => 'Поиск',
     'search.button' => 'Найти',
+    'search.enter_query' => 'Введите поисковый запрос.',
     'search.results_for' => 'результат(ов) по запросу',
     'search.nothing_found' => 'Ничего не найдено.',
     'search.warning_too_short' => 'Запрос должен быть не короче 2 символов.',
