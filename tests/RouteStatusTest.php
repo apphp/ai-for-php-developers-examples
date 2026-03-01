@@ -98,7 +98,6 @@ class RouteStatusTest extends TestCase
 
         require $root . '/app/global.php';
         require $root . '/vendor/autoload.php';
-        require $root . '/app/functions.php';
 
         $app = AppFactory::create();
 
