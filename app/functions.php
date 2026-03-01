@@ -579,6 +579,18 @@ function site_search(string $query, int $limit = 50): array {
             $title = trim(strip_tags($m[1]));
         }
 
+        // If the <h1> is generic (e.g. section heading), try to extract a more specific
+        // page title from the action button label.
+        $specificTitle = '';
+
+        if (preg_match('/create_(?:run_code|show_code)_button\(\s*__t\(\s*([\'"\"])\s*([^\'"\"]+)\s*\1\s*(?:,\s*[^\)]*)?\)\s*,/u', $content, $m)) {
+            $key = (string)($m[2] ?? '');
+
+            if ($key !== '') {
+                $specificTitle = __t($key);
+            }
+        }
+
         $text = strip_tags($contentNoPhp);
 
         $textNormalized = preg_replace('/\s+/', ' ', $text);
@@ -610,6 +622,10 @@ function site_search(string $query, int $limit = 50): array {
 
         if ($url === '') {
             continue;
+        }
+
+        if ($specificTitle !== '' && $specificTitle !== $title) {
+            $title = $specificTitle;
         }
 
         if ($title === '') {
