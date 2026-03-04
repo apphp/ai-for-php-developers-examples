@@ -75,6 +75,7 @@ return [
     'common.charts' => 'Графики',
     'common.regenerate' => 'Сгенерировать заново',
     'common.implementation_in_pure_php' => 'Реализация на чистом PHP',
+    'common.implementation_in_rubixml' => 'Реализация на RubixML',
     'common.debug' => 'Дебаг',
     'common.debug_traceback' => 'Трассировка отладки',
     'common.show_debug' => 'Показать дебаг',
@@ -173,6 +174,9 @@ return [
     'errors_loss.case4.intro2' => 'В этом кейсе мы возьмём один и тот же набор истинных меток и две модели, которые дают одинаковые классы при пороге 0.5. Однако одна модель предсказывает вероятности ближе к 0 и 1 (более уверенно) и получит меньший log loss, а другая остаётся ближе к 0.5 и будет наказана большим log loss.',
     'errors_loss.case4.explanation' => 'Вывод: две модели могут иметь одинаковую точность, но разный log loss. Log loss смотрит на качество вероятностей (калибровку) и сильнее штрафует случаи, когда модель уверена, но ошибается.',
     'errors_loss.case5_title' => 'Кейс 5. Обучение модели как минимизация ошибки',
+    'errors_loss.case5.pure_php_intro1' => 'До этого момента мы рассматривали loss как способ оценить модель. Теперь важно увидеть главное: <b>обучение модели — это и есть процесс минимизации loss-функции</b>.',
+    'errors_loss.case5.pure_php_intro2' => 'В этом кейсе мы буквально "увидим" обучение без градиентного спуска и без "магии" библиотек: возьмём простую зависимость $y = 2x$, зададим модель $ŷ = w·x$ и перебором найдём такой $w$, при котором MSE минимальна.',
+    'errors_loss.case5.rubix_intro' => 'Дальше сделаем то же самое через Rubix ML: библиотека сама подберёт параметр (веса) так, чтобы минимизировать ошибку (в случае линейной регрессии — аналитически, методом наименьших квадратов).',
 
     'linear_regression.heading' => 'Линейная регрессия как базовая модель',
     'linear_regression.intro1' => 'Линейная регрессия – это та точка, с которой удобно начинать разговор про машинное обучение. Не потому, что она "простая", а потому, что в ней уже есть почти всё: модель как функция, параметры, ошибка, оптимизация и геометрический смысл. Если понять линейную регрессию, дальше большинство моделей будут восприниматься как её усложнения.',
@@ -384,22 +388,22 @@ return [
     'rag_engineering_system.index.item6' => 'RAG: Retrieval-Augmented Generation как инженерная система',
 
     'rag_engineering_system.why_do_words_turn_into_numbers.title' => 'Почему слова превращаются в числа: пространство слов и признаки',
-    'rag_engineering_system.why_do_words_turn_into_numbers.intro' => 'Разберём ключевую идею: чтобы работать с текстом алгоритмически, мы представляем его числами. Здесь фокус на пространствах признаков, что такое “пространство слов” и почему выбор представления определяет возможности системы.',
+    'rag_engineering_system.why_do_words_turn_into_numbers.intro' => 'Разберём ключевую идею: чтобы работать с текстом алгоритмически, мы представляем его числами. Здесь фокус на пространствах признаков, что такое "пространство слов" и почему выбор представления определяет возможности системы.',
 
     'rag_engineering_system.bag_of_words_and_tf_idf.title' => 'Bag of Words и TF–IDF',
-    'rag_engineering_system.bag_of_words_and_tf_idf.intro' => 'Переходим к разреженным представлениям: Bag of Words, term frequency, inverse document frequency и к тому, как TF–IDF становится простым базовым решением для поиска. Это историческая “точка входа” в retrieval.',
+    'rag_engineering_system.bag_of_words_and_tf_idf.intro' => 'Переходим к разреженным представлениям: Bag of Words, term frequency, inverse document frequency и к тому, как TF–IDF становится простым базовым решением для поиска. Это историческая "точка входа" в retrieval.',
 
     'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.title' => 'Embeddings как непрерывные пространства смысла',
     'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.intro' => 'От разреженных векторов — к плотным эмбеддингам. Почему непрерывные пространства лучше ловят семантику: similarity search, кластеризация, дедупликация, и какие инженерные компромиссы важны (модель, размерность, нормализация, метрики расстояния).',
 
     'rag_engineering_system.transformers_and_context.title' => 'Трансформеры и контекст: от статических векторов к пониманию смысла',
-    'rag_engineering_system.transformers_and_context.intro' => 'Свяжем эмбеддинги и трансформеры: чем контекстные представления отличаются от статических, что означает “context window” и почему современные RAG-системы опираются на inference-пайплайны трансформеров.',
+    'rag_engineering_system.transformers_and_context.intro' => 'Свяжем эмбеддинги и трансформеры: чем контекстные представления отличаются от статических, что означает "context window" и почему современные RAG-системы опираются на inference-пайплайны трансформеров.',
 
     'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.title' => 'Практика: эмбеддинги на PHP с помощью трансформеров (inference вместо обучения)',
     'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.intro' => 'Инженерный подход: делаем inference, а не обучение, рассматриваем эмбеддинги как переиспользуемый сервис и думаем про API-контракты, кэширование, batching и стоимость. На практике тут и появляется TransformersPHP как инструмент.',
 
     'rag_engineering_system.rag_as_engineering_system.title' => 'RAG: Retrieval-Augmented Generation как инженерная система',
-    'rag_engineering_system.rag_as_engineering_system.intro' => 'Соберём всё вместе: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting и оценка качества. Фокус не на “одном трюке”, а на надёжной системе: latency, качество, наблюдаемость и цикл улучшений.',
+    'rag_engineering_system.rag_as_engineering_system.intro' => 'Соберём всё вместе: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting и оценка качества. Фокус не на "одном трюке", а на надёжной системе: latency, качество, наблюдаемость и цикл улучшений.',
 
     'bag_of_words_and_tf_idf.simple_tfidf_example' => 'Простой пример TF–IDF на PHP',
     'bag_of_words_and_tf_idf.simple_tfidf_example_intro' => 'Ниже – минимальная реализация TF–IDF на чистом PHP. Мы берём три коротких документа (про кота и собаку), строим словарь, считаем TF и IDF, а затем получаем TF–IDF веса для каждого терма в каждом документе.',

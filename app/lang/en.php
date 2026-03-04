@@ -75,6 +75,7 @@ return [
     'common.charts' => 'Charts',
     'common.regenerate' => 'Re-generate',
     'common.implementation_in_pure_php' => 'Implementation in pure PHP',
+    'common.implementation_in_rubixml' => 'Implementation in RubixML',
     'common.debug' => 'Debug',
     'common.debug_traceback' => 'Debug traceback',
     'common.show_debug' => 'Show debug',
@@ -135,7 +136,7 @@ return [
     'vectors_feature_spaces.vector_dimension.outro' => 'The idea is straightforward: dimension is a contract between the data pipeline and the model. In production, such checks help you detect feature-generation bugs early.',
 
     'what_is_model.learning_as_min_error.title' => 'Learning as minimizing error',
-    'what_is_model.learning_as_min_error.intro1' => 'If we can measure error (loss), then model training becomes very simple: we change the model parameters so that this number goes down. The model itself does not “understand” the task — it just minimizes the loss function we chose.',
+    'what_is_model.learning_as_min_error.intro1' => 'If we can measure error (loss), then model training becomes very simple: we change the model parameters so that this number goes down. The model itself does not "understand" the task — it just minimizes the loss function we chose.',
     'what_is_model.learning_as_min_error.intro2' => 'Below is a minimal example: two observations and a linear model $ŷ = w x + b$. First the parameters are bad and the loss is large. Then we adjust $w$ so that predictions become closer to reality and the loss decreases noticeably.',
     'what_is_model.learning_as_min_error.explanation' => 'Training idea: repeat parameter update steps (for example, using gradient descent) until the average error on the data becomes small enough.',
     'what_is_model.error_measure.intro1' => 'Error is a function (commonly called a loss function) that compares the model’s prediction with the true value and returns a number that shows how wrong we were. The smaller this number, the better the model. For example, the simplest error is the difference between prediction and reality: $ŷ - y$.',
@@ -172,6 +173,9 @@ return [
     'errors_loss.case4.intro2' => 'In this case we will use the same true labels and two models that yield the same class labels at the 0.5 threshold. However, one model outputs probabilities closer to 0 and 1 and achieves a lower log loss, while the other stays closer to 0.5 and gets penalized with a higher log loss.',
     'errors_loss.case4.explanation' => 'Conclusion: two models can have the same accuracy but different log loss. Log loss evaluates the quality of the predicted probabilities (calibration) and penalizes confident mistakes much more strongly.',
     'errors_loss.case5_title' => 'Case 5. Training a model as minimizing error',
+    'errors_loss.case5.pure_php_intro1' => 'Up to this point we used loss as a way to evaluate a model. Now we want to see the key idea: <b>training a model is the process of minimizing a loss function</b>.',
+    'errors_loss.case5.pure_php_intro2' => 'In this case we will literally "watch" training happen without gradient descent and without library "magic": we take a simple dependency $y = 2x$, define a model $ŷ = w·x$, and search for the $w$ that minimizes MSE.',
+    'errors_loss.case5.rubix_intro' => 'Next we do the same with Rubix ML: the library finds the best parameter (weights) that minimizes the error (for linear regression it does so analytically via the least squares method).',
 
     'linear_regression.heading' => 'Linear regression as a basic model',
     'linear_regression.intro1' => 'Linear regression is a natural starting point for talking about machine learning. Not because it is "simple", but because it already contains almost everything: the model as a function, parameters, error, optimization, and geometric interpretation. If you understand linear regression, most other models will be perceived as its complications.',
@@ -227,7 +231,7 @@ return [
     'linear_regression.case3.explain_outro' => 'Such a model is convenient as a quick estimate of "will the server survive another +X% traffic" and as a starting point for more complex models and alerts in the monitoring system.',
 
     // Linear regression: Case 4 (estimating the likely customer check)
-    'linear_regression.case4.intro1' => 'In e-commerce, marketplaces, and subscription services it is often useful to estimate a customer’s likely purchase amount (“check”) in advance. This helps with personalization, discount strategy, and prioritizing user segments.',
+    'linear_regression.case4.intro1' => 'In e-commerce, marketplaces, and subscription services it is often useful to estimate a customer’s likely purchase amount ("check") in advance. This helps with personalization, discount strategy, and prioritizing user segments.',
     'linear_regression.case4.intro2' => 'Below is a minimal baseline regression model that predicts the likely check from simple on-site behavior features. To keep predictions positive and to make the target distribution more stable, we predict the logarithm of the check and then convert it back to money with exp().',
     'linear_regression.case4.feature_x1' => '$x_1$ — number of visits in the period;',
     'linear_regression.case4.feature_x2' => '$x_2$ — time on site (seconds);',
@@ -237,7 +241,7 @@ return [
     'linear_regression.case4.rubix_intro' => 'In this example we use Ridge regression from RubixML. The model is trained on a small dataset, predicts log(check), and then we convert the result back to money with exp().',
     'linear_regression.case4.explain_intro' => 'Why predicting log(check) is a useful trick:',
     'linear_regression.case4.explain_item1' => 'checks often have a heavy tail; log() reduces the impact of rare large purchases;',
-    'linear_regression.case4.explain_item2' => 'in log-space, the model often better matches multiplicative effects (e.g. “twice as many pageviews”);',
+    'linear_regression.case4.explain_item2' => 'in log-space, the model often better matches multiplicative effects (e.g. "twice as many pageviews");',
     'linear_regression.case4.explain_item3' => 'exp() guarantees a positive predicted check;',
     'linear_regression.case4.explain_item4' => 'Ridge adds L2 regularization and helps reduce overfitting on small datasets.',
     'linear_regression.case4.explain_outro' => 'In a real product you would expand the dataset and feature set (traffic source, category interest, purchase history), but even this baseline can be a good starting point.',
@@ -300,7 +304,7 @@ return [
     'probability_confidence.case2.scenario_item2' => 'Test sensitivity (probability of a positive result given the disease) is 99%.',
     'probability_confidence.case2.scenario_item3' => 'Test specificity (probability of a negative result given a healthy person) is 95%.',
     'probability_confidence.case2.scenario_question' => 'A patient takes the test and gets a positive result. Question: what is the probability that they truly have the disease?',
-    'probability_confidence.case2.scenario_note' => 'An intuitive answer often sounds like “about 99%”. But that is wrong. The reason is the rarity of the event.',
+    'probability_confidence.case2.scenario_note' => 'An intuitive answer often sounds like "about 99%". But that is wrong. The reason is the rarity of the event.',
 
     'probability_confidence.logits_paragraph' => 'In many machine learning models, the outputs are not probabilities, but so‑called scores (logits). These are just numbers that reflect the model\'s relative confidence in each option. They can be anything — positive, negative, large or small — and by themselves they are not interpreted as probabilities. To turn such scores into proper probabilities, we use the softmax function.',
     'probability_confidence.softmax_result_explanation' => 'Now we have a correct probability distribution: each value lies in the range from 0 to 1; the sum of all values equals 1; and the numbers can be interpreted as the model\'s degree of confidence.',
@@ -345,7 +349,7 @@ return [
     'knn_local_solutions.case1.intro' => 'In this case, we will walk through one of the simplest and most illustrative applications of k-nearest neighbors: classifying a user based on their on-site behavior. The example is intentionally simplified so you can focus on the decision logic rather than infrastructure.',
     'knn_local_solutions.case2.intro' => 'In this case, we apply the same k-nearest neighbors idea to a regression task. Instead of predicting a class label, we estimate a numeric value: the price of an apartment. We compute distances to known examples, take the k closest ones, and average their prices.',
 
-    'decision_trees_space_partitioning.index.intro' => 'Decision trees are one of the most intuitive and at the same time powerful machine learning algorithms. They are loved for their clarity, for being close to the human “if–then” logic, and for the fact that the result can be explained not only to an engineer, but also to the business, a manager, or a client. Unlike many other models, a decision tree does not look like a black box — it can literally be drawn on paper.',
+    'decision_trees_space_partitioning.index.intro' => 'Decision trees are one of the most intuitive and at the same time powerful machine learning algorithms. They are loved for their clarity, for being close to the human "if–then" logic, and for the fact that the result can be explained not only to an engineer, but also to the business, a manager, or a client. Unlike many other models, a decision tree does not look like a black box — it can literally be drawn on paper.',
     'decision_trees_space_partitioning.index.case1' => 'Case 1. A tutorial decision tree in pure PHP',
     'decision_trees_space_partitioning.index.case2' => 'Case 2. Classification using RubixML',
     'decision_trees_space_partitioning.index.case3' => 'Case 3. When a tree is convenient in a real product',
@@ -369,7 +373,7 @@ return [
     'hands_on_embedding_in_php_with_transformers.index.case3' => 'Case 3. Semantic FAQ / knowledge base search',
     'hands_on_embedding_in_php_with_transformers.index.case4' => 'Case 4. Intelligent navigation over events / timelines',
     'hands_on_embedding_in_php_with_transformers.index.case5' => 'Case 5. Classification without training (zero-shot via similarity)',
-    'hands_on_embedding_in_php_with_transformers.index.case6' => 'Case 6. Semantic recommendations “similar articles”',
+    'hands_on_embedding_in_php_with_transformers.index.case6' => 'Case 6. Semantic recommendations "similar articles"',
 
     'hands_on_embedding_in_php_with_transformers.case4.title' => 'Case 4. Intelligent navigation over events / timelines',
     'hands_on_embedding_in_php_with_transformers.case4.intro' => 'Goal: quickly find the most relevant events in a timeline by meaning, not by exact keyword matches. We compute embeddings for event descriptions, cache them to disk, and rank events using cosine similarity against the query.',
@@ -383,33 +387,33 @@ return [
     'rag_engineering_system.index.item6' => 'RAG: Retrieval-Augmented Generation as an engineering system',
 
     'rag_engineering_system.why_do_words_turn_into_numbers.title' => 'Why words turn into numbers: word spaces and features',
-    'rag_engineering_system.why_do_words_turn_into_numbers.intro' => 'We revisit the core idea: to work with text algorithmically we represent it as numbers. Here we focus on the notion of feature spaces, what a “word space” means, and why the choice of representation defines what the system can and cannot learn.',
+    'rag_engineering_system.why_do_words_turn_into_numbers.intro' => 'We revisit the core idea: to work with text algorithmically we represent it as numbers. Here we focus on the notion of feature spaces, what a "word space" means, and why the choice of representation defines what the system can and cannot learn.',
 
     'rag_engineering_system.bag_of_words_and_tf_idf.title' => 'Bag of Words and TF–IDF',
-    'rag_engineering_system.bag_of_words_and_tf_idf.intro' => 'We cover sparse representations: Bag of Words, term frequency, inverse document frequency, and how TF–IDF becomes a simple baseline for retrieval. This is where the “retrieval” part of RAG historically starts.',
+    'rag_engineering_system.bag_of_words_and_tf_idf.intro' => 'We cover sparse representations: Bag of Words, term frequency, inverse document frequency, and how TF–IDF becomes a simple baseline for retrieval. This is where the "retrieval" part of RAG historically starts.',
 
     'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.title' => 'Embeddings as continuous spaces of meaning',
     'rag_engineering_system.embeddings_as_continuous_spaces_of_meaning.intro' => 'We move from sparse vectors to dense embeddings and discuss why continuous vector spaces capture semantics better: similarity search, clustering, deduplication, and the practical trade-offs (model choice, dimensionality, normalization, distance metrics).',
 
     'rag_engineering_system.transformers_and_context.title' => 'Transformers and context: from static vectors to understanding meaning',
-    'rag_engineering_system.transformers_and_context.intro' => 'We connect embeddings to transformers: how contextual representations differ from static vectors, what “context window” really is, and why modern RAG systems rely on transformer inference pipelines.',
+    'rag_engineering_system.transformers_and_context.intro' => 'We connect embeddings to transformers: how contextual representations differ from static vectors, what "context window" really is, and why modern RAG systems rely on transformer inference pipelines.',
 
     'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.title' => 'Hands-on: embeddings in PHP with transformers (inference, not training)',
     'rag_engineering_system.hands_on_embeddings_in_php_with_transformers.intro' => 'We discuss the engineering approach: do inference instead of training, treat embeddings as a reusable service, and think in terms of API contracts, caching, batching, and cost. In practice this is where TransformersPHP becomes a tool.',
 
     'rag_engineering_system.rag_as_engineering_system.title' => 'RAG: Retrieval-Augmented Generation as an engineering system',
-    'rag_engineering_system.rag_as_engineering_system.intro' => 'We put everything together: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting, and evaluation. The focus is not on “one trick” but on building a reliable system: latency, quality, observability, and iteration loops.',
+    'rag_engineering_system.rag_as_engineering_system.intro' => 'We put everything together: ingestion, chunking, embedding, indexing, retrieval, reranking, prompting, and evaluation. The focus is not on "one trick" but on building a reliable system: latency, quality, observability, and iteration loops.',
 
     'bag_of_words_and_tf_idf.simple_tfidf_example' => 'A simple TF–IDF example in PHP',
     'bag_of_words_and_tf_idf.simple_tfidf_example_intro' => 'Below is a minimal TF–IDF implementation in pure PHP. We take three short documents (about a cat and a dog), build a vocabulary, compute TF and IDF, and then produce TF–IDF weights for each term in each document.',
 
-    'bag_of_words_and_tf_idf.index.intro' => 'In the previous chapters we talked about text as data and about the fact that a computer cannot read words “like a human”. For it, text is a set of symbols, numbers, and statistics. In this section we will cover two basic, yet still extremely useful approaches to representing text as numbers: Bag of Words and TF–IDF.',
+    'bag_of_words_and_tf_idf.index.intro' => 'In the previous chapters we talked about text as data and about the fact that a computer cannot read words "like a human". For it, text is a set of symbols, numbers, and statistics. In this section we will cover two basic, yet still extremely useful approaches to representing text as numbers: Bag of Words and TF–IDF.',
     'bag_of_words_and_tf_idf.index.item_simple_tfidf' => 'A simple TF–IDF example in PHP',
     'bag_of_words_and_tf_idf.index.case1' => 'Case 1. Similar document search',
-    'bag_of_words_and_tf_idf.index.case2' => 'Case 2. Review classification: “positive / negative”',
+    'bag_of_words_and_tf_idf.index.case2' => 'Case 2. Review classification: "positive / negative"',
     'bag_of_words_and_tf_idf.index.case3' => 'Case 3. Automatic article categorization',
-    'bag_of_words_and_tf_idf.index.case4' => 'Case 4. “Spam” detector for contact forms',
-    'bag_of_words_and_tf_idf.index.case5' => 'Case 5. Explainable search: “why this document?”',
+    'bag_of_words_and_tf_idf.index.case4' => 'Case 4. "Spam" detector for contact forms',
+    'bag_of_words_and_tf_idf.index.case5' => 'Case 5. Explainable search: "why this document?"',
     'bag_of_words_and_tf_idf.index.case6' => 'Case 6. Comparison: Bag of Words vs TF–IDF on one example',
 
     'why_do_words_turn_into_numbers.index.note_no_code' => 'There are no runnable examples or code in this chapter because it is a concept, not a hands-on implementation.',

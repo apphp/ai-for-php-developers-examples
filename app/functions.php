@@ -111,7 +111,7 @@ function verify_fields(array|string &$features, array $verificationData, array|s
 }
 
 function num_format($num, int $decimals = 3) {
-    return (stripos((string)$num, 'e') !== false) ? $num : number_format((float)$num, $decimals, '.', '');
+    return (stripos((string)$num, 'e') !== false) ? number_format((float)$num, $decimals, '.', '') : $num;
 }
 
 function create_show_code_button(string $title, string $page, string $buttonText = ''): string {

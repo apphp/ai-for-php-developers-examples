@@ -413,6 +413,41 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/same-accuracy-different-log-loss/code-run.php');
         });
+
+        $app->get('/case-5/training-model-as-minimizing-error', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case5_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/training-model-as-minimizing-error/index.php');
+        });
+
+        $app->get('/case-5/training-model-as-minimizing-error/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case5_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions/case-5/training-model-as-minimizing-error'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/training-model-as-minimizing-error/code-run.php');
+        });
+
+        $app->get('/case-5/training-model-as-minimizing-error/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('nav.part2_error_loss_functions'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('errors_loss.case5_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions/case-5/training-model-as-minimizing-error'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/training-model-as-minimizing-error/rubix-code-run.php');
+        });
     });
     $app->group('/linear-regression-as-basic-model', function ($app) use ($renderer): void {
         $app->get('', function (Request $request, Response $response) use ($renderer): Response {
