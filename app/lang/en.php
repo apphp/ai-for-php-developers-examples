@@ -246,6 +246,22 @@ return [
     'linear_regression.case4.explain_item4' => 'Ridge adds L2 regularization and helps reduce overfitting on small datasets.',
     'linear_regression.case4.explain_outro' => 'In a real product you would expand the dataset and feature set (traffic source, category interest, purchase history), but even this baseline can be a good starting point.',
 
+    // Linear regression: Case 5 (market salary forecast)
+    'linear_regression.case5.intro1' => 'Estimating a market salary is a classic regression task: given a candidate’s features (experience, tech stack, company size, remote work), we want to output a number — the expected salary.',
+    'linear_regression.case5.intro2' => 'Below is a minimal RubixML baseline: we train Ridge regression on a tiny dataset and then predict salary for a new candidate. This demonstrates the mechanics, not a “real” market model.',
+    'linear_regression.case5.feature_x1' => '$x_1$ — experience (years);',
+    'linear_regression.case5.feature_x2' => '$x_2$ — technologies score (a simplified numeric score for the tech stack);',
+    'linear_regression.case5.feature_x3' => '$x_3$ — company size (level: 1 = small, 2 = medium, 3 = enterprise);',
+    'linear_regression.case5.feature_x4' => '$x_4$ — remote work (1 = yes, 0 = no);',
+    'linear_regression.case5.formula' => 'Linear regression model: $\hat{y} = w_0 + w_1 x_1 + w_2 x_2 + w_3 x_3 + w_4 x_4$, where $\hat{y}$ is the salary prediction.',
+    'linear_regression.case5.rubix_intro' => 'We use Ridge regression (linear regression with L2 regularization): it is more stable on small datasets and helps reduce overfitting.',
+    'linear_regression.case5.explain_intro' => 'How to interpret the output (weights and bias):',
+    'linear_regression.case5.explain_item1' => 'the weight for experience shows how much salary increases on average per additional year;',
+    'linear_regression.case5.explain_item2' => 'the weight for the technologies score reflects the premium for a more in-demand stack;',
+    'linear_regression.case5.explain_item3' => 'the weight for company size often correlates with compensation bands;',
+    'linear_regression.case5.explain_item4' => 'the weight for remote work may capture a market adjustment (but in practice it heavily depends on region and company policy).',
+    'linear_regression.case5.explain_outro' => 'In a real task you would add much more data, normalize features, include categorical signals (region, level, industry), and evaluate the model on a test set.',
+
     // Case 1 charts UI (code-run.php)
     'linear_regression.case1.chart_price_vs_area' => 'Price vs Area',
     'linear_regression.case1.chart_price_vs_floor' => 'Price vs Floor',

@@ -25,7 +25,7 @@
             <?= create_link('part-2/linear-regression-as-basic-model/case-4/customer-check-valuation', __t('linear_regression.case4_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/linear-regression-as-basic-model/case-5/...', __t('linear_regression.case5_title'), true) ?>
+            <?= create_link('part-2/linear-regression-as-basic-model/case-5/market-salary-forecast', __t('linear_regression.case5_title')) ?>
         </li>
     </ul>
 </div>
