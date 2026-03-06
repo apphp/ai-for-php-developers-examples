@@ -2,7 +2,10 @@
     <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
-<h4><?= __t('gradient_descent.animation_title'); ?></h4>
+<h4><?= __t('gradient_descent.implementation'); ?></h4>
+<br>
+
+<?= create_show_code_button(__t('gradient_descent.animation_gd_title'), 'part-2/gradient-descent-on-fingers/implementation', buttonText: __t('gradient_descent.animation.back_to_toc')); ?>
 <p><?= __t('gradient_descent.animation_intro'); ?></p>
 <br>
 
@@ -12,19 +15,22 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <div class="fw-bold">Параметры</div>
-                        <div class="text-muted small">Минимизируем \(f(x) = (x - a)^2\) или \(f(x,y) = (x - a)^2 + (y - b)^2\)</div>
+                        <div class="fw-bold"><?= __t('gradient_descent.animation.ui.parameters'); ?></div>
+                        <div class="text-muted small">
+                            <span class="gd-only-1d"><?= __t('gradient_descent.animation.ui.objective_1d'); ?></span>
+                            <span class="gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_2d'); ?></span>
+                        </div>
                     </div>
                     <div class="btn-group">
-                        <button id="gd-play" class="btn btn-sm btn-outline-primary">Старт</button>
-                        <button id="gd-reset" class="btn btn-sm btn-outline-secondary">Сброс</button>
+                        <button id="gd-play" class="btn btn-sm btn-outline-primary"><?= __t('gradient_descent.animation.ui.start'); ?></button>
+                        <button id="gd-reset" class="btn btn-sm btn-outline-secondary"><?= __t('gradient_descent.animation.ui.reset'); ?></button>
                     </div>
                 </div>
 
                 <hr>
 
                 <div class="mb-3">
-                    <label for="gd-mode" class="form-label"><b>Режим</b></label>
+                    <label for="gd-mode" class="form-label"><b><?= __t('gradient_descent.animation.ui.mode'); ?></b></label>
                     <select id="gd-mode" class="form-select form-select-sm w-50">
                         <option value="1d" selected>1D</option>
                         <option value="2d">2D</option>
@@ -32,54 +38,54 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="gd-learning-rate" class="form-label"><b>Learning rate (α)</b>: <span id="gd-learning-rate-value">0.08</span></label>
+                    <label for="gd-learning-rate" class="form-label"><b><?= __t('gradient_descent.animation.ui.learning_rate'); ?></b>: <span id="gd-learning-rate-value">0.08</span></label>
                     <input type="range" class="form-range" id="gd-learning-rate" min="0.005" max="0.25" step="0.005" value="0.08">
                 </div>
 
                 <div class="mb-3">
-                    <label for="gd-start-x" class="form-label"><b>Начальный x</b>: <span id="gd-start-x-value">6</span></label>
+                    <label for="gd-start-x" class="form-label"><b><?= __t('gradient_descent.animation.ui.start_x'); ?></b>: <span id="gd-start-x-value">6</span></label>
                     <input type="range" class="form-range" id="gd-start-x" min="-10" max="10" step="0.5" value="6">
                 </div>
 
                 <div class="mb-3 gd-only-2d" style="display:none;">
-                    <label for="gd-start-y" class="form-label"><b>Начальный y</b>: <span id="gd-start-y-value">-4</span></label>
+                    <label for="gd-start-y" class="form-label"><b><?= __t('gradient_descent.animation.ui.start_y'); ?></b>: <span id="gd-start-y-value">-4</span></label>
                     <input type="range" class="form-range" id="gd-start-y" min="-10" max="10" step="0.5" value="-4">
                 </div>
 
                 <div class="mb-3">
-                    <label for="gd-target-a" class="form-label"><b>Цель a</b> (минимум по x): <span id="gd-target-a-value">2</span></label>
+                    <label for="gd-target-a" class="form-label"><b><?= __t('gradient_descent.animation.ui.target_a'); ?></b>: <span id="gd-target-a-value">2</span></label>
                     <input type="range" class="form-range" id="gd-target-a" min="-6" max="6" step="0.5" value="2">
                 </div>
 
                 <div class="mb-3 gd-only-2d" style="display:none;">
-                    <label for="gd-target-b" class="form-label"><b>Цель b</b> (минимум по y): <span id="gd-target-b-value">1</span></label>
+                    <label for="gd-target-b" class="form-label"><b><?= __t('gradient_descent.animation.ui.target_b'); ?></b>: <span id="gd-target-b-value">1</span></label>
                     <input type="range" class="form-range" id="gd-target-b" min="-6" max="6" step="0.5" value="1">
                 </div>
 
                 <div class="mb-3">
-                    <label for="gd-steps-per-second" class="form-label"><b>Скорость</b> (шагов/сек): <span id="gd-steps-per-second-value">30</span></label>
+                    <label for="gd-steps-per-second" class="form-label"><b><?= __t('gradient_descent.animation.ui.speed'); ?></b>: <span id="gd-steps-per-second-value">30</span></label>
                     <input type="range" class="form-range" id="gd-steps-per-second" min="5" max="120" step="1" value="30">
                 </div>
 
                 <div class="row">
                     <div class="col-6">
-                        <div class="small text-muted">Итерация</div>
+                        <div class="small text-muted"><?= __t('gradient_descent.animation.ui.iteration'); ?></div>
                         <div class="h5 mb-0" id="gd-iter">0</div>
                     </div>
                     <div class="col-6">
-                        <div class="small text-muted">Текущий x</div>
+                        <div class="small text-muted"><?= __t('gradient_descent.animation.ui.current_x'); ?></div>
                         <div class="h5 mb-0" id="gd-x">6.0000</div>
                     </div>
                     <div class="col-6 mt-3">
-                        <div class="small text-muted">f(x)</div>
+                        <div class="small text-muted"><?= __t('gradient_descent.animation.ui.fx'); ?></div>
                         <div class="h5 mb-0" id="gd-fx">16.0000</div>
                     </div>
                     <div class="col-6 mt-3">
-                        <div class="small text-muted">|∇f(x)|</div>
+                        <div class="small text-muted"><?= __t('gradient_descent.animation.ui.grad_abs'); ?></div>
                         <div class="h5 mb-0" id="gd-grad">8.0000</div>
                     </div>
                     <div class="col-6 gd-only-2d mt-3" style="display:none;">
-                        <div class="small text-muted">Текущий y</div>
+                        <div class="small text-muted"><?= __t('gradient_descent.animation.ui.current_y'); ?></div>
                         <div class="h5 mb-0" id="gd-y">-4.0000</div>
                     </div>
                 </div>
@@ -87,10 +93,10 @@
                 <hr>
 
                 <div class="small text-muted">
-                    Правило обновления:
+                    <?= __t('gradient_descent.animation.ui.update_rule'); ?>
                     <div><code>x = x - α · ∇f(x)</code></div>
-                    <div class="gd-only-1d">где <code>∇f(x) = 2(x - a)</code></div>
-                    <div class="gd-only-2d" style="display:none;">где <code>∇f(x,y) = (2(x-a), 2(y-b))</code></div>
+                    <div class="gd-only-1d"><?= __t('gradient_descent.animation.ui.grad_1d'); ?></div>
+                    <div class="gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_2d'); ?></div>
                 </div>
             </div>
         </div>
@@ -100,7 +106,7 @@
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <div class="fw-bold mb-2">Траектория (x)</div>
+                <div class="fw-bold mb-2"><?= __t('gradient_descent.animation.ui.trajectory'); ?></div>
                 <div class="gd-track gd-only-1d" id="gd-track">
                     <div class="gd-axis"></div>
                     <div class="gd-min" id="gd-min"></div>
@@ -111,28 +117,19 @@
                     <div class="gd-plane-target" id="gd-target"></div>
                     <div class="gd-plane-dot" id="gd-dot-2d"></div>
                 </div>
-                <div class="text-muted small mt-2 gd-only-1d">Точка движется к минимуму (вертикальная линия — <code>a</code>).</div>
-                <div class="text-muted small mt-2 gd-only-2d" style="display:none;">Точка движется к минимуму (цель — точка <code>(a,b)</code>).</div>
+                <div class="text-muted small mt-2 gd-only-1d"><?= __t('gradient_descent.animation.ui.trajectory_hint_1d'); ?></div>
+                <div class="text-muted small mt-2 gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.trajectory_hint_2d'); ?></div>
             </div>
         </div>
 
         <div class="card shadow-sm mt-3">
             <div class="card-body">
-                <div class="fw-bold mb-2">График ошибки</div>
+                <div class="fw-bold mb-2"><?= __t('gradient_descent.animation.ui.loss_chart'); ?></div>
                 <div class="ratio ratio-16x9">
                     <canvas id="gd-loss-chart"></canvas>
                 </div>
                 <div class="text-muted small mt-2">
-                    На графике: значение <code>f(x)</code> по итерациям. Если <code>α</code> слишком большое — возможны колебания.
-                </div>
-            </div>
-        </div>
-
-        <div class="card shadow-sm mt-3">
-            <div class="card-body">
-                <div class="fw-bold mb-2">Ссылки</div>
-                <div>
-                    <?= create_link('part-2/gradient-descent-on-fingers/implementation', '← Назад к реализации'); ?>
+                    <?= __t('gradient_descent.animation.ui.loss_chart_hint'); ?>
                 </div>
             </div>
         </div>
@@ -220,9 +217,17 @@
     }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
     (function () {
+        const i18n = {
+            start: <?= json_encode(__t('gradient_descent.animation.ui.start')) ?>,
+            pause: <?= json_encode(__t('gradient_descent.animation.ui.pause')) ?>,
+            reset: <?= json_encode(__t('gradient_descent.animation.ui.reset')) ?>,
+            chart_iteration: <?= json_encode(__t('gradient_descent.animation.ui.chart_iteration')) ?>,
+            chart_fx: <?= json_encode(__t('gradient_descent.animation.ui.chart_fx')) ?>,
+            chart_series_fx: <?= json_encode(__t('gradient_descent.animation.ui.chart_series_fx')) ?>,
+        };
+
         const $ = (id) => document.getElementById(id);
 
         const playBtn = $("gd-play");
@@ -332,7 +337,7 @@
             data: {
                 labels: [],
                 datasets: [{
-                    label: "f(x)",
+                    label: i18n.chart_series_fx,
                     data: [],
                     borderColor: "rgba(13,110,253,1)",
                     backgroundColor: "rgba(13,110,253,0.12)",
@@ -352,11 +357,11 @@
                 },
                 scales: {
                     x: {
-                        title: { display: true, text: "итерация" },
+                        title: { display: true, text: i18n.chart_iteration },
                         ticks: { maxTicksLimit: 8 }
                     },
                     y: {
-                        title: { display: true, text: "f(x)" },
+                        title: { display: true, text: i18n.chart_fx },
                         beginAtZero: true
                     }
                 }
@@ -458,7 +463,7 @@
 
         function pause() {
             running = false;
-            playBtn.textContent = "Старт";
+            playBtn.textContent = i18n.start;
             if (timerId) {
                 clearInterval(timerId);
                 timerId = null;
@@ -469,7 +474,7 @@
             const sps = parseInt(spsInput.value, 10);
             const intervalMs = Math.max(5, Math.floor(1000 / Math.max(1, sps)));
             running = true;
-            playBtn.textContent = "Пауза";
+            playBtn.textContent = i18n.pause;
 
             if (timerId) {
                 clearInterval(timerId);

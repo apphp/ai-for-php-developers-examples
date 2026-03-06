@@ -2,36 +2,32 @@
     <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
-<br>
 <h4><?= __t('gradient_descent.implementation'); ?></h4>
-<p><?= __t('gradient_descent.implementation_intro'); ?></p>
-<div class="pb-3">
-    <?= create_link('part-2/gradient-descent-on-fingers/implementation/animation', __t('gradient_descent.animation_title')); ?>
+<br>
+
+<?= create_run_code_button(__t('gradient_descent.animation_gd_title'), 'part-2/gradient-descent-on-fingers/implementation/animation', buttonText: __t('gradient_descent.run_animation')); ?>
+<div class="pb-2">
+    <p><?= __t('gradient_descent.implementation_intro'); ?></p>
 </div>
 <hr>
 
 <?= create_run_code_button(__t('gradient_descent.impl_php_from_scratch'), 'part-2/gradient-descent-on-fingers/implementation/code-run'); ?>
-
 <div>
     <p>
         <?= __t('gradient_descent.minimal_example_intro'); ?>
     </p>
 </div>
-
 <div>
     <?= create_example_of_use_links(__DIR__ . '/code.php', opened: false, copyButtonId: 1, expandButtonId: 1); ?>
 </div>
-
 <hr>
 
 <?= create_run_code_button(__t('gradient_descent.impl_php_vector_version'), 'part-2/gradient-descent-on-fingers/implementation/vectors-code-run'); ?>
-
 <div>
     <p>
         <?= __t('gradient_descent.more_features_vectors_hint'); ?>
     </p>
 </div>
-
 <div>
     <?= create_example_of_use_links(__DIR__ . '/vectors-code.php', opened: false, copyButtonId: 2, expandButtonId: 2);?>
 </div>
