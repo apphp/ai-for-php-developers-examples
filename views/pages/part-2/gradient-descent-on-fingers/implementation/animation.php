@@ -112,7 +112,7 @@
 
                 <div class="small text-muted">
                     <?= __t('gradient_descent.animation.ui.update_rule'); ?>
-                    <div><code>x = x - α · ∇f(x)</code></div>
+                    <div>$x = x - α · ∇f(x)$</div>
                     <div class="gd-only-1d"><?= __t('gradient_descent.animation.ui.grad_1d'); ?></div>
                     <div class="gd-only-2d-grad" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_2d'); ?></div>
                     <div class="gd-only-3dxyz" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_3d'); ?></div>
