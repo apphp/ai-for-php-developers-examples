@@ -34,6 +34,7 @@
                     <select id="gd-mode" class="form-select form-select-sm w-50">
                         <option value="1d" selected>1D</option>
                         <option value="2d">2D</option>
+                        <option value="3d">3D</option>
                     </select>
                 </div>
 
@@ -117,6 +118,7 @@
                     <div class="gd-plane-target" id="gd-target"></div>
                     <div class="gd-plane-dot" id="gd-dot-2d"></div>
                 </div>
+                <div id="gd-plot-3d" class="gd-only-3d" style="display:none; height: 360px;"></div>
                 <div class="text-muted small mt-2 gd-only-1d"><?= __t('gradient_descent.animation.ui.trajectory_hint_1d'); ?></div>
                 <div class="text-muted small mt-2 gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.trajectory_hint_2d'); ?></div>
             </div>
@@ -260,6 +262,7 @@
         const planeEl = $("gd-plane");
         const targetEl2d = $("gd-target");
         const dotEl2d = $("gd-dot-2d");
+        const plot3dEl = $("gd-plot-3d");
 
         let running = false;
         let timerId = null;
@@ -268,7 +271,17 @@
         let x = parseFloat(startXInput.value);
         let y = parseFloat(startYInput.value);
 
+        let pathX = [];
+        let pathY = [];
+        let pathZ = [];
+
+        let plot3dReady = false;
+
         function mode() {
+            if (modeSelect.value === '3d') {
+                return '3d';
+            }
+
             return modeSelect.value === '2d' ? '2d' : '1d';
         }
 
@@ -375,7 +388,7 @@
             let fx = 0;
             let gradAbs = 0;
 
-            if (mode() === '2d') {
+            if (mode() === '2d' || mode() === '3d') {
                 const g = g2d(x, y, a, b);
                 fx = f2d(x, y, a, b);
                 gradAbs = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy));
@@ -399,7 +412,9 @@
         }
 
         function setModeVisibility() {
-            const is2d = mode() === '2d';
+            const m = mode();
+            const is2d = m === '2d' || m === '3d';
+            const is3d = m === '3d';
             document.querySelectorAll('.gd-only-2d').forEach((el) => {
                 el.style.display = is2d ? '' : 'none';
             });
@@ -407,19 +422,164 @@
                 el.style.display = is2d ? 'none' : '';
             });
 
+            document.querySelectorAll('.gd-only-3d').forEach((el) => {
+                el.style.display = is3d ? '' : 'none';
+            });
+
             if (planeEl) {
-                planeEl.style.display = is2d ? '' : 'none';
+                planeEl.style.display = (is2d && !is3d) ? '' : 'none';
             }
+
+            if (plot3dEl) {
+                plot3dEl.style.display = is3d ? '' : 'none';
+            }
+        }
+
+        function buildSurface(a, b) {
+            const min = -10;
+            const max = 10;
+            const steps = 41;
+            const xs = [];
+            const ys = [];
+
+            for (let i = 0; i < steps; i++) {
+                const t = i / (steps - 1);
+                xs.push(min + t * (max - min));
+                ys.push(min + t * (max - min));
+            }
+
+            const z = [];
+            for (let yi = 0; yi < ys.length; yi++) {
+                const row = [];
+                for (let xi = 0; xi < xs.length; xi++) {
+                    row.push(f2d(xs[xi], ys[yi], a, b));
+                }
+                z.push(row);
+            }
+
+            return { xs, ys, z };
+        }
+
+        function ensurePlot3d() {
+            if (!plot3dEl) {
+                return;
+            }
+            if (mode() !== '3d') {
+                return;
+            }
+            if (typeof window.Plotly === 'undefined') {
+                plot3dReady = false;
+                return;
+            }
+
+            const a = parseFloat(targetAInput.value);
+            const b = parseFloat(targetBInput.value);
+            const surface = buildSurface(a, b);
+
+            const surfaceTrace = {
+                type: 'surface',
+                x: surface.xs,
+                y: surface.ys,
+                z: surface.z,
+                opacity: 0.85,
+                colorscale: 'Viridis',
+                showscale: false,
+                hoverinfo: 'skip'
+            };
+
+            const pathTrace = {
+                type: 'scatter3d',
+                mode: 'lines+markers',
+                x: pathX,
+                y: pathY,
+                z: pathZ,
+                line: { color: 'rgba(13,110,253,0.9)', width: 6 },
+                marker: { size: 3, color: 'rgba(13,110,253,1)' },
+                hoverinfo: 'skip'
+            };
+
+            const currentTrace = {
+                type: 'scatter3d',
+                mode: 'markers',
+                x: [x],
+                y: [y],
+                z: [f2d(x, y, a, b)],
+                marker: { size: 6, color: 'rgba(13,110,253,1)' },
+                hoverinfo: 'skip'
+            };
+
+            const targetTrace = {
+                type: 'scatter3d',
+                mode: 'markers',
+                x: [a],
+                y: [b],
+                z: [0],
+                marker: { size: 6, color: 'rgba(25,135,84,1)' },
+                hoverinfo: 'skip'
+            };
+
+            const layout = {
+                margin: { l: 0, r: 0, b: 0, t: 0 },
+                scene: {
+                    xaxis: { title: 'x', range: [-10, 10] },
+                    yaxis: { title: 'y', range: [-10, 10] },
+                    zaxis: { title: 'f(x,y)' },
+                    camera: {
+                        eye: { x: 1.35, y: 1.65, z: 0.85 }
+                    }
+                },
+            };
+
+            window.Plotly.newPlot(plot3dEl, [surfaceTrace, pathTrace, currentTrace, targetTrace], layout, {
+                responsive: true,
+                displayModeBar: false
+            });
+
+            plot3dReady = true;
+        }
+
+        function updatePlot3d() {
+            if (!plot3dEl || mode() !== '3d' || !plot3dReady || typeof window.Plotly === 'undefined') {
+                return;
+            }
+
+            const a = parseFloat(targetAInput.value);
+            const b = parseFloat(targetBInput.value);
+
+            window.Plotly.restyle(plot3dEl, {
+                x: [pathX],
+                y: [pathY],
+                z: [pathZ]
+            }, [1]);
+
+            window.Plotly.restyle(plot3dEl, {
+                x: [[x]],
+                y: [[y]],
+                z: [[f2d(x, y, a, b)]]
+            }, [2]);
+
+            window.Plotly.restyle(plot3dEl, {
+                x: [[a]],
+                y: [[b]],
+                z: [[0]]
+            }, [3]);
         }
 
         function resetState() {
             iter = 0;
             x = parseFloat(startXInput.value);
             y = parseFloat(startYInput.value);
+
+            pathX = [x];
+            pathY = [y];
+            pathZ = [f2d(x, y, parseFloat(targetAInput.value), parseFloat(targetBInput.value))];
+
             lossChart.data.labels = [];
             lossChart.data.datasets[0].data = [];
             lossChart.update();
             updateUI();
+
+            ensurePlot3d();
         }
 
         function step() {
@@ -431,6 +591,12 @@
             let gradNorm = 0;
 
             if (mode() === '2d') {
+                const g = g2d(x, y, a, b);
+                x = x - lr * g.gx;
+                y = y - lr * g.gy;
+                gradNorm = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy));
+                fx = f2d(x, y, a, b);
+            } else if (mode() === '3d') {
                 const g = g2d(x, y, a, b);
                 x = x - lr * g.gx;
                 y = y - lr * g.gy;
@@ -455,6 +621,20 @@
 
             lossChart.update();
             updateUI();
+
+            if (mode() === '3d') {
+                pathX.push(x);
+                pathY.push(y);
+                pathZ.push(f2d(x, y, a, b));
+
+                if (pathX.length > 500) {
+                    pathX.shift();
+                    pathY.shift();
+                    pathZ.shift();
+                }
+
+                updatePlot3d();
+            }
 
             if (gradNorm < 1e-6 || fx < 1e-12) {
                 pause();
@@ -497,6 +677,10 @@
             updateUI();
             if (running) {
                 play();
+            }
+
+            if (mode() === '3d') {
+                ensurePlot3d();
             }
         }
 

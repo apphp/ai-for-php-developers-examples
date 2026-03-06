@@ -602,7 +602,9 @@ $app->group('/part-2', function ($app) use ($renderer): void {
                 ['label' => __t('gradient_descent.animation_title'), 'url' => null],
             ];
 
-            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/implementation/animation.php');
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/implementation/animation.php', [
+                'headScripts' => '<script src="' . APP_ASSETS_URL . 'assets/dist/js/plotly/plotly-2.30.0.min.js"></script>',
+            ]);
         });
         $app->get('/implementation/code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
