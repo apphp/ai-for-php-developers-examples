@@ -19,7 +19,8 @@
                         <div class="text-muted small">
                             <span class="gd-only-1d"><?= __t('gradient_descent.animation.ui.objective_1d'); ?></span>
                             <span class="gd-only-2d-objective" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_2d'); ?></span>
-                            <span class="gd-only-3d" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_3d'); ?></span>
+                            <span class="gd-only-3dxyz" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_3d'); ?></span>
+                            <span class="gd-only-3d-surface" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_3d_surface'); ?></span>
                         </div>
                     </div>
                     <div class="btn-group">
@@ -36,6 +37,7 @@
                         <option value="1d" selected>1D</option>
                         <option value="2d">2D</option>
                         <option value="3d">3D</option>
+                        <option value="3d-surface">3D + surface</option>
                     </select>
                 </div>
 
@@ -54,6 +56,11 @@
                     <input type="range" class="form-range" id="gd-start-y" min="-10" max="10" step="0.5" value="-4">
                 </div>
 
+                <div class="mb-3 gd-only-3dxyz" style="display:none;">
+                    <label for="gd-start-z" class="form-label"><b><?= __t('gradient_descent.animation.ui.start_z'); ?></b>: <span id="gd-start-z-value">3</span></label>
+                    <input type="range" class="form-range" id="gd-start-z" min="-10" max="10" step="0.5" value="3">
+                </div>
+
                 <div class="mb-3">
                     <label for="gd-target-a" class="form-label"><b><?= __t('gradient_descent.animation.ui.target_a'); ?></b>: <span id="gd-target-a-value">2</span></label>
                     <input type="range" class="form-range" id="gd-target-a" min="-6" max="6" step="0.5" value="2">
@@ -62,6 +69,11 @@
                 <div class="mb-3 gd-only-2d" style="display:none;">
                     <label for="gd-target-b" class="form-label"><b><?= __t('gradient_descent.animation.ui.target_b'); ?></b>: <span id="gd-target-b-value">1</span></label>
                     <input type="range" class="form-range" id="gd-target-b" min="-6" max="6" step="0.5" value="1">
+                </div>
+
+                <div class="mb-3 gd-only-3dxyz" style="display:none;">
+                    <label for="gd-target-c" class="form-label"><b><?= __t('gradient_descent.animation.ui.target_c'); ?></b>: <span id="gd-target-c-value">-2</span></label>
+                    <input type="range" class="form-range" id="gd-target-c" min="-6" max="6" step="0.5" value="-2">
                 </div>
 
                 <div class="mb-3">
@@ -90,6 +102,10 @@
                         <div class="small text-muted"><?= __t('gradient_descent.animation.ui.current_y'); ?></div>
                         <div class="h5 mb-0" id="gd-y">-4.0000</div>
                     </div>
+                    <div class="col-6 gd-only-3dxyz mt-3" style="display:none;">
+                        <div class="small text-muted"><?= __t('gradient_descent.animation.ui.current_z'); ?></div>
+                        <div class="h5 mb-0" id="gd-z">3.0000</div>
+                    </div>
                 </div>
 
                 <hr>
@@ -98,7 +114,9 @@
                     <?= __t('gradient_descent.animation.ui.update_rule'); ?>
                     <div><code>x = x - α · ∇f(x)</code></div>
                     <div class="gd-only-1d"><?= __t('gradient_descent.animation.ui.grad_1d'); ?></div>
-                    <div class="gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_2d'); ?></div>
+                    <div class="gd-only-2d-grad" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_2d'); ?></div>
+                    <div class="gd-only-3dxyz" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_3d'); ?></div>
+                    <div class="gd-only-3d-surface" style="display:none;"><?= __t('gradient_descent.animation.ui.grad_2d'); ?></div>
                 </div>
             </div>
         </div>
@@ -122,6 +140,8 @@
                 <div id="gd-plot-3d" class="gd-only-3d" style="display:none; height: 360px;"></div>
                 <div class="text-muted small mt-2 gd-only-1d"><?= __t('gradient_descent.animation.ui.trajectory_hint_1d'); ?></div>
                 <div class="text-muted small mt-2 gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.trajectory_hint_2d'); ?></div>
+                <div class="text-muted small mt-2 gd-only-3dxyz" style="display:none;"><?= __t('gradient_descent.animation.ui.trajectory_hint_3d'); ?></div>
+                <div class="text-muted small mt-2 gd-only-3d-surface" style="display:none;"><?= __t('gradient_descent.animation.ui.trajectory_hint_3d_surface'); ?></div>
             </div>
         </div>
 
@@ -241,20 +261,25 @@
         const lrInput = $("gd-learning-rate");
         const startXInput = $("gd-start-x");
         const startYInput = $("gd-start-y");
+        const startZInput = $("gd-start-z");
         const targetAInput = $("gd-target-a");
         const targetBInput = $("gd-target-b");
+        const targetCInput = $("gd-target-c");
         const spsInput = $("gd-steps-per-second");
 
         const lrValue = $("gd-learning-rate-value");
         const startXValue = $("gd-start-x-value");
         const startYValue = $("gd-start-y-value");
+        const startZValue = $("gd-start-z-value");
         const targetAValue = $("gd-target-a-value");
         const targetBValue = $("gd-target-b-value");
+        const targetCValue = $("gd-target-c-value");
         const spsValue = $("gd-steps-per-second-value");
 
         const iterEl = $("gd-iter");
         const xEl = $("gd-x");
         const yEl = $("gd-y");
+        const zEl = $("gd-z");
         const fxEl = $("gd-fx");
         const gradEl = $("gd-grad");
 
@@ -271,6 +296,7 @@
         let iter = 0;
         let x = parseFloat(startXInput.value);
         let y = parseFloat(startYInput.value);
+        let z = parseFloat(startZInput.value);
 
         let pathX = [];
         let pathY = [];
@@ -282,8 +308,14 @@
             if (modeSelect.value === '3d') {
                 return '3d';
             }
-
+            if (modeSelect.value === '3d-surface') {
+                return '3d-surface';
+            }
             return modeSelect.value === '2d' ? '2d' : '1d';
+        }
+
+        function is3dAny() {
+            return mode() === '3d' || mode() === '3d-surface';
         }
 
         function f1d(x, a) {
@@ -301,10 +333,25 @@
             return dx * dx + dy * dy;
         }
 
+        function f3d(x, y, z, a, b, c) {
+            const dx = x - a;
+            const dy = y - b;
+            const dz = z - c;
+            return dx * dx + dy * dy + dz * dz;
+        }
+
         function g2d(x, y, a, b) {
             return {
                 gx: 2 * (x - a),
                 gy: 2 * (y - b)
+            };
+        }
+
+        function g3d(x, y, z, a, b, c) {
+            return {
+                gx: 2 * (x - a),
+                gy: 2 * (y - b),
+                gz: 2 * (z - c)
             };
         }
 
@@ -339,8 +386,10 @@
             lrValue.textContent = parseFloat(lrInput.value).toFixed(3);
             startXValue.textContent = parseFloat(startXInput.value).toFixed(1);
             startYValue.textContent = parseFloat(startYInput.value).toFixed(1);
+            startZValue.textContent = parseFloat(startZInput.value).toFixed(1);
             targetAValue.textContent = parseFloat(targetAInput.value).toFixed(1);
             targetBValue.textContent = parseFloat(targetBInput.value).toFixed(1);
+            targetCValue.textContent = parseFloat(targetCInput.value).toFixed(1);
             spsValue.textContent = String(parseInt(spsInput.value, 10));
         }
 
@@ -385,11 +434,23 @@
         function updateUI() {
             const a = parseFloat(targetAInput.value);
             const b = parseFloat(targetBInput.value);
+            const c = parseFloat(targetCInput.value);
 
             let fx = 0;
             let gradAbs = 0;
 
-            if (mode() === '2d' || mode() === '3d') {
+            if (mode() === '3d') {
+                const g = g3d(x, y, z, a, b, c);
+                fx = f3d(x, y, z, a, b, c);
+                gradAbs = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy) + (g.gz * g.gz));
+                setText(yEl, y.toFixed(4));
+                setText(zEl, z.toFixed(4));
+            } else if (mode() === '3d-surface') {
+                const g = g2d(x, y, a, b);
+                fx = f2d(x, y, a, b);
+                gradAbs = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy));
+                setText(yEl, y.toFixed(4));
+            } else if (mode() === '2d') {
                 const g = g2d(x, y, a, b);
                 fx = f2d(x, y, a, b);
                 gradAbs = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy));
@@ -414,8 +475,8 @@
 
         function setModeVisibility() {
             const m = mode();
-            const is2d = m === '2d' || m === '3d';
-            const is3d = m === '3d';
+            const is2d = m === '2d' || is3dAny();
+            const is3d = is3dAny();
             document.querySelectorAll('.gd-only-2d').forEach((el) => {
                 el.style.display = is2d ? '' : 'none';
             });
@@ -427,8 +488,20 @@
                 el.style.display = m === '2d' ? '' : 'none';
             });
 
+            document.querySelectorAll('.gd-only-2d-grad').forEach((el) => {
+                el.style.display = m === '2d' ? '' : 'none';
+            });
+
             document.querySelectorAll('.gd-only-3d').forEach((el) => {
                 el.style.display = is3d ? '' : 'none';
+            });
+
+            document.querySelectorAll('.gd-only-3dxyz').forEach((el) => {
+                el.style.display = m === '3d' ? '' : 'none';
+            });
+
+            document.querySelectorAll('.gd-only-3d-surface').forEach((el) => {
+                el.style.display = m === '3d-surface' ? '' : 'none';
             });
 
             if (planeEl) {
@@ -453,23 +526,23 @@
                 ys.push(min + t * (max - min));
             }
 
-            const z = [];
+            const zGrid = [];
             for (let yi = 0; yi < ys.length; yi++) {
                 const row = [];
                 for (let xi = 0; xi < xs.length; xi++) {
                     row.push(f2d(xs[xi], ys[yi], a, b));
                 }
-                z.push(row);
+                zGrid.push(row);
             }
 
-            return { xs, ys, z };
+            return { xs, ys, zGrid };
         }
 
         function ensurePlot3d() {
             if (!plot3dEl) {
                 return;
             }
-            if (mode() !== '3d') {
+            if (!is3dAny()) {
                 return;
             }
             if (typeof window.Plotly === 'undefined') {
@@ -479,18 +552,23 @@
 
             const a = parseFloat(targetAInput.value);
             const b = parseFloat(targetBInput.value);
-            const surface = buildSurface(a, b);
+            const c = parseFloat(targetCInput.value);
 
-            const surfaceTrace = {
-                type: 'surface',
-                x: surface.xs,
-                y: surface.ys,
-                z: surface.z,
-                opacity: 0.85,
-                colorscale: 'Viridis',
-                showscale: false,
-                hoverinfo: 'skip'
-            };
+            const traces = [];
+
+            if (mode() === '3d-surface') {
+                const surface = buildSurface(a, b);
+                traces.push({
+                    type: 'surface',
+                    x: surface.xs,
+                    y: surface.ys,
+                    z: surface.zGrid,
+                    opacity: 0.85,
+                    colorscale: 'Viridis',
+                    showscale: false,
+                    hoverinfo: 'skip'
+                });
+            }
 
             const pathTrace = {
                 type: 'scatter3d',
@@ -508,7 +586,7 @@
                 mode: 'markers',
                 x: [x],
                 y: [y],
-                z: [f2d(x, y, a, b)],
+                z: [mode() === '3d-surface' ? f2d(x, y, a, b) : z],
                 marker: { size: 6, color: 'rgba(13,110,253,1)' },
                 hoverinfo: 'skip'
             };
@@ -518,24 +596,28 @@
                 mode: 'markers',
                 x: [a],
                 y: [b],
-                z: [0],
+                z: [mode() === '3d-surface' ? 0 : c],
                 marker: { size: 6, color: 'rgba(25,135,84,1)' },
                 hoverinfo: 'skip'
             };
+
+            traces.push(pathTrace, currentTrace, targetTrace);
 
             const layout = {
                 margin: { l: 0, r: 0, b: 0, t: 0 },
                 scene: {
                     xaxis: { title: 'x', range: [-10, 10] },
                     yaxis: { title: 'y', range: [-10, 10] },
-                    zaxis: { title: 'f(x,y)' },
+                    zaxis: mode() === '3d-surface'
+                        ? { title: 'f(x,y)' }
+                        : { title: 'z', range: [-10, 10] },
                     camera: {
                         eye: { x: 1.35, y: 1.65, z: 0.85 }
                     }
                 },
             };
 
-            window.Plotly.newPlot(plot3dEl, [surfaceTrace, pathTrace, currentTrace, targetTrace], layout, {
+            window.Plotly.newPlot(plot3dEl, traces, layout, {
                 responsive: true,
                 displayModeBar: false
             });
@@ -544,40 +626,42 @@
         }
 
         function updatePlot3d() {
-            if (!plot3dEl || mode() !== '3d' || !plot3dReady || typeof window.Plotly === 'undefined') {
+            if (!plot3dEl || !is3dAny() || !plot3dReady || typeof window.Plotly === 'undefined') {
                 return;
             }
 
             const a = parseFloat(targetAInput.value);
             const b = parseFloat(targetBInput.value);
+            const c = parseFloat(targetCInput.value);
 
-            window.Plotly.restyle(plot3dEl, {
-                x: [pathX],
-                y: [pathY],
-                z: [pathZ]
-            }, [1]);
+            const pathIdx = mode() === '3d-surface' ? 1 : 0;
+            const currentIdx = mode() === '3d-surface' ? 2 : 1;
+            const targetIdx = mode() === '3d-surface' ? 3 : 2;
+
+            window.Plotly.restyle(plot3dEl, { x: [pathX], y: [pathY], z: [pathZ] }, [pathIdx]);
 
             window.Plotly.restyle(plot3dEl, {
                 x: [[x]],
                 y: [[y]],
-                z: [[f2d(x, y, a, b)]]
-            }, [2]);
+                z: [[mode() === '3d-surface' ? f2d(x, y, a, b) : z]]
+            }, [currentIdx]);
 
             window.Plotly.restyle(plot3dEl, {
                 x: [[a]],
                 y: [[b]],
-                z: [[0]]
-            }, [3]);
+                z: [[mode() === '3d-surface' ? 0 : c]]
+            }, [targetIdx]);
         }
 
         function resetState() {
             iter = 0;
             x = parseFloat(startXInput.value);
             y = parseFloat(startYInput.value);
+            z = parseFloat(startZInput.value);
 
             pathX = [x];
             pathY = [y];
-            pathZ = [f2d(x, y, parseFloat(targetAInput.value), parseFloat(targetBInput.value))];
+            pathZ = [mode() === '3d-surface' ? f2d(x, y, parseFloat(targetAInput.value), parseFloat(targetBInput.value)) : z];
 
             lossChart.data.labels = [];
             lossChart.data.datasets[0].data = [];
@@ -590,6 +674,7 @@
         function step() {
             const a = parseFloat(targetAInput.value);
             const b = parseFloat(targetBInput.value);
+            const c = parseFloat(targetCInput.value);
             const lr = parseFloat(lrInput.value);
 
             let fx = 0;
@@ -602,6 +687,13 @@
                 gradNorm = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy));
                 fx = f2d(x, y, a, b);
             } else if (mode() === '3d') {
+                const g = g3d(x, y, z, a, b, c);
+                x = x - lr * g.gx;
+                y = y - lr * g.gy;
+                z = z - lr * g.gz;
+                gradNorm = Math.sqrt((g.gx * g.gx) + (g.gy * g.gy) + (g.gz * g.gz));
+                fx = f3d(x, y, z, a, b, c);
+            } else if (mode() === '3d-surface') {
                 const g = g2d(x, y, a, b);
                 x = x - lr * g.gx;
                 y = y - lr * g.gy;
@@ -627,10 +719,10 @@
             lossChart.update();
             updateUI();
 
-            if (mode() === '3d') {
+            if (mode() === '3d' || mode() === '3d-surface') {
                 pathX.push(x);
                 pathY.push(y);
-                pathZ.push(f2d(x, y, a, b));
+                pathZ.push(mode() === '3d-surface' ? f2d(x, y, a, b) : z);
 
                 if (pathX.length > 500) {
                     pathX.shift();
@@ -707,6 +799,7 @@
         lrInput.addEventListener("input", onParamsChanged);
         targetAInput.addEventListener("input", onParamsChanged);
         targetBInput.addEventListener("input", onParamsChanged);
+        targetCInput.addEventListener("input", onParamsChanged);
         spsInput.addEventListener("input", onParamsChanged);
 
         startXInput.addEventListener("input", function () {
@@ -717,6 +810,13 @@
         });
 
         startYInput.addEventListener("input", function () {
+            syncLabels();
+            if (!running) {
+                resetState();
+            }
+        });
+
+        startZInput.addEventListener("input", function () {
             syncLabels();
             if (!running) {
                 resetState();
