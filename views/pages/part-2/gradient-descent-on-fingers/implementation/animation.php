@@ -18,7 +18,8 @@
                         <div class="fw-bold"><?= __t('gradient_descent.animation.ui.parameters'); ?></div>
                         <div class="text-muted small">
                             <span class="gd-only-1d"><?= __t('gradient_descent.animation.ui.objective_1d'); ?></span>
-                            <span class="gd-only-2d" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_2d'); ?></span>
+                            <span class="gd-only-2d-objective" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_2d'); ?></span>
+                            <span class="gd-only-3d" style="display:none;"><?= __t('gradient_descent.animation.ui.objective_3d'); ?></span>
                         </div>
                     </div>
                     <div class="btn-group">
@@ -420,6 +421,10 @@
             });
             document.querySelectorAll('.gd-only-1d').forEach((el) => {
                 el.style.display = is2d ? 'none' : '';
+            });
+
+            document.querySelectorAll('.gd-only-2d-objective').forEach((el) => {
+                el.style.display = m === '2d' ? '' : 'none';
             });
 
             document.querySelectorAll('.gd-only-3d').forEach((el) => {
