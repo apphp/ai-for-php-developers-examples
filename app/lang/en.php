@@ -277,6 +277,9 @@ return [
 
     'gradient_descent.heading' => 'Gradient descent on fingers',
     'gradient_descent.implementation' => 'Implementation of gradient descent',
+    'gradient_descent.implementation_intro' => 'In this section we implement gradient descent in PHP: first a minimal version “from scratch”, then a slightly more convenient vector form. Use the run buttons to execute the code and experiment with the parameters.',
+    'gradient_descent.animation_title' => 'Implementation of gradient descent (animation)',
+    'gradient_descent.animation_intro' => 'Below is a small interactive animation of gradient descent in 1D and 2D. Tune the learning rate and starting point, press Start, and watch how the parameters move toward the minimum while the loss decreases.',
     'gradient_descent.minimal_example_intro' => 'Let’s start with a minimal example: one feature, one weight. Estimating an apartment price by its area.',
     'gradient_descent.intro1' => 'Gradient descent (the gradient descent method) is a numerical method for finding a local minimum or maximum of a function by moving along the gradient; it is one of the core numerical methods in modern optimization.',
     'gradient_descent.intro2' => 'When people in machine learning talk about "training a model", they almost always mean the same thing: we want to choose parameters so that the error becomes as small as possible. Which exact model it is — linear regression, logistic regression, a neural network — is less important. More important is that under the hood the same mechanism almost always works: gradient descent.',

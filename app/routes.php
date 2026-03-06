@@ -413,7 +413,6 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/same-accuracy-different-log-loss/code-run.php');
         });
-
         $app->get('/case-5/training-model-as-minimizing-error', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
@@ -424,7 +423,6 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/training-model-as-minimizing-error/index.php');
         });
-
         $app->get('/case-5/training-model-as-minimizing-error/code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
@@ -436,7 +434,6 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/errors-and-loss-functions/training-model-as-minimizing-error/code-run.php');
         });
-
         $app->get('/case-5/training-model-as-minimizing-error/rubix-code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
@@ -595,6 +592,17 @@ $app->group('/part-2', function ($app) use ($renderer): void {
             ];
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/implementation/index.php');
+        });
+        $app->get('/implementation/animation', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.implementation'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.animation_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/implementation/animation.php');
         });
         $app->get('/implementation/code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [

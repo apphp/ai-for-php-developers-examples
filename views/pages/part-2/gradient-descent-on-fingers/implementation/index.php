@@ -2,8 +2,13 @@
     <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
-<h4><?= __t('gradient_descent.implementation'); ?></h4>
 <br>
+<h4><?= __t('gradient_descent.implementation'); ?></h4>
+<p><?= __t('gradient_descent.implementation_intro'); ?></p>
+<div class="pb-3">
+    <?= create_link('part-2/gradient-descent-on-fingers/implementation/animation', __t('gradient_descent.animation_title')); ?>
+</div>
+<hr>
 
 <?= create_run_code_button(__t('gradient_descent.impl_php_from_scratch'), 'part-2/gradient-descent-on-fingers/implementation/code-run'); ?>
 
