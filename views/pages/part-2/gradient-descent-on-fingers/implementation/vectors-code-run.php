@@ -58,8 +58,8 @@ $memoryEnd = memory_get_usage();
 
             <p>
                 <?= __t('gradient_descent.result_hint'); ?>
-                $y = <?= num_format($w[0]) ?>x
-                + <?= num_format($w[1]) ?>$
+                $y = <?= $w[0] ?>x
+                + <?= $w[1] ?>$
             </p>
         </div>
         <div class="col-md-12 col-lg-5 p-0 m-0">
