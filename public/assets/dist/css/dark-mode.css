@@ -4,6 +4,7 @@
     --dark-grey-normal: #6c757d;
     --dark-grey-lightest: #a9a9a9;
     --dark-color-brown: #9B3922;
+    --dark-color-brown-disabled: #652413;
 }
 
 [data-theme="dark"] input[type="checkbox"] {
@@ -85,6 +86,9 @@
 }
 [data-theme="dark"] .sidebar .nav-link.active {
   color: #F2613F !important;
+}
+[data-theme="dark"] .sidebar .nav-link.disabled {
+    color: var(--dark-color-brown-disabled) !important;
 }
 [data-theme="dark"] .sidebar .nav-link:not(.nav-sub-link):hover {
   color: #F2613F !important;
