@@ -816,7 +816,7 @@
                 play();
             }
 
-            if (mode() === '3d') {
+            if (is3dAny()) {
                 ensurePlot3d();
             }
         }
