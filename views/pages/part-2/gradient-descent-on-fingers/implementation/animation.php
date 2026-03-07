@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <div class="btn-group">
-                        <button id="gd-play" class="btn btn-sm btn-outline-primary"><?= __t('gradient_descent.animation.ui.start'); ?></button>
-                        <button id="gd-reset" class="btn btn-sm btn-outline-secondary"><?= __t('gradient_descent.animation.ui.reset'); ?></button>
+                        <button id="gd-play" class="btn btn-sm btn-outline-primary"><?= __t('common.start'); ?></button>
+                        <button id="gd-reset" class="btn btn-sm btn-outline-secondary"><?= __t('common.reset'); ?></button>
                     </div>
                 </div>
 
@@ -243,10 +243,10 @@
 <script>
     (function () {
         const i18n = {
-            start: <?= json_encode(__t('gradient_descent.animation.ui.start')) ?>,
-            pause: <?= json_encode(__t('gradient_descent.animation.ui.pause')) ?>,
-            reset: <?= json_encode(__t('gradient_descent.animation.ui.reset')) ?>,
-            resume: "Resume",
+            start: <?= json_encode(__t('common.start')) ?>,
+            pause: <?= json_encode(__t('common.pause')) ?>,
+            reset: <?= json_encode(__t('common.reset')) ?>,
+            resume: <?= json_encode(__t('common.resume')); ?>,
             chart_iteration: <?= json_encode(__t('gradient_descent.animation.ui.chart_iteration')) ?>,
             chart_fx: <?= json_encode(__t('gradient_descent.animation.ui.chart_fx')) ?>,
             chart_series_fx: <?= json_encode(__t('gradient_descent.animation.ui.chart_series_fx')) ?>,

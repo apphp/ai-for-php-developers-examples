@@ -636,7 +636,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
                 ['label' => __t('gradient_descent.sample1_title'), 'url' => null],
             ];
 
-            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory/index.php');
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/parameter-trajectory/index.php');
         });
         $app->get('/sample-1/parameter-trajectory/code-run', function (Request $request, Response $response) use ($renderer): Response {
             $breadcrumbs = [
@@ -647,7 +647,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
                 ['label' => __t('nav.code_run'), null],
             ];
 
-            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory/code-run.php');
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/parameter-trajectory/code-run.php');
         });
     });
 });

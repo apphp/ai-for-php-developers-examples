@@ -84,8 +84,8 @@ $epochCount = count($trajectory);
                     </div>
 
                     <div class="d-flex align-items-center">
-                        <button id="gd-play" type="button" class="btn btn-sm btn-outline-primary me-2"><?= __t('gradient_descent.sample1.ui.play'); ?></button>
-                        <button id="gd-pause" type="button" class="btn btn-sm btn-outline-secondary"><?= __t('gradient_descent.sample1.ui.pause'); ?></button>
+                        <button id="gd-play" type="button" class="btn btn-sm btn-outline-primary me-2"><?= __t('common.start'); ?></button>
+                        <button id="gd-reset" type="button" class="btn btn-sm btn-outline-secondary"><?= __t('common.reset'); ?></button>
                     </div>
                 </div>
 
@@ -153,13 +153,25 @@ $epochCount = count($trajectory);
     (function () {
         const trajectory = <?= json_encode($trajectory, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
         const epochCount = trajectory.length;
+        const i18n = {
+            play: <?= json_encode(__t('common.start')) ?>,
+            pause: <?= json_encode(__t('common.pause')) ?>,
+            resume: <?= json_encode(__t('common.resume')) ?>,
+            reset: <?= json_encode(__t('common.reset')) ?>,
+        };
         const epochInput = document.getElementById('gd-epoch');
         const epochLabel = document.getElementById('gd-epoch-label');
         const wLabel = document.getElementById('gd-w');
         const lossLabel = document.getElementById('gd-loss');
         const playBtn = document.getElementById('gd-play');
-        const pauseBtn = document.getElementById('gd-pause');
+        const resetBtn = document.getElementById('gd-reset');
         const speedSelect = document.getElementById('gd-speed');
+        const controlsToLock = [
+            epochInput,
+            speedSelect,
+            document.querySelector('select[name="learningRate"]'),
+            document.querySelector('select[name="epochs"]')
+        ].filter(Boolean);
 
         if (!epochCount || typeof Chart === 'undefined') {
             return;
@@ -228,6 +240,13 @@ $epochCount = count($trajectory);
         });
 
         let timer = null;
+        let hasStartedOnce = false;
+
+        const setControlsLocked = (locked) => {
+            controlsToLock.forEach((control) => {
+                control.disabled = locked;
+            });
+        };
 
         const setStep = (step1Based) => {
             const idx = Math.min(Math.max(step1Based - 1, 0), epochCount - 1);
@@ -243,20 +262,47 @@ $epochCount = count($trajectory);
             chart.update('none');
         };
 
+        const updatePlayButton = () => {
+            if (timer) {
+                playBtn.textContent = i18n.pause;
+                return;
+            }
+
+            if (hasStartedOnce && Number(epochInput.value) > 1) {
+                playBtn.textContent = i18n.resume;
+                return;
+            }
+
+            playBtn.textContent = i18n.play;
+        };
+
         const play = () => {
             if (timer) {
                 return;
             }
+
+            if (Number(epochInput.value) >= epochCount) {
+                setStep(1);
+            }
+
+            hasStartedOnce = true;
+            setControlsLocked(true);
+            updatePlayButton();
 
             timer = setInterval(() => {
                 const next = Number(epochInput.value) + 1;
                 if (next > epochCount) {
                     clearInterval(timer);
                     timer = null;
+                    hasStartedOnce = false;
+                    setControlsLocked(false);
+                    updatePlayButton();
                     return;
                 }
                 setStep(next);
             }, Number(speedSelect.value));
+
+            updatePlayButton();
         };
 
         const pause = () => {
@@ -264,19 +310,36 @@ $epochCount = count($trajectory);
                 clearInterval(timer);
                 timer = null;
             }
+
+            setControlsLocked(false);
+            updatePlayButton();
+        };
+
+        const reset = () => {
+            pause();
+            hasStartedOnce = false;
+            setStep(1);
+            updatePlayButton();
         };
 
         epochInput.addEventListener('input', () => {
             pause();
+            hasStartedOnce = Number(epochInput.value) > 1;
             setStep(Number(epochInput.value));
+            updatePlayButton();
         });
 
         playBtn.addEventListener('click', () => {
+            if (timer) {
+                pause();
+                return;
+            }
+
             play();
         });
 
-        pauseBtn.addEventListener('click', () => {
-            pause();
+        resetBtn.addEventListener('click', () => {
+            reset();
         });
 
         speedSelect.addEventListener('change', () => {
@@ -287,6 +350,8 @@ $epochCount = count($trajectory);
         });
 
         setStep(1);
+        setControlsLocked(false);
+        updatePlayButton();
     })();
 </script>
 
