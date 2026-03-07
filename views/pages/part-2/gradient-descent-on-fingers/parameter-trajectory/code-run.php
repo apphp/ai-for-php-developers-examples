@@ -149,6 +149,19 @@ $epochCount = count($trajectory);
     </div>
 </div>
 
+<style>
+    [data-theme="dark"] .card.card-body {
+        background-color: #1c1c1c;
+        color: #ccc;
+        border-color: #343434;
+    }
+
+    [data-theme="dark"] #gd-chart {
+        background-color: #232323;
+        border-radius: 10px;
+    }
+</style>
+
 <script>
     (function () {
         const trajectory = <?= json_encode($trajectory, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
@@ -177,11 +190,31 @@ $epochCount = count($trajectory);
             return;
         }
 
+        function isDarkMode() {
+            return document.body.getAttribute('data-theme') === 'dark'
+                || document.documentElement.getAttribute('data-theme') === 'dark';
+        }
+
+        function chartColors() {
+            return isDarkMode()
+                ? {
+                    text: '#cccccc',
+                    grid: 'rgba(169, 169, 169, 0.18)',
+                    gridAlt: 'rgba(169, 169, 169, 0.12)'
+                }
+                : {
+                    text: '#212529',
+                    grid: 'rgba(0, 0, 0, 0.1)',
+                    gridAlt: 'rgba(0, 0, 0, 0.08)'
+                };
+        }
+
         const labels = trajectory.map(t => t.epoch);
         const wData = trajectory.map(t => t.w);
         const lossData = trajectory.map(t => t.loss);
 
         const ctx = document.getElementById('gd-chart');
+        const initialChartColors = chartColors();
         const chart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -229,15 +262,49 @@ $epochCount = count($trajectory);
                 responsive: true,
                 interaction: { mode: 'index', intersect: false },
                 plugins: {
-                    legend: { display: true }
+                    legend: {
+                        display: true,
+                        labels: { color: initialChartColors.text }
+                    }
                 },
                 scales: {
-                    yW: { type: 'linear', position: 'left', title: { display: true, text: 'w' } },
-                    yLoss: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'loss' } },
-                    x: { title: { display: true, text: '<?= __t('gradient_descent.sample1.ui.epoch') ?>' } }
+                    yW: {
+                        type: 'linear',
+                        position: 'left',
+                        title: { display: true, text: 'w', color: initialChartColors.text },
+                        ticks: { color: initialChartColors.text },
+                        grid: { color: initialChartColors.grid }
+                    },
+                    yLoss: {
+                        type: 'linear',
+                        position: 'right',
+                        grid: { drawOnChartArea: false, color: initialChartColors.gridAlt },
+                        title: { display: true, text: 'loss', color: initialChartColors.text },
+                        ticks: { color: initialChartColors.text }
+                    },
+                    x: {
+                        title: { display: true, text: '<?= __t('gradient_descent.sample1.ui.epoch') ?>', color: initialChartColors.text },
+                        ticks: { color: initialChartColors.text },
+                        grid: { color: initialChartColors.grid }
+                    }
                 }
             }
         });
+
+        const applyChartTheme = () => {
+            const colors = chartColors();
+            chart.options.plugins.legend.labels.color = colors.text;
+            chart.options.scales.yW.title.color = colors.text;
+            chart.options.scales.yW.ticks.color = colors.text;
+            chart.options.scales.yW.grid.color = colors.grid;
+            chart.options.scales.yLoss.title.color = colors.text;
+            chart.options.scales.yLoss.ticks.color = colors.text;
+            chart.options.scales.yLoss.grid.color = colors.gridAlt;
+            chart.options.scales.x.title.color = colors.text;
+            chart.options.scales.x.ticks.color = colors.text;
+            chart.options.scales.x.grid.color = colors.grid;
+            chart.update('none');
+        };
 
         let timer = null;
         let hasStartedOnce = false;
@@ -350,6 +417,17 @@ $epochCount = count($trajectory);
         });
 
         setStep(1);
+        applyChartTheme();
+
+        const themeObserver = new MutationObserver(function () {
+            applyChartTheme();
+        });
+
+        themeObserver.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+
         setControlsLocked(false);
         updatePlayButton();
     })();

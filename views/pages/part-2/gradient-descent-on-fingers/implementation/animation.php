@@ -238,6 +238,43 @@
         background: rgba(25,135,84,.95);
         box-shadow: 0 6px 18px rgba(25,135,84,.18);
     }
+
+    [data-theme="dark"] .card.shadow-sm,
+    [data-theme="dark"] .card.shadow-sm .card-body {
+        background-color: #1c1c1c;
+        color: #ccc;
+    }
+
+    [data-theme="dark"] .card.shadow-sm {
+        border-color: #343434;
+    }
+
+    [data-theme="dark"] .gd-track {
+        border-color: rgba(169, 169, 169, 0.2);
+        background: linear-gradient(90deg, rgba(13,110,253,.12), rgba(25,135,84,.12));
+    }
+
+    [data-theme="dark"] .gd-plane {
+        border-color: rgba(169, 169, 169, 0.2);
+        background: #232323;
+    }
+
+    [data-theme="dark"] .gd-plane-grid {
+        background-image:
+            linear-gradient(rgba(169,169,169,.12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(169,169,169,.12) 1px, transparent 1px);
+    }
+
+    [data-theme="dark"] .ratio.ratio-16x9 {
+        background-color: #232323;
+        border-radius: 10px;
+        padding: 8px;
+    }
+
+    [data-theme="dark"] #gd-plot-3d {
+        background-color: #232323;
+        border-radius: 10px;
+    }
 </style>
 
 <script>
@@ -397,7 +434,27 @@
             spsValue.textContent = String(parseInt(spsInput.value, 10));
         }
 
+        function isDarkMode() {
+            return document.body.getAttribute('data-theme') === 'dark'
+                || document.documentElement.getAttribute('data-theme') === 'dark';
+        }
+
+        function chartColors() {
+            return isDarkMode()
+                ? {
+                    text: '#cccccc',
+                    grid: 'rgba(169, 169, 169, 0.18)',
+                    background: '#232323'
+                }
+                : {
+                    text: '#212529',
+                    grid: 'rgba(0, 0, 0, 0.1)',
+                    background: '#ffffff'
+                };
+        }
+
         const ctx = $("gd-loss-chart").getContext("2d");
+        const initialChartColors = chartColors();
 
         const lossChart = new Chart(ctx, {
             type: "line",
@@ -419,21 +476,72 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: {
+                        display: false,
+                        labels: { color: initialChartColors.text }
+                    },
                     tooltip: { enabled: true }
                 },
                 scales: {
                     x: {
                         title: { display: true, text: i18n.chart_iteration },
-                        ticks: { maxTicksLimit: 8 }
+                        ticks: { maxTicksLimit: 8, color: initialChartColors.text },
+                        title: { display: true, text: i18n.chart_iteration, color: initialChartColors.text },
+                        grid: { color: initialChartColors.grid }
                     },
                     y: {
-                        title: { display: true, text: i18n.chart_fx },
+                        title: { display: true, text: i18n.chart_fx, color: initialChartColors.text },
+                        ticks: { color: initialChartColors.text },
+                        grid: { color: initialChartColors.grid },
                         beginAtZero: true
                     }
                 }
             }
         });
+
+        function applyChartTheme() {
+            const colors = chartColors();
+            lossChart.options.scales.x.ticks.color = colors.text;
+            lossChart.options.scales.x.title.color = colors.text;
+            lossChart.options.scales.x.grid.color = colors.grid;
+            lossChart.options.scales.y.ticks.color = colors.text;
+            lossChart.options.scales.y.title.color = colors.text;
+            lossChart.options.scales.y.grid.color = colors.grid;
+            lossChart.update('none');
+        }
+
+        function applyPlot3dTheme() {
+            if (!plot3dEl || !plot3dReady || typeof window.Plotly === 'undefined') {
+                return;
+            }
+
+            const dark = isDarkMode();
+            window.Plotly.relayout(plot3dEl, {
+                paper_bgcolor: dark ? '#232323' : '#ffffff',
+                plot_bgcolor: dark ? '#232323' : '#ffffff',
+                font: {
+                    color: dark ? '#cccccc' : '#212529'
+                },
+                'scene.bgcolor': dark ? '#232323' : '#ffffff',
+                'scene.xaxis.backgroundcolor': dark ? '#232323' : '#ffffff',
+                'scene.xaxis.gridcolor': dark ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                'scene.xaxis.zerolinecolor': dark ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                'scene.xaxis.color': dark ? '#cccccc' : '#212529',
+                'scene.yaxis.backgroundcolor': dark ? '#232323' : '#ffffff',
+                'scene.yaxis.gridcolor': dark ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                'scene.yaxis.zerolinecolor': dark ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                'scene.yaxis.color': dark ? '#cccccc' : '#212529',
+                'scene.zaxis.backgroundcolor': dark ? '#232323' : '#ffffff',
+                'scene.zaxis.gridcolor': dark ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                'scene.zaxis.zerolinecolor': dark ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                'scene.zaxis.color': dark ? '#cccccc' : '#212529'
+            });
+        }
+
+        function applyTheme() {
+            applyChartTheme();
+            applyPlot3dTheme();
+        }
 
         const lockableControls = [
             modeSelect,
@@ -633,12 +741,45 @@
 
             const layout = {
                 margin: { l: 0, r: 0, b: 0, t: 0 },
+                paper_bgcolor: isDarkMode() ? '#232323' : '#ffffff',
+                plot_bgcolor: isDarkMode() ? '#232323' : '#ffffff',
+                font: {
+                    color: isDarkMode() ? '#cccccc' : '#212529'
+                },
                 scene: {
-                    xaxis: { title: 'x', range: [-10, 10] },
-                    yaxis: { title: 'y', range: [-10, 10] },
+                    bgcolor: isDarkMode() ? '#232323' : '#ffffff',
+                    xaxis: {
+                        title: 'x',
+                        range: [-10, 10],
+                        backgroundcolor: isDarkMode() ? '#232323' : '#ffffff',
+                        gridcolor: isDarkMode() ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                        zerolinecolor: isDarkMode() ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                        color: isDarkMode() ? '#cccccc' : '#212529'
+                    },
+                    yaxis: {
+                        title: 'y',
+                        range: [-10, 10],
+                        backgroundcolor: isDarkMode() ? '#232323' : '#ffffff',
+                        gridcolor: isDarkMode() ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                        zerolinecolor: isDarkMode() ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                        color: isDarkMode() ? '#cccccc' : '#212529'
+                    },
                     zaxis: mode() === '3d-surface'
-                        ? { title: 'f(x,y)' }
-                        : { title: 'z', range: [-10, 10] },
+                        ? {
+                            title: 'f(x,y)',
+                            backgroundcolor: isDarkMode() ? '#232323' : '#ffffff',
+                            gridcolor: isDarkMode() ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                            zerolinecolor: isDarkMode() ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                            color: isDarkMode() ? '#cccccc' : '#212529'
+                        }
+                        : {
+                            title: 'z',
+                            range: [-10, 10],
+                            backgroundcolor: isDarkMode() ? '#232323' : '#ffffff',
+                            gridcolor: isDarkMode() ? 'rgba(169,169,169,0.18)' : 'rgba(0,0,0,0.1)',
+                            zerolinecolor: isDarkMode() ? 'rgba(169,169,169,0.25)' : 'rgba(0,0,0,0.2)',
+                            color: isDarkMode() ? '#cccccc' : '#212529'
+                        },
                     camera: {
                         eye: { x: 1.35, y: 1.65, z: 0.85 }
                     }
@@ -651,6 +792,7 @@
             });
 
             plot3dReady = true;
+            applyPlot3dTheme();
         }
 
         function updatePlot3d() {
@@ -871,6 +1013,17 @@
         syncLabels();
         setModeVisibility();
         resetState();
+        applyTheme();
+
+        const themeObserver = new MutationObserver(function () {
+            applyTheme();
+        });
+
+        themeObserver.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+
         setLockedUI(false);
     })();
 </script>

@@ -587,7 +587,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
                 ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
-                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers'],
                 ['label' => __t('gradient_descent.implementation'), 'url' => null],
             ];
 
@@ -597,7 +597,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
                 ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
-                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers'],
                 ['label' => __t('gradient_descent.implementation'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
                 ['label' => __t('gradient_descent.animation_title'), 'url' => null],
             ];
@@ -610,7 +610,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
                 ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
-                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers'],
                 ['label' => __t('gradient_descent.implementation'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
                 ['label' => __t('nav.code_run'), null],
             ];
@@ -621,7 +621,7 @@ $app->group('/part-2', function ($app) use ($renderer): void {
             $breadcrumbs = [
                 ['label' => __t('nav.home'), 'url' => APP_URL],
                 ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
-                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers'],
                 ['label' => __t('gradient_descent.implementation'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/implementation'],
                 ['label' => __t('nav.code_run'), null],
             ];
