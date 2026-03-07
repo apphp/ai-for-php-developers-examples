@@ -787,6 +787,11 @@
         function play() {
             const sps = parseInt(spsInput.value, 10);
             const intervalMs = Math.max(5, Math.floor(1000 / Math.max(1, sps)));
+
+            if (!hasStartedOnce && iter > 0) {
+                resetState();
+            }
+
             running = true;
             playBtn.textContent = i18n.pause;
 
