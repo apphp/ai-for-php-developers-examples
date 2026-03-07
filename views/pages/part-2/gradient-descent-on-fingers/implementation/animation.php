@@ -246,6 +246,7 @@
             start: <?= json_encode(__t('gradient_descent.animation.ui.start')) ?>,
             pause: <?= json_encode(__t('gradient_descent.animation.ui.pause')) ?>,
             reset: <?= json_encode(__t('gradient_descent.animation.ui.reset')) ?>,
+            resume: "Resume",
             chart_iteration: <?= json_encode(__t('gradient_descent.animation.ui.chart_iteration')) ?>,
             chart_fx: <?= json_encode(__t('gradient_descent.animation.ui.chart_fx')) ?>,
             chart_series_fx: <?= json_encode(__t('gradient_descent.animation.ui.chart_series_fx')) ?>,
@@ -291,7 +292,10 @@
         const plot3dEl = $("gd-plot-3d");
 
         let running = false;
+        let sessionLocked = false;
         let timerId = null;
+
+        let hasStartedOnce = false;
 
         let iter = 0;
         let x = parseFloat(startXInput.value);
@@ -430,6 +434,30 @@
                 }
             }
         });
+
+        const lockableControls = [
+            modeSelect,
+            lrInput,
+            startXInput,
+            startYInput,
+            startZInput,
+            targetAInput,
+            targetBInput,
+            targetCInput,
+            spsInput,
+        ];
+
+        function setLockedUI(locked) {
+            sessionLocked = locked;
+            lockableControls.forEach((el) => {
+                if (!el) return;
+                el.disabled = locked;
+            });
+
+            // During a run only Pause/Start and Cancel/Reset should be available.
+            playBtn.disabled = false;
+            resetBtn.disabled = false;
+        }
 
         function updateUI() {
             const a = parseFloat(targetAInput.value);
@@ -659,6 +687,9 @@
             y = parseFloat(startYInput.value);
             z = parseFloat(startZInput.value);
 
+            hasStartedOnce = false;
+            playBtn.textContent = i18n.start;
+
             pathX = [x];
             pathY = [y];
             pathZ = [mode() === '3d-surface' ? f2d(x, y, parseFloat(targetAInput.value), parseFloat(targetBInput.value)) : z];
@@ -734,17 +765,23 @@
             }
 
             if (gradNorm < 1e-6 || fx < 1e-12) {
-                pause();
+                hasStartedOnce = false;
+                stopAndUnlock();
             }
         }
 
         function pause() {
             running = false;
-            playBtn.textContent = i18n.start;
+            playBtn.textContent = hasStartedOnce ? i18n.resume : i18n.start;
             if (timerId) {
                 clearInterval(timerId);
                 timerId = null;
             }
+        }
+
+        function stopAndUnlock() {
+            pause();
+            setLockedUI(false);
         }
 
         function play() {
@@ -752,6 +789,9 @@
             const intervalMs = Math.max(5, Math.floor(1000 / Math.max(1, sps)));
             running = true;
             playBtn.textContent = i18n.pause;
+
+            setLockedUI(true);
+            hasStartedOnce = true;
 
             if (timerId) {
                 clearInterval(timerId);
@@ -762,7 +802,7 @@
 
         function togglePlay() {
             if (running) {
-                pause();
+                stopAndUnlock();
                 return;
             }
 
@@ -786,12 +826,12 @@
         });
 
         resetBtn.addEventListener("click", function () {
-            pause();
+            stopAndUnlock();
             resetState();
         });
 
         modeSelect.addEventListener("change", function () {
-            pause();
+            stopAndUnlock();
             setModeVisibility();
             resetState();
         });
@@ -826,5 +866,6 @@
         syncLabels();
         setModeVisibility();
         resetState();
+        setLockedUI(false);
     })();
 </script>
