@@ -2,15 +2,15 @@
     <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
-<?= create_run_code_button(__t('gradient_descent.sample1_title'), 'part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory/code-run'); ?>
+<?= create_run_code_button(__t('gradient_descent.sample2_title'), 'part-2/gradient-descent-on-fingers/sample-2/learning-rate-effect/code-run'); ?>
 
 <div>
     <p>
-        <?= __t('gradient_descent.minimal_example_intro'); ?>
+        <?= __t('gradient_descent.sample2.intro'); ?>
     </p>
 
     <p>
-        <?= __t('gradient_descent.sample1.goal'); ?>
+        <?= __t('gradient_descent.sample2.goal'); ?>
     </p>
 
     <p>
@@ -29,9 +29,13 @@
     </p>
 
     <p>
-        <?= __t('gradient_descent.sample1.update_label'); ?>
+        <?= __t('gradient_descent.sample2.compare_label'); ?>
         <br>
-        $$w = w - \eta \cdot \frac{dL}{dw}$$
+        <code>
+            lr = 0.01<br>
+            lr = 0.1<br>
+            lr = 1.0
+        </code>
     </p>
 </div>
 

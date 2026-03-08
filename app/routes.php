@@ -649,6 +649,27 @@ $app->group('/part-2', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/parameter-trajectory/code-run.php');
         });
+        $app->get('/sample-2/learning-rate-effect', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers'],
+                ['label' => __t('gradient_descent.sample2_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/learning-rate-effect/index.php');
+        });
+        $app->get('/sample-2/learning-rate-effect/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part2_title'), 'url' => APP_URL . 'part-2/errors-and-loss-functions'],
+                ['label' => __t('gradient_descent.heading'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers'],
+                ['label' => __t('gradient_descent.sample2_title'), 'url' => APP_URL . 'part-2/gradient-descent-on-fingers/sample-2/learning-rate-effect'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-2/gradient-descent-on-fingers/learning-rate-effect/code-run.php');
+        });
     });
 });
 

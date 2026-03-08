@@ -11,7 +11,7 @@ $yHat = [102, 118, 128, 117, 123];
 echo 'Normal MSE: ' . mse($y, $yHat) . PHP_EOL;
 
 // Scenario 2. Add an outlier (anomalous point):
-// Imagine that our dataset now contains one very "weird" apartment — either a data error or a truly unusual object.
+// Imagine that our dataset now contains one very "weird" apartment – either a data error or a truly unusual object.
 $y[] = 300;
 $yHat[] = 130;
 

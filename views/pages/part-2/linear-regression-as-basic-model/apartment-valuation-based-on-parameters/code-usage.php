@@ -31,7 +31,7 @@ $weights = array_fill(0, 5, 0.0);
 $learningRate = 0.000001;
 $epochs = 5_000;
 
-// n — number of training examples, m — number of features (including bias)
+// n – number of training examples, m – number of features (including bias)
 $n = count($X);
 $m = count($weights);
 

@@ -13,8 +13,8 @@ $samples = [
 ];
 
 // Categorical labels for each user:
-// 'churn'  — the user left,
-// 'stay'   — the user remained active.
+// 'churn'  – the user left,
+// 'stay'   – the user remained active.
 $labels = ['churn', 'stay', 'churn', 'stay'];
 
 // Build a labeled dataset from samples and labels.

@@ -20,7 +20,7 @@
             <?= create_link('part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory', __t('gradient_descent.sample1_title')) ?>
         </li>
         <li>
-            <?= create_link('part-2/gradient-descent-on-fingers/sample-2/...', __t('gradient_descent.sample2_title'), true) ?>
+            <?= create_link('part-2/gradient-descent-on-fingers/sample-2/learning-rate-effect', __t('gradient_descent.sample2_title')) ?>
         </li>
         <li>
             <?= create_link('part-2/gradient-descent-on-fingers/sample-3/...', __t('gradient_descent.sample3_title'), true) ?>

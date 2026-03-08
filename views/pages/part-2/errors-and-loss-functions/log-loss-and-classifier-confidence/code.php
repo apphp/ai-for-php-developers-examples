@@ -1,8 +1,8 @@
 <?php
 
 // Binary log loss implementation.
-// $yTrue  — array of true labels (0 or 1).
-// $yProb  — array of predicted probabilities P(y = 1).
+// $yTrue  – array of true labels (0 or 1).
+// $yProb  – array of predicted probabilities P(y = 1).
 // Returns average negative log-likelihood of the true labels.
 function logLoss(array $yTrue, array $yProb): float {
     $n = count($yTrue);

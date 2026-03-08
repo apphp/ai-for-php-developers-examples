@@ -41,7 +41,7 @@ for ($epoch = 0; $epoch < $epochs; $epoch++) {
     $dw /= $n;
     $db /= $n;
 
-    // Update model parameters — gradient descent step
+    // Update model parameters – gradient descent step
     // We move against the direction of the gradient, because the gradient points where the error increases.
     // A small step leads to more stable training.
     $w -= $learningRate * $dw;

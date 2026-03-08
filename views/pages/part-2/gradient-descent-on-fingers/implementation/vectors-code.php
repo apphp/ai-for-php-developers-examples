@@ -15,7 +15,7 @@ function dot(array $a, array $b): float {
 // Feature matrix X
 // Each row is a single sample (data point)
 // First element is the real feature (area)
-// Second element is always 1 — bias term included as a feature
+// Second element is always 1 – bias term included as a feature
 $X = [
     [30, 1],
     [40, 1],
@@ -27,8 +27,8 @@ $X = [
 $y = [3, 4, 5, 6];
 
 // Weight vector of the model
-// w[0] — weight for area
-// w[1] — weight for bias (intercept)
+// w[0] – weight for area
+// w[1] – weight for bias (intercept)
 $w = [0.0, 0.0];
 
 // Training hyperparameters

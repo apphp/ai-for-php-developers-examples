@@ -60,7 +60,7 @@ $epochCount = count($trajectory);
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><?= __t('gradient_descent.sample1_title'); ?></h1>
+    <h1 class="h2"><?= __t('gradient_descent.heading'); ?></h1>
 </div>
 
 <?= create_show_code_button(__t('gradient_descent.sample1_title'), 'part-2/gradient-descent-on-fingers/sample-1/parameter-trajectory'); ?>
