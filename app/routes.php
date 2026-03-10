@@ -750,6 +750,27 @@ $app->group('/part-3', function ($app) use ($renderer): void {
 
             return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/medical-test-updating-confidence/code-run.php');
         });
+        $app->get('/case-3/multiclass-classification-and-softmax', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_probability_confidence'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('probability_confidence.case3_title'), 'url' => null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/multiclass-classification-and-softmax/index.php');
+        });
+        $app->get('/case-3/multiclass-classification-and-softmax/code-run', function (Request $request, Response $response) use ($renderer): Response {
+            $breadcrumbs = [
+                ['label' => __t('nav.home'), 'url' => APP_URL],
+                ['label' => __t('nav.part3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('nav.part3_probability_confidence'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence'],
+                ['label' => __t('probability_confidence.case3_title'), 'url' => APP_URL . 'part-3/probability-as-degree-of-confidence/case-3/multiclass-classification-and-softmax'],
+                ['label' => __t('nav.code_run'), null],
+            ];
+
+            return render_page($renderer, $response, $breadcrumbs, 'part-3/probability-as-degree-of-confidence/multiclass-classification-and-softmax/code-run.php');
+        });
     });
     $app->group('/logistic-regression', function ($app) use ($renderer): void {
         $app->get('', function (Request $request, Response $response) use ($renderer): Response {

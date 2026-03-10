@@ -18,7 +18,7 @@
             <?= create_link('part-3/probability-as-degree-of-confidence/case-2/medical-test-updating-confidence', __t('probability_confidence.case2_title')) ?>
         </li>
         <li>
-            <?= create_link('part-3/errors-and-loss-functions/case-3/...', __t('probability_confidence.case3_title'), true) ?>
+            <?= create_link('part-3/probability-as-degree-of-confidence/case-3/multiclass-classification-and-softmax', __t('probability_confidence.case3_title')) ?>
         </li>
         <li>
             <?= create_link('part-3/errors-and-loss-functions/case-4/...', __t('probability_confidence.case4_title'), true) ?>
