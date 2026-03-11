@@ -16,6 +16,10 @@ function mse(array $y, array $yHat): float {
     $sum = 0.0;
     $n = count($y);
 
+    if ($n === 0) {
+        return 0.0;
+    }
+
     for ($i = 0; $i < $n; $i++) {
         $sum += ($y[$i] - $yHat[$i]) ** 2;
     }

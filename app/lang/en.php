@@ -118,7 +118,7 @@ return [
     'what_is_model.function_as_basis_of_model' => 'Function as the basis of the model',
     'what_is_model.error_as_measure_of_quality' => 'Error as a measure of quality',
     'what_is_model.description1' => 'Let\'s say we want to predict the price of an apartment based on its square footage. In the simplest case, we can use a linear model:  $ŷ = w x + b$ <br><br>This is a fully-fledged model. It says, "Price ($ŷ$) is approximately equal to area ($x$) multiplied by some coefficient ($w$), plus some shift ($b$)." <br><br>If you rewrite this in PHP, you get almost trivial code:',
-    'what_is_model.description2' => 'Predicting the price of an apartment based on its area using a linear function: $ŷ = w x + b$',
+    'what_is_model.description2' => 'Predicting the price of an apartment based on its area using a linear function: $ŷ = wx + b$',
     'what_is_model.explanation_simple' => 'Explanation: $2 * 3 + 0 = 6$<br>By formula: $ŷ = 2 x + b$',
     'what_is_model.intro' => 'When we talk about a model in machine learning, it helps to forget about all the hype around "artificial intelligence" and complex abstractions. In the mathematical sense, a model is just a function: it takes some input data and returns a result. The key difference is that this function is not fixed once and for all – it has parameters that we can tune.',
     'what_is_model.link_function_as_model' => 'Function as the basis of the model',

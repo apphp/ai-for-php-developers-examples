@@ -11,4 +11,5 @@ $bestLoss = num_format($result['bestLoss']);
 
 $bestWFormatted = $bestW !== null ? num_format($bestW, 2, '.', '') : 'null';
 
-echo "Best w ≈ {$bestWFormatted}, loss ≈ {$bestLoss}";
+echo "Best w ≈ {$bestWFormatted}, loss ≈ {$bestLoss}\n";
+echo "Predict for 5: ≈ " . (5 * $bestW);
