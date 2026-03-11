@@ -20,4 +20,9 @@ $model->train($dataset);
 
 $predictions = $model->predict(new Unlabeled([[5]]));
 
+$coefficients = $model->coefficients();
+$bestW = number_format($coefficients[0], 2, '.', '');
+$bestLoss = number_format($model->bias(), 3, '.', '');
+
+echo "Best w ≈ {$bestW}, loss ≈ {$bestLoss}\n";
 echo "Predict for 5: ≈ "  . number_format($predictions[0], 7, '.', '');
