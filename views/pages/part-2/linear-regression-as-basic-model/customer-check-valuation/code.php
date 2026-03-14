@@ -22,5 +22,6 @@ $labels = [
 $dataset = Labeled::build($samples, $labels);
 
 // Ridge regression (L2 regularization)
-$model = new Ridge(1.0);
+// With a tiny alpha (1e-6) it behaves almost like ordinary least squares.
+$model = new Ridge(1e-6);
 $model->train($dataset);

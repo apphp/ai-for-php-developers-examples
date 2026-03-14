@@ -198,7 +198,6 @@ return [
     'linear_regression.case1.feature_rooms' => 'Number of rooms: 5',
     'linear_regression.case1.feature_bathrooms' => 'Number of bathrooms: 4',
     'linear_regression.case1.feature_floors' => 'Number of floors: 12',
-    'linear_regression.case1.feature_bias' => 'Deviation: 1',
 
     // Linear regression: Case 2 (developer task completion time)
     'linear_regression.case2.intro1' => 'In real teams, the question "how long will this task take?" comes up almost every day. Release dates, developer workload, and business expectations all depend on it. Estimates are usually given by gut feeling – based on the team lead’s or the developer’s own experience. Linear regression lets us formalize this process and build a baseline model that predicts time based on task features.',

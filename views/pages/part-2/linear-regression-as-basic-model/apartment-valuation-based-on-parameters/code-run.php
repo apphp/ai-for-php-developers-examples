@@ -165,7 +165,6 @@ foreach ($charts as $index => $cfg) {
                 <li><?= __t('linear_regression.case1.feature_rooms'); ?></li>
                 <li><?= __t('linear_regression.case1.feature_bathrooms'); ?></li>
                 <li><?= __t('linear_regression.case1.feature_floors'); ?></li>
-                <li><?= __t('linear_regression.case1.feature_bias'); ?></li>
             </ul>
         </div>
     </div>

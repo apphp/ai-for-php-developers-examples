@@ -199,7 +199,6 @@ return [
     'linear_regression.case1.feature_rooms' => 'Количество комнат: 5',
     'linear_regression.case1.feature_bathrooms' => 'Количество ванных комнат: 4',
     'linear_regression.case1.feature_floors' => 'Количество этажей: 12',
-    'linear_regression.case1.feature_bias' => 'Отклонение: 1',
 
     // Linear regression: Case 2 (developer task completion time)
     'linear_regression.case2.intro1' => 'В реальных командах вопрос "сколько времени займёт задача?" звучит почти каждый день. От этого зависят сроки релиса, загрузка разработчиков и ожидания бизнеса. Обычно оценки даются "на глаз" – по опыту тимлида или самого исполнителя. Линейная регрессия позволяет формализовать этот процесс и получить базовую модель, которая предсказывает время на основе признаков задачи.',

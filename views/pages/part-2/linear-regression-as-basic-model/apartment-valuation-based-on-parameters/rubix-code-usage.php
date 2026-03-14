@@ -21,7 +21,7 @@ $targets = [
 $dataset = new Labeled($samples, $targets);
 
 // Create linear regression model (Ridge)
-// With alpha = 1e-6, Ridge regression is equivalent to linear regression
+// With alpha = 1e-6, Ridge regression is almost equivalent to linear regression
 $regression = new Ridge(1e-6);
 
 // Train the model
@@ -36,4 +36,11 @@ $dataset = new Unlabeled([$newApartment]);
 $predictions = $regression->predict($dataset);
 $predictedPrice = $predictions[0];
 
-echo 'Apartment valuation: $' . number_format($predictedPrice) . PHP_EOL;
+echo 'Apartment valuation: $' . number_format($predictedPrice) . PHP_EOL . PHP_EOL;
+
+$weights = $regression->coefficients();
+$bias = $regression->bias();
+
+echo 'Weights: ' . implode(', ', array_map(fn ($weight) => number_format($weight, 2, '.', ''), $weights)) . PHP_EOL;
+echo 'Bias: ' . number_format($bias, 2, '.', '') . PHP_EOL;
+
